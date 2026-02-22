@@ -1,0 +1,27 @@
+# ==============================
+# Arma 3 Mission .gitignore
+# ==============================
+
+# Root-level folders to ignore
+/sounds/
+/PF/
+/pics/
+
+# Packed / build artifacts
+*.pbo
+*.bisign
+*.bikey
+
+# Logs
+*.rpt
+*.log
+
+# Temporary / backup files
+*.bak
+*.backup
+*.tmp
+*~
+
+# Windows system files
+Thumbs.db
+Desktop.ini
