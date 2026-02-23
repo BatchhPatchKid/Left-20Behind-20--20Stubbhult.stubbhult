@@ -235,13 +235,11 @@ if (_faction == "Rnd") then {
         case (_faction in _mutantArray): {
             [_pos,10,"mutant",_faction,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
         };
-        case (_faction in _survivorFactions): {
-            [_pos,10,"survivor",_faction,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
-        };
         case (_faction == "Zombie"): {
             [_pos,10,"zombie",_faction,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
         };
         default {
+			[_pos,10,"survivor",_faction,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
         };
     };
 

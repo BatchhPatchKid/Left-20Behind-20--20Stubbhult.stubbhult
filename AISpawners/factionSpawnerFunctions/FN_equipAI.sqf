@@ -928,7 +928,7 @@ switch _faction do {
 			_primary = true;
 			_secondary = false;
 			_optics = true;
-			_muzzle = true;
+			_muzzle = (random 6 < 1);
 			_railAttachment = (random 6 < 1);
 			_nvg = (random 10 < 1);
 			_map = true;
