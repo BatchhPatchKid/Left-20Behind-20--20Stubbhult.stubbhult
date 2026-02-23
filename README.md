@@ -1,33 +1,38 @@
-# Left Behind - Persistent Server (Altis)
+# Left Behind - Stubbhult (Persistent Survival Scenario)
 
-This repository contains the `Left_Behind_Persistent_Server_Altis.Altis` mission for **Arma 3**. The scenario is a persistent survival environment featuring dynamic factions, mutant threats and an economy system with roaming traders.
+This repository contains the **Left Behind - Stubbhult** mission for **Arma 3**. It is a multiplayer-first, persistent-leaning survival scenario built around faction conflict, mutant threats, scavenging, and player progression systems.
 
-## Mission Overview
-The mission briefing defines several gameplay systems including base building, a sleep mechanic, faction relations and temperature survival challenges. Players are encouraged to explore, take missions from faction traders and create a base while surviving hostile encounters.
+## Scenario Overview
+Left Behind on Stubbhult combines several systems into a single sandbox:
+- Dynamic human faction spawning and roaming AI encounters.
+- Multiple mutant/zombie spawners and ambient hostile activity.
+- Loot spawning for world scavenging and containers.
+- Trader-driven economy with buy/sell actions, tasks, and rewards.
+- Survival mechanics (hydration, nutrition, sanity, radiation, temperature).
+- Ritual powers and faction-themed abilities.
+- Base setup support using ACE Fortify plus anti-cleanup flag protection.
 
-## Requirements
-- **Arma 3**
-- Mod set matching the mission's `addons` list. Key dependencies include:
-  - [ACE3](https://ace3.acemod.org/) and `CBA_A3`
-  - [Task Force Radio](https://github.com/michail-nikolaev/task-force-arma-3-radio)
-  - [Ravage](https://ravage.space/)
-  - Ryan's Zombies & Demons
-  - Drongo's Spooks and Anomalies
-  - RHS: AFRF and RHS: USAF
-  - WBK Zombies & other zombie/monster mods
-  - Additional mods referenced in `mission.sqm` such as *Spike*, *FRITH_RUIN_CLOTH*, *APR_IMS_iconRework* and others
+## Core Systems Included
+- **AI Spawners**: faction patrols, hunting groups, wandering groups, and encounter logic.
+- **Mutants**: numerous creature spawners (e.g., Wendigo, Goliath, Vampire, Snatcher, Tank variants).
+- **Economy**: trader menus, item purchasing/selling, ammo interactions, and trader-linked tasks.
+- **Ambient Survival**: weather pressure, random encounters, food/water interactions, sanitation and sanity loops.
+- **Ritual Framework**: Wanderer, Greek, and Pig ritual power sets.
+- **Money System**: player-variable based currency flow initialized on mission start.
 
-Ensure all required mods are loaded before starting the scenario. Missing dependencies will prevent the mission from launching.
+## Gameplay Notes
+- New players are configured through spawn/respawn scripts and faction gear checks.
+- Traders provide gear access and progression routes through missions and item conversion.
+- Use **ACE Self Interaction → Scenario Actions** to place a protection flag for base persistence radius behavior.
+- Review the in-game **Briefing/Diary** entries for survival and base-building instructions.
 
-## Setup
-1. Copy `Left_Behind_Persistent_Server_Altis.Altis` into your Arma 3 `MPMissions` directory.
-2. Start Arma 3 with the required mods enabled.
-3. Host or join a multiplayer session and select the mission from the scenario list.
+## Repository Layout (high level)
+- `AISpawners/` - faction and mutant spawn frameworks.
+- `Ambient/` - environmental/survival mechanics and random world behavior.
+- `Economy System/` - traders, economy actions, and mission/task hooks.
+- `LootSystem/` - loot crate/ground loot population logic.
+- `ritualPowers/` - ritual progression and ability scripts.
+- Root init files (`init.sqf`, `initServer.sqf`, `initPlayerLocal.sqf`) wire systems together.
 
-## Running the Scenario
-- Upon spawning you will be teleported into the zone. Equipment is stripped then re-issued based on the faction you arrive with.
-- Visit faction traders to buy or sell equipment via the economy system.
-- Build bases using ACE Fortify. To prevent cleanup place a flag via **Scenario Actions**; objects within 150 meters of that flag are not removed.
-- Survival mechanics such as hydration, nutrition, sanity and temperature are explained in the briefing diary entries.
-
-The mission is intended for persistent servers but can also be played locally. Check the in-game **Briefing** tab for more information and tips.
+---
+If you are adapting this scenario for a dedicated server, keep your mission PBO and server modpack in sync after every script or addon dependency change.
