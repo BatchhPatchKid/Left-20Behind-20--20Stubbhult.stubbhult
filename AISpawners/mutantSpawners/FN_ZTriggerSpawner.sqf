@@ -90,9 +90,6 @@ switch (_faction) do { //Going throuigh each zombie faction to spawn the appropr
 		
 		private _horde = createGroup east;
 		[_horde, _ZedAmbientArray, _numUnits, _pos, _maxDist, 30] call (missionNamespace getVariable "FN_spawnZom");
-
-		[_horde, _pos, 100] call FN_createWaypoints;
-		[_horde, [], []] call (missionNamespace getVariable 'FN_enableDynamicSim');
 	};
 	case "mutants": {
 		_minUnits = 1;
@@ -122,9 +119,6 @@ switch (_faction) do { //Going throuigh each zombie faction to spawn the appropr
 		
 		private _horde = createGroup east;
 		[_horde, _ZedArray, _numUnits, _pos, _maxDist, 30] call (missionNamespace getVariable "FN_spawnZom");
-
-		[_horde, _pos, 100] call FN_createWaypoints;
-		[_horde, [], []] call (missionNamespace getVariable 'FN_enableDynamicSim');
 	};
 	default { // Default is zombies
 
@@ -141,7 +135,5 @@ switch (_faction) do { //Going throuigh each zombie faction to spawn the appropr
 		private _horde = createGroup east;
 		[_horde, _ZedArray, (_numUnits/2), _pos, 20, 15] call (missionNamespace getVariable "FN_spawnZom");
 		[_horde, _ZedArray, (_numUnits/2), _pos, _maxDist, 15] call (missionNamespace getVariable "FN_spawnZom");
-		[_horde, _pos, 100] call FN_createWaypoints;
-		[_horde, [], []] call (missionNamespace getVariable 'FN_enableDynamicSim');
 	};
 };

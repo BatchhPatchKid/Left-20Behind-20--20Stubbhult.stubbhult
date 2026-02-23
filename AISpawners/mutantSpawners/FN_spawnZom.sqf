@@ -30,6 +30,7 @@ if (isNil "_spawnSleep") then {
 	// now spawn your zombies
 	for "_i" from 1 to _numZombie do {
 		private _ZedType = selectRandomWeighted _zombieArray;
+		private _horde = createGroup east;
 		
 		// pick spawn position: inside if possible, otherwise safe
 		private _spawnPos = [];
@@ -39,7 +40,7 @@ if (isNil "_spawnSleep") then {
 			_spawnPos = [_pos, 15, _spread, 150] call FN_findSafePosition;
 		};
 		
-		private _hordeUnit = _zombieGrp createUnit [_ZedType,_spawnPos,[],20,"NONE"];
+		private _hordeUnit = _horde createUnit [_ZedType,_spawnPos,[],20,"NONE"];
 		_hordeUnit setSpeaker "NoVoice";
 		_hordeUnit disableConversation true;
 
@@ -66,8 +67,7 @@ if (isNil "_spawnSleep") then {
 			_hordeUnit addItemToUniform (selectRandomWeighted _uniformArraySelection);
 		};
 
+		[_horde, [], []] call (missionNamespace getVariable 'FN_enableDynamicSim');
 		sleep _spawnSleep;
 	};
-
-	[_zombieGrp, [], []] call (missionNamespace getVariable 'FN_enableDynamicSim');
 };

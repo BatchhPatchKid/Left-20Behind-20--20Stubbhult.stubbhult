@@ -1,3 +1,9 @@
+/*
+File: AISpawners/factionSpawnerFunctions/FN_createAIUnit.sqf
+Purpose: Controls AI spawning, behavior setup, and faction encounter logic.
+Style: Uses 4-space indentation and descriptive snake_case variable names.
+*/
+
 params ["_group", "_unitType", "_pos", "_faction", "_sfOverride", "_creepGroup"];
 
 // Create the unit
@@ -12,7 +18,7 @@ private _unitSkillsArray = [_faction, _pos] call FN_getFactionSkills;
 
 // Set unit position (crouching if required)
 if (_creepGroup) then {
-	_unit setUnitPos "MIDDLE";
+    _unit setUnitPos "MIDDLE";
 };
 
 // Return the created unit

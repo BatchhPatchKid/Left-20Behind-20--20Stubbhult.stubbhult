@@ -84,6 +84,7 @@ switch _whichArray do {
 	case "rifleNH_SF": { _arrayToReturn = ["arifle_Mk20_F", 0.45, "arifle_Mk20_GL_F", 0.15, "arifle_Mk20C_F", 0.65, "rhs_weap_m24sws_wd", 0.05]; };
 	case "opticsNH_SF": { _arrayToReturn = ["rhsusf_acc_g33_T1", 0.05, "rhsusf_acc_eotech_552_wd", 0.35, "rhsusf_acc_mrds", 0.15, "rhsusf_acc_ACOG_wd", 0.05]; };
 	case "muzzleNH_SF": { _arrayToReturn = ["muzzle_snds_m_khk_F",.5,"muzzle_snds_M",.5]; };
+	case "uniformNH_SF": { _arrayToReturn = ["U_FRITH_RUIN_sdr_faboli_rs",0.05,"U_FRITH_RUIN_sdr_faboli",0.05]; };
 	
 		//PF
 	case "headgearPF": { _arrayToReturn = ["Human_Face_Mask", 0.04, "H_Cap_red", 0.04, "H_Cap_red", 0.04, "H_Cap_red", 0.04, "Axe_In_Head", 0.04]; };
@@ -99,22 +100,26 @@ switch _whichArray do {
 	case "uniformRC": { _arrayToReturn = ["U_BG_Guerrilla_6_1", 0.05,"U_BG_Guerrilla_6_1NG", 0.05,"U_BG_Guerrilla_6_1R", 0.05,"U_BG_Guerilla1_1", 0.05,"U_BG_Guerilla1_1_rvg", 0.05,"U_BG_Guerilla1_2_F", 0.05,"U_BG_Guerilla2_2", 0.05,"U_BG_Guerilla2_1", 0.05,"U_BG_Guerilla2_3", 0.05,"U_I_L_Uniform_01_tshirt_black_F", 0.05,"U_I_L_Uniform_01_tshirt_olive_F", 0.05,"U_I_L_Uniform_01_tshirt_skull_F", 0.05]; };
 	case "vestRC": { _arrayToReturn = ["rvg_bandolier_1", 0.1, "rvg_legstrapbag_1", 0.1, "rvg_platecarrier_1", 0.1, "rvg_rangemaster_1", 0.1, "rvg_ravenvest_1", 0.1, "V_PlateCarrier1_blk", 0.1, "V_PlateCarrier2_blk", 0.1, "V_Chestrig_blk", 0.1, "V_BandollierB_blk", 0.1, "V_TacVest_blk", 0.1, "V_LegStrapBag_black_F", 0.1]; };
 	case "meleeRC": { _arrayToReturn = ["WBK_survival_weapon_3_r", 0.05, "WBK_survival_weapon_3", 0.05, "WBK_survival_weapon_4_r", 0.05, "WBK_survival_weapon_4", 0.05, "UNSC_Knife_reversed", 0.05, "UNSC_Knife", 0.05, "Shovel_Russian_Rotated", 0.05, "Shovel_Russian", 0.05, "Police_Bat", 0.05, "Knife_kukri", 0.05, "Weap_melee_knife", 0.05, "Knife_m3", 0.05]; };
-	case "headgearRC_SF": { _arrayToReturn = ["rhsusf_mich_helmet_marpatwd", 0.05, "rhsusf_mich_helmet_marpatwd_alt", 0.05, "rhsusf_mich_helmet_marpatwd_alt_headset", 0.05, "rhsusf_mich_helmet_marpatwd_headset", 0.05, "rhsusf_mich_helmet_marpatwd_norotos", 0.05, "rhsusf_mich_helmet_marpatwd_norotos_arc", 0.05, "rhsusf_mich_helmet_marpatwd_norotos_arc_headset", 0.05, "rhsusf_mich_helmet_marpatwd_norotos_headset", 0.05]; };
-	case "vestRC_SF": { _arrayToReturn = ["rhsusf_plateframe_teamleader", 0.05, "rhsusf_plateframe_rifleman", 0.05, "rhsusf_plateframe_medic", 0.05, "rhsusf_plateframe_marksman", 0.05, "rhsusf_plateframe_machinegunner", 0.05, "rhsusf_plateframe_light", 0.05, "rhsusf_plateframe_grenadier", 0.05]; };
-	case "rifleRC_SF": { _arrayToReturn = ["rhs_weap_m4a1_blockII", 0.05, "rhs_weap_m4a1_blockII_bk", 0.05, "rhs_weap_m4a1_blockII_M203_bk", 0.05, "rhs_weap_m4a1_blockII_KAC_bk", 0.05, "rhs_weap_m4a1_blockII_d", 0.05, "rhs_weap_m4a1_blockII_M203_d", 0.05, "rhs_weap_m4a1_blockII_KAC_d", 0.05, "rhs_weap_m4a1_blockII_M203", 0.05, "rhs_weap_m4a1_blockII_KAC", 0.05, "rhs_weap_m4a1_blockII_wd", 0.05, "rhs_weap_m4a1_blockII_M203_wd", 0.05, "rhs_weap_m4a1_blockII_KAC_wd", 0.05, "rhs_weap_m27iar", 0.05, "rhs_weap_m27iar_grip", 0.05, "rhs_weap_m24sws", 0.05]; };
+	case "rifleRC": { _arrayToReturn = ["CUP_arifle_L85A2",0.05,"sgun_HunterShotgun_01_F",0.05,"sgun_HunterShotgun_01_sawedoff_F",0.05,"SMG_05_F",0.05,"SMG_01_F",0.05,"SMG_02_F",0.05,"SMG_03C_black",0.05,"hgun_PDW2000_F",0.05,"CUP_srifle_Mosin_Nagant",0.05]; };
+	case "headgearRC_SF": { _arrayToReturn = ["H_Beret_blk",0.05]; };
+	case "vestRC_SF": { _arrayToReturn = ["CUP_V_PMC_CIRAS_Black_Patrol",0.05,"CUP_V_PMC_CIRAS_Black_TL",0.05,"CUP_V_PMC_CIRAS_Black_Grenadier",0.05,"CUP_V_PMC_CIRAS_Black_Empty",0.05,"CUP_V_PMC_CIRAS_Black_Veh",0.05,"CUP_V_B_Ciras_Black",0.05,"CUP_V_B_Ciras_Black2",0.05,"CUP_V_B_Ciras_Black3",0.05,"CUP_V_B_Ciras_Black4",0.05]; };
+	case "rifleRC_SF": { _arrayToReturn = ["CUP_arifle_L85A2_NG",0.25,"CUP_arifle_L85A2_G",0.25,"CUP_arifle_L85A2_GL",0.05,"CUP_arifle_L86A2",0.05,"CUP_srifle_AWM_blk",0.05]; };
 	case "opticsRC_SF": { _arrayToReturn = ["rhsusf_acc_T1_high", 0.45, "rhsusf_acc_T1_low", 0.45, "rhsusf_acc_T1_low_fwd", 0.05, "rhsusf_acc_ACOG_RMR", 0.05, "rhsusf_acc_mrds", 0.05, "rhsusf_acc_mrds_c", 0.05, "rhsusf_acc_mrds_fwd_c", 0.05, "rhsusf_acc_mrds_fwd", 0.05, "rhsusf_acc_premier_low", 0.05, "rhsusf_acc_premier_mrds", 0.05, "rhsusf_acc_ACOG", 0.15]; };
 	case "muzzleRC_SF": { _arrayToReturn = ["muzzle_snds_M", 0.05, "rhsusf_acc_m24_silencer_black", 0.05, "rhsusf_acc_nt4_black", 0.05, "rhsusf_acc_nt4_tan", 0.05]; };
-	case "uniformRC_SF": { _arrayToReturn = ["U_BG_Guerrilla_6_1R",1]; };
+	case "uniformRC_SF": { _arrayToReturn = ["CUP_I_B_PMC_Unit_17",0.05]; };
+	case "facewearRC_SF": { _arrayToReturn = ["G_Balaclava_Skull1",0.05,"G_Bandanna_Skull1",0.05,"G_Bandanna_Syndikat1",0.05,"G_Bandanna_Skull2",0.05]; };
+	case "backpackRC_SF": { _arrayToReturn = ["B_Carryall_blk",0.05,"B_FieldPack_blk",0.05,"B_AssaultPack_blk",0.05]; };
 	
 		//TRB
 	case "facewearTRB": { _arrayToReturn = ["Mask_M40_OD", 0.04, "Mask_M40", 0.04, "Mask_M50", 0.04, "G_RegulatorMask_F", 0.04, "G_AirPurifyingRespirator_02_black_F", 0.04, "G_AirPurifyingRespirator_02_olive_F", 0.04, "G_AirPurifyingRespirator_02_sand_F", 0.04, "G_AirPurifyingRespirator_01_F", 0.04]; };
-	case "uniformTRB": { _arrayToReturn = ["rhs_uniform_gorka_r_g_gloves", 0.05, "rhs_uniform_gorka_r_y_gloves", 0.05, "U_O_R_Gorka_01_F", 0.05, "U_O_R_Gorka_01_brown_F", 0.05, "U_O_R_Gorka_01_camo_F", 0.05, "U_O_R_Gorka_01_black_F", 0.05]; };
+	case "uniformTRB": { _arrayToReturn = ["CUP_U_O_CHDKZ_Kam_01",0.05,"CUP_U_O_CHDKZ_Kam_03",0.05,"CUP_U_O_CHDKZ_Kam_04",0.05,"CUP_U_O_CHDKZ_Kam_05",0.05,"CUP_U_O_CHDKZ_Kam_07",0.05]; };
 	case "headgearTRB": { _arrayToReturn = ["rhs_beanie_green", 0.35, "rhs_beanie", 0.35, "H_Cap_grn", 0.05, "H_Cap_oli", 0.05, "H_Cap_oli_hs", 0.05, "H_Cap_blk_Raven", 0.05, "H_Cap_brn_SPECOPS", 0.05, "rhs_6m2", 0.05, "rhs_6m2_1", 0.05]; };
 	case "rifleTRB": { _arrayToReturn = ["rhs_weap_aks74u", 0.65, "rhs_weap_aks74un", 0.05, "rhs_weap_aks74", 0.02, "rhs_weap_akm", 0.02, "rhs_weap_ak74n", 0.03, "rhs_weap_ak74", 0.15, "rhs_weap_ak74_gp25", 0.05, "rhs_weap_pp2000", 0.75, "rhs_weap_rpk74m", 0.03, "rhs_weap_svdp_wd_npz", 0.01]; };
 	case "meleeTRB": { _arrayToReturn = ["WBK_survival_weapon_3_r", 0.04, "WBK_survival_weapon_3", 0.04, "WBK_survival_weapon_4_r", 0.04, "WBK_survival_weapon_4", 0.04, "UNSC_Knife_reversed", 0.04, "UNSC_Knife", 0.04, "Shovel_Russian_Rotated", 0.04, "Shovel_Russian", 0.04, "Police_Bat", 0.04, "Knife_kukri", 0.04, "Weap_melee_knife", 0.04, "Knife_m3", 0.04, "Bat_Clear", 0.04, "Bat_Spike", 0.04, "Crowbar", 0.04, "WBK_survival_weapon_2", 0.04, "Sashka_Russian", 0.04, "WBK_SmallHammer", 0.04, "Axe", 0.04, "WBK_ww1_Club", 0.04]; };
 	case "headgearTRB_SF": { _arrayToReturn = ["rhs_6b26",1]; };
 	case "vestTRB_SF": { _arrayToReturn = ["rhs_6b23_ML_6sh92", 0.05, "rhs_6b23_ML_6sh92_headset", 0.05, "rhs_6b23_ML_6sh92_radio", 0.05, "rhs_6b23_ML_6sh92_vog", 0.05, "rhs_6b23_ML_6sh92_vog_headset", 0.05]; };
 	case "rifleTRB_SF": { _arrayToReturn = ["rhs_weap_ak103", 0.35, "rhs_weap_ak103_gp25", 0.15, "rhs_weap_ak103_1", 0.35, "rhs_weap_ak103_2", 0.35, "rhs_weap_asval", 0.03, "rhs_weap_asval_grip", 0.03, "rhs_weap_rpk74m", 0.05]; };
+	case "uniformTRB_SF": { _arrayToReturn = ["CUP_U_O_RUS_Soldier_Gorka_A_Tacs_1",0.05,"CUP_U_O_RUS_Soldier_Gorka_A_Tacs_2",0.05,"CUP_U_O_RUS_Soldier_Gorka_A_Tacs_3",0.05,"CUP_U_O_RUS_Soldier_Gorka_A_Tacs_4",0.05]; };
 	
 		//US
 	case "headgearUS": { _arrayToReturn = ["rhsusf_ach_helmet_ocp", 0.05, "rhsusf_ach_helmet_ocp_alt", 0.05, "rhsusf_ach_helmet_ESS_ocp", 0.05, "rhsusf_ach_helmet_ESS_ocp_alt", 0.05, "rhsusf_ach_helmet_headset_ocp", 0.05, "rhsusf_ach_helmet_headset_ess_ocp", 0.05, "rhsusf_ach_helmet_headset_ess_ocp_alt", 0.05, "rhsusf_ach_helmet_camo_ocp", 0.05, "rhsusf_ach_helmet_headset_ocp_alt", 0.05, "rhsusf_ach_helmet_ocp_norotos", 0.05]; };
@@ -149,11 +154,12 @@ switch _whichArray do {
 	case "launcherRU": { _arrayToReturn = ["rhs_weap_rpg7", 0.05, "rhs_weap_rpg18", 0.05, "rhs_weap_rpg26", 0.05, "rhs_weap_rshg2", 0.05]; };
 	case "muzzleRU": { _arrayToReturn = ["rhs_acc_pbs1", 0.05, "rhs_acc_pbs4", 0.05]; };
 	case "facewearRU": { _arrayToReturn = ["Mask_M40_OD", 1]; };
-	case "uniformRU_SF": { _arrayToReturn = ["rhs_uniform_g3_rgr",1]; };
+	case "uniformRU_SF": { _arrayToReturn = ["CUP_U_O_RUS_Soldier_Gorka_EMR_1",0.05,"CUP_U_O_RUS_Soldier_Gorka_EMR_2",0.05,"CUP_U_O_RUS_Soldier_Gorka_EMR_3",0.05,"CUP_U_O_RUS_Soldier_Gorka_EMR_4",0.05]; };
 	case "vestRU_SF": { _arrayToReturn = ["rhs_6b45_rifleman", 0.05, "rhs_6b45_rifleman_2", 0.05, "rhs_6b45_off", 0.05, "rhs_6b45_mg", 0.05, "rhs_6b45_light", 0.05]; };
-	case "headgearRU_SF": { _arrayToReturn = ["rhs_6b7_1m_olive",1]; };
-	case "rifleRU_SF": { _arrayToReturn = ["rhs_weap_ak103", 0.5, "rhs_weap_ak103_gp25", 0.25, "rhs_weap_pkp", 0.10, "srifle_DMR_04_Tan_F", 0.05]; };
-	case "muzzleRU_SF": { _arrayToReturn = ["rhs_acc_pbs1",1]; };
+	case "headgearRU_SF": { _arrayToReturn = ["rhs_altyn",0.05,"rhs_altyn_visordown",0.05]; };
+	case "rifleRU_SF": { _arrayToReturn = ["CUP_arifle_AK12_AFG_wood",0.05,"CUP_arifle_AK12_VG_wood",0.05,"CUP_arifle_AK12_wood",0.05,"CUP_arifle_AK12_GP34_wood",0.05,"CUP_arifle_RPK74M",0.05,"rhs_weap_svdp_wd_npz",0.05]; };
+	case "muzzleRU_SF": { _arrayToReturn = ["CUP_muzzle_TGPA_woodland",0.05]; };
+	case "facewearRU_SF": { _arrayToReturn = ["Mask_M50", 0.05]; };
 	
 		//ROA
 	case "uniformROA": { _arrayToReturn = ["rvg_independant", 0.30, "rvg_independant_1", 0.30, "rvg_survivor", 0.04, "rvg_survivor_1", 0.04]; };
@@ -162,7 +168,7 @@ switch _whichArray do {
 	case "rifleROA": { _arrayToReturn = ["arifle_MX_GL_Black_F",.15,"arifle_MX_SW_Black_F", 0.15, "arifle_MX_Black_F", 0.50, "arifle_MXM_Black_F", 0.15, "srifle_DMR_03_F", 0.04, "srifle_DMR_03_multicam_F", 0.04]; };
 	case "facewearROA": { _arrayToReturn = ["G_Balaclava_TI_blk_F", 0.04, "G_Balaclava_TI_G_blk_F", 0.04, "G_Balaclava_TI_tna_F", 0.04, "G_Balaclava_TI_G_tna_F", 0.04, "G_Balaclava_lowprofile", 0.04, "G_Balaclava_oli", 0.04, "G_Balaclava_Flecktarn", 0.04, "G_Balaclava_blk", 0.04, "G_AirPurifyingRespirator_01_F", 0.04, "G_AirPurifyingRespirator_02_sand_F", 0.04, "G_AirPurifyingRespirator_02_olive_F", 0.04, "G_AirPurifyingRespirator_02_black_F", 0.04, "G_Aviator", 0.04]; };
 	case "headgearROA_SF": { _arrayToReturn = ["rhsusf_mich_bare_semi", 0.05, "rhsusf_mich_bare_semi_headset", 0.05, "rhsusf_mich_bare_norotos_semi", 0.05, "rhsusf_mich_bare_norotos_alt_semi_headset", 0.05, "rhsusf_mich_bare_norotos_arc_semi", 0.05, "rhsusf_mich_bare_norotos_arc_alt_semi", 0.05, "rhsusf_mich_bare_norotos_arc_alt_semi_headset", 0.05, "rhsusf_mich_bare_norotos_arc_semi_headset", 0.05, "rhsusf_mich_bare_norotos_semi_headset", 0.05, "rhsusf_mich_bare_norotos_alt_semi", 0.05, "rhsusf_mich_bare_alt_semi", 0.05]; };
-	case "vestROA_SF": { _arrayToReturn = ["rhsusf_plateframe_teamleader", 0.05, "rhsusf_plateframe_rifleman", 0.05, "rhsusf_plateframe_medic", 0.05, "rhsusf_plateframe_marksman", 0.05, "rhsusf_plateframe_machinegunner", 0.05, "rhsusf_plateframe_light", 0.05, "rhsusf_plateframe_grenadier", 0.05]; };
+	case "vestROA_SF": { _arrayToReturn = ["CUP_V_CPC_weaponsbelt_coy",0.05,"CUP_V_CPC_tlbelt_coy",0.05,"CUP_V_CPC_medicalbelt_coy",0.05,"CUP_V_CPC_lightbelt_coy",0.05,"CUP_V_CPC_Fastbelt_coy",0.05,"CUP_V_CPC_communicationsbelt_coy",0.05]; };
 	case "muzzleROA_SF": { _arrayToReturn = ["muzzle_snds_H",1,"muzzle_snds_65_TI_blk_F",1]; };
 	
 		//PMC
@@ -180,27 +186,28 @@ switch _whichArray do {
 	
 		//WO
 	case "headgearWO": { _arrayToReturn = ["H_Bandanna_gry", 0.04, "H_PASGT_basic_black_F", 0.04, "H_Beret_blk", 0.04, "H_Cap_blk", 0.30, "rvg_presshelmet_1", 0.04, "rvg_racing_1", 0.04, "H_HelmetB_light_black", 0.04, "FRITH_ruin_modhat_ltrpntblk", 0.04]; };
-	case "uniformWO": { _arrayToReturn = ["rvg_bandit", 0.04, "rvg_bandit_1", 0.04]; };
+	case "uniformWO": { _arrayToReturn = ["CUP_U_I_GUE_Flecktarn2",0.05,"CUP_U_I_GUE_Flecktarn3",0.05,"CUP_U_I_GUE_Flecktarn",0.05,"CUP_U_I_GUE_Flecktarn4",0.05]; };
 	case "facewearWO": { _arrayToReturn = ["Mask_M40",1]; };
 	case "vestWO": { _arrayToReturn = ["V_PlateCarrier1_blk", 0.04, "V_Chestrig_blk", 0.04, "V_LegStrapBag_black_F", 0.04, "V_BandollierB_blk", 0.04, "V_TacVest_blk", 0.04, "rvg_bandolier_1", 0.04, "rvg_legstrapbag_1", 0.04, "rvg_rangemaster_1", 0.04, "rvg_ravenvest_1", 0.04]; };
-	case "rifleWO": { _arrayToReturn = ["rhs_weap_hk416d10", 0.75, "rhs_weap_hk416d10_m320", 0.15, "rhs_weap_hk416d10_LMT", 0.05, "rhs_weap_hk416d145", 0.05, "rhs_weap_hk416d145_m320", 0.05]; };
+	case "rifleWO": { _arrayToReturn = ["CUP_arifle_G36A_RIS",0.05,"CUP_arifle_G36A",0.05,"CUP_arifle_G36A_AG36_RIS",0.05,"CUP_arifle_G36A3",0.05,"CUP_arifle_G36A3_grip",0.05,"CUP_arifle_G36A3_AG36",0.05,"CUP_arifle_G3A3_ris",0.05,"CUP_arifle_G3A3_ris_vfg",0.05]; };
 	case "backpackWO": { _arrayToReturn = ["B_TacticalPack_blk", 0.04, "B_LegStrapBag_black_F", 0.35, "B_FieldPack_blk", 0.04, "B_AssaultPack_blk", 0.04, "B_CivilianBackpack_01_Everyday_Black_F", 0.04]; };
 	case "meleeWO": { _arrayToReturn = ["WBK_survival_weapon_4", 0.04, "WBK_survival_weapon_4_r", 0.04, "Shovel_Russian", 0.04, "Shovel_Russian_Rotated", 0.04, "Police_Bat", 0.04, "Knife_m3", 0.04, "Knife_kukri", 0.04, "Weap_melee_knife", 0.04]; };
-	case "headgearWO_SF": { _arrayToReturn = ["rhsusf_opscore_bk",1,"rhsusf_opscore_bk_pelt",1] };
+	case "headgearWO_SF": { _arrayToReturn = ["CUP_H_Ger_M92_Cover",0.05,"CUP_H_Ger_M92_Cover_GG_CB",0.05,"CUP_H_Ger_M92_Cover_GG_CF",0.05,"CUP_H_Ger_M92_Cover_GG",0.05]; };
+	case "uniformWO_SF": { _arrayToReturn = ["CUP_U_B_GER_Fleck_Crye",0.05,"CUP_U_B_GER_Fleck_Crye2",0.05]; };
 	case "vestWO_SF": { _arrayToReturn = ["rhsusf_mbav_grenadier", 0.05, "rhsusf_mbav_light", 0.05, "rhsusf_mbav_mg", 0.05, "rhsusf_mbav_medic", 0.05, "rhsusf_mbav_rifleman", 0.05]; };
-	case "rifleWO_SF": { _arrayToReturn = ["arifle_MSBS65_UBS_black_F", 0.1,"arifle_MSBS65_Mark_black_F", 0.1,"arifle_MSBS65_GL_black_F", 0.1,"arifle_MSBS65_black_F", 0.50,"srifle_DMR_02_F", 0.01,"srifle_DMR_03_F", 0.01,"srifle_LRR_F", 0.01]; };
+	case "rifleWO_SF": { _arrayToReturn = ["CUP_arifle_G36C_VFG_wdl",0.05,"CUP_arifle_G36C_wdl",0.05,"CUP_arifle_G36CA3_afg_wdl",0.05,"CUP_arifle_G36CA3_grip_wdl",0.05,"CUP_arifle_MG36_wdl",0.05]; };
 	case "opticsWO_SF": { _arrayToReturn = ["rhsusf_acc_T1_high", 0.35, "rhsusf_acc_T1_low", 0.35, "rhsusf_acc_ACOG_RMR", 0.05, "rhsusf_acc_eotech_xps3", 0.35, "rhsusf_acc_mrds", 0.05, "rhsusf_acc_compm4", 0.35, "rhsusf_acc_eotech_552", 0.35, "rhsusf_acc_ACOG", 0.05, "rhsusf_acc_g33_T1", 0.05]; };
 	case "muzzleWO_SF": { _arrayToReturn = ["muzzle_snds_M", 0.33, "muzzle_snds_H", 0.33, "muzzle_snds_B", 0.33]; };
 	
 		//ALF
-	case "uniformALF": { _arrayToReturn = ["U_FRITH_RUIN_coffdpm", 0.04, "U_FRITH_RUIN_coffgrn", 0.04, "U_FRITH_RUIN_cofftan", 0.04]; };
-	case "facewearALF": { _arrayToReturn = ["L_Shemagh_Tan", 0.05, "LBG_Shemagh_Tan", 0.05, "LCG_Shemagh_Tan", 0.05, "LOG_Shemagh_Tan", 0.05, "PU_shemagh_Tan", 0.05, "PU_shemagh_TanCLR", 0.05, "PU_shemagh_TanO", 0.05, "NeckTight_Tan", 0.05, "NeckTight_TanBLK", 0.05, "NeckTight_TanCLR", 0.05, "NeckTight_TanO", 0.05, "PU_shemagh_TanBLK", 0.05, "rhsusf_shemagh_tan", 0.05, "rhsusf_shemagh2_tan", 0.05, "rhsusf_shemagh_gogg_tan", 0.05, "rhsusf_shemagh2_gogg_tan", 0.05]; };
-	case "headgearALF": { _arrayToReturn = ["H_Cap_blk", 0.04, "H_Beret_blk", 0.04, "H_Cap_usblack", 0.04, "H_Watchcap_cbr", 0.04, "H_Cap_tan", 0.04, "H_ShemagOpen_tan", 0.04, "H_Cap_oli", 0.04, "H_Cap_tan_specops_US", 0.04, "H_Cap_blk_Raven", 0.04, "H_Cap_oli_hs", 0.04, "H_MilCap_grn", 0.04, "H_MilCap_gry", 1]; };
+	case "uniformALF": { _arrayToReturn = ["CUP_I_B_PARA_Unit_6",0.05,"CUP_I_B_PARA_Unit_10",0.05,"CUP_I_B_PARA_Unit_2",0.05,"CUP_I_B_PARA_Unit_4",0.05,"CUP_I_B_PARA_Unit_1",0.05,"CUP_I_B_PARA_Unit_3",0.05,"CUP_I_B_PARA_Unit_5",0.05,"CUP_I_B_PARA_Unit_11",0.05,"CUP_I_B_PARA_Unit_12",0.05,"CUP_I_B_PARA_Unit_14",0.05]; };
+	case "facewearALF": { _arrayToReturn = ["CUP_G_Grn_Scarf_GPS_Beard",0.05,"CUP_G_Grn_Scarf_GPS_Beard_Blonde",0.05,"CUP_G_Tan_Scarf_GPS_Beard",0.05,"CUP_G_Grn_Scarf_Shades_GPSCombo",0.05,"CUP_G_Tan_Scarf_Shades_GPSCombo",0.05,"CUP_G_Tan_Scarf_Shades_GPSCombo_Beard",0.05,"CUP_FR_NeckScarf3",0.05]; };
+	case "headgearALF": { _arrayToReturn = ["CUP_H_US_patrol_cap_tigerstripe",0.05,"CUP_H_US_patrol_cap_Tpattern",0.05,"CUP_H_US_patrol_cap_Rhodesian",0.05]; };
 	case "vestALF": { _arrayToReturn = ["V_Rangemaster_belt", 0.5, "rvg_rangemaster_1", 0.5, "rvg_rangemaster_3", 0.5, "rvg_rangemaster_4", 0.5, "rvg_rangemaster_2", 0.5, "rhsusf_iotv_ucp_Grenadier", 0.05, "rhsusf_iotv_ucp_Medic", 0.05, "rhsusf_iotv_ucp_Repair", 0.05, "rhsusf_iotv_ucp_Rifleman", 0.05, "rhsusf_iotv_ucp_SAW", 0.05, "rhsusf_iotv_ucp_Squadleader", 0.05, "rhsusf_iotv_ucp_Teamleader", 0.05, "rhsusf_iotv_ucp", 0.05]; };
-	case "rifleALF": { _arrayToReturn = ["arifle_Mk20_plain_F", 0.45, "arifle_Mk20_F", 0.45, "arifle_Mk20_GL_plain_F", 0.03, "arifle_Mk20_GL_F", 0.03, "arifle_Mk20C_plain_F", 0.5, "arifle_Mk20C_F", 0.5, "rhs_weap_m16a4_carryhandle", 0.25, "rhs_weap_m240B", 0.05, "rhs_weap_mk17_STD", 0.05]; };
-	case "headgearALF_SF": { _arrayToReturn = ["rhsusf_ach_helmet_ucp", 0.05, "rhsusf_ach_helmet_ucp_alt", 0.05, "rhsusf_ach_helmet_ESS_ucp", 0.05, "rhsusf_ach_helmet_ESS_ucp_alt", 0.05, "rhsusf_ach_helmet_headset_ucp", 0.05, "rhsusf_ach_helmet_headset_ucp_alt", 0.05, "rhsusf_ach_helmet_headset_ess_ucp", 0.05, "rhsusf_ach_helmet_headset_ess_ucp_alt", 0.05, "rhsusf_ach_helmet_ucp_norotos", 0.05]; };
-	case "vestALF_SF": { _arrayToReturn = ["rhsusf_spc_corpsman", 0.05, "rhsusf_spc_crewman", 0.05, "rhsusf_spc_iar", 0.05, "rhsusf_spc_light", 0.05, "rhsusf_spc_mg", 0.05, "rhsusf_spc_marksman", 0.05, "rhsusf_spc_patchless", 0.05, "rhsusf_spc_patchless_radio", 0.05, "rhsusf_spc_rifleman", 0.05, "rhsusf_spc_sniper", 0.05, "rhsusf_spc_squadleader", 0.05, "rhsusf_spc_teamleader", 0.05]; };
-	case "rifleALF_SF": { _arrayToReturn = ["rhs_weap_m4a1_blockII", 0.35, "rhs_weap_m4a1_blockII_bk", 0.35, "rhs_weap_m4a1_blockII_M203_bk", 0.05, "rhs_weap_m4a1_blockII_KAC_bk", 0.05, "rhs_weap_m4a1_blockII_M203", 0.05, "rhs_weap_m4a1_blockII_KAC", 0.05, "rhs_weap_m4a1_blockII_wd", 0.05, "rhs_weap_m4a1_blockII_M203_wd", 0.05, "rhs_weap_m4a1_blockII_KAC_wd", 0.05, "rhs_weap_mk17_CQC", 0.05, "rhs_weap_mk17_LB", 0.05, "rhs_weap_mk17_STD", 0.05, "rhs_weap_m14_ris_wd", 0.05, "rhs_weap_XM2010_sa", 0.05, "rhs_weap_m24sws_wd", .05, "rhs_weap_m249", 0.05]; };
+	case "rifleALF": { _arrayToReturn = ["CUP_arifle_Colt603",0.05,"CUP_arifle_Colt645",0.05,"CUP_arifle_Colt_Sporter",0.05,"CUP_arifle_Colt_Sporter_II_Carbine",0.05,"CUP_srifle_CZ550",0.05,"CUP_sgun_CZ584",0.05,"CUP_sgun_CZ584_RIS",0.05]; };
+	case "headgearALF_SF": { _arrayToReturn = ["CUP_H_PASGTv2_OD", 0.05]; };
+	case "vestALF_SF": { _arrayToReturn = ["CUP_V_B_Interceptor_Grenadier_M81",0.05,"CUP_V_B_Interceptor_Rifleman_M81",0.05,"CUP_V_B_Interceptor_Grenadier_Olive",0.05,"CUP_V_B_Interceptor_Rifleman_Olive",0.05]; };
+	case "rifleALF_SF": { _arrayToReturn = ["CUP_arifle_CZ805_A1",0.05,"CUP_arifle_CZ805_A1_blk",0.05,"CUP_arifle_CZ805_A1_coyote",0.05,"CUP_arifle_CZ805_GL",0.05,"CUP_arifle_CZ805_GL_blk",0.05,"CUP_arifle_CZ805_GL_coyote",0.05,"CUP_arifle_CZ805_A2",0.05,"CUP_arifle_CZ805_A2_blk",0.05,"CUP_arifle_CZ805_A2_coyote",0.05,"CUP_srifle_CZ750",0.05]; };
 	case "opticsALF_SF": { _arrayToReturn = ["rhsusf_acc_ACOG3_USMC", 0.05, "rhsusf_acc_g33_xps3_tan", 0.05, "rhsusf_acc_ACOG3", 0.05, "rhsusf_acc_compm4", 0.05, "rhsusf_acc_eotech_552", 0.05, "rhsusf_acc_su230", 0.05, "rhsusf_acc_T1_high", 0.05, "rhsusf_acc_T1_low", 0.05, "rhsusf_acc_ACOG_RMR", 0.05]; };
 	case "muzzleALF_SF": { _arrayToReturn = ["rhsusf_acc_nt4_black", 0.05, "rhsusf_acc_nt4_tan", 0.05]; };
 	

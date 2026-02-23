@@ -1,3 +1,9 @@
+/*
+File: AISpawners/factionSpawnerFunctions/FN_ambientVeh.sqf
+Purpose: Controls AI spawning, behavior setup, and faction encounter logic.
+Style: Uses 4-space indentation and descriptive snake_case variable names.
+*/
+
 params ["_pos", "_triggerRadius"];
 
 [_pos, _triggerRadius] spawn {
@@ -35,9 +41,9 @@ params ["_pos", "_triggerRadius"];
 
             // 3) Check for other vehicles nearby
             private _nearbyCars = nearestObjects [_spawnPos, _collisionClasses, 15];
-            if (count _nearbyCars > 0) then { 
-                sleep 0.1; 
-                continue; 
+            if (count _nearbyCars > 0) then {
+                sleep 0.1;
+                continue;
             };
 
             // returns true if any player is within 200 m of _pos
@@ -86,7 +92,7 @@ params ["_pos", "_triggerRadius"];
         private _veh      = createVehicle [_type, _posSpawn, [], 0, "NONE"];
 
         _veh setDir (random 360);
-		_veh enableSimulationGlobal false;
+        _veh enableSimulationGlobal false;
         sleep 0.1;
     };
 };

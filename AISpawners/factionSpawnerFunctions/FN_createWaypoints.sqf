@@ -1,3 +1,9 @@
+/*
+File: AISpawners/factionSpawnerFunctions/FN_createWaypoints.sqf
+Purpose: Controls AI spawning, behavior setup, and faction encounter logic.
+Style: Uses 4-space indentation and descriptive snake_case variable names.
+*/
+
 params ["_group", "_pos", "_radius"];
 
 waitUntil { !isNull _group };

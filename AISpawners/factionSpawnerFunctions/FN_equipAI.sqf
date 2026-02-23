@@ -1,3 +1,8 @@
+/*
+File: AISpawners/factionSpawnerFunctions/FN_equipAI.sqf
+Purpose: Controls AI spawning, behavior setup, and faction encounter logic.
+Style: Uses 4-space indentation and descriptive snake_case variable names.
+*/
 params ["_faction","_unit","_melee","_primaryOverride","_sfOverride"];
 
 if (isNil "_melee" || { !(_melee isEqualType true) }) then { _melee = false; };
@@ -315,6 +320,7 @@ switch _faction do {
 			_rifleArraySelection = ["rifleNH_SF"] call _arrayReturn;
 			_opticsArraySelection = ["opticsNH_SF"] call _arrayReturn;
 			_muzzleArraySelection = ["muzzleNH_SF"] call _arrayReturn;
+			_uniformArraySelection = ["uniformNH_SF"] call _arrayReturn;
 
 			if (random 3 < 1) then { _railArraySelection = _railArraySelectionRare; };
 		};
@@ -386,6 +392,7 @@ switch _faction do {
 		_vestArraySelection = ["vestRC"] call _arrayReturn;
 		_meleeSelection = ["meleeRC"] call _arrayReturn;
 		_uniformArraySelection = ["uniformRC"] call _arrayReturn;
+		_rifleArraySelection = ["rifleRC"] call _arrayReturn;
 		if (random 500 < 1) then { _nvgSelection = _rareNVG; };
 		_firstAid = (random 4 < 1);
 		_water = (random 16 < 1);
@@ -433,6 +440,8 @@ switch _faction do {
 			_gps = (random 40 < 1);
 
 			_headgearArraySelection = ["headgearRC_SF"] call _arrayReturn;
+			_facewearArraySelection = ["facewearRC_SF"] call _arrayReturn;
+			_backpackArraySelection = ["backpackRC_SF"] call _arrayReturn;
 			_uniformArraySelection = ["uniformRC_SF"] call _arrayReturn;
 			_vestArraySelection = ["vestRC_SF"] call _arrayReturn;
 			_rifleArraySelection = ["rifleRC_SF"] call _arrayReturn;
@@ -500,6 +509,7 @@ switch _faction do {
 			_headgearArraySelection = ["headgearTRB_SF"] call _arrayReturn;
 			_vestArraySelection = ["vestTRB_SF"] call _arrayReturn;
 			_rifleArraySelection = ["rifleTRB_SF"] call _arrayReturn;
+			_uniformArraySelection = ["uniformTRB_SF"] call _arrayReturn;
 
 			if (random 3 < 1) then { _railArraySelection = _railArraySelectionRare; };
 		};
@@ -679,6 +689,7 @@ switch _faction do {
 			_headgearArraySelection = ["headgearRU_SF"] call _arrayReturn;
 			_vestArraySelection = ["vestRU_SF"] call _arrayReturn;
 			_muzzleArraySelection = ["muzzleRU_SF"] call _arrayReturn;
+			_facewearArraySelection = ["facewearRU_SF"] call _arrayReturn;
 
 			if (random 3 < 1) then { _railArraySelection = _railArraySelectionRare; };
 		};
@@ -870,6 +881,7 @@ switch _faction do {
 			_rifleArraySelection = ["rifleWO_SF"] call _arrayReturn;
 			_opticsArraySelection = ["opticsWO_SF"] call _arrayReturn;
 			_muzzleArraySelection = ["muzzleWO_SF"] call _arrayReturn;
+			_uniformArraySelection = ["uniformWO_SF"] call _arrayReturn;
 
 			if (random 3 < 1) then { _railArraySelection = _railArraySelectionRare; };
 		};
