@@ -5,61 +5,48 @@ if (isNil "_sfGroup") then {
     _sfGroup = -1;
 };
 
-switch (_faction) do { //Going throuigh each mutant factions as well as zombie faction
+	switch (_faction) do { //Going throuigh each mutant factions as well as zombie faction
 	case "411": {
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "411Spawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Abom": {
-		if (_numUnits == 0) then {_numUnits = floor(random 2)+1;};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "AbominationSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Mind": {
-		if (_numUnits == 0) then {_numUnits = round(random [1, 3, 4]);};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "MindflayerSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Rake": {
-		if (_numUnits == 0) then {_numUnits = round(random [2, 4, 6]);};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "RakeSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Shadow": {
-		if (_numUnits == 0) then {_numUnits = round(random [1, 2, 3]);};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "ShadowmenSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Skull": {
-		if (_numUnits == 0) then {_numUnits = round(random [4, 8, 15]);};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "SkullsSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Snatch": {
-		if (_numUnits == 0) then {_numUnits = round(random [1, 2, 3]);};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "SnatcherSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Tank": {
-		if (_numUnits == 0) then {_numUnits = selectRandom [1, 1, 1, 1, 1, 1, 1, 2];};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "TankSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Hellspawn": {
-		if (_numUnits == 0) then {_numUnits = 1;};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "HellspawnSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Goliath": {
-		if (_numUnits == 0) then {_numUnits = 1;};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "GoliathSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Vamp": {
-		if (_numUnits == 0) then {_numUnits = round(random [2, 3, 5]);};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "VampireSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Various": {
-		if (_numUnits == 0) then {_numUnits = round(random [4, 8, 12]);};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "VariousMutantSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Wend": {
-		if (_numUnits == 0) then {_numUnits = round(random [2, 4, 5]);};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "WendigoSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Statue": {
-		if (_numUnits == 0) then {_numUnits = 1;};
-		[_pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "StatueSpawner");
+		[_faction, _pos, _triggerRadius, _numUnits] spawn (missionNamespace getVariable "FN_spawnMutantType");
 	};
 	case "Bloater": {
 		[_pos, _numUnits, 5, (_triggerRadius / 3), _faction, false, _triggerRadius] call (missionNamespace getVariable "FN_ZTriggerSpawner");
