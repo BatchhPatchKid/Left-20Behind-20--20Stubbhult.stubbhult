@@ -460,6 +460,7 @@ switch _faction do {
 		_meleeSelection = ["meleeTRB"] call _arrayReturn;
 		_opticsArraySelection = ["russianOptic"] call _arrayReturn;
 		_muzzleArraySelection = ["russianMuzzle"] call _arrayReturn;
+		_vestArraySelection = ["vestTRB"] call _arrayReturn;
 		if (random 500 < 1) then { _nvgSelection = _rareNVG; };
 		_firstAid = (random 4 < 1);
 		_water = (random 16 < 1);
@@ -509,7 +510,7 @@ switch _faction do {
 			_headgearArraySelection = ["headgearTRB_SF"] call _arrayReturn;
 			_vestArraySelection = ["vestTRB_SF"] call _arrayReturn;
 			_rifleArraySelection = ["rifleTRB_SF"] call _arrayReturn;
-			_uniformArraySelection = ["uniformTRB_SF"] call _arrayReturn;
+			_facewearArraySelection = ["facewearTRB_SF"] call _arrayReturn;
 
 			if (random 3 < 1) then { _railArraySelection = _railArraySelectionRare; };
 		};
@@ -751,6 +752,10 @@ switch _faction do {
 
 			_headgearArraySelection = ["headgearROA_SF"] call _arrayReturn;
 			_vestArraySelection = ["vestROA_SF"] call _arrayReturn;
+			_muzzleArraySelection = ["muzzleROA_SF"] call _arrayReturn;
+			_rifleArraySelection = ["rifleROA_SF"] call _arrayReturn;
+			_facewearArraySelection = ["facewearROA_SF"] call _arrayReturn;
+			_uniformArraySelection = ["uniformROA_SF"] call _arrayReturn;
 
 			if (random 3 < 1) then { _railArraySelection = _railArraySelectionRare; };
 		};

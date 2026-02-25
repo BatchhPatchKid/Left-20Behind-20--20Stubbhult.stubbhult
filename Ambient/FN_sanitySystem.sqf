@@ -50,29 +50,31 @@ FN_getSanity = {
 // Main loop: gradually restores sanity, applies radiation and mutant penalties, and handles low sanity effects.
 [] spawn {
     private _restoreRate = 0.005;   // Increase sanity by 0.005 every cycle.
+	private _enemyTypes = [
+		"DSA_411", "DSA_Abomination", "DSA_Crazy", "DSA_ActiveIdol", 
+		"DSA_ActiveIdol2", "DSA_Hatman", "DSA_Mindflayer", "DSA_Rake", 
+		"DSA_Shadowman", "DSA_Snatcher", "DSA_Vampire", "DSA_Wendigo"
+	];
     while { true } do {
 		while {alive player} do {
-    
+			// default sleep value
+			private _sleepDelay = 25;
 			// Gradually restore sanity.
 			[_restoreRate, player] call FN_changeSanity;
 			
 			// Apply radiation-based sanity decrease if radiation is 50 or above.
 			private _radValue = player getVariable ["Rad", 0];
 			if (_radValue >= 50) then {
+				_sleepDelay = 10;
 				// Calculate sanity loss: scales linearly with rad value from 50 (0.05 loss) to 100 (0.1 loss).
 				private _sanityLoss = 0.05 * (_radValue / 50);
 				[(-1 * _sanityLoss), player] call FN_changeSanity;
 			};
 			
 			// Apply mutant proximity sanity decrease.
-			private _enemyTypes = [
-				"DSA_411", "DSA_Abomination", "DSA_Crazy", "DSA_ActiveIdol", 
-				"DSA_ActiveIdol2", "DSA_Hatman", "DSA_Mindflayer", "DSA_Rake", 
-				"DSA_Shadowman", "DSA_Snatcher", "DSA_Vampire", "DSA_Wendigo"
-			];
 			private _maxDistance = 50;
 			private _lossTotal = 0;
-			private _nearbyEnemies = allUnits select {
+			private _nearbyEnemies = (player nearEntities ["CAManBase", _maxDistance]) select {
 				((typeOf _x) in _enemyTypes) && ((player distance _x) < _maxDistance)
 			};
 			{
@@ -83,6 +85,7 @@ FN_getSanity = {
 				_lossTotal = _lossTotal + _loss;
 			} forEach _nearbyEnemies;
 			if (_lossTotal > 0) then {
+				_sleepDelay = 8;
 				[ -_lossTotal, player ] call FN_changeSanity;
 			};
 			
@@ -119,7 +122,7 @@ FN_getSanity = {
 					};
 				};
 			};
-			sleep 15;
+			sleep _sleepDelay;
 		};
 		player setVariable ["sanityLevel", 100, true];
 		sleep 10;

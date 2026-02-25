@@ -19,7 +19,33 @@ if (!(_sfGroup isEqualType 0)) then {
 
 FN_createGroup = {
     params ["_side","_faction"];
-    _grp = createGroup _side;
+	
+    // Normalize _side if it sometimes arrives as a STRING
+	if (_side isEqualType "") then {
+		private _s = toUpper _side;
+		_side = switch (_s) do {
+			case "WEST";
+			case "BLUFOR": { WEST };
+
+			case "EAST";
+			case "OPFOR": { EAST };
+
+			case "INDEPENDENT";
+			case "GUER";
+			case "RESISTANCE": { independent };
+
+			case "CIVILIAN";
+			case "CIV": { civilian };
+
+			default { independent };
+		};
+	};
+
+	// If it's still not a side for any reason, force default
+	if !(_side isEqualType WEST) then { _side = independent; };
+
+	// Group creation line (your existing line follows)
+	private _grp = createGroup _side;
     [_grp,_faction] call (missionNamespace getVariable "LB_FacReg_Set");
     _grp
 };

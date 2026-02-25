@@ -46,3 +46,50 @@ faction specific stationary bounty
 
 Changelog:
 	- In-game money is no longer tracked by physical bank notes. Now it's tracked with a variable attached to the individual player. You can still find bank notes (rvg_money) in the world, all you have to do now is sell that money to a trader, and it will be converted. Money will not persist after disconnecting or death.
+	
+add: 
+	- WO:
+		- Spec Ops: 
+			Uniforms: "CUP_U_B_GER_Fleck_Crye", "CUP_U_B_GER_Fleck_Crye2"
+			Weapon: "CUP_arifle_G36C_VFG_wdl","CUP_arifle_G36C_wdl","CUP_arifle_G36CA3_afg_wdl","CUP_arifle_G36CA3_grip_wdl","CUP_arifle_MG36_wdl"
+		- Regular Units: 
+			Weapon: "CUP_arifle_G36A_RIS","CUP_arifle_G36A","CUP_arifle_G36A_AG36_RIS","CUP_arifle_G36A3","CUP_arifle_G36A3_grip","CUP_arifle_G36A3_AG36","CUP_arifle_G3A3_ris","CUP_arifle_G3A3_ris_vfg"
+			Uniforms: "CUP_U_I_GUE_Flecktarn2","CUP_U_I_GUE_Flecktarn3","CUP_U_I_GUE_Flecktarn","CUP_U_I_GUE_Flecktarn4"
+	- RC: 
+		- Spec Ops: 
+			Plate Carrier: "CUP_V_PMC_CIRAS_Black_Patrol","CUP_V_PMC_CIRAS_Black_TL","CUP_V_PMC_CIRAS_Black_Grenadier","CUP_V_PMC_CIRAS_Black_Empty","CUP_V_PMC_CIRAS_Black_Veh","CUP_V_B_Ciras_Black","CUP_V_B_Ciras_Black2","CUP_V_B_Ciras_Black3","CUP_V_B_Ciras_Black4"
+			Uniform: "CUP_I_B_PMC_Unit_17"
+			Hat: "H_Beret_blk"
+			Facewear: "G_Balaclava_Skull1","G_Bandanna_Skull1","G_Bandanna_Syndikat1","G_Bandanna_Skull2"
+			Backpacks: "B_Carryall_blk","B_FieldPack_blk","B_AssaultPack_blk"
+			Weapons: "CUP_arifle_L85A2_NG","CUP_arifle_L85A2_G","CUP_arifle_L85A2_GL","CUP_arifle_L86A2","CUP_srifle_AWM_blk"
+		- Regular Units: 
+			Weapon: "CUP_arifle_L85A2" (add to pool)
+	- TRB: 
+		- Specs Ops:
+			Uniforms: "CUP_U_O_RUS_Soldier_Gorka_A_Tacs_1","CUP_U_O_RUS_Soldier_Gorka_A_Tacs_2","CUP_U_O_RUS_Soldier_Gorka_A_Tacs_3","CUP_U_O_RUS_Soldier_Gorka_A_Tacs_4"
+		- Regular Units:
+			Uniforms: "CUP_U_O_CHDKZ_Kam_01","CUP_U_O_CHDKZ_Kam_03","CUP_U_O_CHDKZ_Kam_04","CUP_U_O_CHDKZ_Kam_05","CUP_U_O_CHDKZ_Kam_07"
+	- ALF:
+		- Spec Ops:
+			Weapon: "CUP_arifle_CZ805_A1","CUP_arifle_CZ805_A1_blk","CUP_arifle_CZ805_A1_coyote","CUP_arifle_CZ805_GL","CUP_arifle_CZ805_GL_blk","CUP_arifle_CZ805_GL_coyote","CUP_arifle_CZ805_A2","CUP_arifle_CZ805_A2_blk","CUP_arifle_CZ805_A2_coyote","CUP_srifle_CZ750"
+			Uniform: "CUP_I_B_PARA_Unit_4"
+			Plate Carrier: "CUP_V_B_Interceptor_Grenadier_M81","CUP_V_B_Interceptor_Rifleman_M81","CUP_V_B_Interceptor_Grenadier_Olive","CUP_V_B_Interceptor_Rifleman_Olive"
+		- Regular Units:
+			Weapon: "CUP_arifle_Colt603","CUP_arifle_Colt645","CUP_arifle_Colt_Sporter","CUP_arifle_Colt_Sporter_II_Carbine","CUP_srifle_CZ550","CUP_sgun_CZ584","CUP_sgun_CZ584_RIS"
+			Uniforms: "CUP_I_B_PARA_Unit_6","CUP_I_B_PARA_Unit_10","CUP_I_B_PARA_Unit_2","CUP_I_B_PARA_Unit_4","CUP_I_B_PARA_Unit_1","CUP_I_B_PARA_Unit_3","CUP_I_B_PARA_Unit_5","CUP_I_B_PARA_Unit_11","CUP_I_B_PARA_Unit_12","CUP_I_B_PARA_Unit_14"
+			headgear: "CUP_H_US_patrol_cap_tigerstripe","CUP_H_US_patrol_cap_Tpattern","CUP_H_US_patrol_cap_Rhodesian"
+			facewear: "CUP_G_Grn_Scarf_GPS_Beard","CUP_G_Grn_Scarf_GPS_Beard_Blonde","CUP_G_Tan_Scarf_GPS_Beard","CUP_G_Grn_Scarf_Shades_GPSCombo","CUP_G_Tan_Scarf_Shades_GPSCombo","CUP_G_Tan_Scarf_Shades_GPSCombo_Beard","CUP_FR_NeckScarf3"
+	- NH
+		- Spec Ops
+			Uniforms: "U_FRITH_RUIN_sdr_faboli_rs","U_FRITH_RUIN_sdr_faboli"
+	- RU
+		- Spec Ops
+			Uniforms: "CUP_U_O_RUS_Soldier_Gorka_EMR_1","CUP_U_O_RUS_Soldier_Gorka_EMR_2","CUP_U_O_RUS_Soldier_Gorka_EMR_3","CUP_U_O_RUS_Soldier_Gorka_EMR_4"
+			Headgear: "rhs_altyn","rhs_altyn_visordown"
+			Suppresor: "CUP_muzzle_TGPA_woodland"
+			Facegear: "Mask_M50"
+			Weapon: "CUP_arifle_AK12_AFG_wood","CUP_arifle_AK12_VG_wood","CUP_arifle_AK12_wood","CUP_arifle_AK12_GP34_wood","CUP_arifle_RPK74M","rhs_weap_svdp_wd_npz"
+	- ROA
+		- Spec Ops
+			Plate Carrier: "CUP_V_CPC_weaponsbelt_coy","CUP_V_CPC_tlbelt_coy","CUP_V_CPC_medicalbelt_coy","CUP_V_CPC_lightbelt_coy","CUP_V_CPC_Fastbelt_coy","CUP_V_CPC_communicationsbelt_coy"
