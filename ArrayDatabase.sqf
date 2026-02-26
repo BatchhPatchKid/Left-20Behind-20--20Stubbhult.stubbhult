@@ -97,7 +97,7 @@ switch _whichArray do {
 		//RC
 	case "headgearRC": { _arrayToReturn = ["H_Cap_blk", 0.45, "H_Cap_usblack", 0.45, "H_PASGT_basic_black_F", 0.05]; };
 	case "facewearRC": { _arrayToReturn = ["G_AirPurifyingRespirator_02_black_F", 0.05, "G_Balaclava_blk", 0.05, "G_Bandanna_blk", 0.05, "rhsusf_oakley_goggles_blk", 0.05, "G_Balaclava_TI_blk_F", 0.05, "G_Balaclava_TI_G_blk_F", 0.05]; };
-	case "uniformRC": { _arrayToReturn = ["U_BG_Guerrilla_6_1", 0.05,"U_BG_Guerrilla_6_1NG", 0.05,"U_BG_Guerrilla_6_1R", 0.05,"U_BG_Guerilla1_1", 0.05,"U_BG_Guerilla1_1_rvg", 0.05,"U_BG_Guerilla1_2_F", 0.05,"U_BG_Guerilla2_2", 0.05,"U_BG_Guerilla2_1", 0.05,"U_BG_Guerilla2_3", 0.05,"U_I_L_Uniform_01_tshirt_black_F", 0.05,"U_I_L_Uniform_01_tshirt_olive_F", 0.05,"U_I_L_Uniform_01_tshirt_skull_F", 0.05]; };
+	case "uniformRC": { _arrayToReturn = ["CUP_U_I_GUE_Anorak_01",0.05,"CUP_U_I_GUE_Anorak_03",0.05,"CUP_U_I_GUE_Anorak_02",0.05]; };
 	case "vestRC": { _arrayToReturn = ["rvg_bandolier_1", 0.1, "rvg_legstrapbag_1", 0.1, "rvg_platecarrier_1", 0.1, "rvg_rangemaster_1", 0.1, "rvg_ravenvest_1", 0.1, "V_PlateCarrier1_blk", 0.1, "V_PlateCarrier2_blk", 0.1, "V_Chestrig_blk", 0.1, "V_BandollierB_blk", 0.1, "V_TacVest_blk", 0.1, "V_LegStrapBag_black_F", 0.1]; };
 	case "meleeRC": { _arrayToReturn = ["WBK_survival_weapon_3_r", 0.05, "WBK_survival_weapon_3", 0.05, "WBK_survival_weapon_4_r", 0.05, "WBK_survival_weapon_4", 0.05, "UNSC_Knife_reversed", 0.05, "UNSC_Knife", 0.05, "Shovel_Russian_Rotated", 0.05, "Shovel_Russian", 0.05, "Police_Bat", 0.05, "Knife_kukri", 0.05, "Weap_melee_knife", 0.05, "Knife_m3", 0.05]; };
 	case "rifleRC": { _arrayToReturn = ["CUP_arifle_L85A2",0.05,"sgun_HunterShotgun_01_F",0.05,"sgun_HunterShotgun_01_sawedoff_F",0.05,"SMG_05_F",0.05,"SMG_01_F",0.05,"SMG_02_F",0.05,"SMG_03C_black",0.05,"hgun_PDW2000_F",0.05,"CUP_srifle_Mosin_Nagant",0.05]; };
@@ -106,7 +106,7 @@ switch _whichArray do {
 	case "rifleRC_SF": { _arrayToReturn = ["CUP_arifle_L85A2_NG",0.25,"CUP_arifle_L85A2_G",0.25,"CUP_arifle_L85A2_GL",0.05,"CUP_arifle_L86A2",0.05,"CUP_srifle_AWM_blk",0.05]; };
 	case "opticsRC_SF": { _arrayToReturn = ["rhsusf_acc_T1_high", 0.45, "rhsusf_acc_T1_low", 0.45, "rhsusf_acc_T1_low_fwd", 0.05, "rhsusf_acc_ACOG_RMR", 0.05, "rhsusf_acc_mrds", 0.05, "rhsusf_acc_mrds_c", 0.05, "rhsusf_acc_mrds_fwd_c", 0.05, "rhsusf_acc_mrds_fwd", 0.05, "rhsusf_acc_premier_low", 0.05, "rhsusf_acc_premier_mrds", 0.05, "rhsusf_acc_ACOG", 0.15]; };
 	case "muzzleRC_SF": { _arrayToReturn = ["muzzle_snds_M", 0.05, "rhsusf_acc_m24_silencer_black", 0.05, "rhsusf_acc_nt4_black", 0.05, "rhsusf_acc_nt4_tan", 0.05]; };
-	case "uniformRC_SF": { _arrayToReturn = ["CUP_I_B_PMC_Unit_24",0.05]; };
+	case "uniformRC_SF": { _arrayToReturn = ["U_O_R_Gorka_01_black_F",0.05]; };
 	case "facewearRC_SF": { _arrayToReturn = ["G_Balaclava_Skull1",0.05,"G_Bandanna_Skull1",0.05,"G_Bandanna_Syndikat1",0.05,"G_Bandanna_Skull2",0.05]; };
 	case "backpackRC_SF": { _arrayToReturn = ["B_Carryall_blk",0.05,"B_FieldPack_blk",0.05,"B_AssaultPack_blk",0.05]; };
 	

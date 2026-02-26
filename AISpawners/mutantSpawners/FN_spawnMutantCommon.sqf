@@ -19,8 +19,6 @@ if (_safePosMax < 0) then {
 	[_pos, _x] call (missionNamespace getVariable "FN_lootSpawner");
 } forEach _lootLevels;
 
-private _horde = createGroup east;
-
 for "_i" from 1 to _maxUnits do {
 	private _unitType = if (_unitTypes isEqualType "") then {
 		_unitTypes
@@ -35,7 +33,8 @@ for "_i" from 1 to _maxUnits do {
 			};
 		};
 	};
-
+	
+	private _horde = createGroup east;
 	private _spawnPos = [_pos, _safePosMin, _safePosMax, _safePosWaterMode, 0, 20, 0, [], []] call BIS_fnc_findSafePos;
 	private _hordeUnit = _horde createUnit [_unitType, _spawnPos, [], 1, "NONE"];
 	_hordeUnit setSpeaker "NoVoice";
@@ -48,7 +47,6 @@ for "_i" from 1 to _maxUnits do {
 	if (_spawnSleep > 0) then {
 		sleep _spawnSleep;
 	};
+	
+	[_horde, [], []] call (missionNamespace getVariable "FN_enableDynamicSim");
 };
-
-[_horde, [], []] call (missionNamespace getVariable "FN_enableDynamicSim");
-_horde;

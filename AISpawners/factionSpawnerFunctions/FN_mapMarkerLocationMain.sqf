@@ -53,19 +53,27 @@ switch (_kind) do {
     };
     case "mutant": {
         switch (_label) do {
-            case "Skulls": {_markerType = "o_mortar";};
-            case "Wendigo": {_markerType = "o_support";};
+            case "Skulls";
+            case "Skull": {_markerType = "o_mortar";};
+            case "Wendigo";
+            case "Wend": {_markerType = "o_support";};
             case "Rake": {_markerType = "o_med";};
-            case "Mindflayer": {_markerType = "o_maint";};
+            case "Mindflayer";
+            case "Mind": {_markerType = "o_maint";};
             case "411": {_markerType = "o_art";};
-            case "Snatcher": {_markerType = "o_mortar_inf";};
-            case "Vampire": {_markerType = "o_air";};
-            case "Shadowmen": {_markerType = "o_uav";};
-            case "Abomination": {_markerType = "o_inf";};
+            case "Snatcher";
+            case "Snatch": {_markerType = "o_mortar_inf";};
+            case "Vampire";
+            case "Vamp": {_markerType = "o_air";};
+            case "Shadowmen";
+            case "Shadow": {_markerType = "o_uav";};
+            case "Abomination";
+            case "Abom": {_markerType = "o_inf";};
             case "Bloater": {_markerType = "o_naval";};
             case "Leaper": {_markerType = "o_recon";};
             case "Screamer": {_markerType = "o_support";};
-            case "Demons": {_markerType = "o_service";};
+            case "Demons";
+            case "demon": {_markerType = "o_service";};
             case "Tank": {_markerType = "o_armor";};
             case "Statue": {_markerType = "o_mech_inf";};
             case "Hellspawn": {_markerType = "o_plane";};

@@ -229,17 +229,18 @@ if (_faction == "Rnd") then {
     [ _numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea] call _spawnRandomFactions;
 } else {
     // Spawn exactly the requested faction
+    private _mutantArray = ["mutantArray"] call (missionNamespace getVariable "FN_arrayReturn");
 
     // Creating the map marker
     switch (true) do {
         case (_faction in _mutantArray): {
-            [_pos,10,"mutant",_faction,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
+            [_pos,10,"mutant",_faction,_typeOfLocationArea] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
         };
         case (_faction == "Zombie"): {
-            [_pos,10,"zombie",_faction,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
+            [_pos,10,"zombie",_faction,_typeOfLocationArea] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
         };
         default {
-			[_pos,10,"survivor",_faction,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
+			[_pos,10,"survivor",_faction,_typeOfLocationArea] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
         };
     };
 
