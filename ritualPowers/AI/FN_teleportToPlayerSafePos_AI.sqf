@@ -2,7 +2,6 @@ params ["_caster", "_sub"];
 
 if (isNull _caster || {!alive _caster}) exitWith {};
 if ((_caster getVariable ["LB_magicDiscipline", ""]) != "greek") exitWith {};
-if ((_caster getVariable ["ritualStatusZeus", 0]) - _sub < 0) exitWith {};
 
 private _players = allPlayers select {alive _x};
 if (_players isEqualTo []) exitWith {};
@@ -25,5 +24,3 @@ private _teleportPos = [_center, 0, 50, 5, 0, 0.6, 0] call BIS_fnc_findSafePos;
 sleep 1;
 _caster setPos _teleportPos;
 [_caster, ""] remoteExec ["switchMove", 0, true];
-
-_caster setVariable ["ritualStatusZeus", (_caster getVariable ["ritualStatusZeus", 0]) - _sub, true];

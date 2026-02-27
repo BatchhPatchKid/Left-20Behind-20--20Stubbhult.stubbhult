@@ -6,7 +6,6 @@ if (_caster isEqualTo _target) exitWith {};
 if ((_caster distance _target) > _maxRange) exitWith {};
 if ((_caster distance _target) < 12) exitWith {};
 if ((_caster getVariable ["LB_magicDiscipline", ""]) != "greek") exitWith {};
-if ((_caster getVariable ["ritualStatusZeus", 0]) - _sub < 0) exitWith {};
 
 [_caster, "starWars_lightsaber_style1_attack_push"] remoteExec ["switchMove", 0, true];
 sleep 0.5;
@@ -48,5 +47,3 @@ sleep 1;
 
 deleteVehicle _m;
 [_caster, ""] remoteExec ["switchMove", 0, true];
-
-_caster setVariable ["ritualStatusZeus", (_caster getVariable ["ritualStatusZeus", 0]) - _sub, true];

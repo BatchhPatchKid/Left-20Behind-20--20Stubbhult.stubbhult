@@ -4,7 +4,6 @@ if (isNull _caster || {isNull _target}) exitWith {};
 if (!alive _caster || {!alive _target}) exitWith {};
 if ((_caster distance _target) > _maxRange) exitWith {};
 if ((_caster getVariable ["LB_magicDiscipline", ""]) != "wanderer") exitWith {};
-if ((_caster getVariable ["ritualStatusWanderer", 0]) - _sub < 0) exitWith {};
 
 private _randomPos = selectRandom [
     [5144.04,9540.92,0],
@@ -49,4 +48,3 @@ for "_i" from 1 to _steps do {
 deleteVehicle _banishSphere;
 
 [_caster, ""] remoteExec ["switchMove", 0, true];
-_caster setVariable ["ritualStatusWanderer", (_caster getVariable ["ritualStatusWanderer", 0]) - _sub, true];

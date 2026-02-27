@@ -2,7 +2,6 @@ params ["_caster", ["_radius", 25], ["_sub", 0]];
 
 if (isNull _caster || {!alive _caster}) exitWith {};
 if ((_caster getVariable ["LB_magicDiscipline", ""]) != "greek") exitWith {};
-if ((_caster getVariable ["ritualStatusZeus", 0]) - _sub < 0) exitWith {};
 
 private _allies = (_caster nearEntities ["Man", _radius]) select {
 	alive _x &&
@@ -21,7 +20,3 @@ sleep 3;
 } forEach _allies;
 
 [_caster, ""] remoteExec ["switchMove", 0, true];
-
-if (_sub > 0) then {
-	_caster setVariable ["ritualStatusZeus", (_caster getVariable ["ritualStatusZeus", 0]) - _sub, true];
-};

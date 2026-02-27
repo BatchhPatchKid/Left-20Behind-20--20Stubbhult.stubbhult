@@ -4,7 +4,6 @@ if (isNull _caster || {isNull _target}) exitWith {};
 if (!alive _caster || {!alive _target}) exitWith {};
 if ((_caster distance _target) > _maxRange) exitWith {};
 if ((_caster getVariable ["LB_magicDiscipline", ""]) != "pig") exitWith {};
-if ((_caster getVariable ["ritualStatusPig", 0]) - _sub < 0) exitWith {};
 
 [_caster, "starWars_lightsaber_style1_attack_push"] remoteExec ["switchMove", 0, true];
 sleep 0.25;
@@ -41,5 +40,3 @@ _ied setDamage 1;
 
 sleep 0.5;
 [_caster, ""] remoteExec ["switchMove", 0, true];
-
-_caster setVariable ["ritualStatusPig", (_caster getVariable ["ritualStatusPig", 0]) - _sub, true];
