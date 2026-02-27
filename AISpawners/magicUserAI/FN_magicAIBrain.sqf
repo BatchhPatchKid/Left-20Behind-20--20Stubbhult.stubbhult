@@ -3,7 +3,7 @@ params ["_unit"];
 if (!isServer) exitWith {};
 if (isNull _unit) exitWith {};
 
-private _rangedMax = 100;
+private _rangedMax = 50;
 
 private _canCast = {
     params ["_caster", "_spellId", "_cost", "_domain", "_cooldownSeconds"];

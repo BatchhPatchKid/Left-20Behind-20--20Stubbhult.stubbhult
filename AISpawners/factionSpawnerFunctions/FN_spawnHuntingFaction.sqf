@@ -44,8 +44,8 @@ if (random 1 > _meleeChance) then {
 	};
 } else {			
 	for "_i" from 1 to _numOfHuntingParty do {
-		grpTemp = createGroup east;
-		private _newAI = grpTemp createUnit ["O_soldier_Melee_RUSH", _posHuntingParty, [], 1, "NONE"];
+		private _grpTemp = createGroup east;
+		private _newAI = _grpTemp createUnit ["O_soldier_Melee_RUSH", _posHuntingParty, [], 1, "NONE"];
 		[_factionSelected, _newAI, true, false, false] call (missionNamespace getVariable "FN_equipAI");
 		[_newAI] joinSilent _grp;
 		[_newAI, _aim, _aimSpeed, _spot, _courage, _aimShake, _command, _spotDist, _reload] call (missionNamespace getVariable "FN_setUnitSkills");		

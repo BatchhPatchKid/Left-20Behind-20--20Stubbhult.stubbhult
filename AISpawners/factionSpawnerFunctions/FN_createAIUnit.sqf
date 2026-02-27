@@ -6,21 +6,8 @@ private _factionToDiscipline = createHashMapFromArray [
     ["RC", "wanderer"]
 ];
 
-private _factionToSide = createHashMapFromArray [
-    ["DT", east],
-    ["PF", independent],
-    ["RC", civilian]
-];
-
-private _sideToMeleeClass = createHashMapFromArray [
-    [east, "O_soldier_Melee_RUSH"],
-    [west, "B_soldier_Melee_RUSH"],
-    [independent, "I_soldier_Melee_RUSH"],
-    [civilian, "C_soldier_Melee_RUSH"]
-];
-
 private _discipline = _factionToDiscipline getOrDefault [_faction, ""];
-private _magicChance = missionNamespace getVariable ["LB_magicUserChance", 0.5];
+private _magicChance = missionNamespace getVariable ["LB_magicUserChance", 0.01];
 private _meleeChance = [_faction] call FN_meleeChance;
 
 private _isMagicUser = _discipline != "" && {(random 1) < _magicChance};
@@ -47,11 +34,27 @@ if (!_isMagicUser) then {
     };
 };
 
-private _intendedSide = _factionToSide getOrDefault [_faction, side _group];
-private _meleeClass = _sideToMeleeClass getOrDefault [_intendedSide, "O_soldier_Melee_RUSH"];
+private _meleeClass = "O_soldier_Melee_RUSH";
 
 private _spawnUnitType = if (_isMelee) then { _meleeClass } else { _unitType };
-private _unit = _group createUnit [_spawnUnitType, _pos, [], 1, "NONE"];
+
+private _spawnGroup = _group;
+private _tempGroup = grpNull;
+
+if (_isMelee) then {
+    _tempGroup = createGroup [east, true];
+    _spawnGroup = _tempGroup;
+};
+
+private _unit = _spawnGroup createUnit [_spawnUnitType, _pos, [], 1, "NONE"];
+
+if (_isMelee) then {
+    [_unit] joinSilent _group;
+
+    if (!isNull _tempGroup && {(count units _tempGroup) == 0}) then {
+        deleteGroup _tempGroup;
+    };
+};
 
 private _unitSkillsArray = [_faction, _pos] call FN_getFactionSkills;
 [_unit, _unitSkillsArray select 2, _unitSkillsArray select 3, _unitSkillsArray select 4, _unitSkillsArray select 5, _unitSkillsArray select 6, _unitSkillsArray select 7, _unitSkillsArray select 8, _unitSkillsArray select 9] call FN_setUnitSkills;

@@ -22,6 +22,7 @@ missionNamespace setVariable ["FN_mapMarkerLocationMain", compileFinal preproces
 missionNamespace setVariable ["FN_magicAIInit", compileFinal preprocessFileLineNumbers "AISpawners\magicUserAI\FN_magicAIInit.sqf"];
 missionNamespace setVariable ["FN_magicAIBrain", compileFinal preprocessFileLineNumbers "AISpawners\magicUserAI\FN_magicAIBrain.sqf"];
 missionNamespace setVariable ["FN_equipAIMagicUser", compileFinal preprocessFileLineNumbers "AISpawners\magicUserAI\FN_equipAIMagicUser.sqf"];
+missionNamespace setVariable ["FN_spawnPriests", compileFinal preprocessFileLineNumbers "AISpawners\magicUserAI\FN_spawnPriests.sqf"];
 
 /* AISpawners \ factionSpawnerFunctions \ campFortificationsScripts */
 missionNamespace setVariable ["FN_createObject_Fortifications", compileFinal preprocessFileLineNumbers "AISpawners\factionSpawnerFunctions\campFortificationsScripts\FN_createObject_Fortifications.sqf"];
