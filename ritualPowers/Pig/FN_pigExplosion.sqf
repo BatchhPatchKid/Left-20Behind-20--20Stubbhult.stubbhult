@@ -16,15 +16,16 @@ private _explosive = createMine ["IEDUrbanBig_F", (getPosATL _victim), [], 0];
 
 sleep 0.15;
 
-private _victims = _explosive nearEntities ["Man", 10];
+private _victims = _ied nearEntities ["Man", 10];
+
 {
-  if (typeOf _x == "O_soldier_Melee_RUSH") then {
-      [_x, 1] remoteExec ["setDamage", 2];
+  if (!isPlayer _x) then {
+    [_x, 1] remoteExec ["setDamage", 2];
   };
 
   if (((side _player) getFriend (side _x)) > 0.6 && {!captive _x}) then {
     _player addRating -500000;
-};
+  };
 } forEach _victims;
 
 _explosive setDamage 1;

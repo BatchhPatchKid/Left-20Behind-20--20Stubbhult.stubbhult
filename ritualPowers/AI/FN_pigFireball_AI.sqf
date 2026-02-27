@@ -10,8 +10,18 @@ if ((_caster getVariable ["ritualStatusPig", 0]) - _sub < 0) exitWith {};
 sleep 0.25;
 
 private _posASL = getPosASL _target;
+private _centerPos = ASLToAGL _posASL;
+
 private _ied = createMine ["IEDUrbanSmall_F", [0, 0, 0], [], 0];
 _ied setPosASL _posASL;
+
+private _victims = _centerPos nearEntities ["Man", 3];
+{
+    if (alive _x && {!isPlayer _x}) then {
+        [_x, 1] remoteExecCall ["setDamage", owner _x];
+    };
+} forEach _victims;
+
 _ied setDamage 1;
 
 sleep 0.5;

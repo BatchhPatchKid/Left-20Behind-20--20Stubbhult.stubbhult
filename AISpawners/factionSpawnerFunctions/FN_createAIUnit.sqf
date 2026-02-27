@@ -1,15 +1,22 @@
-/*
-File: AISpawners/factionSpawnerFunctions/FN_createAIUnit.sqf
-Purpose: Controls AI spawning, behavior setup, and faction encounter logic.
-Style: Uses 4-space indentation and descriptive snake_case variable names.
-*/
-
 params ["_group", "_unitType", "_pos", "_faction", "_sfOverride", "_creepGroup"];
 
 private _factionToDiscipline = createHashMapFromArray [
     ["DT", "greek"],
     ["PF", "pig"],
     ["RC", "wanderer"]
+];
+
+private _factionToSide = createHashMapFromArray [
+    ["DT", east],
+    ["PF", independent],
+    ["RC", civilian]
+];
+
+private _sideToMeleeClass = createHashMapFromArray [
+    [east, "O_soldier_Melee_RUSH"],
+    [west, "B_soldier_Melee_RUSH"],
+    [independent, "I_soldier_Melee_RUSH"],
+    [civilian, "C_soldier_Melee_RUSH"]
 ];
 
 private _discipline = _factionToDiscipline getOrDefault [_faction, ""];
@@ -40,7 +47,10 @@ if (!_isMagicUser) then {
     };
 };
 
-private _spawnUnitType = if (_isMelee) then { "O_soldier_Melee_RUSH" } else { _unitType };
+private _intendedSide = _factionToSide getOrDefault [_faction, side _group];
+private _meleeClass = _sideToMeleeClass getOrDefault [_intendedSide, "O_soldier_Melee_RUSH"];
+
+private _spawnUnitType = if (_isMelee) then { _meleeClass } else { _unitType };
 private _unit = _group createUnit [_spawnUnitType, _pos, [], 1, "NONE"];
 
 private _unitSkillsArray = [_faction, _pos] call FN_getFactionSkills;

@@ -14,10 +14,10 @@ private _m = "Land_HelipadEmpty_F" createVehicle (ASLToAGL _posASL);
 _m setPosASL _posASL;
 [_m, nil, true] remoteExec ["BIS_fnc_moduleLightning", 0];
 
-private _victims = _m nearEntities ["Man", 6];
+private _victims = _centerPos nearEntities ["Man", 3];
 {
-    if (typeOf _x == "O_soldier_Melee_RUSH") then {
-        [_x, 1] remoteExec ["setDamage", 2];
+    if (alive _x && {!isPlayer _x}) then {
+        [_x, 1] remoteExecCall ["setDamage", owner _x];
     };
 } forEach _victims;
 
