@@ -191,6 +191,8 @@ missionNamespace setVariable ["FN_zeusBolt_AI", compileFinal preprocessFileLineN
 missionNamespace setVariable ["FN_pigFireball_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_pigFireball_AI.sqf"];
 missionNamespace setVariable ["FN_banishUnit_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_banishUnit_AI.sqf"];
 missionNamespace setVariable ["FN_teleportToPlayerSafePos_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_teleportToPlayerSafePos_AI.sqf"];
+missionNamespace setVariable ["FN_healAllies_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_healAllies_AI.sqf"];
+missionNamespace setVariable ["FN_pigWisdom_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_pigWisdom_AI.sqf"];
 
 // Money System
 missionNamespace setVariable ["FN_moneyInit", compileFinal preprocessFileLineNumbers "MoneySystem\moneyInit.sqf"];

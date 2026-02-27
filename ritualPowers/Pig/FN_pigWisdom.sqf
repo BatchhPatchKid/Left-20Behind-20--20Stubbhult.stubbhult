@@ -23,8 +23,9 @@ sleep 3.5;
 {
 	if (isPlayer _x) then {
 		[_x, ""] remoteExec ["switchMove", 0, true];
+		[_x, true, 3, true] call ace_medical_fnc_setUnconscious;
 	} else {
-		_x setUnconscious true;
+		[_x, true, 10, true] call ace_medical_fnc_setUnconscious;
 		_x setRandomLip false;
 		_x setSpeaker "NoVoice";
 	};

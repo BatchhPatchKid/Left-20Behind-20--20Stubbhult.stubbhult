@@ -1,6 +1,6 @@
 /*
     Debug console usage:
-    ["RC", getPosATL player, 3, civilian, "B_Survivor_F"] call (missionNamespace getVariable "FN_spawnPriestsDebug");
+    ["RC", getPosATL player, 3, west, "B_Survivor_F"] call (missionNamespace getVariable "FN_spawnPriests");
 */
 
 params [

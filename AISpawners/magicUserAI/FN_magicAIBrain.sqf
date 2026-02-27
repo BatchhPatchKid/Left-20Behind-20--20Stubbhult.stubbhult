@@ -53,7 +53,11 @@ while {alive _unit} do {
                 [_unit, 15] spawn FN_healSelf;
             };
 
-            if (!isNull _targetEnemy && {_unit distance _targetEnemy <= _rangedMax} && {[_unit, "greek_bolt", 20, "greek", 10] call _canCast}) then {
+			if ([_unit, "greek_heal_allies", 0, "greek", 30] call _canCast) then {
+                [_unit, 25, 0] spawn FN_healAllies_AI;
+            };
+
+		   if (!isNull _targetEnemy && {_unit distance _targetEnemy <= _rangedMax} && {[_unit, "greek_bolt", 20, "greek", 10] call _canCast}) then {
                 [_unit, 20, _targetEnemy, _rangedMax] spawn FN_zeusBolt_AI;
             };
 
@@ -66,6 +70,10 @@ while {alive _unit} do {
             private _ritual = (_unit getVariable ["ritualStatusPig", 0]) min 120;
             _unit setVariable ["ritualStatusPig", (_ritual + 0.5) min 120, true];
 
+			if (!isNull _targetEnemy && {_unit distance _targetEnemy <= _rangedMax} && {[_unit, "pig_wisdom", 35, "pig", 14] call _canCast}) then {
+                [_unit, 35, _targetEnemy, _rangedMax] spawn FN_pigWisdom_AI;
+            };
+			
             if (!isNull _targetEnemy && {_unit distance _targetEnemy <= _rangedMax} && {[_unit, "pig_fireball", 17, "pig", 10] call _canCast}) then {
                 [_unit, 17, _targetEnemy, _rangedMax] spawn FN_pigFireball_AI;
             };
