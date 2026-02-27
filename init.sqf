@@ -193,6 +193,8 @@ missionNamespace setVariable ["FN_banishUnit_AI", compileFinal preprocessFileLin
 missionNamespace setVariable ["FN_teleportToPlayerSafePos_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_teleportToPlayerSafePos_AI.sqf"];
 missionNamespace setVariable ["FN_healAllies_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_healAllies_AI.sqf"];
 missionNamespace setVariable ["FN_pigWisdom_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_pigWisdom_AI.sqf"];
+missionNamespace setVariable ["FN_darknessCursor_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_darknessCursor_AI.sqf"];
+missionNamespace setVariable ["FN_summonLeaper_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_summonLeaper_AI.sqf"];
 
 // Money System
 missionNamespace setVariable ["FN_moneyInit", compileFinal preprocessFileLineNumbers "MoneySystem\moneyInit.sqf"];

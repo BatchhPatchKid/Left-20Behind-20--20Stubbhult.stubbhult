@@ -11,6 +11,7 @@ private _magicChance = missionNamespace getVariable ["LB_magicUserChance", 0.01]
 private _meleeChance = [_faction] call FN_meleeChance;
 
 private _isMagicUser = _discipline != "" && {(random 1) < _magicChance};
+_isMagicUser = true;
 private _isSpecOps = false;
 private _isMelee = false;
 
@@ -36,12 +37,12 @@ if (!_isMagicUser) then {
 
 private _meleeClass = "O_soldier_Melee_RUSH";
 
-private _spawnUnitType = if (_isMelee) then { _meleeClass } else { _unitType };
+private _spawnUnitType = if (_isMelee || _isMagicUser) then { _meleeClass } else { _unitType };
 
 private _spawnGroup = _group;
 private _tempGroup = grpNull;
 
-if (_isMelee) then {
+if (_isMelee || _isMagicUser) then {
     _tempGroup = createGroup [east, true];
     _spawnGroup = _tempGroup;
 };

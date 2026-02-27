@@ -101,7 +101,15 @@ while {alive _unit} do {
             // Passive ritual regeneration per tick (capped).
             private _ritual = (_unit getVariable ["ritualStatusWanderer", 0]) min 120;
             _unit setVariable ["ritualStatusWanderer", (_ritual + 1.7) min 120, true];
-
+			
+			if ((count _enemyMen) > 0 && {[_unit, "wanderer_summon_leaper", 25, "wanderer", 30] call _canCast}) then {
+                [_unit, 25, "Zombie_Special_OPFOR_Leaper_1", 14] spawn FN_summonLeaper_AI;
+            };
+			
+			if (!isNull _targetEnemy && {_unit distance _targetEnemy <= _rangedMax} && {[_unit, "wanderer_darkness", 16, "wanderer", 18] call _canCast}) then {
+                [_unit, 16, _targetEnemy, _rangedMax] spawn FN_darknessCursor_AI;
+            };
+			
             if (!isNull _targetEnemy && {_unit distance _targetEnemy <= _rangedMax} && {[_unit, "wanderer_banish", 10, "wanderer", 12] call _canCast}) then {
                 [_unit, 10, _targetEnemy, _rangedMax] spawn FN_banishUnit_AI;
             };
