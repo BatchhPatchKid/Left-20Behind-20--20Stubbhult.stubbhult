@@ -7,8 +7,8 @@ private _vest = "";
 
 switch _faction do {
 	case "DT": {
-		_headgear = "G_Blindfold_01_white_F";
-		_facewear = "H_ShemagOpen_khk";
+		_headgear = "H_ShemagOpen_khk";
+		_facewear = "G_Blindfold_01_white_F";
 		_uniform = "CUP_O_TKI_Khet_Partug_03";
 	};
 	case "PF": {

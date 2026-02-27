@@ -79,12 +79,9 @@ FN_carPatrol = {
         clearItemCargoGlobal _veh;
         _grpVeh = createGroup _side;
 
-        private _sfOverride = [_sfGroup] call _fn_isSF;
-
         for "_i" from 1 to _numOfUnits do {
-            _newAI = _grpVeh createUnit [_unit,([_pos,0,10,3,0,20,0,[],[]] call BIS_fnc_findSafePos),[],1,"NONE"];
-            [_faction,_newAI,false,false,_sfOverride] call (missionNamespace getVariable "FN_equipAI");
-            [_newAI,_aim,_aimSpeed,_spot,_courage,_aimShake,_command,_spotDist,_reload] call (missionNamespace getVariable "FN_setUnitSkills");
+           private _spawnPos = [_pos,0,10,3,0,20,0,[],[]] call BIS_fnc_findSafePos;
+           [_grpVeh,_unit,_spawnPos,_faction,_sfGroup,false] call (missionNamespace getVariable "FN_createAIUnit");
         };
 
         {_x moveInAny _veh} forEach units _grpVeh;
@@ -168,8 +165,6 @@ FN_spawnGroups = {
     if (isNil "_stopSpawnOverride") then { _stopSpawnOverride = false; };
     if (_amountInGroup <= 0) then { _amountInGroup = selectRandom [2,4,6]; };
 
-    private _sfOverride = [_sfGroup] call _fn_isSF;
-    private _meleeChance = [_faction] call (missionNamespace getVariable "FN_meleeChance");
     private _stopAISpawn = false;
 
     private _buildings = nearestObjects [_pos,["House","Land_Building"],50];
@@ -184,26 +179,11 @@ FN_spawnGroups = {
         _insidePoints = [[_pos,20,45,3] call (missionNamespace getVariable "FN_findSafePosition")];
     };
 
-    if (random 1 > _meleeChance) then {
-        for "_i" from 1 to _amountInGroup do {
-            private _spawnPos = selectRandom _insidePoints;
-            private _nearbyAI = count (allUnits select {(_x isKindOf "CAManBase") && (side _x == side _grp) && (_x distance _spawnPos <= 300)});
-            if (_nearbyAI >= _numUnits && !_stopSpawnOverride) exitWith { _stopAISpawn = true; };
-            private _newAI = _grp createUnit [_unit,_spawnPos,[],1,"NONE"];
-            [_faction,_newAI,false,false,_sfOverride] call (missionNamespace getVariable "FN_equipAI");
-            [_newAI,_aim,_aimSpeed,_spot,_courage,_aimShake,_command,_spotDist,_reload] call (missionNamespace getVariable "FN_setUnitSkills");
-        };
-    } else {
-        for "_i" from 1 to _amountInGroup do {
-            private _spawnPos = selectRandom _insidePoints;
-            private _nearbyAI = count (allUnits select {(_x isKindOf "CAManBase") && (side _x == side _grp) && (_x distance _spawnPos <= 300)});
-            if (_nearbyAI >= _numUnits && !_stopSpawnOverride) exitWith { _stopAISpawn = true; };
-            private _tempGrp = createGroup (side _grp);
-            private _newAI = _tempGrp createUnit ["O_soldier_Melee_RUSH",_spawnPos,[],1,"NONE"];
-            [_faction,_newAI,true,false,_sfOverride] call (missionNamespace getVariable "FN_equipAI");
-            [_newAI] joinSilent _grp;
-            [_newAI,_aim,_aimSpeed,_spot,_courage,_aimShake,_command,_spotDist,_reload] call (missionNamespace getVariable "FN_setUnitSkills");
-        };
+    for "_i" from 1 to _amountInGroup do {
+        private _spawnPos = selectRandom _insidePoints;
+        private _nearbyAI = count (allUnits select {(_x isKindOf "CAManBase") && (side _x == side _grp) && (_x distance _spawnPos <= 300)});
+        if (_nearbyAI >= _numUnits && !_stopSpawnOverride) exitWith { _stopAISpawn = true; };
+        [_grp,_unit,_spawnPos,_faction,_sfGroup,false] call (missionNamespace getVariable "FN_createAIUnit");
     };
 
     _stopAISpawn
@@ -215,7 +195,6 @@ FN_spawnGroupsBld = {
     if (isNil "_stopSpawnOverride") then { _stopSpawnOverride = false; };
     if (_amountInGroup <= 0) then { _amountInGroup = selectRandom [2,4,6]; };
 
-    private _sfOverride = [_sfGroup] call _fn_isSF;
     private _stopAISpawn = false;
 
     private _buildings = nearestObjects [_pos,["House","Land_Building"],50];
@@ -245,9 +224,7 @@ FN_spawnGroupsBld = {
         _numAI = allUnits select { _x isKindOf "CAManBase" && side _grp == side _x && side _x != civilian && {_x distance (_spawnPos) <= 300} };
         if (count _numAI >= _numUnits && !_stopSpawnOverride) exitWith { _stopAISpawn = true; };
 
-        _newAI = _grp createUnit [_unit,_spawnPos,[],1,"NONE"];
-        [_faction,_newAI,false,false,_sfOverride] call (missionNamespace getVariable "FN_equipAI");
-        [_newAI,_aim,_aimSpeed,_spot,_courage,_aimShake,_command,_spotDist,_reload] call (missionNamespace getVariable "FN_setUnitSkills");
+        _newAI = [_grp,_unit,_spawnPos,_faction,_sfGroup,false] call (missionNamespace getVariable "FN_createAIUnit");
 
         _newAI disableAI "PATH";
 
