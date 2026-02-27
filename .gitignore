@@ -8,6 +8,7 @@
 /pics/
 /codex.patch
 /notes.TXT
+/mission.sqm
 
 # Packed / build artifacts
 *.pbo
