@@ -2,7 +2,9 @@ params ["_caster", "_sub", "_target", ["_maxRange", 100]];
 
 if (isNull _caster || {isNull _target}) exitWith {};
 if (!alive _caster || {!alive _target}) exitWith {};
+if (_caster isEqualTo _target) exitWith {};
 if ((_caster distance _target) > _maxRange) exitWith {};
+if ((_caster distance _target) < 12) exitWith {};
 if ((_caster getVariable ["LB_magicDiscipline", ""]) != "greek") exitWith {};
 if ((_caster getVariable ["ritualStatusZeus", 0]) - _sub < 0) exitWith {};
 
@@ -10,16 +12,22 @@ if ((_caster getVariable ["ritualStatusZeus", 0]) - _sub < 0) exitWith {};
 sleep 0.5;
 
 private _posASL = getPosASL _target;
-private _m = "Land_HelipadEmpty_F" createVehicle (ASLToAGL _posASL);
+private _m = "Land_HelipadEmpty_F" createVehicle [0,0,0];
 _m setPosASL _posASL;
+
+// spawn the lightning effect
 [_m, nil, true] remoteExec ["BIS_fnc_moduleLightning", 0];
 
-private _victims = _centerPos nearEntities ["Man", 3];
+// kill nearby AI around the strike point
+private _victims = _m nearEntities ["Man", 3];
 {
     if (alive _x && {!isPlayer _x}) then {
         [_x, 1] remoteExecCall ["setDamage", owner _x];
     };
 } forEach _victims;
+
+// leave the marker alive long enough for the effect to play
+sleep 1;
 
 deleteVehicle _m;
 [_caster, ""] remoteExec ["switchMove", 0, true];

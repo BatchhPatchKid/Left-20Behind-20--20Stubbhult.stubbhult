@@ -46,7 +46,7 @@ _m setPosASL _posASL;
 [_m, nil, true] remoteExec ["BIS_fnc_moduleLightning", 0];
 
 //For sure killing all AI in the area around the lightning bolt
-private _victims = _ied nearEntities ["Man", 6];
+private _victims = _m nearEntities ["Man", 6];
 
 {
   if (!isPlayer _x) then {
