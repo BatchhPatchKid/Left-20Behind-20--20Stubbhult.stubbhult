@@ -8,7 +8,7 @@ if (isNull _unit) exitWith {};
 private _rangedMax = 50;
 
 // Minimum delay between any two AI spell casts, regardless of faction/spell.
-private _globalCastCooldown = 6;
+private _globalCastCooldown = 8;
 
 // Shared gate for all spell casts:
 // 1) validate ritual resource,
@@ -34,7 +34,7 @@ private _canCast = {
     if (time < _spellUntil) exitWith { false };
 
     // Resource spending now happens in the brain so each spell script can focus on effect logic.
-    _caster setVariable [_ritualVar, (_currentRitual - _cost) max 0, true];
+    _caster setVariable [_ritualVar, (_currentRitual - _cost) max 0, false];
 
     _spellCooldowns set [_spellId, time + _cooldownSeconds];
     _caster setVariable ["LB_magicSpellCooldowns", _spellCooldowns, false];
@@ -42,6 +42,9 @@ private _canCast = {
 
     true
 };
+
+// Desynchronize brains so large waves do not all evaluate/cast on the same frame.
+sleep (random 2.5);
 
 while {alive _unit} do {
     // Discipline selects which spell package and ritual pool this AI is allowed to use.
@@ -63,16 +66,24 @@ while {alive _unit} do {
         case "greek": {
             // Passive ritual regeneration per tick (capped).
             private _ritual = (_unit getVariable ["ritualStatusZeus", 0]) min 120;
-            _unit setVariable ["ritualStatusZeus", (_ritual + 1.5) min 120, true];
+            _unit setVariable ["ritualStatusZeus", (_ritual + 1.5) min 120, false];
 
             if ((damage _unit) > 0.45 && {[_unit, "greek_heal", 15, "greek", 20] call _canCast}) then {
                 // Cost already spent in _canCast.
                 [_unit, 0] spawn FN_healSelf;
             };
 
-			if ([_unit, "greek_heal_allies", 0, "greek", 30] call _canCast) then {
-                [_unit, 25, 0] spawn FN_healAllies_AI;
+			private _injuredAllies = ((getPosATL _unit) nearEntities ["Man", 25]) select {
+                alive _x &&
+                {((side _x) getFriend (side _unit)) >= 0.6} &&
+                {(damage _x) > 0.2}
             };
+
+			if !(_injuredAllies isEqualTo []) then {
+				if ([_unit, "greek_heal_allies", 0, "greek", 30] call _canCast) then {
+                    [_unit, 25, 0] spawn FN_healAllies_AI;
+                };
+			};
 
 		   if (!isNull _targetEnemy && {_unit distance _targetEnemy <= _rangedMax} && {[_unit, "greek_bolt", 20, "greek", 10] call _canCast}) then {
                 [_unit, 20, _targetEnemy, _rangedMax] spawn FN_zeusBolt_AI;
@@ -86,7 +97,7 @@ while {alive _unit} do {
         case "pig": {
             // Passive ritual regeneration per tick (capped).
             private _ritual = (_unit getVariable ["ritualStatusPig", 0]) min 120;
-            _unit setVariable ["ritualStatusPig", (_ritual + 2) min 120, true];
+            _unit setVariable ["ritualStatusPig", (_ritual + 2) min 120, false];
 
 			if (!isNull _targetEnemy && {_unit distance _targetEnemy <= _rangedMax} && {[_unit, "pig_wisdom", 35, "pig", 14] call _canCast}) then {
                 [_unit, 35, _targetEnemy, _rangedMax] spawn FN_pigWisdom_AI;
@@ -100,9 +111,9 @@ while {alive _unit} do {
         case "wanderer": {
             // Passive ritual regeneration per tick (capped).
             private _ritual = (_unit getVariable ["ritualStatusWanderer", 0]) min 120;
-            _unit setVariable ["ritualStatusWanderer", (_ritual + 1.7) min 120, true];
+            _unit setVariable ["ritualStatusWanderer", (_ritual + 1.7) min 120, false];
 			
-			if ((count _enemyMen) > 0 && {[_unit, "wanderer_summon_leaper", 25, "wanderer", 30] call _canCast}) then {
+			if ((count _enemyMen) > 0 && {(count units (group _unit)) < 12} && {[_unit, "wanderer_summon_leaper", 25, "wanderer", 30] call _canCast}) then {
                 [_unit, 25, "Zombie_Special_OPFOR_Leaper_1", 14] spawn FN_summonLeaper_AI;
             };
 			
@@ -117,5 +128,5 @@ while {alive _unit} do {
     };
 
     // Decision tick interval.
-    sleep 5;
+    sleep 6;
 };
