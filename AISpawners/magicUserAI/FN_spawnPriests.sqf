@@ -1,6 +1,14 @@
 /*
     Debug console usage:
     ["RC", getPosATL player, 3, west, "B_Survivor_F"] call (missionNamespace getVariable "FN_spawnPriests");
+	
+	private _args=["RC",getPosATL player,3,west,"B_G_Survivor_F"];
+
+	if (isServer) then {
+		_args call (missionNamespace getVariable "FN_spawnPriests");
+	} else {
+		_args remoteExecCall ["FN_spawnPriests",2];
+	};
 */
 
 params [

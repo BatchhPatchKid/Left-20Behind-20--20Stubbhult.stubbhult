@@ -1,417 +1,436 @@
 params ["_faction","_player"];
 
 [_faction, _player] spawn {
-	params ["_faction","_player"];
-	switch (_faction) do {
-		case "411": {
-			PBright = 1;
-			PCon = 1;
-			PColor = 0;
-			PRGB = 1;
-			PWhite = 1.1;
-			PCDark = 0.4;
-			PColorDark = 0.2;
-			PRGBC = 0.5;
-			
-			while {((PBright < PWhite) or (PColor < PColorDark) or (PCon > PCDark) or (PRGB > PRGBC))} do {
-				"ColorInversion" ppEffectAdjust [PColor, PColor, PColor];
-				"ColorInversion" ppEffectEnable TRUE;
-				"ColorInversion" ppEffectCommit 0;
-				
-				if (PColor < PColorDark) then {
-					PColor = PColor + 0.01;
-				};
-				
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0.0, 0.0, 0.0, 0.0], [0.5, 1, 1, PRGB], [0.75, 0.25, 0, 1.0]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
-				
-				if (PBright < PWhite) then {
-					PBright = PBright + 0.005;
-				};
-				
-				if (PCon > PCDark) then {
-					PCon = PCon - 0.05;
-				};
-				
-				if (PRGB > PRGBC) then {
-					PRGB = PRGB - 0.1;
-				};
-				
-				sleep 0.003;
-			};
-		};
-		case "Abom": {
-			PBright = 1;
-			PCon = 1;
-			PBrightC = 0.85;
-			PConC = 0.3;
-			
-			while {((PBright > PBrightC) or (PCon > PConC))} do {
-				"colorCorrections" ppEffectAdjust [PBright, PCon, -0.002, [0.0, 0.0, 0.0, 0.0], [1.0, 0.6, 0.4, 0.6], [0.199, 0.587, 0.114, 0.0]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
-				
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.0125;
-				};
-				
-				if (PCon > PConC) then {
-					PCon = PCon - 0.01;
-				};
-				
-				sleep 0.001;
-			};
-		};
-		case "Mind": {
-			PColor = 0;
-			while {PColor < 0.4} do {
-				"ColorInversion" ppEffectAdjust [Pcolor, Pcolor, Pcolor]; 
-				"ColorInversion" ppEffectEnable TRUE; 
-				"ColorInversion" ppEffectCommit 0;
-				PColor = PColor + 0.005;
-				sleep 0.003;
-			};
-		};	
-		case "Rake": {
-			PBright = 1;
-			PCon = 1;
-			PColor = 0;
-			PWhite = 1.6;
-			PCDark = 0.5;
-			PColorDark = 0.2;
+    params ["_faction","_player"];
 
-			while {((PBright < PWhite) or (PColor < PColorDark) or (PCon > PCDark))} do {
-				"ColorInversion" ppEffectAdjust [PColor, PColor, PColor];
-				"ColorInversion" ppEffectEnable TRUE;
-				"ColorInversion" ppEffectCommit 0;
+    // Helper to safely acquire a ppEffect handle, incrementing priority on collision
+    private _fnc_createHandle = {
+        params ["_effectName", "_basePriority"];
+        private _handle = -1;
+        private _priority = _basePriority;
+        waitUntil {
+            _handle = ppEffectCreate [_effectName, _priority];
+            _priority = _priority + 1;
+            _handle >= 0
+        };
+        _handle
+    };
 
-				if (PColor < PColorDark) then {
-					PColor = PColor + 0.01;
-				};
+    switch (_faction) do {
+        case "411": {
+            private _bright  = 1;
+            private _con     = 1;
+            private _color   = 0;
+            private _rgb     = 1;
+            private _white   = 1.1;
+            private _cDark   = 0.4;
+            private _colorDark = 0.2;
+            private _rgbC    = 0.5;
 
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [1, 1, 1, 0], [1, 1, 1, 0.5], [0.75, 0.25, 0, 1.0]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
+            private _hInv = ["ColorInversion",   2500] call _fnc_createHandle;
+            private _hCC  = ["colorCorrections", 1501] call _fnc_createHandle;
 
-				if (PBright < PWhite) then {
-					PBright = PBright + 0.0125;
-				};
+            _hInv ppEffectEnable true;
+            _hCC  ppEffectEnable true;
 
-				if (PCon > PCDark) then {
-					PCon = PCon - 0.00625;
-				};
+            while {((_bright < _white) or (_color < _colorDark) or (_con > _cDark) or (_rgb > _rgbC))} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
 
-				sleep 0.003;
-			};	
-		};
-		case "Shadow": {
-			PBright = 1;
-			PCon = 1;
-			PRGB = 1;
+                if (_color < _colorDark) then { _color = _color + 0.01; };
 
-			PBrightC = 0.60;
-			PConC = 0.6;
-			PR = 0.35;
+                _hCC ppEffectAdjust [_bright, _con, 0, [0.0, 0.0, 0.0, 0.0], [0.5, 1, 1, _rgb], [0.75, 0.25, 0, 1.0]];
+                _hCC ppEffectCommit 0;
 
-			while {((PBright > PBrightC) or (PCon > PConC) or (PRGB > PR))} do {
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0.2, 0.2, 1.0, -0.1], [1, 1, 0.9, PRGB], [0.5, 0.3, 1.0, -0.1]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
+                if (_bright < _white) then  { _bright = _bright + 0.005; };
+                if (_con > _cDark) then     { _con    = _con    - 0.05;  };
+                if (_rgb > _rgbC) then      { _rgb    = _rgb    - 0.1;   };
 
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.0125;
-				};
-				if (PCon > PConC) then {
-					PCon = PCon - 0.01;
-				};
-				if (PRGB > PR) then {
-					PRGB = PRGB - 0.01;
-				};
+                sleep 0.003;
+            };
 
-				sleep 0.001;
-			};		
-		};
-		case "Snatch": {
-			PBright = 1;
-			PCon = 1;
-			PRGB = 1;
-			PColor = 0;
-			PBrightC = 0.85;
-			PConC = 0.7;
-			PR = 0.3;
-			PColorC = 0.2;
+            _hInv ppEffectEnable false;
+            _hCC  ppEffectEnable false;
+            ppEffectDestroy _hInv;
+            ppEffectDestroy _hCC;
+        };
+        case "Abom": {
+            private _bright  = 1;
+            private _con     = 1;
+            private _brightC = 0.85;
+            private _conC    = 0.3;
 
-			while {((PBright > PBrightC) or (PColor < PColorC) or (PCon > PConC) or (PRGB > PR))} do {
-				"ColorInversion" ppEffectAdjust [PColor, PColor, PColor];
-				"ColorInversion" ppEffectEnable TRUE;
-				"ColorInversion" ppEffectCommit 0;
-				if (PColor < PColorC) then {
-					PColor = PColor + 0.01;
-				};
+            private _hCC = ["colorCorrections", 1501] call _fnc_createHandle;
+            _hCC ppEffectEnable true;
 
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0, 0, 0, 0], [0, 0.5, 0, 0.7], [0.95, PRGB, PRGB, 1]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.0125;
-				};
-				if (PCon > PConC) then {
-					PCon = PCon - 0.00625;
-				};
-				if (PRGB > PR) then {
-					PRGB = PRGB - 0.05;
-				};
+            while {((_bright > _brightC) or (_con > _conC))} do {
+                _hCC ppEffectAdjust [_bright, _con, -0.002, [0.0, 0.0, 0.0, 0.0], [1.0, 0.6, 0.4, 0.6], [0.199, 0.587, 0.114, 0.0]];
+                _hCC ppEffectCommit 0;
 
-				sleep 0.001;
-			};	
-		};
-		case "Statue": {
-			PBright = 1;
-			PCon = 1;
-			PRGB = 1;
-			PColor = 0;
-			PBrightC = 0.80;
-			PConC = 0.6;
-			PR = 0.3;
-			PColorC = 0.01;
+                if (_bright > _brightC) then { _bright = _bright - 0.0125; };
+                if (_con > _conC) then       { _con    = _con    - 0.01;   };
 
-			while {((PBright > PBrightC) or (PColor < PColorC) or (PCon > PConC) or (PRGB > PR))} do {
-				"ColorInversion" ppEffectAdjust [PColor, PColor, PColor];
-				"ColorInversion" ppEffectEnable TRUE;
-				"ColorInversion" ppEffectCommit 0;
-				if (PColor < PColorC) then {
-					PColor = PColor + 0.01;
-				};
+                sleep 0.001;
+            };
 
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0.95, 0, 0, 0], [0.95, PRGB, PRGB, 0.5], [0.95, PRGB, PRGB, 1]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.0125;
-				};
-				if (PCon > PConC) then {
-					PCon = PCon - 0.00625;
-				};
-				if (PRGB > PR) then {
-					PRGB = PRGB - 0.05;
-				};
+            _hCC ppEffectEnable false;
+            ppEffectDestroy _hCC;
+        };
+        case "Mind": {
+            private _color = 0;
 
-				sleep 0.001;
-			};
+            private _hInv = ["ColorInversion", 2500] call _fnc_createHandle;
+            _hInv ppEffectEnable true;
 
-			hint format ["A feeling of imminent death comes over %1", name player];		
-		};
-		case "Vamp": {
-			PBright = 1;
-			PCon = 1;
-			PRGB = 1;
+            while {_color < 0.4} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
+                _color = _color + 0.005;
+                sleep 0.003;
+            };
 
-			PBrightC = 0.8;
-			PConC = 0.8;
-			PR = 0;
+            _hInv ppEffectEnable false;
+            ppEffectDestroy _hInv;
+        };
+        case "Rake": {
+            private _bright     = 1;
+            private _con        = 1;
+            private _color      = 0;
+            private _white      = 1.6;
+            private _cDark      = 0.5;
+            private _colorDark  = 0.2;
 
-			while { (PBright > PBrightC) or (PCon > PConC) or (PRGB > PR) } do {
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [1, 1, 1, 0], [1, 1, 1, PRGB], [0.75, 0.25, 0, 1.0]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
+            private _hInv = ["ColorInversion",   2500] call _fnc_createHandle;
+            private _hCC  = ["colorCorrections", 1501] call _fnc_createHandle;
 
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.01;
-				};
-				if (PCon > PConC) then {
-					PCon = PCon - 0.01;
-				};
-				if (PRGB > PR) then {
-					PRGB = PRGB - 0.05;
-				};
+            _hInv ppEffectEnable true;
+            _hCC  ppEffectEnable true;
 
-				sleep 0.001;
-			};	
-		};
-		case "Various": {
-			hint format ["A terrible feeling comes over %1", name _player];
-			PBright = 1;
-			PCon = 1;
-			PRGB = 1;
-			PColor = 0;
+            while {((_bright < _white) or (_color < _colorDark) or (_con > _cDark))} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
 
-			PBrightC = 0.80;
-			PConC = 0.6;
-			PR = 0.3;
-			PColorC = 0.01;
+                if (_color < _colorDark) then { _color = _color + 0.01; };
 
-			while { (PBright > PBrightC) or (PColor < PColorC) or (PCon > PConC) or (PRGB > PR) } do {
-				"ColorInversion" ppEffectAdjust [PColor, PColor, PColor];
-				"ColorInversion" ppEffectEnable TRUE;
-				"ColorInversion" ppEffectCommit 0;
+                _hCC ppEffectAdjust [_bright, _con, 0, [1, 1, 1, 0], [1, 1, 1, 0.5], [0.75, 0.25, 0, 1.0]];
+                _hCC ppEffectCommit 0;
 
-				if (PColor < PColorC) then {
-					PColor = PColor + 0.01;
-				};
+                if (_bright < _white) then { _bright = _bright + 0.0125;  };
+                if (_con > _cDark) then    { _con    = _con    - 0.00625; };
 
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0.95, 0, 0, 0], [0.95, PRGB, PRGB, 0.5], [0.95, PRGB, PRGB, 1]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
+                sleep 0.003;
+            };
 
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.0125;
-				};
-				if (PCon > PConC) then {
-					PCon = PCon - 0.00625;
-				};
-				if (PRGB > PR) then {
-					PRGB = PRGB - 0.05;
-				};
+            _hInv ppEffectEnable false;
+            _hCC  ppEffectEnable false;
+            ppEffectDestroy _hInv;
+            ppEffectDestroy _hCC;
+        };
+        case "Shadow": {
+            private _bright  = 1;
+            private _con     = 1;
+            private _rgb     = 1;
+            private _brightC = 0.60;
+            private _conC    = 0.6;
+            private _r       = 0.35;
 
-				sleep 0.001;
-			};	
-		};
-		case "Hellspawn": {
-			hintSilent format ["An awful feeling of imminent dread comes over you, %1. You fear your time has come to an end...", name _player];
-			PBright = 1;
-			PCon = 1;
-			PRGB = 1;
-			PColor = 0;
+            private _hCC = ["colorCorrections", 1501] call _fnc_createHandle;
+            _hCC ppEffectEnable true;
 
-			PBrightC = 0.80;
-			PConC = 0.6;
-			PR = 0.3;
-			PColorC = 0.01;
+            while {((_bright > _brightC) or (_con > _conC) or (_rgb > _r))} do {
+                _hCC ppEffectAdjust [_bright, _con, 0, [0.2, 0.2, 1.0, -0.1], [1, 1, 0.9, _rgb], [0.5, 0.3, 1.0, -0.1]];
+                _hCC ppEffectCommit 0;
 
-			while { (PBright > PBrightC) or (PColor < PColorC) or (PCon > PConC) or (PRGB > PR) } do {
-				"ColorInversion" ppEffectAdjust [PColor, PColor, PColor];
-				"ColorInversion" ppEffectEnable TRUE;
-				"ColorInversion" ppEffectCommit 0;
+                if (_bright > _brightC) then { _bright = _bright - 0.0125; };
+                if (_con > _conC) then       { _con    = _con    - 0.01;   };
+                if (_rgb > _r) then          { _rgb    = _rgb    - 0.01;   };
 
-				if (PColor < PColorC) then {
-					PColor = PColor + 0.01;
-				};
+                sleep 0.001;
+            };
 
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0.95, 0, 0, 0], [0.95, PRGB, PRGB, 0.5], [0.95, PRGB, PRGB, 1]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
+            _hCC ppEffectEnable false;
+            ppEffectDestroy _hCC;
+        };
+        case "Snatch": {
+            private _bright  = 1;
+            private _con     = 1;
+            private _rgb     = 1;
+            private _color   = 0;
+            private _brightC = 0.85;
+            private _conC    = 0.7;
+            private _r       = 0.3;
+            private _colorC  = 0.2;
 
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.0125;
-				};
-				if (PCon > PConC) then {
-					PCon = PCon - 0.00625;
-				};
-				if (PRGB > PR) then {
-					PRGB = PRGB - 0.05;
-				};
+            private _hInv = ["ColorInversion",   2500] call _fnc_createHandle;
+            private _hCC  = ["colorCorrections", 1501] call _fnc_createHandle;
 
-				sleep 0.001;
-			};	
-		};
-		case "Goliath": {
-			hintSilent format ["An unspeakable feeling of horror comes over you, %1. It is as if the personification of death awaits you nearby...", name _player];
-			PBright = 1;
-			PCon = 1;
-			PRGB = 1;
-			PColor = 0;
+            _hInv ppEffectEnable true;
+            _hCC  ppEffectEnable true;
 
-			PBrightC = 0.80;
-			PConC = 0.6;
-			PR = 0.3;
-			PColorC = 0.01;
+            while {((_bright > _brightC) or (_color < _colorC) or (_con > _conC) or (_rgb > _r))} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
 
-			while { (PBright > PBrightC) or (PColor < PColorC) or (PCon > PConC) or (PRGB > PR) } do {
-				"ColorInversion" ppEffectAdjust [PColor, PColor, PColor];
-				"ColorInversion" ppEffectEnable TRUE;
-				"ColorInversion" ppEffectCommit 0;
+                if (_color < _colorC) then { _color = _color + 0.01; };
 
-				if (PColor < PColorC) then {
-					PColor = PColor + 0.01;
-				};
+                _hCC ppEffectAdjust [_bright, _con, 0, [0, 0, 0, 0], [0, 0.5, 0, 0.7], [0.95, _rgb, _rgb, 1]];
+                _hCC ppEffectCommit 0;
 
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0.95, 0, 0, 0], [0.95, PRGB, PRGB, 0.5], [0.95, PRGB, PRGB, 1]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
+                if (_bright > _brightC) then { _bright = _bright - 0.0125;  };
+                if (_con > _conC) then       { _con    = _con    - 0.00625; };
+                if (_rgb > _r) then          { _rgb    = _rgb    - 0.05;    };
 
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.0125;
-				};
-				if (PCon > PConC) then {
-					PCon = PCon - 0.00625;
-				};
-				if (PRGB > PR) then {
-					PRGB = PRGB - 0.05;
-				};
+                sleep 0.001;
+            };
 
-				sleep 0.001;
-			};	
-		};
-		case "Wend": {
-			PBright = 1;
-			PBDark = 0.65;
-			PCon = 1;
-			PCDark = 0.45;
+            _hInv ppEffectEnable false;
+            _hCC  ppEffectEnable false;
+            ppEffectDestroy _hInv;
+            ppEffectDestroy _hCC;
+        };
+        case "Statue": {
+            private _bright  = 1;
+            private _con     = 1;
+            private _rgb     = 1;
+            private _color   = 0;
+            private _brightC = 0.80;
+            private _conC    = 0.6;
+            private _r       = 0.3;
+            private _colorC  = 0.01;
 
-			while { PBright > PBDark or PCon > PCDark } do {
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 1]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
+            private _hInv = ["ColorInversion",   2500] call _fnc_createHandle;
+            private _hCC  = ["colorCorrections", 1501] call _fnc_createHandle;
 
-				if (PBright > PBDark) then {
-					PBright = PBright - 0.01;
-				};
-				if (PCon > PCDark) then {
-					PCon = PCon - 0.01;
-				};
+            _hInv ppEffectEnable true;
+            _hCC  ppEffectEnable true;
 
-				sleep 0.001;
-			};		
-		};
-		case "demon": {
-			hint format ["A demonicly cold feeling comes over %1", name player];
-			PBright = 1;
-			PCon = 1;
-			RED = 1;
-			GREEN = 1;
-			BLUE = 1;
-			PColor = 0;
+            while {((_bright > _brightC) or (_color < _colorC) or (_con > _conC) or (_rgb > _r))} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
 
-			PBrightC = 0.8;
-			PConC = 0.8;
-			REDC = .4;
-			GREENC = .5;
-			BLUEC = .8;
-			PColorC = 0.01;
+                if (_color < _colorC) then { _color = _color + 0.01; };
 
-			while { (PBright > PBrightC) or (PColor < PColorC) or (PCon > PConC) or (RED > REDC) or (GREEN > GREENC) or (BLUE > BLUEC)} do {
-				"ColorInversion" ppEffectAdjust [PColor, PColor, PColor];
-				"ColorInversion" ppEffectEnable TRUE;
-				"ColorInversion" ppEffectCommit 0;
+                _hCC ppEffectAdjust [_bright, _con, 0, [0.95, 0, 0, 0], [0.95, _rgb, _rgb, 0.5], [0.95, _rgb, _rgb, 1]];
+                _hCC ppEffectCommit 0;
 
-				if (PColor < PColorC) then {
-					PColor = PColor + 0.01;
-				};
+                if (_bright > _brightC) then { _bright = _bright - 0.0125;  };
+                if (_con > _conC) then       { _con    = _con    - 0.00625; };
+                if (_rgb > _r) then          { _rgb    = _rgb    - 0.05;    };
 
-				"colorCorrections" ppEffectAdjust [PBright, PCon, 0, [0.95, 0, 0, 0], [RED, GREEN, BLUE, 0.5], [0.2, 0.5, 0.5, 0.0]];
-				"colorCorrections" ppEffectEnable TRUE;
-				"colorCorrections" ppEffectCommit 0;
+                sleep 0.001;
+            };
 
-				if (PBright > PBrightC) then {
-					PBright = PBright - 0.0125;
-				};
-				if (PCon > PConC) then {
-					PCon = PCon - 0.00625;
-				};
-				if (RED > REDC) then {
-					RED = RED - 0.05;
-				};
-				if (GREEN > GREENC) then {
-					GREEN = GREEN - 0.05;
-				};
-				if (BLUE > BLUEC) then {
-					BLUE = BLUE - 0.05;
-				};
+            _hInv ppEffectEnable false;
+            _hCC  ppEffectEnable false;
+            ppEffectDestroy _hInv;
+            ppEffectDestroy _hCC;
 
-				sleep 0.001;
-			};	
-			
-		};
-	};
+            hint format ["A feeling of imminent death comes over %1", name player];
+        };
+        case "Vamp": {
+            private _bright  = 1;
+            private _con     = 1;
+            private _rgb     = 1;
+            private _brightC = 0.8;
+            private _conC    = 0.8;
+            private _r       = 0;
+
+            private _hCC = ["colorCorrections", 1501] call _fnc_createHandle;
+            _hCC ppEffectEnable true;
+
+            while {(_bright > _brightC) or (_con > _conC) or (_rgb > _r)} do {
+                _hCC ppEffectAdjust [_bright, _con, 0, [1, 1, 1, 0], [1, 1, 1, _rgb], [0.75, 0.25, 0, 1.0]];
+                _hCC ppEffectCommit 0;
+
+                if (_bright > _brightC) then { _bright = _bright - 0.01; };
+                if (_con > _conC) then       { _con    = _con    - 0.01; };
+                if (_rgb > _r) then          { _rgb    = _rgb    - 0.05; };
+
+                sleep 0.001;
+            };
+
+            _hCC ppEffectEnable false;
+            ppEffectDestroy _hCC;
+        };
+        case "Various": {
+            hint format ["A terrible feeling comes over %1", name _player];
+            private _bright  = 1;
+            private _con     = 1;
+            private _rgb     = 1;
+            private _color   = 0;
+            private _brightC = 0.80;
+            private _conC    = 0.6;
+            private _r       = 0.3;
+            private _colorC  = 0.01;
+
+            private _hInv = ["ColorInversion",   2500] call _fnc_createHandle;
+            private _hCC  = ["colorCorrections", 1501] call _fnc_createHandle;
+
+            _hInv ppEffectEnable true;
+            _hCC  ppEffectEnable true;
+
+            while {(_bright > _brightC) or (_color < _colorC) or (_con > _conC) or (_rgb > _r)} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
+
+                if (_color < _colorC) then { _color = _color + 0.01; };
+
+                _hCC ppEffectAdjust [_bright, _con, 0, [0.95, 0, 0, 0], [0.95, _rgb, _rgb, 0.5], [0.95, _rgb, _rgb, 1]];
+                _hCC ppEffectCommit 0;
+
+                if (_bright > _brightC) then { _bright = _bright - 0.0125;  };
+                if (_con > _conC) then       { _con    = _con    - 0.00625; };
+                if (_rgb > _r) then          { _rgb    = _rgb    - 0.05;    };
+
+                sleep 0.001;
+            };
+
+            _hInv ppEffectEnable false;
+            _hCC  ppEffectEnable false;
+            ppEffectDestroy _hInv;
+            ppEffectDestroy _hCC;
+        };
+        case "Hellspawn": {
+            hintSilent format ["An awful feeling of imminent dread comes over you, %1. You fear your time has come to an end...", name _player];
+            private _bright  = 1;
+            private _con     = 1;
+            private _rgb     = 1;
+            private _color   = 0;
+            private _brightC = 0.80;
+            private _conC    = 0.6;
+            private _r       = 0.3;
+            private _colorC  = 0.01;
+
+            private _hInv = ["ColorInversion",   2500] call _fnc_createHandle;
+            private _hCC  = ["colorCorrections", 1501] call _fnc_createHandle;
+
+            _hInv ppEffectEnable true;
+            _hCC  ppEffectEnable true;
+
+            while {(_bright > _brightC) or (_color < _colorC) or (_con > _conC) or (_rgb > _r)} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
+
+                if (_color < _colorC) then { _color = _color + 0.01; };
+
+                _hCC ppEffectAdjust [_bright, _con, 0, [0.95, 0, 0, 0], [0.95, _rgb, _rgb, 0.5], [0.95, _rgb, _rgb, 1]];
+                _hCC ppEffectCommit 0;
+
+                if (_bright > _brightC) then { _bright = _bright - 0.0125;  };
+                if (_con > _conC) then       { _con    = _con    - 0.00625; };
+                if (_rgb > _r) then          { _rgb    = _rgb    - 0.05;    };
+
+                sleep 0.001;
+            };
+
+            _hInv ppEffectEnable false;
+            _hCC  ppEffectEnable false;
+            ppEffectDestroy _hInv;
+            ppEffectDestroy _hCC;
+        };
+        case "Goliath": {
+            hintSilent format ["An unspeakable feeling of horror comes over you, %1. It is as if the personification of death awaits you nearby...", name _player];
+            private _bright  = 1;
+            private _con     = 1;
+            private _rgb     = 1;
+            private _color   = 0;
+            private _brightC = 0.80;
+            private _conC    = 0.6;
+            private _r       = 0.3;
+            private _colorC  = 0.01;
+
+            private _hInv = ["ColorInversion",   2500] call _fnc_createHandle;
+            private _hCC  = ["colorCorrections", 1501] call _fnc_createHandle;
+
+            _hInv ppEffectEnable true;
+            _hCC  ppEffectEnable true;
+
+            while {(_bright > _brightC) or (_color < _colorC) or (_con > _conC) or (_rgb > _r)} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
+
+                if (_color < _colorC) then { _color = _color + 0.01; };
+
+                _hCC ppEffectAdjust [_bright, _con, 0, [0.95, 0, 0, 0], [0.95, _rgb, _rgb, 0.5], [0.95, _rgb, _rgb, 1]];
+                _hCC ppEffectCommit 0;
+
+                if (_bright > _brightC) then { _bright = _bright - 0.0125;  };
+                if (_con > _conC) then       { _con    = _con    - 0.00625; };
+                if (_rgb > _r) then          { _rgb    = _rgb    - 0.05;    };
+
+                sleep 0.001;
+            };
+
+            _hInv ppEffectEnable false;
+            _hCC  ppEffectEnable false;
+            ppEffectDestroy _hInv;
+            ppEffectDestroy _hCC;
+        };
+        case "Wend": {
+            private _bright = 1;
+            private _bDark  = 0.65;
+            private _con    = 1;
+            private _cDark  = 0.45;
+
+            private _hCC = ["colorCorrections", 1501] call _fnc_createHandle;
+            _hCC ppEffectEnable true;
+
+            while {_bright > _bDark or _con > _cDark} do {
+                _hCC ppEffectAdjust [_bright, _con, 0, [0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 1]];
+                _hCC ppEffectCommit 0;
+
+                if (_bright > _bDark) then { _bright = _bright - 0.01; };
+                if (_con > _cDark) then    { _con    = _con    - 0.01; };
+
+                sleep 0.001;
+            };
+
+            _hCC ppEffectEnable false;
+            ppEffectDestroy _hCC;
+        };
+        case "demon": {
+            hint format ["A demonicly cold feeling comes over %1", name player];
+            private _bright  = 1;
+            private _con     = 1;
+            private _red     = 1;
+            private _green   = 1;
+            private _blue    = 1;
+            private _color   = 0;
+            private _brightC = 0.8;
+            private _conC    = 0.8;
+            private _redC    = 0.4;
+            private _greenC  = 0.5;
+            private _blueC   = 0.8;
+            private _colorC  = 0.01;
+
+            private _hInv = ["ColorInversion",   2500] call _fnc_createHandle;
+            private _hCC  = ["colorCorrections", 1501] call _fnc_createHandle;
+
+            _hInv ppEffectEnable true;
+            _hCC  ppEffectEnable true;
+
+            while {(_bright > _brightC) or (_color < _colorC) or (_con > _conC) or (_red > _redC) or (_green > _greenC) or (_blue > _blueC)} do {
+                _hInv ppEffectAdjust [_color, _color, _color];
+                _hInv ppEffectCommit 0;
+
+                if (_color < _colorC) then { _color = _color + 0.01; };
+
+                _hCC ppEffectAdjust [_bright, _con, 0, [0.95, 0, 0, 0], [_red, _green, _blue, 0.5], [0.2, 0.5, 0.5, 0.0]];
+                _hCC ppEffectCommit 0;
+
+                if (_bright > _brightC) then { _bright = _bright - 0.0125;  };
+                if (_con > _conC) then       { _con    = _con    - 0.00625; };
+                if (_red > _redC) then       { _red    = _red    - 0.05;    };
+                if (_green > _greenC) then   { _green  = _green  - 0.05;    };
+                if (_blue > _blueC) then     { _blue   = _blue   - 0.05;    };
+
+                sleep 0.001;
+            };
+
+            _hInv ppEffectEnable false;
+            _hCC  ppEffectEnable false;
+            ppEffectDestroy _hInv;
+            ppEffectDestroy _hCC;
+        };
+    };
 };

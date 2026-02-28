@@ -51,7 +51,7 @@ switch (_mutantType) do {
 
 		private _factionArray = ["mutantFactionWeights"] call (missionNamespace getVariable "FN_arrayReturn");
 		private _factionSelected = selectRandomWeighted _factionArray;
-		[_factionSelected, (round random 10) + 6, _pos, "Squad", independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
+		[_factionSelected, (round random 10) + 6, _pos, "Squad", 50, independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
 	};
 	case "Hellspawn": {
 		private _factionArray = ["mutantFactionWeights"] call (missionNamespace getVariable "FN_arrayReturn");

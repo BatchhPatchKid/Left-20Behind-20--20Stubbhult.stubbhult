@@ -10,17 +10,20 @@ Style: Uses 4-space indentation and descriptive snake_case variable names.
     ----------------------------------------------------------------------------
     Flow:
       1. Gather parameters and defaults
-      2. Early exit if players are too close or rock already exists
-      3. Ensure a rock marker is present
-      4. Spawn ambient vehicles and renegade groups
-      5. Decide day/night “Rvg” mode for zombies
-      6. Spawn either random or predetermined factions
+      2. Helper lambdas
+      3. Early exit if players are too close or rock already exists
+         - If rock exists and is a mutant zone, apply effects to players in range
+      4. Create rock marker and capture reference
+      5. Determine zombie "Rvg" mode
+      6. Spawn ambient vehicles and renegade groups
+      7. Resolve faction type and identity early
+      8. Spawn the resolved faction through its dedicated spawner
 */
 
 // -----------------------------------------------------------------------------
 // 1. PARAMETERS & INITIALIZATION
 // -----------------------------------------------------------------------------
-params ["_faction", "_numUnits", "_trigger", "_typeOfLocationArea","_sfGroup"];
+params ["_faction", "_numUnits", "_trigger", "_typeOfLocationArea", "_sfGroup"];
 
 if (!isServer) exitWith {};
 
@@ -34,13 +37,12 @@ private _triggerRadius = (triggerArea _trigger) select 0;
 // remote calls within FN_factionSelector.
 
 
-// Default location‐type tag if none passed
+// Default location-type tag if none passed
 if (isNil "_typeOfLocationArea") then {
     _typeOfLocationArea = "Rnd";
 };
 
-
-// Default location‐type tag if none passed
+// Default sfGroup if none passed
 if (isNil "_sfGroup") then {
     _sfGroup = -1;
 };
@@ -54,7 +56,6 @@ private _playersTooClose = {
     params ["_trg", "_rad"];
     private _tooClose = false;
     {
-        // If any player is closer, mark and bail out
         if ((getPos _x) distance (getPos _trg) < (_rad - 100)) exitWith {
             _tooClose = true;
         };
@@ -68,7 +69,7 @@ private _triggerUsed = {
     (count nearestObjects [_trg, ["Land_Cliff_stone_small_F"], 10] != 0)
 };
 
-// If on server and no rock exists, create one at the trigger
+// Create a rock at the trigger position and return the object reference
 private _spawnMarker = {
     params ["_trg"];
     "Land_Cliff_stone_small_F" createVehicle (getPos _trg);
@@ -77,23 +78,18 @@ private _spawnMarker = {
 // Occasionally spawn small renegade groups near the trigger
 private _spawnRenegades = {
     params ["_p", "_r"];
-    // Decide 0–2 groups
     for "_i" from 1 to (floor (random 3)) do {
-        // Find a safe position in the inner quarter of the radius
         private _renegadePos = [_p, (_r / 4), (_r / 3), 3] call (missionNamespace getVariable "FN_findSafePosition");
-        // Spawn renegade units there
         [_renegadePos, 50, _r] call (missionNamespace getVariable "FN_renegadeSpawner");
     };
 };
 
 // Spawn a standard wandering zombie group and then call selector
 private _spawnZombieGroup = {
-    params ["_num", "_rad", "_pos", "_rvg", "_area"];
-    // Pick a safe spot a short distance out
+    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_sfGroup", -1]];
     private _zombiePos = [_pos, 20, 45, 3] call (missionNamespace getVariable "FN_findSafePosition");
 
-    // Creating the map marker
-    [_pos,10,"zombie","Zombie",_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
+    [_pos, 10, "zombie", "Zombie", _area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
 
     if (random 1 > 0.75) then {
         [_pos, ""] call (missionNamespace getVariable "FN_spawnHuntingFaction");
@@ -103,22 +99,20 @@ private _spawnZombieGroup = {
         };
     };
 
-    // Finalize zombie group spawn
-    ["Zombie", _num, _rad, _zombiePos, _rvg, _area] call (missionNamespace getVariable "FN_factionSelector");
+    ["Zombie", _num, _rad, _zombiePos, _rvg, _area, _sfGroup] call (missionNamespace getVariable "FN_factionSelector");
 };
 
-// Spawn a survivor group, with optional first-group hunting/wandering extras
+// Spawn a survivor group; uses _fac if provided, otherwise picks randomly
 private _spawnSurvivorGroup = {
-    params ["_num", "_rad", "_pos", "_rvg", "_area"];
+    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_fac", ""], ["_sfGroup", -1]];
 
-    // Weighted list of survivor sub-factions and their spawn chances
     private _survivorFactions = ["_survivorFactions"] call (missionNamespace getVariable "FN_arrayReturn");
 
-    // Pick a specific survivor sub-faction
-    private _factionSelected = [_survivorFactions, ""] call (missionNamespace getVariable "FN_selectFaction");
+    private _factionSelected = if (_fac != "") then { _fac } else {
+        [_survivorFactions, ""] call (missionNamespace getVariable "FN_selectFaction")
+    };
 
-    // Creating the map marker
-    [_pos,10,"survivor",_factionSelected,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
+    [_pos, 10, "survivor", _factionSelected, _area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
 
     if (random 1 > 0.75) then {
         [_pos, _factionSelected] call (missionNamespace getVariable "FN_spawnHuntingFaction");
@@ -128,79 +122,66 @@ private _spawnSurvivorGroup = {
         };
     };
 
-    // Finalize survivor group spawn
-    [_factionSelected, _num, _rad, _pos, _rvg, _area] call (missionNamespace getVariable "FN_factionSelector");
+    [_factionSelected, _num, _rad, _pos, _rvg, _area, _sfGroup] call (missionNamespace getVariable "FN_factionSelector");
 };
 
-// Spawn a mutant group, with optional wandering extras
+// Spawn a mutant group; uses _fac if provided, otherwise picks randomly.
+// Applies mutant effects to all players already in range on first spawn,
+// and stores the faction on the rock for future re-entry detections.
 private _spawnMutantGroup = {
-    params ["_num", "_rad", "_pos", "_rvg", "_area"];
+    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_fac", ""], ["_sfGroup", -1], ["_rock", objNull]];
 
-    // Weighted list of mutant types
     private _mutantWeights = ["_mutantWeights"] call (missionNamespace getVariable "FN_arrayReturn");
 
-    // Choose a random mutant type
-    private _factionSelected = selectRandomWeighted _mutantWeights;
+    private _factionSelected = if (_fac != "") then { _fac } else { selectRandomWeighted _mutantWeights };
 
-    // Find a valid mutant‐spawn position
     private _mutantPos = [_pos, 25, 75, 3] call (missionNamespace getVariable "FN_findSafePosition");
 
-    // Creating the map marker
-    [_pos,10,"mutant",_factionSelected,_area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
+    [_pos, 10, "mutant", _factionSelected, _area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
 
-    // Finalize mutant group spawn
-    [_factionSelected, _num, _rad, _mutantPos, _rvg, _area] call (missionNamespace getVariable "FN_factionSelector");
-};
-
-// Spawn logic when a specific faction (not "Rnd") is requested
-private _spawnPredetermined = {
-    params ["_fac", "_num", "_rad", "_pos", "_rvg", "_area", "_sfGroup"];
-    // Check if this faction is a mutant type
-    private _mutantArray = ["mutantArray"] call (missionNamespace getVariable "FN_arrayReturn");
-
-    // 25% chance to do a hunting spawn (if not mutant), else 25% chance wandering
-    if (random 1 > 0.75 && !(_fac in _mutantArray)) then {
-        [_pos, _fac] call (missionNamespace getVariable "FN_spawnHuntingFaction");
-    } else {
-        if (random 1 > 0.75) then {
-            [_pos, _fac] call (missionNamespace getVariable "FN_spawnWanderingFaction");
-        };
+    // Store faction on the rock for re-entry detection — use passed reference
+    // to avoid a fragile nearestObjects search after terrain placement drift
+    if (!isNull _rock) then {
+        _rock setVariable ["mutantFaction", _factionSelected, true];
     };
 
-    // Always call selector to spawn the requested faction units
-    [_fac, _num, _rad, _pos, _rvg, _area, _sfGroup] call (missionNamespace getVariable "FN_factionSelector");
-};
-
-// Spawn 1–3 random factions based on weighted dice rolls
-private _spawnRandomFactions = {
-    params ["_numUnits", "_radius", "_pos", "_rvg", "_area"];
-
-    private _dice = random 1;
-
-    if (_dice >= .05 && _dice < 0.3) then {
-        [_numUnits,_radius,_pos,_rvg,_area] call _spawnSurvivorGroup;
+    // Apply effects to any players already inside the zone at first spawn
+    private _inRange = allPlayers select {
+        (getPos _x) distance _pos < (_rad + 100)
     };
-    if (_dice >= .30 && _dice <= 0.95) then {
-        [_numUnits,_radius,_pos,_rvg,_area] call _spawnZombieGroup;
-    };
-    if (_dice < 0.05 || _dice > 0.95) then {
-        [_numUnits,_radius,_pos,_rvg,_area] call _spawnMutantGroup;
-    };
+    { [_factionSelected, _x] remoteExec ["FN_mutantEffects", _x]; } forEach _inRange;
+
+    [_factionSelected, _num, _rad, _mutantPos, _rvg, _area, _sfGroup] call (missionNamespace getVariable "FN_factionSelector");
 };
 
 // -----------------------------------------------------------------------------
 // 3. EARLY EXIT CHECKS
 // -----------------------------------------------------------------------------
 
-// Exit if any player is too close or rock marker already present
-if ([ _trigger, _triggerRadius ] call _playersTooClose) exitWith {};
-if ([ _trigger ] call _triggerUsed) exitWith {};
+// Exit if any player is too close
+if ([_trigger, _triggerRadius] call _playersTooClose) exitWith {};
 
-// Ensure the rock marker is created
-[ _trigger ] call _spawnMarker;
+// If rock already exists, check if this is a mutant zone and apply effects
+if ([_trigger] call _triggerUsed) exitWith {
+    private _rock = (nearestObjects [_trigger, ["Land_Cliff_stone_small_F"], 10]) select 0;
+    private _mutantFaction = _rock getVariable ["mutantFaction", ""];
+    if (_mutantFaction != "") then {
+        private _inRange = allPlayers select {
+            (getPos _x) distance (getPos _trigger) < (_triggerRadius + 100)
+        };
+        { [_mutantFaction] remoteExec ["FN_mutantEffects", _x]; } forEach _inRange;
+    };
+};
 
 // -----------------------------------------------------------------------------
-// 4. DETERMINE ZOMBIE “RVG” MODE
+// 4. CREATE ROCK MARKER AND CAPTURE REFERENCE
+// -----------------------------------------------------------------------------
+
+// Capture the rock object directly to avoid a secondary nearestObjects search
+private _rock = [_trigger] call _spawnMarker;
+
+// -----------------------------------------------------------------------------
+// 5. DETERMINE ZOMBIE "RVG" MODE
 // -----------------------------------------------------------------------------
 
 // false overnight or 15% random; true daytime majority
@@ -211,7 +192,7 @@ private _zombieRvg = if (daytime < 4 || daytime > 20 || random 1 > 0.85) then {
 };
 
 // -----------------------------------------------------------------------------
-// 5. AMBIENT & RENEGADES
+// 6. AMBIENT & RENEGADES
 // -----------------------------------------------------------------------------
 
 [_pos, _triggerRadius] call (missionNamespace getVariable "FN_ambientVeh");
@@ -221,28 +202,41 @@ if (random 1 > 0.375) then {
 };
 
 // -----------------------------------------------------------------------------
-// 6. MAIN FACTION SPAWN ROUTINE
+// 7. EARLY FACTION RESOLUTION
 // -----------------------------------------------------------------------------
 
+private _factionType = "";
+private _resolvedFaction = "";
+
 if (_faction == "Rnd") then {
-    // Random mixture of zombie, survivor, and mutant factions
-    [ _numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea] call _spawnRandomFactions;
-} else {
-    // Spawn exactly the requested faction
-    private _mutantArray = ["mutantArray"] call (missionNamespace getVariable "FN_arrayReturn");
-
-    // Creating the map marker
-    switch (true) do {
-        case (_faction in _mutantArray): {
-            [_pos,10,"mutant",_faction,_typeOfLocationArea] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
-        };
-        case (_faction == "Zombie"): {
-            [_pos,10,"zombie",_faction,_typeOfLocationArea] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
-        };
-        default {
-			[_pos,10,"survivor",_faction,_typeOfLocationArea] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
-        };
+    private _dice = random 1;
+    _factionType = switch (true) do {
+        case (_dice >= 0.05 && _dice < 0.30):  { "survivor" };
+        case (_dice >= 0.30 && _dice <= 0.95): { "zombie"   };
+        default                                { "mutant"   };
     };
+} else {
+    private _mutantArray = ["mutantArray"] call (missionNamespace getVariable "FN_arrayReturn");
+    _factionType = switch (true) do {
+        case (_faction in _mutantArray): { "mutant"   };
+        case (_faction == "Zombie"):     { "zombie"   };
+        default                          { "survivor" };
+    };
+    _resolvedFaction = _faction;
+};
 
-    [ _faction, _numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _sfGroup] call _spawnPredetermined;
+// -----------------------------------------------------------------------------
+// 8. MAIN FACTION SPAWN ROUTINE
+// -----------------------------------------------------------------------------
+
+switch (_factionType) do {
+    case "zombie": {
+        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _sfGroup] call _spawnZombieGroup;
+    };
+    case "survivor": {
+        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _resolvedFaction, _sfGroup] call _spawnSurvivorGroup;
+    };
+    case "mutant": {
+        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _resolvedFaction, _sfGroup, _rock] call _spawnMutantGroup;
+    };
 };
