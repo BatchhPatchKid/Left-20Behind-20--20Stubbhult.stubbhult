@@ -59,6 +59,7 @@ if (!isServer) exitWith {};
 		params ["_crate"];
 		_crate addAction ["PURCHASE REMOVE RENEGADE STATUS: $250", FN_PurchaseService_Crate, ["clear_renegade",250],1.5,true,false,"","true",3];
 		_crate addAction ["PURCHASE DIPLOMATIC IMMUNITY (PERMA-FRIENDLY): $2000", FN_PurchaseService_Crate, ["perm_friendly_trader_faction",2000],1.5,true,false,"","true",3];
+		_crate addAction ["DISBAND PERMANENT ALLIANCE (+$2000)", FN_disbandPermanentAllianceAtCrate, [],1.5,true,false,"","[_target, _this] call (missionNamespace getVariable 'FN_canDisbandPermanentAllianceAtCrate')",3];
 	};
 
 	private _applyHostileCrateActions = {

@@ -29,6 +29,126 @@ missionNamespace setVariable ["LB_fnc_setMoneyServer",compileFinal {
     _unit setVariable ["LB_money",_value,true];
 }];
 
+missionNamespace setVariable ["LB_fnc_disbandPermanentAllianceAtCrateServer",compileFinal {
+    params ["_crate", "_buyer"];
+    if (isNull _crate) exitWith {};
+    if (isNull _buyer) exitWith {};
+    if (!isPlayer _buyer) exitWith {};
+
+    private _normalizeFaction = {
+        params ["_rawFaction"];
+        if !(_rawFaction isEqualType "") exitWith {""};
+        private _f = _rawFaction;
+        if (_f == "") exitWith {""};
+
+        private _map = createHashMapFromArray [
+            ["Bandit_Relation", "Bandit"],
+            ["Renegade_Relation", "Renegade"]
+        ];
+
+        if ((_f find "_Relation") > 0) then {
+            private _mapped = _map getOrDefault [_f, ""];
+            if (_mapped != "") exitWith {_mapped};
+            private _parts = _f splitString "_";
+            if ((count _parts) > 0) exitWith {_parts select 0};
+        };
+
+        _f
+    };
+
+    private _faction = [_crate getVariable ["LB_TraderFaction", ""]] call _normalizeFaction;
+    if (_faction == "") then {
+        _faction = [[group _crate, ""] call (missionNamespace getVariable "LB_FacReg_Get")] call _normalizeFaction;
+    };
+
+    private _relationByFaction = createHashMapFromArray [
+        ["BB", "BB_Relation"],
+        ["SU", "SU_Relation"],
+        ["PF", "PF_Relation"],
+        ["ALF", "ALF_Relation"],
+        ["WO", "WO_Relation"],
+        ["RU", "RU_Relation"],
+        ["US", "US_Relation"],
+        ["NH", "NH_Relation"],
+        ["TRB", "TRB_Relation"],
+        ["RC", "RC_Relation"],
+        ["DT", "DT_Relation"],
+        ["ROA", "ROA_Relation"],
+        ["PMC", "PMC_Relation"],
+        ["Bandit", "Bandit_Relation"],
+        ["Renegade", "Renegade_Relation"]
+    ];
+
+    private _relationVar = _relationByFaction getOrDefault [_faction, ""];
+    if (_relationVar == "") exitWith {
+        ["Unable to determine this trader's faction for alliance disband."] remoteExec ["hintSilent",_buyer];
+        sleep 3;
+        [""] remoteExec ["hintSilent",_buyer];
+    };
+
+    private _forced = _buyer getVariable ["LB_PermanentFriendlyFactions", []];
+    if !(_forced isEqualType []) then { _forced = []; };
+
+    if !(_relationVar in _forced) exitWith {
+        ["You are not permanently allied with this trader's faction."] remoteExec ["hintSilent",_buyer];
+        sleep 3;
+        [""] remoteExec ["hintSilent",_buyer];
+    };
+
+    if !(_buyer getVariable [_relationVar, false]) exitWith {
+        ["You are not currently allied with this trader's faction."] remoteExec ["hintSilent",_buyer];
+        sleep 3;
+        [""] remoteExec ["hintSilent",_buyer];
+    };
+
+    _forced = _forced - [_relationVar];
+    _buyer setVariable ["LB_PermanentFriendlyFactions", _forced, true];
+    _buyer setVariable [_relationVar, false, true];
+    [_buyer,500] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+    [format ["Permanent alliance with %1 disbanded. You received $500.", _faction]] remoteExec ["hintSilent",_buyer];
+    sleep 3;
+    [""] remoteExec ["hintSilent",_buyer];
+}];
+
+missionNamespace setVariable ["LB_fnc_disbandPermanentAllianceServer",compileFinal {
+    params ["_unit", "_relationVar"];
+    if (isNull _unit) exitWith {};
+    if (!isPlayer _unit) exitWith {};
+    if !(_relationVar isEqualType "") exitWith {};
+    if (_relationVar == "") exitWith {};
+
+    private _forced = _unit getVariable ["LB_PermanentFriendlyFactions", []];
+    if !(_forced isEqualType []) then {
+        _forced = [];
+    };
+
+    if !(_relationVar in _forced) exitWith {
+        ["That permanent alliance is no longer active."] remoteExec ["hintSilent", _unit];
+        sleep 3;
+        [""] remoteExec ["hintSilent", _unit];
+    };
+
+    if !(_unit getVariable [_relationVar, false]) exitWith {
+        ["That permanent alliance is no longer active."] remoteExec ["hintSilent", _unit];
+        sleep 3;
+        [""] remoteExec ["hintSilent", _unit];
+    };
+
+    _forced = _forced - [_relationVar];
+    _unit setVariable ["LB_PermanentFriendlyFactions", _forced, true];
+    _unit setVariable [_relationVar, false, true];
+    [_unit, 500] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+
+    private _factionName = _relationVar;
+    if ((_factionName find "_Relation") > 0) then {
+        _factionName = (_factionName splitString "_") select 0;
+    };
+
+    [format ["Permanent alliance with %1 disbanded. You received $500.", _factionName]] remoteExec ["hintSilent", _unit];
+    sleep 3;
+    [""] remoteExec ["hintSilent", _unit];
+}];
+
 // Convert physical rvg_money (magazines) into LB_money 1:1, remove notes
 missionNamespace setVariable ["LB_fnc_convertRvgMoneyPlayerServer",compileFinal {
     params ["_unit"];

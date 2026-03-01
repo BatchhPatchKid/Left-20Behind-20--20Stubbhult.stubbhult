@@ -95,6 +95,8 @@ missionNamespace setVariable ["FN_getPlayerFactionTag", compileFinal preprocessF
 missionNamespace setVariable ["FN_isFactionHostileToTrader", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_isFactionHostileToTrader.sqf"];
 missionNamespace setVariable ["FN_removeTraderActionsLocal", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_removeTraderActionsLocal.sqf"];
 missionNamespace setVariable ["FN_refreshTraderAccessForPlayer", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_refreshTraderAccessForPlayer.sqf"];
+missionNamespace setVariable ["FN_canDisbandPermanentAllianceAtCrate", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_canDisbandPermanentAllianceAtCrate.sqf"];
+missionNamespace setVariable ["FN_disbandPermanentAllianceAtCrate", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_disbandPermanentAllianceAtCrate.sqf"];
 
 /* Economy System \ functions \ actionFunctions */
 missionNamespace setVariable ["FN_BINO", compileFinal preprocessFileLineNumbers "Economy System\functions\actionFunctions\FN_BINO.sqf"];
@@ -485,7 +487,7 @@ if (!isDedicated) then {
 
 	private _actionPray = ["pray","Pray","",{[player spawn FN_pray]},{true}] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionPray] call ace_interact_menu_fnc_addActionToClass;
-
+	
 	//Ace Survival System
 	private _actionDrinkWater = ["Drink", "Drink", "", { }, {true}] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions","Survival_System"], _actionDrinkWater] call ace_interact_menu_fnc_addActionToClass;
