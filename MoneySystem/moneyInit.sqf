@@ -190,10 +190,63 @@ missionNamespace setVariable ["LB_fnc_tryPurchaseServiceCrateServer",compileFina
         [""] remoteExec ["hintSilent",_buyer];
     };
 
-    private _faction = _crate getVariable ["LB_TraderFaction", ""];
-    if (_faction == "") then {
-        _faction = [group _crate, ""] call (missionNamespace getVariable "LB_FacReg_Get");
+    private _normalizeFaction = {
+        params ["_rawFaction"];
+        if !(_rawFaction isEqualType "") exitWith {""};
+        private _f = _rawFaction;
+        if (_f == "") exitWith {""};
+
+        private _map = createHashMapFromArray [
+            ["Bandit_Relation", "Bandit"],
+            ["Renegade_Relation", "Renegade"]
+        ];
+
+        if ((_f find "_Relation") > 0) then {
+            private _mapped = _map getOrDefault [_f, ""];
+            if (_mapped != "") exitWith {_mapped};
+            private _parts = _f splitString "_";
+            if ((count _parts) > 0) exitWith {_parts select 0};
+        };
+
+        _f
     };
+
+    private _normalizeFaction = {
+        params ["_rawFaction"];
+        if !(_rawFaction isEqualType "") exitWith {""};
+        private _f = _rawFaction;
+        if (_f == "") exitWith {""};
+
+        private _map = createHashMapFromArray [
+            ["Bandit_Relation", "Bandit"],
+            ["Renegade_Relation", "Renegade"]
+        ];
+
+        if ((_f find "_Relation") > 0) then {
+            private _mapped = _map getOrDefault [_f, ""];
+            if (_mapped != "") exitWith {_mapped};
+            private _parts = _f splitString "_";
+            if ((count _parts) > 0) exitWith {_parts select 0};
+        };
+
+        _f
+    };
+
+    private _faction = [_crate getVariable ["LB_TraderFaction", ""]] call _normalizeFaction;
+
+    if (_faction == "") then {
+        _faction = [[group _crate, ""] call (missionNamespace getVariable "LB_FacReg_Get")] call _normalizeFaction;
+    };
+
+    if (_faction == "") then {
+        private _nearTrader = (nearestObjects [_crate, ["CAManBase"], 35]) select {
+            alive _x && {(_x getVariable ["LB_TraderFaction", ""]) != ""}
+        };
+        if ((count _nearTrader) > 0) then {
+            _faction = [(_nearTrader select 0) getVariable ["LB_TraderFaction", ""]] call _normalizeFaction;
+        };
+    };
+
     private _relationByFaction = createHashMapFromArray [
         ["BB", "BB_Relation"],
         ["SU", "SU_Relation"],
@@ -208,7 +261,8 @@ missionNamespace setVariable ["LB_fnc_tryPurchaseServiceCrateServer",compileFina
         ["DT", "DT_Relation"],
         ["ROA", "ROA_Relation"],
         ["PMC", "PMC_Relation"],
-        ["Bandit", "Bandit_Relation"]
+        ["Bandit", "Bandit_Relation"],
+        ["Renegade", "Renegade_Relation"]
     ];
 
     private _spawnEscort = {

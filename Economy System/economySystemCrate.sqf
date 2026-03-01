@@ -10,6 +10,7 @@ params ["_container", ["_faction", "", [""]]];
 // Persist faction on the crate so server-side purchases can resolve escort/diplomacy services
 // without relying on group lookups (crates are not guaranteed to belong to a registered group).
 _container setVariable ["LB_TraderFaction", _faction, true];
+_container setVariable ["LB_traderFaction", _faction, true];
 
 FN_PurchaseMag_Crate={
 	params ["_target","_caller","_actionId","_args"];

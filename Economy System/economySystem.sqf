@@ -5,7 +5,7 @@ if (isNull (unitBackpack _container)) then {_container addBackpack "B_Carryall_c
 clearAllItemsFromBackpack _container;
 
 private _conditionCanAccess = format ["(_this getVariable ['%1', false])", _relationVar];
-private _traderFaction = _container getVariable ["LB_traderFaction", "SU"];
+private _traderFaction = _container getVariable ["LB_TraderFaction", "SU"];
 
 //Tasks
 [_container, ["ACCESS TASK CATALOGUE", "Economy System\traderTasks.sqf", [_traderFaction],1.5,true,false,"",_conditionCanAccess,3]] remoteExec ['addAction', 0, _container];

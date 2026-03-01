@@ -11,6 +11,9 @@ if (!isServer) exitWith {};
 		default {format ["%1_Relation", _faction]};
 	};
 
+	private _sessionId = format ["%1_%2_%3", _faction, diag_tickTime, random 999999];
+	_trigger setVariable ["LB_staticTraderSession", _sessionId, true];
+
 	private _saveCrateCargo = {
 		params ["_crate"];
 		[
@@ -52,16 +55,24 @@ if (!isServer) exitWith {};
 		};
 	};
 
+	private _addAlwaysAvailableDiplomacyActions = {
+		params ["_crate"];
+		_crate addAction ["PURCHASE REMOVE RENEGADE STATUS: $250", FN_PurchaseService_Crate, ["clear_renegade",250],1.5,true,false,"","true",3];
+		_crate addAction ["PURCHASE DIPLOMATIC IMMUNITY (PERMA-FRIENDLY): $2000", FN_PurchaseService_Crate, ["perm_friendly_trader_faction",2000],1.5,true,false,"","true",3];
+	};
+
 	private _applyHostileCrateActions = {
 		params ["_crate"];
 		removeAllActions _crate;
 		_crate addAction ["Trader crate access denied (hostile faction)", {}, [], 1.5, true, false, "", "true", 3];
+		[_crate] call _addAlwaysAvailableDiplomacyActions;
 	};
 
 	private _applyFriendlyCrateActions = {
 		params ["_crate"];
 		removeAllActions _crate;
-		[_crate] call (missionNamespace getVariable "FN_economySystemCrate");
+		[_crate, _faction] call (missionNamespace getVariable "FN_economySystemCrate");
+		[_crate] call _addAlwaysAvailableDiplomacyActions;
 	};
 
 	private _spawnCrate = {
@@ -70,10 +81,10 @@ if (!isServer) exitWith {};
 			["_cargoSnapshot", [], [[]]],
 			["_isHostileMode", false, [false]]
 		];
-		private _crateClass = _trigger getVariable ["LB_staticTraderCrateClass", "Box_NATO_Equip_F"];
+		private _crateClass = _trigger getVariable ["LB_staticTraderCrateClass", "VirtualReammoBox_camonet_F"];
 		private _spawnPos = getPosATL _trigger;
 		private _crate = createVehicle [_crateClass, _spawnPos, [], 0, "NONE"];
-		_crate setVariable ["LB_traderFaction", _faction, true];
+		_crate setVariable ["LB_TraderFaction", _faction, true];
 		_crate setPosATL _spawnPos;
 		_crate allowDamage false;
 
@@ -89,10 +100,19 @@ if (!isServer) exitWith {};
 		_crate
 	};
 
+	private _cleanupDuplicateCrates = {
+		params ["_activeCrate"];
+		{
+			if (_x != _activeCrate && {_x getVariable ["LB_TraderFaction", ""] == _faction}) then {
+				deleteVehicle _x;
+			};
+		} forEach (nearestObjects [getPosATL _trigger, ["ReammoBox_F"], 20]);
+	};
+
 	private _spawnPos = getPos _trigger;
 	private _grpTrader = createGroup WEST;
 	private _trader = _grpTrader createUnit ["B_G_Survivor_F", _spawnPos, [], 1, "NONE"];
-	_trader setVariable ["LB_traderFaction", _faction, true];
+	_trader setVariable ["LB_TraderFaction", _faction, true];
 	[_faction, _trader, false, true, false] call (missionNamespace getVariable "FN_equipAI");
 	_trader disableAI "ANIM";
 	removeBackpackGlobal _trader;
@@ -104,6 +124,7 @@ if (!isServer) exitWith {};
 
 	private _initialCargo = _trigger getVariable ["LB_staticTraderCrateCargo", []];
 	private _crate = [_trigger, _initialCargo, false] call _spawnCrate;
+	[_crate] call _cleanupDuplicateCrates;
 	private _isHostileMode = false;
 
 	_trader addEventHandler ["Killed", {
@@ -151,6 +172,13 @@ if (!isServer) exitWith {};
 	}];
 
 	while {true} do {
+		if ((_trigger getVariable ["LB_staticTraderSession", ""]) != _sessionId) then {
+			if (!isNull _crate) then { deleteVehicle _crate; };
+			if (!isNull _trader) then { deleteVehicle _trader; };
+			break;
+		};
+
+		[_crate] call _cleanupDuplicateCrates;
 		private _playersInRadius = allPlayers select {alive _x && {_x distance2D _spawnPos <= 50}};
 
 		if ((count _playersInRadius) == 0) then {
@@ -162,6 +190,9 @@ if (!isServer) exitWith {};
 				_isHostileMode = false;
 			};
 			deleteVehicle _trader;
+			if ((_trigger getVariable ["LB_staticTraderSession", ""]) == _sessionId) then {
+				_trigger setVariable ["LB_staticTraderSession", nil, true];
+			};
 			break;
 		};
 
