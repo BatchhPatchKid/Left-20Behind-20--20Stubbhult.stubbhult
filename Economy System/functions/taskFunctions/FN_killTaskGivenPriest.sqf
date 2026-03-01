@@ -2,8 +2,12 @@ params ["_container", "_caller", "_actionId", "_arguments"];
 private _faction = toUpper (_arguments select 0);
 private _reward = _arguments select 1;
 
+if (!isServer) exitWith {
+    _this remoteExecCall ["FN_killTaskGivenPriest", 2];
+};
+
 if (isNull (currentTask _caller)) then {
-    hintSilent format ["A bounty has been placed on a rogue %1 priest. Eliminate them for a reward, %2", _faction, name _caller];
+    [format ["A bounty has been placed on a rogue %1 priest. Eliminate them for a reward, %2", _faction, name _caller]] remoteExec ["hintSilent", _caller];
 
     private _fn_inBounds = {
         params ["_p"];
@@ -28,7 +32,7 @@ if (isNull (currentTask _caller)) then {
 
     private _pos = [getPos _caller, _minDist, _maxDist, 10, 0, 20, 0] call _fn_findSafePosInBounds;
     if ((_pos distance2D [0, 0, 0]) <= 1 || {!([_pos] call _fn_inBounds)}) exitWith {
-        hintSilent "No valid in-bounds location was found for this contract. Try again from a different area.";
+        ["No valid in-bounds location was found for this contract. Try again from a different area."] remoteExec ["hintSilent", _caller];
     };
 
     private _posMarker = [_pos, 0, 300, 0, 0, 20, 0] call _fn_findSafePosInBounds;
@@ -50,7 +54,7 @@ if (isNull (currentTask _caller)) then {
 
     private _priests = [_faction, _pos, 1, _side, _unit] call (missionNamespace getVariable "FN_spawnPriests");
     if ((count _priests) < 1) exitWith {
-        hintSilent "Failed to assign this contract due to priest spawn failure. Please try again.";
+        ["Failed to assign this contract due to priest spawn failure. Please try again."] remoteExec ["hintSilent", _caller];
     };
 
     private _target = _priests select 0;
@@ -78,7 +82,7 @@ if (isNull (currentTask _caller)) then {
 
         if (!isNull _caller) then {
             [_caller, _reward] remoteExec ["LB_fnc_addMoneyServer", 2];
-            hintSilent format ["$%2 has been added to your account, %1. Good work out there.", name _caller, _reward];
+            [format ["$%2 has been added to your account, %1. Good work out there.", name _caller, _reward]] remoteExec ["hintSilent", _caller];
         };
 
         if (!isNull _flag) then { deleteVehicle _flag; };
@@ -88,10 +92,13 @@ if (isNull (currentTask _caller)) then {
         params ["_entity"];
         private _taskId = _entity getVariable ["LB_taskId", ""];
         private _flag = _entity getVariable ["LB_flag", objNull];
+        private _caller = _entity getVariable ["LB_caller", objNull];
 
         [_taskId, "CANCELED"] call BIS_fnc_taskSetState;
         [_taskId, true] call BIS_fnc_deleteTask;
-        hintSilent "We have lost the position of the priest. Thus, the contract has been canceled.";
+        if (!isNull _caller) then {
+            ["We have lost the position of the priest. Thus, the contract has been canceled."] remoteExec ["hintSilent", _caller];
+        };
 
         if (!isNull _flag) then { deleteVehicle _flag; };
     }];
@@ -107,7 +114,7 @@ if (isNull (currentTask _caller)) then {
             if (!isNull _flag) then { deleteVehicle _flag; };
         } forEach _targets;
 
-        hintSilent "We have lost the position of the priest. Thus, the contract has been canceled.";
+        ["We have lost the position of the priest. Thus, the contract has been canceled."] remoteExec ["hintSilent", _unit];
     }];
 
     [_taskId, _flag] spawn {
@@ -119,5 +126,5 @@ if (isNull (currentTask _caller)) then {
         };
     };
 } else {
-    hintSilent "Sorry, but it seems you already have a task assigned. Finish that one before accepting another.";
+    ["Sorry, but it seems you already have a task assigned. Finish that one before accepting another."] remoteExec ["hintSilent", _caller];
 };

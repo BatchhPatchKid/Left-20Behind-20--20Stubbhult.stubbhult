@@ -20,7 +20,7 @@ params [
 ];
 
 if (!isServer) exitWith {
-    _this remoteExecCall ["FN_spawnPriestsDebug", 2];
+    _this remoteExecCall ["FN_spawnPriests", 2];
 };
 
 private _spawnPos = if (_position isEqualType objNull) then { getPosATL _position } else { +_position };
