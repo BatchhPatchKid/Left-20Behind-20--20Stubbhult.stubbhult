@@ -73,6 +73,7 @@ if (!isServer) exitWith {};
 		private _crateClass = _trigger getVariable ["LB_staticTraderCrateClass", "Box_NATO_Equip_F"];
 		private _spawnPos = getPosATL _trigger;
 		private _crate = createVehicle [_crateClass, _spawnPos, [], 0, "NONE"];
+		_crate setVariable ["LB_traderFaction", _faction, true];
 		_crate setPosATL _spawnPos;
 		_crate allowDamage false;
 
@@ -91,10 +92,11 @@ if (!isServer) exitWith {};
 	private _spawnPos = getPos _trigger;
 	private _grpTrader = createGroup WEST;
 	private _trader = _grpTrader createUnit ["B_G_Survivor_F", _spawnPos, [], 1, "NONE"];
+	_trader setVariable ["LB_traderFaction", _faction, true];
 	[_faction, _trader, false, true, false] call (missionNamespace getVariable "FN_equipAI");
 	_trader disableAI "ANIM";
 	removeBackpackGlobal _trader;
-	[_trader] execVM "Economy System\economySystem.sqf";
+	[_trader, _relationVar] execVM "Economy System\economySystem.sqf";
 
 	private _wp1 = _grpTrader addWaypoint [_spawnPos, 0];
 	_wp1 setWaypointType "HOLD";
