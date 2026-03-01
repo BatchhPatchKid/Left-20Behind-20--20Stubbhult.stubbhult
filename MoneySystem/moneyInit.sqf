@@ -190,7 +190,10 @@ missionNamespace setVariable ["LB_fnc_tryPurchaseServiceCrateServer",compileFina
         [""] remoteExec ["hintSilent",_buyer];
     };
 
-    private _faction = [group _crate, ""] call (missionNamespace getVariable "LB_FacReg_Get");
+    private _faction = _crate getVariable ["LB_TraderFaction", ""];
+    if (_faction == "") then {
+        _faction = [group _crate, ""] call (missionNamespace getVariable "LB_FacReg_Get");
+    };
     private _relationByFaction = createHashMapFromArray [
         ["BB", "BB_Relation"],
         ["SU", "SU_Relation"],

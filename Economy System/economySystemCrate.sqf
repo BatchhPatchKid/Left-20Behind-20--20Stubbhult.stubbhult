@@ -1,4 +1,15 @@
-params ["_container"];
+/*
+Usage from object init:
+    [this, "PF"] call (missionNamespace getVariable "FN_economySystemCrate");
+Pass the local area faction key as the second parameter so faction services
+(escort / permanent-friendly) resolve correctly.
+*/
+
+params ["_container", ["_faction", "", [""]]];
+
+// Persist faction on the crate so server-side purchases can resolve escort/diplomacy services
+// without relying on group lookups (crates are not guaranteed to belong to a registered group).
+_container setVariable ["LB_TraderFaction", _faction, true];
 
 FN_PurchaseMag_Crate={
 	params ["_target","_caller","_actionId","_args"];

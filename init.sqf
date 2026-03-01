@@ -91,6 +91,10 @@ missionNamespace setVariable ["FN_PurchaseMag", compileFinal preprocessFileLineN
 missionNamespace setVariable ["FN_SellAction", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_SellAction.sqf"];
 missionNamespace setVariable ["FN_addItemToAmmoBox", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_addItemToAmmoBox.sqf"];
 missionNamespace setVariable ["FN_ammoBoxCheck", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_ammoBoxCheck.sqf"];
+missionNamespace setVariable ["FN_getPlayerFactionTag", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_getPlayerFactionTag.sqf"];
+missionNamespace setVariable ["FN_isFactionHostileToTrader", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_isFactionHostileToTrader.sqf"];
+missionNamespace setVariable ["FN_removeTraderActionsLocal", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_removeTraderActionsLocal.sqf"];
+missionNamespace setVariable ["FN_refreshTraderAccessForPlayer", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_refreshTraderAccessForPlayer.sqf"];
 
 /* Economy System \ functions \ actionFunctions */
 missionNamespace setVariable ["FN_BINO", compileFinal preprocessFileLineNumbers "Economy System\functions\actionFunctions\FN_BINO.sqf"];
