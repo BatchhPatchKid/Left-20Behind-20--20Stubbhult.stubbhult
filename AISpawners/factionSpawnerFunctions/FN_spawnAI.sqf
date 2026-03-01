@@ -73,6 +73,10 @@ FN_setWaypoints = {
 FN_carPatrol = {
     params ["_vehArray","_numOfUnits"];
     if (round random [0,2,5] >= 2) then {
+        private _isSpecOpsGroup = [_sfGroup] call _fn_isSF;
+        private _meleeChance = [_faction] call (missionNamespace getVariable "FN_meleeChance");
+        private _spawnMeleeGroup = (!_isSpecOpsGroup) && {(random 1) < _meleeChance};
+
         _veh = (_vehArray call BIS_fnc_selectRandomWeighted) createVehicle ([_pos,5,50,10,0,20,0,[],[]] call BIS_fnc_findSafePos);
         clearWeaponCargoGlobal _veh;
         clearMagazineCargoGlobal _veh;
@@ -81,7 +85,7 @@ FN_carPatrol = {
 
         for "_i" from 1 to _numOfUnits do {
            private _spawnPos = [_pos,0,10,3,0,20,0,[],[]] call BIS_fnc_findSafePos;
-           [_grpVeh,_unit,_spawnPos,_faction,_sfGroup,false] call (missionNamespace getVariable "FN_createAIUnit");
+           [_grpVeh,_unit,_spawnPos,_faction,_isSpecOpsGroup,false,_spawnMeleeGroup] call (missionNamespace getVariable "FN_createAIUnit");
         };
 
         {_x moveInAny _veh} forEach units _grpVeh;
@@ -166,6 +170,9 @@ FN_spawnGroups = {
     if (_amountInGroup <= 0) then { _amountInGroup = selectRandom [2,4,6]; };
 
     private _stopAISpawn = false;
+	private _isSpecOpsGroup = [_sfGroup] call _fn_isSF;
+    private _meleeChance = [_faction] call (missionNamespace getVariable "FN_meleeChance");
+    private _spawnMeleeGroup = (!_isSpecOpsGroup) && {(random 1) < _meleeChance};
 
     private _buildings = nearestObjects [_pos,["House","Land_Building"],50];
     private _insidePoints = [];
@@ -183,7 +190,7 @@ FN_spawnGroups = {
         private _spawnPos = selectRandom _insidePoints;
         private _nearbyAI = count (allUnits select {(_x isKindOf "CAManBase") && (side _x == side _grp) && (_x distance _spawnPos <= 300)});
         if (_nearbyAI >= _numUnits && !_stopSpawnOverride) exitWith { _stopAISpawn = true; };
-        [_grp,_unit,_spawnPos,_faction,_sfGroup,false] call (missionNamespace getVariable "FN_createAIUnit");
+        [_grp,_unit,_spawnPos,_faction,_isSpecOpsGroup,false,_spawnMeleeGroup] call (missionNamespace getVariable "FN_createAIUnit");
     };
 
     _stopAISpawn
@@ -196,6 +203,9 @@ FN_spawnGroupsBld = {
     if (_amountInGroup <= 0) then { _amountInGroup = selectRandom [2,4,6]; };
 
     private _stopAISpawn = false;
+	private _isSpecOpsGroup = [_sfGroup] call _fn_isSF;
+    private _meleeChance = [_faction] call (missionNamespace getVariable "FN_meleeChance");
+    private _spawnMeleeGroup = (!_isSpecOpsGroup) && {(random 1) < _meleeChance};
 
     private _buildings = nearestObjects [_pos,["House","Land_Building"],50];
     if (count _buildings == 0) exitWith { _stopAISpawn };
@@ -224,7 +234,7 @@ FN_spawnGroupsBld = {
         _numAI = allUnits select { _x isKindOf "CAManBase" && side _grp == side _x && side _x != civilian && {_x distance (_spawnPos) <= 300} };
         if (count _numAI >= _numUnits && !_stopSpawnOverride) exitWith { _stopAISpawn = true; };
 
-        _newAI = [_grp,_unit,_spawnPos,_faction,_sfGroup,false] call (missionNamespace getVariable "FN_createAIUnit");
+        _newAI = [_grp,_unit,_spawnPos,_faction,_isSpecOpsGroup,false,_spawnMeleeGroup] call (missionNamespace getVariable "FN_createAIUnit");
 
         _newAI disableAI "PATH";
 

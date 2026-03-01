@@ -1,4 +1,4 @@
-params ["_group", "_unitType", "_pos", "_faction", "_sfOverride", "_creepGroup"];
+params ["_group", "_unitType", "_pos", "_faction", "_sfOverride", "_creepGroup", ["_forceMelee", nil]];
 
 private _factionToDiscipline = createHashMapFromArray [
     ["DT", "greek"],
@@ -29,8 +29,12 @@ if (!_isMagicUser) then {
         };
     };
 
-    if (!_isSpecOps && {(random 1) < _meleeChance}) then {
-        _isMelee = true;
+    if (_forceMelee isEqualType true) then {
+        _isMelee = _forceMelee;
+    } else {
+        if (!_isSpecOps && {(random 1) < _meleeChance}) then {
+            _isMelee = true;
+        };
     };
 };
 

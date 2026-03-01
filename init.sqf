@@ -118,6 +118,7 @@ missionNamespace setVariable ["FN_killTaskGroupStationary", compileFinal preproc
 missionNamespace setVariable ["FN_killTaskLeapers", compileFinal preprocessFileLineNumbers "Economy System\functions\taskFunctions\FN_killTaskLeapers.sqf"];
 missionNamespace setVariable ["FN_killTaskPlayer", compileFinal preprocessFileLineNumbers "Economy System\functions\taskFunctions\FN_killTaskPlayer.sqf"];
 missionNamespace setVariable ["FN_killTaskSniper", compileFinal preprocessFileLineNumbers "Economy System\functions\taskFunctions\FN_killTaskSniper.sqf"];
+missionNamespace setVariable ["FN_killTaskGivenPriest", compileFinal preprocessFileLineNumbers "Economy System\functions\taskFunctions\FN_killTaskGivenPriest.sqf"];
 
 /* LootSystem */
 missionNamespace setVariable ["FN_attachAceLoot", compileFinal preprocessFileLineNumbers "LootSystem\FN_attachAceLoot.sqf"];

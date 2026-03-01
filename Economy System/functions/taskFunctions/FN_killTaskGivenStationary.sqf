@@ -37,7 +37,7 @@ if (isNull (currentTask _caller)) then {
     private _flag = "Flag_Red_F" createVehicle _pos;
 
     private _numUnits = ceil (random 7) + 6;
-    [_faction,_numUnits,_pos,"Camp",RESISTANCE] call (missionNamespace getVariable "FN_spawnAI");
+    [_faction,_numUnits,_pos,"Camp",0,RESISTANCE,"I_G_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
 
     private _unitSkillsArray = [_faction,_pos] call FN_getFactionSkills;
     private _side = RESISTANCE;
