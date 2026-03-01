@@ -129,6 +129,49 @@ missionNamespace setVariable ["LB_fnc_tryPurchaseMagCrateServer",compileFinal {
     [""] remoteExec ["hintSilent",_buyer];
 }];
 
+// Server-side: purchase vehicle spawn if funds available
+missionNamespace setVariable ["LB_fnc_tryPurchaseVehicleCrateServer",compileFinal {
+    params ["_crate","_buyer","_class","_cost"];
+    if (isNull _crate) exitWith {};
+    if (isNull _buyer) exitWith {};
+    if (!isPlayer _buyer) exitWith {};
+    if !(_class isEqualType "") exitWith {};
+    if !(_cost isEqualType 0) exitWith {};
+
+    [_buyer] call (missionNamespace getVariable "LB_fnc_convertRvgMoneyPlayerServer");
+
+    private _ok=[_buyer,_cost] call (missionNamespace getVariable "LB_fnc_trySpendServer");
+    if (!_ok) exitWith {
+        ["Sorry, not enough money to purchase vehicle"] remoteExec ["hintSilent",_buyer];
+        sleep 3;
+        [""] remoteExec ["hintSilent",_buyer];
+    };
+
+    private _spawnPos = _crate modelToWorld [6,0,0];
+    private _safePos = _spawnPos findEmptyPosition [3,30,_class];
+    if ((count _safePos) == 0) then {
+        _safePos = _spawnPos;
+    };
+
+    private _vehicle = createVehicle [_class,_safePos,[],0,"NONE"];
+    _vehicle setDir (getDir _crate);
+    _vehicle setPosATL _safePos;
+
+    clearItemCargoGlobal _vehicle;
+    clearMagazineCargoGlobal _vehicle;
+    clearWeaponCargoGlobal _vehicle;
+    clearBackpackCargoGlobal _vehicle;
+
+    _vehicle setDamage 0;
+    _vehicle setFuel 1;
+    _vehicle setVehicleAmmo 1;
+    _vehicle lock 0;
+
+    ["vehicle successfully purchased"] remoteExec ["hintSilent",_buyer];
+    sleep 3;
+    [""] remoteExec ["hintSilent",_buyer];
+}];
+
 // 2) Server-only: initialize players and handle respawn transfer
 if (isServer) then {
     missionNamespace setVariable ["LB_startingMoney",0];

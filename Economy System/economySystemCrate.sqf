@@ -14,6 +14,13 @@ FN_PurchaseItem_Crate={
 	[_target,_caller,_class,_cost] remoteExec ["LB_fnc_tryPurchaseItemCrateServer",2];
 };
 
+FN_PurchaseVehicle_Crate={
+	params ["_target","_caller","_actionId","_args"];
+	private _class=_args select 0;
+	private _cost=_args select 1;
+	[_target,_caller,_class,_cost] remoteExec ["LB_fnc_tryPurchaseVehicleCrateServer",2];
+};
+
 // SELLING ________________________________________________________________________________________________________________
 
 // Old FN_addMoney existed to add rvg_money to crate. It is no longer used.
@@ -489,6 +496,17 @@ FN_MISC_Crate = {
 	_containerAction = _container addAction ["Purchase ANOMALY DETECTOR: $30", FN_PurchaseItem_Crate, ["DSA_Detector",30],1.5,true,false,"","true",3];
 };
 
+FN_vehicles_Crate = {
+	params ["_container", "_caller", "_actionId"];
+	_containerAction = _container addAction ["Purchase QUADBIKE: $150", FN_PurchaseVehicle_Crate, ["C_Quadbike_01_F",150],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase OFFROAD: $300", FN_PurchaseVehicle_Crate, ["C_Offroad_01_F",300],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase FUEL VAN: $500", FN_PurchaseVehicle_Crate, ["C_Van_01_fuel_F",500],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase TRANSPORT VAN: $450", FN_PurchaseVehicle_Crate, ["C_Van_02_transport_F",450],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase LIGHT HELICOPTER: $3,000", FN_PurchaseVehicle_Crate, ["C_Heli_Light_01_civil_F",3000],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase ARMED OFFROAD: $2,500", FN_PurchaseVehicle_Crate, ["I_G_Offroad_01_armed_F",2500],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase OFFROAD (AT): $2,000", FN_PurchaseVehicle_Crate, ["I_G_Offroad_01_AT_F",2000],1.5,true,false,"","true",3];
+};
+
 FN_ResetMenu_Crate = {
 	params ["_container", "_caller", "_actionId"];
 	removeAllActions _container;
@@ -510,6 +528,7 @@ FN_ResetMenu_Crate = {
 	_containerAction = _container addAction ["ACCESS NVG CATALOGUE", FN_NVG_Crate,[],1.5,true,false,"","true",3];
 	_containerAction = _container addAction ["ACCESS BINO CATALOGUE", FN_BINO_Crate,[],1.5,true,false,"","true",3];
 	_containerAction = _container addAction ["ACCESS MISC. CATALOGUE", FN_MISC_Crate,[],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["ACCESS VEHICLE CATALOGUE", FN_vehicles_Crate,[],1.5,true,false,"","true",3];
 	_containerAction = _container addAction ["RESET CATALOGUES", FN_ResetMenu_Crate,[],1.5,true,false,"","true",3];
 };
 
@@ -531,4 +550,5 @@ _containerAction = _container addAction ["ACCESS EXPLOSIVES CATALOGUE", FN_EXPLO
 _containerAction = _container addAction ["ACCESS NVG CATALOGUE", FN_NVG_Crate,[],1.5,true,false,"","true",3];
 _containerAction = _container addAction ["ACCESS BINO CATALOGUE", FN_BINO_Crate,[],1.5,true,false,"","true",3];
 _containerAction = _container addAction ["ACCESS MISC. CATALOGUE", FN_MISC_Crate,[],1.5,true,false,"","true",3];
+_containerAction = _container addAction ["ACCESS VEHICLE CATALOGUE", FN_vehicles_Crate,[],1.5,true,false,"","true",3];
 _containerAction = _container addAction ["RESET CATALOGUES", FN_ResetMenu_Crate,[],1.5,true,false,"","true",3];
