@@ -90,7 +90,7 @@ class CfgRemoteExec
         allowedTargets = 0;
         jip = 1;
 
-        /*class BIS_fnc_call { allowedTargets = 0; };
+        class BIS_fnc_call { allowedTargets = 0; };
         class BIS_fnc_dynamicText { allowedTargets = 1; };
         class BIS_fnc_taskCreate { allowedTargets = 1; };
         class BIS_fnc_taskSetState { allowedTargets = 1; };
@@ -104,6 +104,14 @@ class CfgRemoteExec
         class LB_fnc_createSniperTask { allowedTargets = 1; };
         class LB_fnc_updateSniperTaskState { allowedTargets = 1; };
         class LB_fnc_paySniperReward { allowedTargets = 1; };
-        */
+
+        // Trader/economy remote calls (trigger enter/exit + crate purchase bridges)
+        class FN_economySystem { allowedTargets = 1; };
+        class FN_removeTraderActionsLocal { allowedTargets = 1; };
+        class LB_fnc_tryPurchaseMagCrateServer { allowedTargets = 2; };
+        class LB_fnc_tryPurchaseItemCrateServer { allowedTargets = 2; };
+        class LB_fnc_tryPurchaseVehicleCrateServer { allowedTargets = 2; };
+        class LB_fnc_tryPurchaseServiceCrateServer { allowedTargets = 2; };
+        class LB_fnc_addMoneyServer { allowedTargets = 2; };
     };
 };
