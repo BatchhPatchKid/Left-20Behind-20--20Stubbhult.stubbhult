@@ -77,10 +77,10 @@ private _spawnMarker = {
 
 // Occasionally spawn small renegade groups near the trigger
 private _spawnRenegades = {
-    params ["_p", "_r"];
+    params ["_p", "_r", "_side"];
     for "_i" from 1 to (floor (random 3)) do {
         private _renegadePos = [_p, (_r / 4), (_r / 3), 3] call (missionNamespace getVariable "FN_findSafePosition");
-        [_renegadePos, 50, _r] call (missionNamespace getVariable "FN_renegadeSpawner");
+        [_renegadePos, 50, _r, _side] call (missionNamespace getVariable "FN_renegadeSpawner");
     };
 };
 
@@ -149,7 +149,7 @@ private _spawnMutantGroup = {
     private _inRange = allPlayers select {
         (getPos _x) distance _pos < (_rad + 100)
     };
-    { [_factionSelected, _x] remoteExec ["FN_mutantEffects", _x]; } forEach _inRange;
+    { [_factionSelected] remoteExec ["FN_mutantEffects", owner _x]; } forEach _inRange;
 
     [_factionSelected, _num, _rad, _mutantPos, _rvg, _area, _sfGroup] call (missionNamespace getVariable "FN_factionSelector");
 };
@@ -169,7 +169,7 @@ if ([_trigger] call _triggerUsed) exitWith {
         private _inRange = allPlayers select {
             (getPos _x) distance (getPos _trigger) < (_triggerRadius + 100)
         };
-        { [_mutantFaction] remoteExec ["FN_mutantEffects", _x]; } forEach _inRange;
+        { [_mutantFaction] remoteExec ["FN_mutantEffects", owner _x]; } forEach _inRange;
     };
 };
 
@@ -197,10 +197,6 @@ private _zombieRvg = if (daytime < 4 || daytime > 20 || random 1 > 0.85) then {
 
 [_pos, _triggerRadius] call (missionNamespace getVariable "FN_ambientVeh");
 
-if (random 1 > 0.375) then {
-    [_pos, _triggerRadius] call _spawnRenegades;
-};
-
 // -----------------------------------------------------------------------------
 // 7. EARLY FACTION RESOLUTION
 // -----------------------------------------------------------------------------
@@ -223,6 +219,12 @@ if (_faction == "Rnd") then {
         default                          { "survivor" };
     };
     _resolvedFaction = _faction;
+};
+
+// Renegade side depends on location type: EAST for survivor zones, INDEPENDENT for zombie/mutant
+if (random 1 > 0.375) then {
+    private _renegadeSide = if (_factionType == "survivor") then { east } else { independent };
+    [_pos, _triggerRadius, _renegadeSide] call _spawnRenegades;
 };
 
 // -----------------------------------------------------------------------------

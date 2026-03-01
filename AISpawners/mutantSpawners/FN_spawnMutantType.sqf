@@ -46,12 +46,12 @@ switch (_mutantType) do {
 		[_pos, _triggerRadius, _maxUnits, "DSA_Snatcher", [0], 10, (_triggerRadius / 4), 3, 0.5] call (missionNamespace getVariable "FN_spawnMutantCommon");
 	};
 	case "Tank": {
-		[4] spawn BIS_fnc_earthquake;
-		[_pos, _triggerRadius, _maxUnits, "WBK_SpecialZombie_Smasher_3", [2, 2], 10, (_triggerRadius / 4), 3, 0, true] call (missionNamespace getVariable "FN_spawnMutantCommon");
-
 		private _factionArray = ["mutantFactionWeights"] call (missionNamespace getVariable "FN_arrayReturn");
 		private _factionSelected = selectRandomWeighted _factionArray;
 		[_factionSelected, (round random 10) + 6, _pos, "Squad", 50, independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
+		
+		[4] spawn BIS_fnc_earthquake;
+		[_pos, _triggerRadius, _maxUnits, "WBK_SpecialZombie_Smasher_3", [2, 2], 10, (_triggerRadius / 4), 3, 0, true] call (missionNamespace getVariable "FN_spawnMutantCommon");
 	};
 	case "Hellspawn": {
 		private _factionArray = ["mutantFactionWeights"] call (missionNamespace getVariable "FN_arrayReturn");
@@ -61,7 +61,6 @@ switch (_mutantType) do {
 		playSound3D [getMissionPath "sounds\blowout_siren_2.ogg", player, false, _pos, 5, 1, 0];
 		sleep 5;
 		[4] spawn BIS_fnc_earthquake;
-
 		[_pos, _triggerRadius, _maxUnits, "WBK_SpecialZombie_Smasher_Hellbeast_3", [2, 2, 2], 10, 50, 3, 0.5, true] call (missionNamespace getVariable "FN_spawnMutantCommon");
 	};
 	case "Goliath": {

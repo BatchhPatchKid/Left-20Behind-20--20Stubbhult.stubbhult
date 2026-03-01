@@ -39,14 +39,41 @@ for "_i" from 1 to _maxUnits do {
 	private _hordeUnit = _horde createUnit [_unitType, _spawnPos, [], 1, "NONE"];
 	_hordeUnit setSpeaker "NoVoice";
 	_hordeUnit disableConversation true;
-
 	if (_addNegativeRating) then {
 		_hordeUnit addRating -10001;
 	};
-
 	if (_spawnSleep > 0) then {
 		sleep _spawnSleep;
 	};
 	
 	[_horde, [], []] call (missionNamespace getVariable "FN_enableDynamicSim");
+
+	// Find closest hostile unit, excluding civilians
+	private _hostiles = allUnits select {
+		alive _x &&
+		!(_x isEqualTo _hordeUnit) &&
+		(side _x in [west, resistance]) &&
+		(civilian != side _x) &&
+		!(_x in list (nearestObject [_spawnPos, "ReammoBox"]))
+	};
+
+	private _closestHostile = objNull;
+	private _closestDist = 200;
+	{
+		private _dist = _hordeUnit distance _x;
+		if (_dist < _closestDist) then {
+			_closestDist = _dist;
+			_closestHostile = _x;
+		};
+	} forEach _hostiles;
+
+	if (!isNull _closestHostile) then {
+		waitUntil { !isNull _horde };
+		private _wp = _horde addWaypoint [getPos _closestHostile, 5, 0];
+		_wp setWaypointType "MOVE";
+		_wp setWaypointSpeed "FULL";
+		_wp setWaypointBehaviour "AWARE";
+		_horde setCurrentWaypoint _wp;
+		deleteWaypoint [_horde, 1]; // delete the default waypoint at index 1
+	};
 };

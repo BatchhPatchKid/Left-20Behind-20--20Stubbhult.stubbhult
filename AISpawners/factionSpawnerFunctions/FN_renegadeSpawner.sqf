@@ -1,4 +1,10 @@
-params ["_pos", "_minDist", "_maxDist"];
+params ["_pos", "_minDist", "_maxDist", "_side"];
+		
+if (isNil "_side") then {
+    _side = east;
+};
+
+private _unitClass = if (_side == independent) then { "I_G_Soldier_F" } else { "O_G_Soldier_F" };
 		
 _aim = 0.3;
 _aimSpeed = 0.5;
@@ -9,9 +15,8 @@ _command = .9;
 _spotDist = 0.5;
 _reload = 0.6;
 		
-private _grp1 = createGroup east;
-
-private _newAI = _grp1 createUnit ["O_G_Soldier_F", _pos, [], 1, "NONE"];
+private _grp1 = createGroup _side;
+private _newAI = _grp1 createUnit [_unitClass, _pos, [], 1, "NONE"];
 ["Renegade", _newAI, false, false, false] call (missionNamespace getVariable "FN_equipAI");
 
 _newAI setCombatMode "RED";
@@ -21,7 +26,6 @@ _newAI enableAI "AUTOTARGET";
 _newAI enableAI "MOVE";   
 _newAI enableAI "ANIM";    
 _newAI enableAI "FSM";
-
 _newAI setSkill ["aimingAccuracy", _aim];
 _newAI setSkill ["aimingSpeed", _aimSpeed];
 _newAI setSkill ["spotTime", _spot];
@@ -32,18 +36,18 @@ _newAI setSkill ["spotDistance", _spotDist];
 _newAI setSkill ["reloadSpeed", _reload];
 
 _grp1 enableGunLights "ForceOn";
-
 _posWP = [_pos, _minDist, _maxDist, 3, 0, 20, 0] call BIS_fnc_findSafePos;
-// Create waypoints for the patrol
 _waypoint1 = _grp1 addWaypoint [_posWP, 2];
 _waypoint1 setWaypointType "MOVE";
 _waypoint1 setWaypointSpeed "FULL";
 _waypoint1 setWaypointBehaviour "AWARE";
+
 _posWP = [_pos, _minDist, _maxDist, 3, 0, 20, 0] call BIS_fnc_findSafePos;
 _waypoint2 = _grp1 addWaypoint [_posWP, 2];
 _waypoint2 setWaypointType "MOVE";
 _waypoint2 setWaypointSpeed "FULL";
 _waypoint2 setWaypointBehaviour "AWARE";
+
 _posWP = [_pos, _minDist, _maxDist, 3, 0, 20, 0] call BIS_fnc_findSafePos;
 _waypoint3 = _grp1 addWaypoint [_posWP, 2];
 _waypoint3 setWaypointType "CYCLE";
@@ -51,7 +55,5 @@ _waypoint3 setWaypointSpeed "FULL";
 _waypoint3 setWaypointBehaviour "AWARE";
 
 waitUntil {!isNull _newAI};
-
 //[_grp1, "Renegade"] call FN_ambientChatter;
-
 _newAI addRating -900000;

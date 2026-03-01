@@ -49,7 +49,7 @@ missionNamespace setVariable ["FN_spawnZom", compileFinal preprocessFileLineNumb
 missionNamespace setVariable ["FN_ZTriggerSpawner", compileFinal preprocessFileLineNumbers "AISpawners\mutantSpawners\FN_ZTriggerSpawner.sqf"];
 missionNamespace setVariable ["FN_spawnMutantType", compileFinal preprocessFileLineNumbers "AISpawners\mutantSpawners\FN_spawnMutantType.sqf"];
 missionNamespace setVariable ["FN_spawnMutantCommon", compileFinal preprocessFileLineNumbers "AISpawners\mutantSpawners\FN_spawnMutantCommon.sqf"];
-missionNamespace setVariable ["mutantEffects", compileFinal preprocessFileLineNumbers "AISpawners\mutantSpawners\mutantEffects.sqf"];
+missionNamespace setVariable ["FN_mutantEffects", compileFinal preprocessFileLineNumbers "AISpawners\mutantSpawners\mutantEffects.sqf"];
 
 /* AISpawners (root) */
 missionNamespace setVariable ["FN_factionSpawnerMain", compileFinal preprocessFileLineNumbers "AISpawners\FN_factionSpawnerMain.sqf"];
