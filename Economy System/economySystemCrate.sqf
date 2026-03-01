@@ -21,6 +21,14 @@ FN_PurchaseVehicle_Crate={
 	[_target,_caller,_class,_cost] remoteExec ["LB_fnc_tryPurchaseVehicleCrateServer",2];
 };
 
+FN_PurchaseService_Crate={
+	params ["_target","_caller","_actionId","_args"];
+	private _serviceType=_args select 0;
+	private _cost=_args select 1;
+	[_target,_caller,_serviceType,_cost] remoteExec ["LB_fnc_tryPurchaseServiceCrateServer",2];
+};
+
+
 // SELLING ________________________________________________________________________________________________________________
 
 // Old FN_addMoney existed to add rvg_money to crate. It is no longer used.
@@ -507,6 +515,16 @@ FN_vehicles_Crate = {
 	_containerAction = _container addAction ["Purchase OFFROAD (AT): $2,000", FN_PurchaseVehicle_Crate, ["I_G_Offroad_01_AT_F",2000],1.5,true,false,"","true",3];
 };
 
+FN_services_Crate = {
+	params ["_container", "_caller", "_actionId"];
+	_containerAction = _container addAction ["Purchase VEHICLE SERVICE (Repair/Refuel/Rearm 30m): $100", FN_PurchaseService_Crate, ["repair_vehicles_30m",100],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase MEDICAL AID (Heal all units 30m): $30", FN_PurchaseService_Crate, ["heal_units_30m",30],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase PARDON (Remove Renegade Status): $50", FN_PurchaseService_Crate, ["clear_renegade",50],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase DIPLOMATIC IMMUNITY (Permanent Friendly with Trader's Faction): $500", FN_PurchaseService_Crate, ["perm_friendly_trader_faction",500],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase FIRETEAM ESCORT (4 faction units): $100", FN_PurchaseService_Crate, ["escort_fireteam",100],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase SPEC OPS FIRETEAM ESCORT (4 faction SF units): $500", FN_PurchaseService_Crate, ["escort_specops_fireteam",500],1.5,true,false,"","true",3];
+};
+
 FN_ResetMenu_Crate = {
 	params ["_container", "_caller", "_actionId"];
 	removeAllActions _container;
@@ -529,6 +547,7 @@ FN_ResetMenu_Crate = {
 	_containerAction = _container addAction ["ACCESS BINO CATALOGUE", FN_BINO_Crate,[],1.5,true,false,"","true",3];
 	_containerAction = _container addAction ["ACCESS MISC. CATALOGUE", FN_MISC_Crate,[],1.5,true,false,"","true",3];
 	_containerAction = _container addAction ["ACCESS VEHICLE CATALOGUE", FN_vehicles_Crate,[],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["ACCESS SERVICES CATALOGUE", FN_services_Crate,[],1.5,true,false,"","true",3];
 	_containerAction = _container addAction ["RESET CATALOGUES", FN_ResetMenu_Crate,[],1.5,true,false,"","true",3];
 };
 
@@ -551,4 +570,5 @@ _containerAction = _container addAction ["ACCESS NVG CATALOGUE", FN_NVG_Crate,[]
 _containerAction = _container addAction ["ACCESS BINO CATALOGUE", FN_BINO_Crate,[],1.5,true,false,"","true",3];
 _containerAction = _container addAction ["ACCESS MISC. CATALOGUE", FN_MISC_Crate,[],1.5,true,false,"","true",3];
 _containerAction = _container addAction ["ACCESS VEHICLE CATALOGUE", FN_vehicles_Crate,[],1.5,true,false,"","true",3];
+_containerAction = _container addAction ["ACCESS SERVICES CATALOGUE", FN_services_Crate,[],1.5,true,false,"","true",3];
 _containerAction = _container addAction ["RESET CATALOGUES", FN_ResetMenu_Crate,[],1.5,true,false,"","true",3];

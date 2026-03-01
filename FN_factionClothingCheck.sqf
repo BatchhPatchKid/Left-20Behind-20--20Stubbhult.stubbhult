@@ -292,3 +292,14 @@ if (!(_unit getVariable ["Renegade_Relation", false])) then {
         _unit setVariable ["Bandit_Relation",false,true];
     };
 };
+
+private _forcedFriendly = _unit getVariable ["LB_PermanentFriendlyFactions", []];
+if (_forcedFriendly isEqualType []) then {
+    {
+        _unit setVariable [_x, true, true];
+    } forEach _forcedFriendly;
+
+    if ((count _forcedFriendly) > 0) then {
+        _unit setVariable ["Renegade_Relation", false, true];
+    };
+};

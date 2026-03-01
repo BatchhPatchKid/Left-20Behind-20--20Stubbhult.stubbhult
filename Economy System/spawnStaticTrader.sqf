@@ -5,6 +5,7 @@ if (isServer) then {
 		params ["_faction", "_trigger"];
 		
 		_grpTrader = createGroup WEST;
+		[_grpTrader, _faction] call (missionNamespace getVariable "LB_FacReg_Set");
 		_trader = _grpTrader createUnit ["B_G_Survivor_F",(getPos _trigger),[],1,"NONE"];
 		[_faction, _trader, false, true, false] call (missionNamespace getVariable "FN_equipAI");
 		_trader disableAI "ANIM";

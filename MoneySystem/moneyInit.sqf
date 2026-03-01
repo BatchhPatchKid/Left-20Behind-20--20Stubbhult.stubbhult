@@ -172,6 +172,128 @@ missionNamespace setVariable ["LB_fnc_tryPurchaseVehicleCrateServer",compileFina
     [""] remoteExec ["hintSilent",_buyer];
 }];
 
+// Server-side: purchase utility/faction services from economy crates
+missionNamespace setVariable ["LB_fnc_tryPurchaseServiceCrateServer",compileFinal {
+    params ["_crate","_buyer","_serviceType","_cost"];
+    if (isNull _crate) exitWith {};
+    if (isNull _buyer) exitWith {};
+    if (!isPlayer _buyer) exitWith {};
+    if !(_serviceType isEqualType "") exitWith {};
+    if !(_cost isEqualType 0) exitWith {};
+
+    [_buyer] call (missionNamespace getVariable "LB_fnc_convertRvgMoneyPlayerServer");
+
+    private _ok=[_buyer,_cost] call (missionNamespace getVariable "LB_fnc_trySpendServer");
+    if (!_ok) exitWith {
+        ["Sorry, not enough money for that service"] remoteExec ["hintSilent",_buyer];
+        sleep 3;
+        [""] remoteExec ["hintSilent",_buyer];
+    };
+
+    private _faction = [group _crate, ""] call (missionNamespace getVariable "LB_FacReg_Get");
+    private _relationByFaction = createHashMapFromArray [
+        ["BB", "BB_Relation"],
+        ["SU", "SU_Relation"],
+        ["PF", "PF_Relation"],
+        ["ALF", "ALF_Relation"],
+        ["WO", "WO_Relation"],
+        ["RU", "RU_Relation"],
+        ["US", "US_Relation"],
+        ["NH", "NH_Relation"],
+        ["TRB", "TRB_Relation"],
+        ["RC", "RC_Relation"],
+        ["DT", "DT_Relation"],
+        ["ROA", "ROA_Relation"],
+        ["PMC", "PMC_Relation"],
+        ["Bandit", "Bandit_Relation"]
+    ];
+
+    private _spawnEscort = {
+        params ["_unit","_escortFaction","_isSpecOps"];
+        private _grp = group _unit;
+        private _spawnCenter = getPosATL _unit;
+
+        for "_i" from 1 to 4 do {
+            private _offset = [
+                (_spawnCenter select 0) + (random 6) - 3,
+                (_spawnCenter select 1) + (random 6) - 3,
+                0
+            ];
+            private _ai = _grp createUnit ["B_G_Survivor_F", _offset, [], 0, "NONE"];
+            [_escortFaction, _ai, false, true, _isSpecOps] call (missionNamespace getVariable "FN_equipAI");
+            _ai setSkill ["courage", 1];
+            _ai setSkill ["commanding", 1];
+        };
+    };
+
+    switch (_serviceType) do {
+        case "repair_vehicles_30m": {
+            {
+                _x setDamage 0;
+                _x setFuel 1;
+                _x setVehicleAmmo 1;
+            } forEach ((getPosATL _buyer) nearEntities [["LandVehicle","Air","Ship"], 30]);
+            ["All nearby vehicles repaired, refueled, and rearmed."] remoteExec ["hintSilent",_buyer];
+        };
+
+        case "heal_units_30m": {
+            {
+                _x setDamage 0;
+            } forEach ((getPosATL _buyer) nearEntities [["CAManBase"], 30]);
+            ["All nearby units healed."] remoteExec ["hintSilent",_buyer];
+        };
+
+        case "clear_renegade": {
+            _buyer setVariable ["Renegade_Relation", false, true];
+            ["Your renegade status has been removed."] remoteExec ["hintSilent",_buyer];
+        };
+
+        case "perm_friendly_trader_faction": {
+            private _relationVar = _relationByFaction getOrDefault [_faction, ""];
+            if (_relationVar == "") exitWith {
+                [_buyer,_cost] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+                ["Unable to determine this trader's faction for permanent-friendly service."] remoteExec ["hintSilent",_buyer];
+            };
+
+            private _forced = _buyer getVariable ["LB_PermanentFriendlyFactions", []];
+            if !(_forced isEqualType []) then { _forced = []; };
+            if !(_relationVar in _forced) then {
+                _forced pushBack _relationVar;
+            };
+            _buyer setVariable ["LB_PermanentFriendlyFactions", _forced, true];
+            _buyer setVariable [_relationVar, true, true];
+            _buyer setVariable ["Renegade_Relation", false, true];
+            [format ["You are now permanently friendly with %1.", _faction]] remoteExec ["hintSilent",_buyer];
+        };
+
+        case "escort_fireteam": {
+            if (_faction == "") exitWith {
+                [_buyer,_cost] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+                ["Unable to determine this trader's faction for escort services."] remoteExec ["hintSilent",_buyer];
+            };
+            [_buyer, _faction, false] call _spawnEscort;
+            [format ["A %1 fireteam has joined your group.", _faction]] remoteExec ["hintSilent",_buyer];
+        };
+
+        case "escort_specops_fireteam": {
+            if (_faction == "") exitWith {
+                [_buyer,_cost] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+                ["Unable to determine this trader's faction for escort services."] remoteExec ["hintSilent",_buyer];
+            };
+            [_buyer, _faction, true] call _spawnEscort;
+            [format ["A %1 spec ops fireteam has joined your group.", _faction]] remoteExec ["hintSilent",_buyer];
+        };
+
+        default {
+            [_buyer,_cost] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+            ["Unknown service requested. Purchase refunded."] remoteExec ["hintSilent",_buyer];
+        };
+    };
+
+    sleep 3;
+    [""] remoteExec ["hintSilent",_buyer];
+}];
+
 // 2) Server-only: initialize players and handle respawn transfer
 if (isServer) then {
     missionNamespace setVariable ["LB_startingMoney",0];
