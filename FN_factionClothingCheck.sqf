@@ -298,8 +298,4 @@ if (_forcedFriendly isEqualType []) then {
     {
         _unit setVariable [_x, true, true];
     } forEach _forcedFriendly;
-
-    if ((count _forcedFriendly) > 0) then {
-        _unit setVariable ["Renegade_Relation", false, true];
-    };
 };

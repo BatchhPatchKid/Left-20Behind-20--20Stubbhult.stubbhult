@@ -319,7 +319,6 @@ missionNamespace setVariable ["LB_fnc_tryPurchaseServiceCrateServer",compileFina
             };
             _buyer setVariable ["LB_PermanentFriendlyFactions", _forced, true];
             _buyer setVariable [_relationVar, true, true];
-            _buyer setVariable ["Renegade_Relation", false, true];
             [format ["You are now permanently friendly with %1.", _faction]] remoteExec ["hintSilent",_buyer];
         };
 
