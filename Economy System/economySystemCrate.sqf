@@ -531,9 +531,9 @@ FN_services_Crate = {
 	params ["_container", "_caller", "_actionId"];
 	_containerAction = _container addAction ["Purchase VEHICLE SERVICE (Repair/Refuel/Rearm 30m): $100", FN_PurchaseService_Crate, ["repair_vehicles_30m",100],1.5,true,false,"","true",3];
 	_containerAction = _container addAction ["Purchase MEDICAL AID (Heal all units 30m): $30", FN_PurchaseService_Crate, ["heal_units_30m",30],1.5,true,false,"","true",3];
-	_containerAction = _container addAction ["Purchase PARDON (Remove Renegade Status): $50", FN_PurchaseService_Crate, ["clear_renegade",50],1.5,true,false,"","true",3];
-	_containerAction = _container addAction ["Purchase DIPLOMATIC IMMUNITY (Permanent Friendly with Trader's Faction): $500", FN_PurchaseService_Crate, ["perm_friendly_trader_faction",500],1.5,true,false,"","true",3];
-	_containerAction = _container addAction ["Disband Permanent Alliance (Trader Faction) (+$500)", FN_disbandPermanentAllianceAtCrate, [],1.5,true,false,"","[_target, _this] call (missionNamespace getVariable 'FN_canDisbandPermanentAllianceAtCrate')",3];
+	_containerAction = _container addAction ["Purchase PARDON (Remove Renegade Status): $250", FN_PurchaseService_Crate, ["clear_renegade",250],1.5,true,false,"","true",3];
+	_containerAction = _container addAction ["Purchase DIPLOMATIC IMMUNITY (Permanent Friendly with Trader's Faction): $2000", FN_PurchaseService_Crate, ["perm_friendly_trader_faction",2000],1.5,true,false,"","[_target, _this] call (missionNamespace getVariable 'FN_canPurchasePermanentAllianceAtCrate')",3];
+	_containerAction = _container addAction ["Disband Permanent Alliance (Trader Faction) (+$2000)", FN_disbandPermanentAllianceAtCrate, [],1.5,true,false,"","[_target, _this] call (missionNamespace getVariable 'FN_canDisbandPermanentAllianceAtCrate')",3];
 	_containerAction = _container addAction ["Purchase FIRETEAM ESCORT (4 faction units): $100", FN_PurchaseService_Crate, ["escort_fireteam",100],1.5,true,false,"","true",3];
 	_containerAction = _container addAction ["Purchase SPEC OPS FIRETEAM ESCORT (4 faction SF units): $500", FN_PurchaseService_Crate, ["escort_specops_fireteam",500],1.5,true,false,"","true",3];
 };

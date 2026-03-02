@@ -104,8 +104,8 @@ missionNamespace setVariable ["LB_fnc_disbandPermanentAllianceAtCrateServer",com
     _forced = _forced - [_relationVar];
     _buyer setVariable ["LB_PermanentFriendlyFactions", _forced, true];
     _buyer setVariable [_relationVar, false, true];
-    [_buyer,500] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
-    [format ["Permanent alliance with %1 disbanded. You received $500.", _faction]] remoteExec ["hintSilent",_buyer];
+    [_buyer,2000] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+    [format ["Permanent alliance with %1 disbanded. You received $2000.", _faction]] remoteExec ["hintSilent",_buyer];
     sleep 3;
     [""] remoteExec ["hintSilent",_buyer];
 }];
@@ -137,14 +137,14 @@ missionNamespace setVariable ["LB_fnc_disbandPermanentAllianceServer",compileFin
     _forced = _forced - [_relationVar];
     _unit setVariable ["LB_PermanentFriendlyFactions", _forced, true];
     _unit setVariable [_relationVar, false, true];
-    [_unit, 500] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+    [_unit, 2000] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
 
     private _factionName = _relationVar;
     if ((_factionName find "_Relation") > 0) then {
         _factionName = (_factionName splitString "_") select 0;
     };
 
-    [format ["Permanent alliance with %1 disbanded. You received $500.", _factionName]] remoteExec ["hintSilent", _unit];
+    [format ["Permanent alliance with %1 disbanded. You received $2000.", _factionName]] remoteExec ["hintSilent", _unit];
     sleep 3;
     [""] remoteExec ["hintSilent", _unit];
 }];
@@ -434,7 +434,11 @@ missionNamespace setVariable ["LB_fnc_tryPurchaseServiceCrateServer",compileFina
 
             private _forced = _buyer getVariable ["LB_PermanentFriendlyFactions", []];
             if !(_forced isEqualType []) then { _forced = []; };
-            if !(_relationVar in _forced) then {
+            if ((_relationVar in _forced) && {_buyer getVariable [_relationVar, false]}) exitWith {
+                [_buyer,_cost] call (missionNamespace getVariable "LB_fnc_addMoneyServer");
+                ["You are already permanently allied with this trader's faction."] remoteExec ["hintSilent",_buyer];
+            };
+			if !(_relationVar in _forced) then {
                 _forced pushBack _relationVar;
             };
             _buyer setVariable ["LB_PermanentFriendlyFactions", _forced, true];

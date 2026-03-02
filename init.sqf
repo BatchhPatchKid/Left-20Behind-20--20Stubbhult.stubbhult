@@ -97,6 +97,7 @@ missionNamespace setVariable ["FN_removeTraderActionsLocal", compileFinal prepro
 missionNamespace setVariable ["FN_refreshTraderAccessForPlayer", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_refreshTraderAccessForPlayer.sqf"];
 missionNamespace setVariable ["FN_canDisbandPermanentAllianceAtCrate", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_canDisbandPermanentAllianceAtCrate.sqf"];
 missionNamespace setVariable ["FN_disbandPermanentAllianceAtCrate", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_disbandPermanentAllianceAtCrate.sqf"];
+missionNamespace setVariable ["FN_canPurchasePermanentAllianceAtCrate", compileFinal preprocessFileLineNumbers "Economy System\functions\FN_canPurchasePermanentAllianceAtCrate.sqf"];
 
 /* Economy System \ functions \ actionFunctions */
 missionNamespace setVariable ["FN_BINO", compileFinal preprocessFileLineNumbers "Economy System\functions\actionFunctions\FN_BINO.sqf"];
