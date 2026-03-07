@@ -1,0 +1,3368 @@
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Military Cargo Post (Green)
+
+CLASS:
+Land_Cargo_Patrol_V1_F
+
+VEHICLE CLASS:
+Structures_Military
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[6.66638,6.80168,13.22]
+
+SELECTION NAMES:
+hatch_1, 
+hatch_2, 
+hatch_3, 
+hatch_4, 
+damt_1
+
+PARENTS:
+["Land_Cargo_Patrol_V1_F","Cargo_Patrol_base_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["cargo_patrol_v1_f.p3d","a3\structures_f\mil\cargo\cargo_patrol_v1_f.p3d",true,[0,0,-4.905],2461.76]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+["hatch_1_rot","hatch_2_rot","hatch_3_rot","hatch_4_rot"]
+
+
+
+
+
+NAME:
+Military Cargo House (Green)
+
+CLASS:
+Land_Cargo_House_V1_F
+
+VEHICLE CLASS:
+Structures_Military
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[6.23817,8.85733,4.86]
+
+SELECTION NAMES:
+door_1, 
+damt_1, 
+glass_1_hide
+
+PARENTS:
+["Land_Cargo_House_V1_F","Cargo_House_base_F","House_Small_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["cargo_house_v1_f.p3d","a3\structures_f\mil\cargo\cargo_house_v1_f.p3d",true,[0,0,-0.69],4999.97]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+["door_1_rot","door_1_locked_rot"]
+
+
+
+
+
+NAME:
+Military Cargo House (Green)
+
+CLASS:
+Land_Cargo_House_V1_F
+
+VEHICLE CLASS:
+Structures_Military
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[6.23817,8.85733,4.86]
+
+SELECTION NAMES:
+door_1, 
+damt_1, 
+glass_1_hide
+
+PARENTS:
+["Land_Cargo_House_V1_F","Cargo_House_base_F","House_Small_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["cargo_house_v1_f.p3d","a3\structures_f\mil\cargo\cargo_house_v1_f.p3d",true,[0,0,-0.69],4999.97]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+["door_1_rot","door_1_locked_rot"]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (5 Blocks)
+
+CLASS:
+Land_HBarrier_5_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[5.80754,1.74042,1.63585]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_5_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_5_f.p3d","a3\structures_f\mil\fortification\hbarrier_5_f.p3d",false,[0,0,-0.740514],7500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Razorwire Barrier
+
+CLASS:
+Land_Razorwire_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[8.46177,2.07973,2.1185]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_Razorwire_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["razorwire_f.p3d","a3\structures_f\mil\fortification\razorwire_f.p3d",false,[0,0,-0.755067],150]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Razorwire Barrier
+
+CLASS:
+Land_Razorwire_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[8.46177,2.07973,2.1185]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_Razorwire_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["razorwire_f.p3d","a3\structures_f\mil\fortification\razorwire_f.p3d",false,[0,0,-0.755067],150]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Razorwire Barrier
+
+CLASS:
+Land_Razorwire_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[8.46177,2.07973,2.1185]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_Razorwire_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["razorwire_f.p3d","a3\structures_f\mil\fortification\razorwire_f.p3d",false,[0,0,-0.755067],150]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Razorwire Barrier
+
+CLASS:
+Land_Razorwire_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[8.46177,2.07973,2.1185]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_Razorwire_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["razorwire_f.p3d","a3\structures_f\mil\fortification\razorwire_f.p3d",false,[0,0,-0.755067],150]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Razorwire Barrier
+
+CLASS:
+Land_Razorwire_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[8.46177,2.07973,2.1185]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_Razorwire_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["razorwire_f.p3d","a3\structures_f\mil\fortification\razorwire_f.p3d",false,[0,0,-0.755067],150]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Razorwire Barrier
+
+CLASS:
+Land_Razorwire_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[8.46177,2.07973,2.1185]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_Razorwire_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["razorwire_f.p3d","a3\structures_f\mil\fortification\razorwire_f.p3d",false,[0,0,-0.755067],150]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (3 Blocks)
+
+CLASS:
+Land_HBarrier_3_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[3.55376,1.76125,1.63332]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_3_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_3_f.p3d","a3\structures_f\mil\fortification\hbarrier_3_f.p3d",false,[0,0,-0.798342],4500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (3 Blocks)
+
+CLASS:
+Land_HBarrier_3_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[3.55376,1.76125,1.63332]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_3_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_3_f.p3d","a3\structures_f\mil\fortification\hbarrier_3_f.p3d",false,[0,0,-0.798342],4500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Portable Lights (Double)
+
+CLASS:
+Land_PortableLight_double_F
+
+VEHICLE CLASS:
+Cargo
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35323,1.0236,2.30317]
+
+SELECTION NAMES:
+light_1_hide, 
+light_2_hide, 
+light_1_jaw, 
+light_1_rigid, 
+light_2_rigid, 
+light_2_jaw
+
+PARENTS:
+["Land_PortableLight_double_F","Land_PortableLight_single_F","Lamps_base_F","House_Small_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["portablelight_double_f.p3d","a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d",true,[0,0,-1.08381],20]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+["light_1_pitch_rot","light_1_jaw_rot"]
+
+
+
+
+
+NAME:
+Portable Lights (Double)
+
+CLASS:
+Land_PortableLight_double_F
+
+VEHICLE CLASS:
+Cargo
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35323,1.0236,2.30317]
+
+SELECTION NAMES:
+light_1_hide, 
+light_2_hide, 
+light_1_jaw, 
+light_1_rigid, 
+light_2_rigid, 
+light_2_jaw
+
+PARENTS:
+["Land_PortableLight_double_F","Land_PortableLight_single_F","Lamps_base_F","House_Small_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["portablelight_double_f.p3d","a3\structures_f_epa\civ\constructions\portablelight_double_f.p3d",true,[0,0,-1.08381],20]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+["light_1_pitch_rot","light_1_jaw_rot"]
+
+
+
+
+
+NAME:
+Box (Closed)
+
+CLASS:
+Land_PaperBox_closed_F
+
+VEHICLE CLASS:
+Military
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.475,1.475,1.28639]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_PaperBox_closed_F","Scrapyard_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["paperbox_closed_f.p3d","a3\structures_f_epa\mil\scrapyard\paperbox_closed_f.p3d",false,[0,0,-0.643197],1000]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Box (Closed)
+
+CLASS:
+Land_PaperBox_closed_F
+
+VEHICLE CLASS:
+Military
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.475,1.475,1.28639]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_PaperBox_closed_F","Scrapyard_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["paperbox_closed_f.p3d","a3\structures_f_epa\mil\scrapyard\paperbox_closed_f.p3d",false,[0,0,-0.643197],1000]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Water Tank
+
+CLASS:
+Land_WaterTank_F
+
+VEHICLE CLASS:
+Container
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[2.5018,1.46586,1.74754]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_WaterTank_F","Items_base_F","ThingX","Thing","All"]
+
+MODEL INFO:
+["watertank_f.p3d","a3\structures_f\items\vessels\watertank_f.p3d",false,[0,0,-0.684917],1000]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Toiletbox
+
+CLASS:
+Land_ToiletBox_F
+
+VEHICLE CLASS:
+Cargo
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.30326,2.23671,2.4432]
+
+SELECTION NAMES:
+door_1
+
+PARENTS:
+["Land_ToiletBox_F","ThingX","Thing","All"]
+
+MODEL INFO:
+["toiletbox_f.p3d","a3\structures_f\civ\camping\toiletbox_f.p3d",true,[0,0,-1.22006],110]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+["door_1_rot","door_1_locked_rot"]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (Block)
+
+CLASS:
+Land_HBarrier_1_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.35064,1.69947,1.48579]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_1_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_1_f.p3d","a3\structures_f\mil\fortification\hbarrier_1_f.p3d",false,[0,0,-0.702106],1500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Transmitter Pole (Tall)
+
+CLASS:
+Land_TTowerSmall_2_F
+
+VEHICLE CLASS:
+Structures_Infrastructure
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.27,1.5199,21.5878]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_TTowerSmall_2_F","House_Small_F","House_F","House","HouseBase","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["ttowersmall_2_f.p3d","a3\structures_f\ind\transmitter_tower\ttowersmall_2_f.p3d",false,[0,0,-8.47874],50]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Garbage Barrel (Smiley, Greek)
+
+CLASS:
+Land_GarbageBarrel_01_F
+
+VEHICLE CLASS:
+Garbage
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[0.784926,0.779376,1.22769]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_GarbageBarrel_01_F","Items_base_F","ThingX","Thing","All"]
+
+MODEL INFO:
+["garbagebarrel_01_f.p3d","a3\structures_f_epc\civ\garbage\garbagebarrel_01_f.p3d",false,[0,0,-0.613845],50]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Toiletbox
+
+CLASS:
+Land_ToiletBox_F
+
+VEHICLE CLASS:
+Cargo
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[1.30326,2.23671,2.4432]
+
+SELECTION NAMES:
+door_1
+
+PARENTS:
+["Land_ToiletBox_F","ThingX","Thing","All"]
+
+MODEL INFO:
+["toiletbox_f.p3d","a3\structures_f\civ\camping\toiletbox_f.p3d",true,[0,0,-1.22006],110]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+["door_1_rot","door_1_locked_rot"]
+
+
+
+
+
+NAME:
+H-barrier (3 Blocks)
+
+CLASS:
+Land_HBarrier_3_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[3.55376,1.76125,1.63332]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_3_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_3_f.p3d","a3\structures_f\mil\fortification\hbarrier_3_f.p3d",false,[0,0,-0.798342],4500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+H-barrier (3 Blocks)
+
+CLASS:
+Land_HBarrier_3_F
+
+VEHICLE CLASS:
+Fortifications
+
+KIND OF:
+N/A
+
+SIZE (Width, Length, Height):
+[3.55376,1.76125,1.63332]
+
+SELECTION NAMES:
+
+
+PARENTS:
+["Land_HBarrier_3_F","HBarrier_base_F","NonStrategic","Building","Static","All"]
+
+MODEL INFO:
+["hbarrier_3_f.p3d","a3\structures_f\mil\fortification\hbarrier_3_f.p3d",false,[0,0,-0.798342],4500]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_mpt_co.paa",""]
+
+ANIMATION NAMES:
+[]
+
+
+
+
+
+NAME:
+M2 Machine Gun
+
+CLASS:
+CUP_B_M2StaticMG_US
+
+VEHICLE CLASS:
+Static
+
+KIND OF:
+Land
+
+SIZE (Width, Length, Height):
+[2.96789,3.06063,2.10861]
+
+SELECTION NAMES:
+feedtray_cover, 
+charging_handle, 
+bolt, 
+otocvez, 
+otochlaven_shake, 
+zasleh, 
+magazine, 
+recoil, 
+bullet001, 
+bullet002, 
+bullet003, 
+bullet004, 
+bullet005, 
+bullet006, 
+bullet007, 
+bullet008, 
+bullet009, 
+bullet010, 
+bullet011, 
+bullet012, 
+leg_right, 
+leg_left, 
+gunner, 
+proxy:\ca\temp\proxies\m2\gunner.001, 
+proxy:\a3\data_f\proxies\muzzle_flash\mf_machinegun_m2_50.001, 
+zbytek
+
+PARENTS:
+["CUP_B_M2StaticMG_US","CUP_M2StaticMG_base","StaticMGWeapon","StaticWeapon","LandVehicle","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cup_m2_mg.p3d","cup\weapons\cup_weapons_staticweapons\m2\cup_m2_mg.p3d",true,[0,0,-1.0543],150]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+[]
+
+TEXTURES:
+[]
+
+ANIMATION NAMES:
+["mainturret","maingun","mainturret_destructx","mainturret_destructy","mainturret_destructz","maingun_destructx","maingun_destructy","maingun_destructz","magazine_destruct","ammo_belt_destruct","bolt_destruct","charging_handle_destruct","optics_proxy_destruct","muzzleflash","muzzleflashrot","ammo_belt_rotation","barrel_recoil","bolt_recoil","turret_shake","turret_shake_aside","charging_handle_shake","feedtray_cover_up","feedtray_cover_down","magazine_hide","ammo_belt_hide","bolt_reload_begin","bolt_reload_end","charging_handle_reload_begin","charging_handle_reload_end","bullet001","bullet002","bullet003","bullet004","bullet005","bullet006","bullet007","bullet008","bullet009","bullet010","bullet011","bullet012","gunner_body_rot_1","gunner_r_leg_rot_1","gunner_r_leg_move_1","gunner_l_leg_move_1","gunner_l_leg_rot_turret_1","gunner_r_leg_rot_turret_1","gunner_r_leg_rot_turret_2","maigunner_turret","mainturret_gunnerview","maingun_gunnerview"]
+
+
+
+
+
+NAME:
+Rifleman
+
+CLASS:
+B_Soldier_F
+
+VEHICLE CLASS:
+Men
+
+KIND OF:
+Man
+
+SIZE (Width, Length, Height):
+[1.6,2.2,2]
+
+SELECTION NAMES:
+spine3, 
+head, 
+lefthand, 
+righthand, 
+rightupleg, 
+weapon, 
+proxy:\a3\characters_f\proxies\weapon.001, 
+proxy:\a3\characters_f\proxies\pistol.001, 
+proxy:\a3\characters_f\proxies\binoculars.001, 
+proxy:\a3\characters_f\proxies\launcher.001, 
+launcher, 
+nvg, 
+proxy:\a3\characters_f\proxies\nvg.001, 
+proxy:\a3\characters_f\proxies\flag.001, 
+proxy:\a3\characters_f\proxies\equipment.001, 
+proxy:\a3\characters_f\proxies\backpack.001, 
+proxy:\a3\characters_f\proxies\pistol_holstered.001, 
+proxy:\a3\characters_f\proxies\head_male.001, 
+proxy:\a3\characters_f\proxies\glasses.001, 
+proxy:\a3\characters_f\proxies\headgear.001, 
+proxy:\a3\characters_f\proxies\hair.001, 
+proxy:\a3\characters_f\proxies\backpack2.001, 
+proxy:\a3\characters_f\proxies\radio.001, 
+body_proxy, 
+head_proxy, 
+proxy:\a3\characters_f\templatertm\bysta.001, 
+proxy:\a3\characters_f\proxies\hmd.001, 
+spine2, 
+rightshoulder, 
+rightarm, 
+rightarmroll, 
+rightforearm, 
+spine1, 
+rightforearmroll, 
+righthandring, 
+righthandthumb1, 
+righthandthumb2, 
+righthandindex1, 
+righthandmiddle1, 
+righthandpinky1, 
+righthandring1, 
+pelvis, 
+spine, 
+leftshoulder, 
+leftarm, 
+leftarmroll, 
+leftforearm, 
+leftforearmroll, 
+neck, 
+lefthandring, 
+lefthandthumb1, 
+lefthandthumb2, 
+lefthandindex1, 
+lefthandmiddle1, 
+lefthandring1, 
+lefthandpinky1, 
+leftupleg, 
+rightuplegroll, 
+leftuplegroll, 
+rightleg, 
+leftleg, 
+leftlegroll, 
+leftfoot, 
+lefttoebase, 
+rightlegroll, 
+rightfoot, 
+righttoebase, 
+righthandpinky2, 
+righthandring2, 
+righthandindex2, 
+righthandmiddle2, 
+righthandthumb3, 
+righthandring3, 
+righthandpinky3, 
+righthandmiddle3, 
+righthandindex3, 
+lefthandpinky2, 
+lefthandring2, 
+lefthandindex2, 
+lefthandmiddle2, 
+lefthandthumb3, 
+lefthandring3, 
+lefthandpinky3, 
+lefthandmiddle3, 
+lefthandindex3, 
+camo, 
+injury_hands, 
+injury_body, 
+injury_legs, 
+injury_head
+
+PARENTS:
+["B_Soldier_F","B_Soldier_base_F","SoldierWB","CAManBase","Man","Land","AllVehicles","All"]
+
+MODEL INFO:
+["cbrn_suit_01_f.p3d","a3\characters_f_enoch\uniforms\cbrn_suit_01_f.p3d",true,[0,0,0],87.5]
+
+OBJECT TYPE:
+8 - TypeVehicle - Some entity added by game
+
+MATERIALS:
+["",""]
+
+TEXTURES:
+["a3\characters_f_enoch\uniforms\data\cbrn_suit_01_white_co.paa",""]
+
+ANIMATION NAMES:
+[]
