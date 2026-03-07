@@ -113,5 +113,14 @@ class CfgRemoteExec
         class LB_fnc_tryPurchaseVehicleCrateServer { allowedTargets = 2; };
         class LB_fnc_tryPurchaseServiceCrateServer { allowedTargets = 2; };
         class LB_fnc_addMoneyServer { allowedTargets = 2; };
+
+        class LBMQ_fnc_tryStartTask001ForPlayer { allowedTargets = 0; };
+        class LBMQ_fnc_startTask001Server { allowedTargets = 2; };
+        class LBMQ_fnc_completeTask001Server { allowedTargets = 2; };
+        class LBMQ_fnc_onTask001DialogueFinishedServer { allowedTargets = 2; };
+        class LBMQ_fnc_startTask002Server { allowedTargets = 2; };
+        class LBMQ_fnc_createTask001Local { allowedTargets = 1; };
+        class LBMQ_fnc_updateTaskLocal { allowedTargets = 1; };
+        class LBMQ_fnc_playTask001DialogueLocal { allowedTargets = 1; };
     };
 };

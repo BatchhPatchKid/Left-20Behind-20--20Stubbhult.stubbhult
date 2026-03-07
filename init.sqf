@@ -204,6 +204,17 @@ missionNamespace setVariable ["FN_pigWisdom_AI", compileFinal preprocessFileLine
 missionNamespace setVariable ["FN_darknessCursor_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_darknessCursor_AI.sqf"];
 missionNamespace setVariable ["FN_summonLeaper_AI", compileFinal preprocessFileLineNumbers "ritualPowers\AI\FN_summonLeaper_AI.sqf"];
 
+//Main Quest Line
+missionNamespace setVariable ["LBMQ_fnc_tryStartTask001ForPlayer", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_tryStartTask001ForPlayer.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_startTask001Server", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_startTask001Server.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_completeTask001Server", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_completeTask001Server.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_registerTask001OfficeTriggerServer", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_registerTask001OfficeTriggerServer.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_onTask001DialogueFinishedServer", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_onTask001DialogueFinishedServer.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_createTask001Local", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_createTask001Local.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_updateTaskLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\fn_updateTaskLocal.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_playTask001DialogueLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_playTask001DialogueLocal.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_startTask002Server", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_startTask002Server.sqf"];
+
 // Money System
 missionNamespace setVariable ["FN_moneyInit", compileFinal preprocessFileLineNumbers "MoneySystem\moneyInit.sqf"];
 [] spawn (missionNamespace getVariable "FN_moneyInit");

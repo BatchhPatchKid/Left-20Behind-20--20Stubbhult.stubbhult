@@ -67,15 +67,17 @@ for [{_i = 5}, {_i > 0}, {_i = _i - 1}] do {
 };
 
 switch (_factionSelected) do {
-	case "BB": { _player setPos ([(getPos traderCache_BB), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "SU": { _player setPos ([(getPos traderCache_SU), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "DT": { _player setPos ([(getPos traderCache_DT), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "NH": { _player setPos ([(getPos traderCache_NH), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "PF": { _player setPos ([(getPos traderCache_PF), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "Bandit": { _player setPos ([(getPos traderCache_Bandit), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "TRB": { _player setPos ([(getPos traderCache_TRB), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "ALF": { _player setPos ([(getPos traderCache_ALF), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "WO": { _player setPos ([(getPos traderCache_WO), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
-	case "RC": { _player setPos ([(getPos traderCache_RC), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "BB": { _player setPos ([(getPos bbTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "SU": { _player setPos ([(getPos suTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "DT": { _player setPos ([(getPos dtTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "NH": { _player setPos ([(getPos nhTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "PF": { _player setPos ([(getPos pfTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "Bandit": { _player setPos ([(getPos banditTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "TRB": { _player setPos ([(getPos trbTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "ALF": { _player setPos ([(getPos alfTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "WO": { _player setPos ([(getPos woTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
+	case "RC": { _player setPos ([(getPos rcTrader), 50, 500, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
 	default { _player setPos ([[6691.48,6780.95,0], 150, 2000, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
 };
+
+[_player] call (missionNamespace getVariable "LBMQ_fnc_tryStartTask001ForPlayer");
