@@ -4,17 +4,17 @@ if (!isServer) exitWith {};
 if (isNull _player) exitWith {};
 if (!isPlayer _player) exitWith {};
 
-private _scientist = missionNamespace getVariable ["LBMQ_task002Scientist", objNull];
-if (isNull _scientist) exitWith {};
+private _headDoctor = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
+if (isNull _headDoctor) exitWith {};
 
-private _existingActionId = missionNamespace getVariable ["LBMQ_task002ScientistTalkActionId", -1];
+private _existingActionId = missionNamespace getVariable ["LBMQ_task003DoctorTalkActionId", -1];
 if (_existingActionId >= 0) exitWith {};
 
-private _actionId = _scientist addAction [
-    "Talk to Scientist",
+private _actionId = _headDoctor addAction [
+    "Talk to Head Doctor",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
-        [_caller] remoteExecCall ["LBMQ_fnc_onTask002ScientistTalkedServer", 2];
+        [_caller] remoteExecCall ["LBMQ_fnc_onTask003ScientistTalkedServer", 2];
     },
     nil,
     1.5,
@@ -24,4 +24,4 @@ private _actionId = _scientist addAction [
     "_this distance _target < 4"
 ];
 
-missionNamespace setVariable ["LBMQ_task002ScientistTalkActionId", _actionId, true];
+missionNamespace setVariable ["LBMQ_task003DoctorTalkActionId", _actionId, true];

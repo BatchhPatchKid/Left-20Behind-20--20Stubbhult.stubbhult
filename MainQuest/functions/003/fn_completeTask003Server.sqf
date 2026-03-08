@@ -25,3 +25,13 @@ if (!isNull _flag) then {
 
 [_taskId, "SUCCEEDED"] remoteExecCall ["LBMQ_fnc_updateTaskLocal", _player];
 [] remoteExecCall ["LBMQ_fnc_playTask002DialogueLocal", _player];
+
+[_player] spawn {
+    params ["_taskOwner"];
+    sleep 20;
+
+    if (isNull _taskOwner) exitWith {};
+    if (!isPlayer _taskOwner) exitWith {};
+
+    [_taskOwner] call (missionNamespace getVariable "LBMQ_fnc_tryStartTask003ForPlayer");
+};

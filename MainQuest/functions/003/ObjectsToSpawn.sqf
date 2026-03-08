@@ -689,4 +689,15 @@ _waypoint setWaypointCompletionRadius 0;
 _waypoint setWaypointStatements ["true",""];
 _waypoint setWaypointScript "";
 
+
 _group8 setCurrentWaypoint [_group8, 1];
+private _medicalUnits = [
+    _object0,_object1,_object2,_object8,_object9,_object10,_object11,_object12,_object13,_object14,_object18,_object19,_object20,_object22,_object24,_object25
+];
+
+private _medicalCenter = _object4;
+private _headDoctor = _object25;
+
+missionNamespace setVariable ["LBMQ_task003CampCenter", _medicalCenter, true];
+missionNamespace setVariable ["LBMQ_task003HeadDoctor", _headDoctor, true];
+missionNamespace setVariable ["LBMQ_task003CampUnits", _medicalUnits, true];

@@ -152,5 +152,16 @@ class CfgRemoteExec
         class LBMQ_fnc_onTask002ScientistTalkedServer { allowedTargets = 2; };
         class LBMQ_fnc_createTask002Local { allowedTargets = 1; };
         class LBMQ_fnc_playTask002DialogueLocal { allowedTargets = 1; };
+		
+		class LBMQ_fnc_tryStartTask003ForPlayer { allowedTargets = 0; };
+        class LBMQ_fnc_startTask003Server { allowedTargets = 2; };
+        class LBMQ_fnc_completeTask003Server { allowedTargets = 2; };
+        class LBMQ_fnc_registerTask003ScientistActionServer { allowedTargets = 2; };
+        class LBMQ_fnc_onTask003ScientistTalkedServer { allowedTargets = 2; };
+        class LBMQ_fnc_createTask003Local { allowedTargets = 1; };
+        class LBMQ_fnc_playTask003DialogueLocal { allowedTargets = 1; };
+        class LBMQ_fnc_playTask003RadioIntroLocal { allowedTargets = 1; };
+        class LBMQ_fnc_playTask003BanditWarningLocal { allowedTargets = 1; };
+        class LBMQ_fnc_spawnTask003BanditAttackServer { allowedTargets = 2; };
     };
 };

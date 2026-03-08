@@ -222,6 +222,16 @@ missionNamespace setVariable ["LBMQ_fnc_onTask002ScientistTalkedServer", compile
 missionNamespace setVariable ["LBMQ_fnc_createTask002Local", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_createTask002Local.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_playTask002DialogueLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_playTask002DialogueLocal.sqf"];
 
+missionNamespace setVariable ["LBMQ_fnc_tryStartTask003ForPlayer", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_tryStartTask003ForPlayer.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_startTask003Server", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_startTask003Server.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_completeTask003Server", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_completeTask003Server.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_registerTask003ScientistActionServer", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_registerTask003ScientistActionServer.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_onTask003ScientistTalkedServer", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_onTask003ScientistTalkedServer.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_createTask003Local", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_createTask003Local.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_playTask003DialogueLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_playTask003DialogueLocal.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_playTask003RadioIntroLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_playTask003RadioIntroLocal.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_playTask003BanditWarningLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_playTask003BanditWarningLocal.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_spawnTask003BanditAttackServer", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_spawnTask003BanditAttackServer.sqf"];
 
 // Money System
 missionNamespace setVariable ["FN_moneyInit", compileFinal preprocessFileLineNumbers "MoneySystem\moneyInit.sqf"];

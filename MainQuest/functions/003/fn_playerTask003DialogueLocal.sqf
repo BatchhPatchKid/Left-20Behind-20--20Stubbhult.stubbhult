@@ -4,4 +4,4 @@ if (!isServer) exitWith {};
 if (isNull _player) exitWith {};
 if (!isPlayer _player) exitWith {};
 
-[_player] call (missionNamespace getVariable "LBMQ_fnc_completeTask002Server");
+[_player] call (missionNamespace getVariable "LBMQ_fnc_completeTask003Server");
