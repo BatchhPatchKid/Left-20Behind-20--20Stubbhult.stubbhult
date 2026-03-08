@@ -213,7 +213,15 @@ missionNamespace setVariable ["LBMQ_fnc_onTask001DialogueFinishedServer", compil
 missionNamespace setVariable ["LBMQ_fnc_createTask001Local", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_createTask001Local.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_updateTaskLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\fn_updateTaskLocal.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_playTask001DialogueLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_playTask001DialogueLocal.sqf"];
+
+missionNamespace setVariable ["LBMQ_fnc_tryStartTask002ForPlayer", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_tryStartTask002ForPlayer.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_startTask002Server", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_startTask002Server.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_completeTask002Server", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_completeTask002Server.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_registerTask002ScientistActionServer", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_registerTask002ScientistActionServer.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_onTask002ScientistTalkedServer", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_onTask002ScientistTalkedServer.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_createTask002Local", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_createTask002Local.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_playTask002DialogueLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_playTask002DialogueLocal.sqf"];
+
 
 // Money System
 missionNamespace setVariable ["FN_moneyInit", compileFinal preprocessFileLineNumbers "MoneySystem\moneyInit.sqf"];

@@ -8,4 +8,4 @@ private _completedTasks = _player getVariable ["LBMQ_completedTasks", []];
 if !("LBMQ_Task_001" in _completedTasks) exitWith {};
 if ((_player getVariable ["LBMQ_currentTask", ""]) isEqualTo "LBMQ_Task_002") exitWith {};
 
-[_player] call (missionNamespace getVariable "LBMQ_fnc_startTask002Server");
+[_player] call (missionNamespace getVariable "LBMQ_fnc_tryStartTask002ForPlayer");

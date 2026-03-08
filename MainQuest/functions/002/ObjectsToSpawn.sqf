@@ -794,3 +794,35 @@ _group9 setCurrentWaypoint [_group9, 2];
 
 
 _object45 moveInGunner _object44;
+
+private _campUnits = [
+    _object45,
+    _object46,
+    _object47,
+    _object48,
+    _object49,
+    _object50,
+    _object51,
+    _object52,
+    _object53,
+    _object58,
+    _object59,
+    _object60
+];
+
+private _campCenter = _object42;
+private _scientist = objNull;
+
+if (!isNull _campCenter) then {
+    private _sortedByCenter = [_campUnits, [], {
+        if (isNull _x) then {1e10} else {_x distance2D _campCenter}
+    }, "ASCEND"] call BIS_fnc_sortBy;
+
+    if !(_sortedByCenter isEqualTo []) then {
+        _scientist = _sortedByCenter select 0;
+    };
+};
+
+missionNamespace setVariable ["LBMQ_task002CampCenter", _campCenter, true];
+missionNamespace setVariable ["LBMQ_task002Scientist", _scientist, true];
+missionNamespace setVariable ["LBMQ_task002CampUnits", _campUnits, true];
