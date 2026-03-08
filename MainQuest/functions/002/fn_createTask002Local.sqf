@@ -1,27 +1,40 @@
-params ["_player"];
+params ["_taskData"];
 
-if (!isServer) exitWith {};
-if (isNull _player) exitWith {};
-if (!isPlayer _player) exitWith {};
+private _taskId = _taskData param [0, "LBMQ_Task_002"];
+private _title = _taskData param [1, "Retrieve Medical Supplies from Scientist"];
+private _description = _taskData param [2, "Travel to the camp and speak with the scientist in the middle. After the conversation, the medical crate is assumed to be secured."];
+private _destination = _taskData param [3, objNull];
 
-private _taskId = "LBMQ_Task_002";
-private _completedTasks = _player getVariable ["LBMQ_completedTasks", []];
-private _isTaskActive = _player getVariable ["LBMQ_task002Active", false];
-private _currentTask = _player getVariable ["LBMQ_currentTask", ""];
+private _destinationArg = objNull;
 
-if (!_isTaskActive) exitWith {};
-if !(_currentTask isEqualTo _taskId) exitWith {};
-if (_taskId in _completedTasks) exitWith {};
-
-_completedTasks pushBackUnique _taskId;
-_player setVariable ["LBMQ_completedTasks", _completedTasks, true];
-_player setVariable ["LBMQ_task002Active", false, true];
-
-private _flag = missionNamespace getVariable ["LBMQ_task002ProtectionFlag", objNull];
-if (!isNull _flag) then {
-    deleteVehicle _flag;
-    missionNamespace setVariable ["LBMQ_task002ProtectionFlag", objNull, true];
+if (_destination isEqualType objNull) then {
+    if (!isNull _destination) then {
+        _destinationArg = _destination;
+    };
+} else {
+    if (_destination isEqualType []) then {
+        if ((count _destination) >= 2) then {
+            _destinationArg = _destination;
+        };
+    } else {
+        if (_destination isEqualType "") then {
+            if (_destination != "") then {
+                _destinationArg = _destination;
+            };
+        };
+    };
 };
 
-[_taskId, "SUCCEEDED"] remoteExecCall ["LBMQ_fnc_updateTaskLocal", _player];
-[] remoteExecCall ["LBMQ_fnc_playTask002DialogueLocal", _player];
+[
+    player,
+    _taskId,
+    [_description, _title, _title],
+    _destinationArg,
+    "ASSIGNED",
+    1,
+    true,
+    "",
+    false
+] call BIS_fnc_taskCreate;
+
+[_taskId, true] call BIS_fnc_taskSetCurrent;

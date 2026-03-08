@@ -14,5 +14,4 @@ if !(_currentTask isEqualTo _taskId) exitWith {};
 if (isNull _scientist) exitWith {};
 if (_player distance _scientist > 6) exitWith {};
 
-[] remoteExecCall ["LBMQ_fnc_playTask002DialogueLocal", _player];
 [_player] call (missionNamespace getVariable "LBMQ_fnc_completeTask002Server");

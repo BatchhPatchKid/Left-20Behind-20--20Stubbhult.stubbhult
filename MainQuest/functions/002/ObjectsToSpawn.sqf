@@ -379,6 +379,7 @@ _group8 selectLeader _object53;
     _unit call BIN_fnc_CBRNHoseInit;
     ['_object53_nextFrameHandle', 'onEachFrame'] call BIS_fnc_removeStackedEventHandler;
 }, [_object53]] call BIS_fnc_addStackedEventHandler;
+_object53 enableAI "Path";
 
 
 _object54 = createVehicle ["Land_PortableLight_double_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
@@ -811,17 +812,7 @@ private _campUnits = [
 ];
 
 private _campCenter = _object42;
-private _scientist = objNull;
-
-if (!isNull _campCenter) then {
-    private _sortedByCenter = [_campUnits, [], {
-        if (isNull _x) then {1e10} else {_x distance2D _campCenter}
-    }, "ASCEND"] call BIS_fnc_sortBy;
-
-    if !(_sortedByCenter isEqualTo []) then {
-        _scientist = _sortedByCenter select 0;
-    };
-};
+private _scientist = _object53;
 
 missionNamespace setVariable ["LBMQ_task002CampCenter", _campCenter, true];
 missionNamespace setVariable ["LBMQ_task002Scientist", _scientist, true];
