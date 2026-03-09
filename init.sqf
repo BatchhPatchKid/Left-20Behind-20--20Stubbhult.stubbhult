@@ -77,6 +77,7 @@ missionNamespace setVariable ["inclimateWeather", compileFinal preprocessFileLin
 missionNamespace setVariable ["radSystem", compileFinal preprocessFileLineNumbers "Ambient\radSystem.sqf"];
 missionNamespace setVariable ["randomEncounters", compileFinal preprocessFileLineNumbers "Ambient\randomEncounters.sqf"];
 missionNamespace setVariable ["temperature", compileFinal preprocessFileLineNumbers "Ambient\temperature.sqf"];
+missionNamespace setVariable ["fn_megaRadZone", compileFinal preprocessFileLineNumbers "Ambient\fn_megaRadZone.sqf"];
 
 /* Economy System (root) */
 missionNamespace setVariable ["FN_Conversations", compileFinal preprocessFileLineNumbers "Economy System\Conversations.sqf"];
