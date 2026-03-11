@@ -104,6 +104,7 @@ LB_fnc_geiger = {
 
 LB_fnc_highExposureEffects = {
   params ["_unit", "_radValue"];
+  
   if (_radValue <= 90) exitWith {};
   // Local camera shake on owner (tick runs client-side; just do it)
   addCamShake [0.5, 1, 10];
@@ -220,8 +221,6 @@ LB_fnc_radiationTick = {
       // Cooldown: subtract 0.5 rads (additive write, not absolute)
       private _curr = _unit getVariable ["Rad", 0];
       _unit setVariable ["Rad", (_curr - 0.5) max 0, true];
-      // optional: back off when quiet
-      // _tick = 10;  // keep or remove up to you; fixed 5s is fine too
     };
 
     sleep _tick;

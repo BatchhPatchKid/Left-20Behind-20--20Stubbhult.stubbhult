@@ -80,4 +80,4 @@ switch (_factionSelected) do {
 	default { _player setPos ([[6691.48,6780.95,0], 150, 2000, 5, 0, 20, 0, [], []] call BIS_fnc_findSafePos); };
 };
 
-[_player] call (missionNamespace getVariable "LBMQ_fnc_tryStartTask001ForPlayer");
+["tryStart", _player] call (missionNamespace getVariable "LBMQ_fnc_task001Main");
