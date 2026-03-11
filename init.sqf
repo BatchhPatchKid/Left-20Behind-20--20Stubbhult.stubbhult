@@ -210,7 +210,7 @@ missionNamespace setVariable ["LBMQ_fnc_taskCreateLocal", compileFinal preproces
 missionNamespace setVariable ["LBMQ_fnc_resolveTaskDestination", compileFinal preprocessFileLineNumbers "MainQuest\functions\helpers\fn_resolveTaskDestination.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_playDialogueLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\helpers\fn_playDialogueLocal.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_updateTaskLocal", compileFinal preprocessFileLineNumbers "MainQuest\functions\fn_updateTaskLocal.sqf"];
-
+missionNamespace setVariable ["LBMQ_fnc_mainQuestDebugAssign", compileFinal preprocessFileLineNumbers "MainQuest\functions\helpers\fn_mainQuestDebugAssign.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_task001Main", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_task001Main.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_task002Main", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_task002Main.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_task003Main", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_task003Main.sqf"];
@@ -499,6 +499,55 @@ if (!isDedicated) then {
 
 	private _actionPray = ["pray","Pray","",{[player spawn FN_pray]},{true}] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionPray] call ace_interact_menu_fnc_addActionToClass;
+	
+	missionNamespace setVariable ["LBMQ_mainQuestDebugEnabled", false];
+	private _mainQuestDebugFolder = ["Main_Quest_Debug", "Main Quest Debug", "", {}, {true}] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions", "Scenario_Actions"], _mainQuestDebugFolder] call ace_interact_menu_fnc_addActionToClass;
+
+	private _enableMainQuestDebug = [
+		"LBMQ_Enable_Debug",
+		"Enable Main Quest Debug",
+		"",
+		{ missionNamespace setVariable ["LBMQ_mainQuestDebugEnabled", true]; },
+		{ !(missionNamespace getVariable ["LBMQ_mainQuestDebugEnabled", false]) }
+	] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions", "Scenario_Actions", "Main_Quest_Debug"], _enableMainQuestDebug] call ace_interact_menu_fnc_addActionToClass;
+
+	private _giveTask001 = [
+		"LBMQ_Give_Task001",
+		"Give Task001",
+		"",
+		{ [player, "Task001"] call (missionNamespace getVariable "LBMQ_fnc_mainQuestDebugAssign"); },
+		{ missionNamespace getVariable ["LBMQ_mainQuestDebugEnabled", false] }
+	] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions", "Scenario_Actions", "Main_Quest_Debug"], _giveTask001] call ace_interact_menu_fnc_addActionToClass;
+
+	private _giveTask002 = [
+		"LBMQ_Give_Task002",
+		"Give Task002",
+		"",
+		{ [player, "Task002"] call (missionNamespace getVariable "LBMQ_fnc_mainQuestDebugAssign"); },
+		{ missionNamespace getVariable ["LBMQ_mainQuestDebugEnabled", false] }
+	] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions", "Scenario_Actions", "Main_Quest_Debug"], _giveTask002] call ace_interact_menu_fnc_addActionToClass;
+
+	private _giveTask003 = [
+		"LBMQ_Give_Task003",
+		"Give Task003",
+		"",
+		{ [player, "Task003"] call (missionNamespace getVariable "LBMQ_fnc_mainQuestDebugAssign"); },
+		{ missionNamespace getVariable ["LBMQ_mainQuestDebugEnabled", false] }
+	] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions", "Scenario_Actions", "Main_Quest_Debug"], _giveTask003] call ace_interact_menu_fnc_addActionToClass;
+
+	private _disableMainQuestDebug = [
+		"LBMQ_Disable_Debug",
+		"Disable Main Quest Debug",
+		"",
+		{ missionNamespace setVariable ["LBMQ_mainQuestDebugEnabled", false]; },
+		{ missionNamespace getVariable ["LBMQ_mainQuestDebugEnabled", false] }
+	] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions", "Scenario_Actions", "Main_Quest_Debug"], _disableMainQuestDebug] call ace_interact_menu_fnc_addActionToClass;
 	
 	//Ace Survival System
 	private _actionDrinkWater = ["Drink", "Drink", "", { }, {true}] call ace_interact_menu_fnc_createAction;
