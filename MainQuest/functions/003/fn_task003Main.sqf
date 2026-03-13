@@ -182,12 +182,19 @@ switch (_mode) do {
             ["Scientist", "Well Survivor, if you would, please help us take out those bandits. It would be greatly appreciated.", 0, 7]
         ];
 
-        [_lines, [], objNull, {}] spawn (missionNamespace getVariable "LBMQ_fnc_playDialogueLocal");
+        private _headDoctor = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
+
+        [_lines, ["LBMQ_task003_trader_01", "LBMQ_task003_trader_02"], _headDoctor, {}] spawn (missionNamespace getVariable "LBMQ_fnc_playDialogueLocal");
     };
 
     case "playRadioIntroLocal": {
         [] spawn {
             uiSleep 1;
+
+            private _radioSource = player;
+            if (isNull _radioSource) exitWith {};
+
+            [_radioSource, ["LBMQ_task003_radio_01", 100, 1]] remoteExecCall ["say3D", clientOwner];
             systemChat "SU: Survivor, this is Dispatch, go ahead and bring the medical crate to coordinates 110224. A temporary medical tent was raised in that area. Dispatch out.";
         };
     };
@@ -195,6 +202,11 @@ switch (_mode) do {
     case "playBanditWarningLocal": {
         [] spawn {
             uiSleep 1;
+
+            private _radioSource = player;
+            if (isNull _radioSource) exitWith {};
+
+            [_radioSource, ["LBMQ_task003_radio_02", 100, 1]] remoteExecCall ["say3D", clientOwner];
             systemChat "Dispatch: All units around coordinates 110224, be advised, we've gotten reports of a large bandit group heading to your location. Be prepared for a fight. Dispatch out.";
         };
     };

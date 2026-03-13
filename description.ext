@@ -15,7 +15,13 @@ class CfgSounds {
         rvg_geiger_3,
         heartbeat,
         LBMQ_task001_trader_01,
-        LBMQ_task001_trader_02
+        LBMQ_task001_trader_02,
+        LBMQ_task002_trader_01,
+        LBMQ_task002_trader_02,
+        LBMQ_task003_trader_01,
+        LBMQ_task003_trader_02,
+        LBMQ_task003_radio_01,
+        LBMQ_task003_radio_02
     };
     class laugh_1 {
         name = "laugh_1";
@@ -75,6 +81,37 @@ class CfgSounds {
 	class LBMQ_task001_trader_02 {
         name = "LBMQ_task001_trader_02";
         sound[] = {"MainQuest\dialogueAudios\Task001\LBMQ_task001_trader_02.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBMQ_task002_trader_01 {
+        name = "LBMQ_task002_trader_01";
+        sound[] = {"MainQuest\dialogueAudios\Task002\LBMQ_task002_trader_01.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBMQ_task002_trader_02 {
+        name = "LBMQ_task002_trader_02";
+        sound[] = {"MainQuest\dialogueAudios\Task002\LBMQ_task002_trader_02.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBMQ_task003_trader_01 {
+        name = "LBMQ_task003_trader_01";
+        sound[] = {"MainQuest\dialogueAudios\Task003\LBMQ_task003_trader_01.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBMQ_task003_trader_02 {
+        name = "LBMQ_task003_trader_02";
+        sound[] = {"MainQuest\dialogueAudios\Task003\LBMQ_task003_trader_02.ogg", 1, 1};
+        titles[] = {};
+    };
+
+	class LBMQ_task003_radio_01 {
+        name = "LBMQ_task003_radio_01";
+        sound[] = {"MainQuest\dialogueAudios\Task003\LBMQ_task003_radio_01.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBMQ_task003_radio_02 {
+        name = "LBMQ_task003_radio_02";
+        sound[] = {"MainQuest\dialogueAudios\Task003\LBMQ_task003_radio_02.ogg", 1, 1};
         titles[] = {};
     };
 };

@@ -135,6 +135,8 @@ switch (_mode) do {
             ["Scientist", "Just trust me, you’ll want to take the medicine. Now go, before the medicine goes bad out in this weather", 0, 6]
         ];
 
-        [_lines, [], objNull, {}] spawn (missionNamespace getVariable "LBMQ_fnc_playDialogueLocal");
+        private _scientist = missionNamespace getVariable ["LBMQ_task002Scientist", objNull];
+
+        [_lines, ["LBMQ_task002_trader_01", "LBMQ_task002_trader_02"], _scientist, {}] spawn (missionNamespace getVariable "LBMQ_fnc_playDialogueLocal");
     };
 };
