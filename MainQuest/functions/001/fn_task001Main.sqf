@@ -2,6 +2,25 @@ params ["_mode", ["_payload", objNull]];
 
 private _taskId = "LBMQ_Task_001";
 
+private _resolveTask001RepresentativePosition = {
+    private _representative = missionNamespace getVariable ["LBMQ_task001Representative", objNull];
+    if (!isNull _representative) exitWith { getPosATL _representative };
+
+    private _officeAnchor = missionNamespace getVariable ["LBMQ_task001OfficeAnchor", objNull];
+    private _traderObj = if (!isNil "suTrader") then { suTrader } else { objNull };
+    private _destination = [[_officeAnchor, _traderObj], "LBMQ_Task001_Representative"] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
+
+    if (_destination isEqualTo []) then {
+        _destination = [[_officeAnchor, _traderObj], "LBMQ_Task001_Office"] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
+    };
+
+    if (_destination isEqualTo []) then {
+        _destination = missionNamespace getVariable ["LBMQ_task001RepresentativeSpawnPos", []];
+    };
+
+    _destination
+};
+
 switch (_mode) do {
     case "tryStart": {
         private _player = _payload;
@@ -27,14 +46,17 @@ switch (_mode) do {
         _player setVariable ["LBMQ_currentTask", _taskId, true];
         _player setVariable ["LBMQ_task001Active", true, true];
 
-        private _officeAnchor = missionNamespace getVariable ["LBMQ_task001OfficeAnchor", objNull];
-        private _traderObj = if (!isNil "suTrader") then { suTrader } else { objNull };
-        private _taskDestination = [[_officeAnchor, _traderObj], "LBMQ_Task001_Office"] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
+        if !(missionNamespace getVariable ["LBMQ_task001ObjectsSpawned", false]) then {
+            call compile preprocessFileLineNumbers "MainQuest\functions\001\ObjectsToSpawn.sqf";
+            missionNamespace setVariable ["LBMQ_task001ObjectsSpawned", true, true];
+        };
+
+        private _taskDestination = call _resolveTask001RepresentativePosition;
 
         private _taskData = [
             _taskId,
-            "Speak with Survivor's Union Contractor",
-            "Speak with the Survivor’s Union contractor to possibly establish contact with PMC Group Alpha, and explain your situation to them.",
+            "Talk to Survivor's Union Representative",
+            "Speak with a Survivor’s Union representative to possibly establish contact with PMC Group Alpha, and explain your situation to them.",
             _taskDestination,
             ""
         ];
@@ -50,9 +72,7 @@ switch (_mode) do {
         private _existingTrigger = _player getVariable ["LBMQ_task001OfficeTrigger", objNull];
         if (!isNull _existingTrigger) then { deleteVehicle _existingTrigger; };
 
-        private _officeAnchor = missionNamespace getVariable ["LBMQ_task001OfficeAnchor", objNull];
-        private _traderObj = if (!isNil "suTrader") then { suTrader } else { objNull };
-        private _officePos = [[_officeAnchor, _traderObj], "LBMQ_Task001_Office"] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
+        private _officePos = call _resolveTask001RepresentativePosition;
         if (_officePos isEqualTo []) exitWith {};
 
         private _trigger = createTrigger ["EmptyDetector", _officePos, false];
@@ -88,6 +108,12 @@ switch (_mode) do {
             _player setVariable ["LBMQ_task001OfficeTrigger", objNull, false];
         };
 
+        private _task001Flag = missionNamespace getVariable ["LBMQ_task001RedFlag", objNull];
+        if (!isNull _task001Flag) then {
+            deleteVehicle _task001Flag;
+            missionNamespace setVariable ["LBMQ_task001RedFlag", objNull, true];
+        };
+
         [_taskId, "SUCCEEDED"] remoteExecCall ["LBMQ_fnc_updateTaskLocal", _player];
         ["playDialogueLocal", objNull] remoteExecCall ["LBMQ_fnc_task001Main", _player];
     };
@@ -108,7 +134,10 @@ switch (_mode) do {
     };
 
     case "playDialogueLocal": {
-        private _traderSource = if (!isNil "suTrader" && {!isNull suTrader}) then { suTrader } else { missionNamespace getVariable ["LBMQ_task001OfficeAnchor", objNull] };
+        private _traderSource = missionNamespace getVariable ["LBMQ_task001Representative", objNull];
+        if (isNull _traderSource) then {
+            _traderSource = if (!isNil "suTrader" && {!isNull suTrader}) then { suTrader } else { missionNamespace getVariable ["LBMQ_task001OfficeAnchor", objNull] };
+        };
 
         private _lines = [
             ["Player", "Hello Contractor, I need to establish contact with PMC Group Alpha asap, can you assist with this?", 0, 3],
