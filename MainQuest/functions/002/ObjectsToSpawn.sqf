@@ -373,6 +373,7 @@ _object56 = createVehicle ["rhsusf_m1025_w_s_m2", [0, 0, 0], [], 0, "CAN_COLLIDE
 _object56 setVectorDirAndUp [[0.367162,0.930103,-0.00997901],[0.00684127,0.0080277,0.999944]];
 _object56 setPosASL [11915.7,2819.25,10.9977];
 [_object56, ["standard",1], ["hide_snorkel",0,"hide_CIP",0,"hide_BFT",0,"hide_Antenna",0,"hide_A2_Parts",0,"Hide_A2Bumper",0,"Hide_Brushguard",1], true] call BIS_fnc_initVehicle;
+_object56 lock 2;
 
 clearItemCargoGlobal _object56;
 clearWeaponCargoGlobal _object56;

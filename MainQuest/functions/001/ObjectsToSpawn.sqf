@@ -645,7 +645,7 @@ _waypoint setWaypointScript "";
 
 _group8 setCurrentWaypoint [_group8, 1];
 
-missionNamespace setVariable ["LBMQ_task001Representative", _object2, true];
+missionNamespace setVariable ["LBMQ_task001Representative", _object34, true];
 missionNamespace setVariable ["LBMQ_task001CampCenter", _object0, true];
 missionNamespace setVariable ["LBMQ_task001RedFlag", _object1, true];
 missionNamespace setVariable ["LBMQ_task001CampUnits", [_object2, _object3, _object4, _object5, _object6], true];

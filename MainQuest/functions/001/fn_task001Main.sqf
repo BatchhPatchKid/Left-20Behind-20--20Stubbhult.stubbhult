@@ -27,7 +27,7 @@ switch (_mode) do {
         if (isNull _player || {!isPlayer _player}) exitWith {};
 
         if (isServer) exitWith {
-            ["start", _player] call (missionNamespace getVariable "LBMQ_fnc_task001Main");
+             ["start", _player] call (missionNamespace getVariable "LBMQ_fnc_task001Main");
         };
 
         if (_player != player) exitWith {};
@@ -52,8 +52,20 @@ switch (_mode) do {
         };
 
         private _taskDestination = call _resolveTask001RepresentativePosition;
+        private _representative = missionNamespace getVariable ["LBMQ_task001Representative", objNull];
+        private _campCenter = missionNamespace getVariable ["LBMQ_task001CampCenter", objNull];
 
-        ["LBMQ_task001RedFlag", _taskDestination] call (missionNamespace getVariable "LBMQ_fnc_createTaskFlag");
+        private _fallbackFlagPos = if (!isNull _representative) then {
+            getPosATL _representative
+        } else {
+            if (!isNull _campCenter) then { getPosATL _campCenter } else { [10880.8, 3800.54, 0] }
+        };
+
+        if (_taskDestination isEqualTo []) then {
+            _taskDestination = _fallbackFlagPos;
+        };
+
+        ["LBMQ_task001RedFlag", _taskDestination, _fallbackFlagPos] call (missionNamespace getVariable "LBMQ_fnc_createTaskFlag");
 
         private _taskData = [
             _taskId,
@@ -64,30 +76,47 @@ switch (_mode) do {
         ];
 
         ["createLocal", _taskData] remoteExecCall ["LBMQ_fnc_task001Main", _player];
-        ["registerTrigger", _player] call (missionNamespace getVariable "LBMQ_fnc_task001Main");
+        ["registerRepresentativeAction", _player] call (missionNamespace getVariable "LBMQ_fnc_task001Main");
     };
 
-    case "registerTrigger": {
+    case "registerRepresentativeAction": {
         private _player = _payload;
         if (!isServer || {isNull _player} || {!isPlayer _player}) exitWith {};
 
-        private _existingTrigger = _player getVariable ["LBMQ_task001OfficeTrigger", objNull];
-        if (!isNull _existingTrigger) then { deleteVehicle _existingTrigger; };
+        private _representative = missionNamespace getVariable ["LBMQ_task001Representative", objNull];
+        if (isNull _representative) exitWith {};
 
-        private _officePos = call _resolveTask001RepresentativePosition;
-        if (_officePos isEqualTo []) exitWith {};
+        private _existingActionId = missionNamespace getVariable ["LBMQ_task001RepresentativeTalkActionId", -1];
+        if (_existingActionId >= 0) exitWith {};
 
-        private _trigger = createTrigger ["EmptyDetector", _officePos, false];
-        _trigger setVariable ["LBMQ_owner", _player, false];
-        _trigger setTriggerArea [6, 6, 0, false, 3];
-        _trigger setTriggerActivation ["ANYPLAYER", "PRESENT", false];
-        _trigger setTriggerTimeout [0, 0, 0, false];
+        private _actionId = _representative addAction [
+            "Speak with SU Representative",
+            {
+                params ["_target", "_caller", "_actionId", "_arguments"];
+                ["onRepresentativeTalked", _caller] remoteExecCall ["LBMQ_fnc_task001Main", 2];
+            },
+            nil,
+            1.5,
+            true,
+            true,
+            "",
+            "_this distance _target < 4"
+        ];
 
-        private _onCondition = "private _owner = thisTrigger getVariable ['LBMQ_owner', objNull]; !isNull _owner && {alive _owner} && {_owner inArea thisTrigger}";
-        private _onActivation = "private _owner = thisTrigger getVariable ['LBMQ_owner', objNull]; if (!isNull _owner) then { ['complete', _owner] call (missionNamespace getVariable 'LBMQ_fnc_task001Main'); };";
-        _trigger setTriggerStatements [_onCondition, _onActivation, ""];
+        missionNamespace setVariable ["LBMQ_task001RepresentativeTalkActionId", _actionId, true];
+    };
 
-        _player setVariable ["LBMQ_task001OfficeTrigger", _trigger, false];
+    case "onRepresentativeTalked": {
+        private _player = _payload;
+        if (!isServer || {isNull _player} || {!isPlayer _player}) exitWith {};
+
+        private _isTaskActive = _player getVariable ["LBMQ_task001Active", false];
+        private _currentTask = _player getVariable ["LBMQ_currentTask", ""];
+        private _representative = missionNamespace getVariable ["LBMQ_task001Representative", objNull];
+
+        if (!_isTaskActive || {!(_currentTask isEqualTo _taskId)} || {isNull _representative} || {_player distance _representative > 6}) exitWith {};
+
+        ["complete", _player] call (missionNamespace getVariable "LBMQ_fnc_task001Main");
     };
 
     case "complete": {
@@ -104,10 +133,11 @@ switch (_mode) do {
         _player setVariable ["LBMQ_completedTasks", _completedTasks, true];
         _player setVariable ["LBMQ_task001Active", false, true];
 
-        private _officeTrigger = _player getVariable ["LBMQ_task001OfficeTrigger", objNull];
-        if (!isNull _officeTrigger) then {
-            deleteVehicle _officeTrigger;
-            _player setVariable ["LBMQ_task001OfficeTrigger", objNull, false];
+        private _representative = missionNamespace getVariable ["LBMQ_task001Representative", objNull];
+        private _talkActionId = missionNamespace getVariable ["LBMQ_task001RepresentativeTalkActionId", -1];
+        if (!isNull _representative && {_talkActionId >= 0}) then {
+            _representative removeAction _talkActionId;
+            missionNamespace setVariable ["LBMQ_task001RepresentativeTalkActionId", -1, true];
         };
 
         private _task001FlagToDelete = missionNamespace getVariable ["LBMQ_task001RedFlag", objNull];
