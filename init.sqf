@@ -214,6 +214,7 @@ missionNamespace setVariable ["LBMQ_fnc_mainQuestDebugAssign", compileFinal prep
 missionNamespace setVariable ["LBMQ_fnc_task001Main", compileFinal preprocessFileLineNumbers "MainQuest\functions\001\fn_task001Main.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_task002Main", compileFinal preprocessFileLineNumbers "MainQuest\functions\002\fn_task002Main.sqf"];
 missionNamespace setVariable ["LBMQ_fnc_task003Main", compileFinal preprocessFileLineNumbers "MainQuest\functions\003\fn_task003Main.sqf"];
+missionNamespace setVariable ["LBMQ_fnc_createTaskFlag", compileFinal preprocessFileLineNumbers "MainQuest\functions\helpers\fn_createTaskFlag.sqf"];
 
 // Money System
 missionNamespace setVariable ["FN_moneyInit", compileFinal preprocessFileLineNumbers "MoneySystem\moneyInit.sqf"];

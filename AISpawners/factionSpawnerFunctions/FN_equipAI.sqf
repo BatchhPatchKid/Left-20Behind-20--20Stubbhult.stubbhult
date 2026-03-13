@@ -579,6 +579,8 @@ switch _faction do {
 	case "SU": {
 		_facewearArraySelection = ["facewearSU"] call _arrayReturn;
 		_uniformArraySelection = ["uniformSU"] call _arrayReturn;
+		_headgearArraySelection = ["headgearSU"] call _arrayReturn;
+		_rifleArraySelection = ["rifleSU"] call _arrayReturn;
 		_firstAid = (random 5 < 1);
 		_water = (random 16 < 1);
 		_food = (random 20 < 1);

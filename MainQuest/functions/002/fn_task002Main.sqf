@@ -30,22 +30,14 @@ switch (_mode) do {
         if !(missionNamespace getVariable ["LBMQ_task002ObjectsSpawned", false]) then {
             call compile preprocessFileLineNumbers "MainQuest\functions\002\ObjectsToSpawn.sqf";
             missionNamespace setVariable ["LBMQ_task002ObjectsSpawned", true, true];
-
-            private _existingFlag = missionNamespace getVariable ["LBMQ_task002ProtectionFlag", objNull];
-            if (isNull _existingFlag) then {
-                private _flagAnchor = missionNamespace getVariable ["LBMQ_task002CampCenter", objNull];
-                private _flagPos = if (!isNull _flagAnchor) then { getPosATL _flagAnchor } else { [11926.9, 2821.33, 0] };
-
-                private _flag = createVehicle ["Flag_Red_F", _flagPos, [], 0, "CAN_COLLIDE"];
-                _flag setPos ([_flagPos, 5, 15, 3, 0, 20, 0] call BIS_fnc_findSafePos);
-                _flag setVariable ["LBMQ_task002Flag", true, true];
-                missionNamespace setVariable ["LBMQ_task002ProtectionFlag", _flag, true];
-            };
         };
 
         private _scientist = missionNamespace getVariable ["LBMQ_task002Scientist", objNull];
         private _campCenter = missionNamespace getVariable ["LBMQ_task002CampCenter", objNull];
         private _taskDestination = [[_scientist, _campCenter], ""] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
+
+		private _fallbackFlagPos = if (!isNull _campCenter) then { getPosATL _campCenter } else { [11926.9, 2821.33, 0] };
+        ["LBMQ_task002ProtectionFlag", _taskDestination, _fallbackFlagPos] call (missionNamespace getVariable "LBMQ_fnc_createTaskFlag");
 
         private _taskData = [
             _taskId,

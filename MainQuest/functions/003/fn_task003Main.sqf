@@ -34,23 +34,15 @@ switch (_mode) do {
             missionNamespace setVariable ["LBMQ_task003ObjectsSpawned", true, true];
         };
 
-        private _existingFlag = missionNamespace getVariable ["LBMQ_task003MedicalFlag", objNull];
-        if (isNull _existingFlag) then {
-            private _headDoctorForFlag = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
-            private _tentCenter = missionNamespace getVariable ["LBMQ_task003CampCenter", objNull];
-            private _flagPos = [[_headDoctorForFlag, _tentCenter], ""] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
-
-            if !(_flagPos isEqualTo []) then {
-                private _flag = createVehicle ["Flag_Red_F", _flagPos, [], 0, "CAN_COLLIDE"];
-                _flag setPos ([_flagPos, 5, 15, 3, 0, 20, 0] call BIS_fnc_findSafePos);
-                _flag setVariable ["LBMQ_task003Flag", true, true];
-                missionNamespace setVariable ["LBMQ_task003MedicalFlag", _flag, true];
-            };
-        };
-
         private _headDoctor = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
         private _taskDestination = [[_headDoctor], ""] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
+		
+		if (_taskDestination isEqualTo []) then {
+            _taskDestination = [11090, 4038, 0];
+        };
 
+        ["LBMQ_task003MedicalFlag", _taskDestination, [11090, 4038, 0]] call (missionNamespace getVariable "LBMQ_fnc_createTaskFlag");
+		
         private _taskData = [
             _taskId,
             "Bring Medicine Crate to SU Medical Tent",
@@ -150,7 +142,7 @@ switch (_mode) do {
         private _banditUnits = [];
         private _equipFn = missionNamespace getVariable ["FN_equipAI", {}];
 
-        private _fixedSpawnPos = [11004.1,4270.67,0];
+        private _fixedSpawnPos = [11013.6,4232.51,0];
 
 		{
 			private _group = createGroup independent;
