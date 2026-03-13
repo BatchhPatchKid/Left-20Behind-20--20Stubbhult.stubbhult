@@ -128,11 +128,9 @@ switch (_mode) do {
     case "playDialogueLocal": {
         private _lines = [
             ["Player", "Good afternoon soldier, I was sent here by the Survivor’s Union to pick up the medical supply crate", 0, 5],
-            ["Scientist", "Good, we were expecting you 15 minutes ago. No matter, at least you’re here now. How’s the Union doing? Any new illness breakouts in the area recently?", 0, 8],
+            ["Scientist", "Good, we were expecting you 15 minutes ago. No matter, at least you’re here now. How’s the Union doing? Any new illness breakouts in the area recently?", 1, 9],
             ["Player", "I don’t know. I just got here, so I’m not sure of the state of Survivor’s Union at the moment.", 0, 5],
-            ["Scientist", "I see, if that’s the case, when you get back to the Survivor’s Union Contractor’s Office, make sure you take a vial of this drug. It’ll keep you healthy from the outbreak.", 0, 8],
-            ["Player", "I thought there wasn’t a cure for the virus yet?", 0, 4],
-            ["Scientist", "Just trust me, you’ll want to take the medicine. Now go, before the medicine goes bad out in this weather", 0, 6]
+            ["Scientist", "I see, if that’s the case, when you get back to the Survivor’s Union Contractor’s Office, make sure you take a vial of this drug. It’ll keep you healthy from the outbreak.", 2, 0]
         ];
 
         private _scientist = missionNamespace getVariable ["LBMQ_task002Scientist", objNull];

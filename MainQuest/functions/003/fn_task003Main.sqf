@@ -116,18 +116,6 @@ switch (_mode) do {
 
         [_taskId, "SUCCEEDED"] remoteExecCall ["LBMQ_fnc_updateTaskLocal", _player];
         ["playDialogueLocal", objNull] remoteExecCall ["LBMQ_fnc_task003Main", _player];
-
-        [_player] spawn {
-            params ["_taskOwner"];
-            sleep 21;
-
-            if (!isNull _taskOwner && {isPlayer _taskOwner}) then {
-                ["playBanditWarningLocal", objNull] remoteExecCall ["LBMQ_fnc_task003Main", _taskOwner];
-            };
-
-            sleep 2;
-            ["spawnBanditAttack", objNull] call (missionNamespace getVariable "LBMQ_fnc_task003Main");
-        };
     };
 
     case "spawnBanditAttack": {
@@ -178,13 +166,44 @@ switch (_mode) do {
     case "playDialogueLocal": {
         private _lines = [
             ["Player", "Here's the medicine I was tasked to bring you.", 0, 4],
-            ["Scientist", "Very good, very good. I was informed about you by leadership. They want you to investigate a missing Survivor's Union Patrol west of here. I have all the details on this piece of paper.", 0, 9],
-            ["Scientist", "Well Survivor, if you would, please help us take out those bandits. It would be greatly appreciated.", 0, 7]
+            ["Scientist", "Very good, very good. I was informed about you by leadership. They want you to investigate a missing Survivor's Union Patrol west of here. I have all the details on this piece of paper.", 1, 9]
         ];
 
         private _headDoctor = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
 
-        [_lines, ["LBMQ_task003_trader_01", "LBMQ_task003_trader_02"], _headDoctor, {}] spawn (missionNamespace getVariable "LBMQ_fnc_playDialogueLocal");
+        [_lines, ["LBMQ_task003_trader_01", "LBMQ_task003_trader_02"], _headDoctor, {
+            ["playBanditWarningLocal", objNull] call (missionNamespace getVariable "LBMQ_fnc_task003Main");
+
+            [] spawn {
+                uiSleep 12;
+                ["playPostRadioDialogueLocal", objNull] call (missionNamespace getVariable "LBMQ_fnc_task003Main");
+            };
+        }] spawn (missionNamespace getVariable "LBMQ_fnc_playDialogueLocal");
+    };
+
+    case "playPostRadioDialogueLocal": {
+        private _headDoctor = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
+        private _lines = [
+            ["Scientist", "Well Survivor, if you would, please help us take out those bandits. It would be greatly appreciated.", 2, 7]
+        ];
+
+        [_lines, ["LBMQ_task003_trader_01", "LBMQ_task003_trader_02"], _headDoctor, {
+            ["onPostRadioDialogueFinished", player] remoteExecCall ["LBMQ_fnc_task003Main", 2];
+        }] spawn (missionNamespace getVariable "LBMQ_fnc_playDialogueLocal");
+    };
+
+    case "onPostRadioDialogueFinished": {
+        private _player = _payload;
+        if (!isServer || {isNull _player} || {!isPlayer _player}) exitWith {};
+
+        private _completedTasks = _player getVariable ["LBMQ_completedTasks", []];
+        if !(_taskId in _completedTasks) exitWith {};
+
+        [_player] spawn {
+            params ["_taskOwner"];
+            sleep 2;
+            ["spawnBanditAttack", objNull] call (missionNamespace getVariable "LBMQ_fnc_task003Main");
+        };
     };
 
     case "playRadioIntroLocal": {
