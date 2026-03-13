@@ -51,6 +51,16 @@ switch (_mode) do {
             missionNamespace setVariable ["LBMQ_task001ObjectsSpawned", true, true];
         };
 
+        private _task001Flag = missionNamespace getVariable ["LBMQ_task001RedFlag", objNull];
+        if (isNull _task001Flag) then {
+            private _flagPos = call _resolveTask001RepresentativePosition;
+            if !(_flagPos isEqualTo []) then {
+                _task001Flag = createVehicle ["Flag_Red_F", _flagPos, [], 0, "CAN_COLLIDE"];
+                _task001Flag setPos ([_flagPos, 5, 15, 3, 0, 20, 0] call BIS_fnc_findSafePos);
+                missionNamespace setVariable ["LBMQ_task001RedFlag", _task001Flag, true];
+            };
+        };
+
         private _taskDestination = call _resolveTask001RepresentativePosition;
 
         private _taskData = [
@@ -108,9 +118,9 @@ switch (_mode) do {
             _player setVariable ["LBMQ_task001OfficeTrigger", objNull, false];
         };
 
-        private _task001Flag = missionNamespace getVariable ["LBMQ_task001RedFlag", objNull];
-        if (!isNull _task001Flag) then {
-            deleteVehicle _task001Flag;
+        private _task001FlagToDelete = missionNamespace getVariable ["LBMQ_task001RedFlag", objNull];
+        if (!isNull _task001FlagToDelete) then {
+            deleteVehicle _task001FlagToDelete;
             missionNamespace setVariable ["LBMQ_task001RedFlag", objNull, true];
         };
 

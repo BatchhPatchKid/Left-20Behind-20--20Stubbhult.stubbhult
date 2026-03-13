@@ -37,7 +37,7 @@ switch (_mode) do {
                 private _flagPos = if (!isNull _flagAnchor) then { getPosATL _flagAnchor } else { [11926.9, 2821.33, 0] };
 
                 private _flag = createVehicle ["Flag_Red_F", _flagPos, [], 0, "CAN_COLLIDE"];
-                _flag setPosATL _flagPos;
+                _flag setPos ([_flagPos, 5, 15, 3, 0, 20, 0] call BIS_fnc_findSafePos);
                 _flag setVariable ["LBMQ_task002Flag", true, true];
                 missionNamespace setVariable ["LBMQ_task002ProtectionFlag", _flag, true];
             };

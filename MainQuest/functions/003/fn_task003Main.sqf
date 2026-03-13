@@ -34,6 +34,20 @@ switch (_mode) do {
             missionNamespace setVariable ["LBMQ_task003ObjectsSpawned", true, true];
         };
 
+        private _existingFlag = missionNamespace getVariable ["LBMQ_task003MedicalFlag", objNull];
+        if (isNull _existingFlag) then {
+            private _headDoctorForFlag = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
+            private _tentCenter = missionNamespace getVariable ["LBMQ_task003CampCenter", objNull];
+            private _flagPos = [[_headDoctorForFlag, _tentCenter], ""] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
+
+            if !(_flagPos isEqualTo []) then {
+                private _flag = createVehicle ["Flag_Red_F", _flagPos, [], 0, "CAN_COLLIDE"];
+                _flag setPos ([_flagPos, 5, 15, 3, 0, 20, 0] call BIS_fnc_findSafePos);
+                _flag setVariable ["LBMQ_task003Flag", true, true];
+                missionNamespace setVariable ["LBMQ_task003MedicalFlag", _flag, true];
+            };
+        };
+
         private _headDoctor = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
         private _taskDestination = [[_headDoctor], ""] call (missionNamespace getVariable "LBMQ_fnc_resolveTaskDestination");
 
@@ -101,6 +115,12 @@ switch (_mode) do {
         _completedTasks pushBackUnique _taskId;
         _player setVariable ["LBMQ_completedTasks", _completedTasks, true];
         _player setVariable ["LBMQ_task003Active", false, true];
+
+        private _flag = missionNamespace getVariable ["LBMQ_task003MedicalFlag", objNull];
+        if (!isNull _flag) then {
+            deleteVehicle _flag;
+            missionNamespace setVariable ["LBMQ_task003MedicalFlag", objNull, true];
+        };
 
         [_taskId, "SUCCEEDED"] remoteExecCall ["LBMQ_fnc_updateTaskLocal", _player];
         ["playDialogueLocal", objNull] remoteExecCall ["LBMQ_fnc_task003Main", _player];
