@@ -72,7 +72,6 @@ _group0 selectLeader _object10;
     ['_object10_nextFrameHandle', 'onEachFrame'] call BIS_fnc_removeStackedEventHandler;
 }, [_object10]] call BIS_fnc_addStackedEventHandler;
 
-
 _object11 = _group1 createUnit ["B_G_Survivor_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _object11 setPosASL [10878.8,3791.43,17.931];
 _object11 setDir 28.8506;
@@ -644,6 +643,24 @@ _waypoint setWaypointStatements ["true",""];
 _waypoint setWaypointScript "";
 
 _group8 setCurrentWaypoint [_group8, 1];
+
+private _task001Groups = [_group0, _group1, _group2, _group3, _group4, _group5, _group6, _group7, _group8];
+{
+    private _group = _x;
+    private _hasCycleWaypoint = false;
+
+    {
+        if ((waypointType _x) isEqualTo "CYCLE") exitWith {
+            _hasCycleWaypoint = true;
+        };
+    } forEach (waypoints _group);
+
+    if (!_hasCycleWaypoint) then {
+        {
+            _x disableAI "PATH";
+        } forEach (units _group);
+    };
+} forEach _task001Groups;
 
 missionNamespace setVariable ["LBMQ_task001Representative", _object34, true];
 missionNamespace setVariable ["LBMQ_task001CampCenter", _object0, true];

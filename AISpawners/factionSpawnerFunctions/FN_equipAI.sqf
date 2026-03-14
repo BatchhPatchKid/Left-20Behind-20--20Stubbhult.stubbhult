@@ -693,6 +693,7 @@ switch _faction do {
 			_vestArraySelection = ["vestRU_SF"] call _arrayReturn;
 			_muzzleArraySelection = ["muzzleRU_SF"] call _arrayReturn;
 			_facewearArraySelection = ["facewearRU_SF"] call _arrayReturn;
+			_opticsArraySelection = ["opticsRU_SF"] call _arrayReturn;
 
 			if (random 3 < 1) then { _railArraySelection = _railArraySelectionRare; };
 		};

@@ -2,7 +2,7 @@ params ["_pos", "_triggerRadius", "_maxUnits"];
 
 private _factionArray = ["mutantFactionWeights"] call (missionNamespace getVariable "FN_arrayReturn");
 private _factionSelected = selectRandomWeighted _factionArray;
-[_factionSelected, (round random (10)+6), _pos, "Squad", independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
+[_factionSelected, (round random (10)+6), _pos, "Squad", -1, independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
 
 [_pos, _triggerRadius, _maxUnits] spawn {
 

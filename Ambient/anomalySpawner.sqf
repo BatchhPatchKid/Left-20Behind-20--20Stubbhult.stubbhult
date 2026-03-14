@@ -51,25 +51,20 @@ if (side player != civilian) then {
 				};
 				
 				if (count _anomSpawnedObjectTracker > 0) then {
-					_i = 0;
-					_deleteNum = 0;
+					private _despawnDistance = _minDist + _maxDist;
 					private _headlessClients = entities "HeadlessClient_F";
 					private _humanPlayers = allPlayers - _headlessClients; //All players that aren't headless clients
 					{
-						for "_i" from 0 to (count _humanPlayers) do { // going through each bandit group to see if it's not next to any player, so any group near a player will not be deleted
-							if (((_humanPlayers select _i) distance2D (getPos _x)) > (_minDist + _maxDist)) then { 
-								_deleteNum = _deleteNum + 1; 
-							};
-						};
-						
-						if (_deleteNum == (count _humanPlayers)) then { 
+						private _anomPos = getPos _x;
+						private _isNearPlayer = (_humanPlayers findIf {_x distance2D _anomPos <= _despawnDistance}) != -1;
+
+						if (!_isNearPlayer) then {
 							[_x] call diwako_anomalies_main_fnc_deleteAnomalies;
 							_anomSpawnedObjectTracker = _anomSpawnedObjectTracker - [_x]; 
 							_anomTracker = _anomTracker - 1; 
 						};
-						_deleteNum = 0;
 						sleep .5;
-					} forEach _anomSpawnedObjectTracker;
+					} forEach +_anomSpawnedObjectTracker;
 					
 					sleep 2;
 				};

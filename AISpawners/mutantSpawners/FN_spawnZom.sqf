@@ -1,7 +1,7 @@
 params ["_zombieGrp", "_zombieArray", "_numZombie", "_pos", "_spread", "_spawnSleep"];
 
 if (isNil "_spawnSleep") then {
-	_spawnSleep = 0.5;
+	_spawnSleep = 0.25;
 };
 
 [_zombieGrp, _zombieArray, _numZombie, _pos, _spread, _spawnSleep] spawn {
@@ -27,7 +27,7 @@ if (isNil "_spawnSleep") then {
 		} forEach _buildings;
 	};
 
-	// now spawn your zombies
+	// spawn zombies
 	for "_i" from 1 to _numZombie do {
 		private _ZedType = selectRandomWeighted _zombieArray;
 		private _horde = createGroup east;

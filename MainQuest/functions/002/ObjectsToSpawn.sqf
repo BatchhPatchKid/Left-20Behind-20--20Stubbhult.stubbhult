@@ -794,6 +794,26 @@ _group9 setCurrentWaypoint [_group9, 7];
 
 _object57 moveInGunner _object56;
 
+private _task002Groups = [_group0, _group1, _group2, _group3, _group4, _group5, _group6, _group7, _group8, _group9];
+{
+    private _group = _x;
+    private _hasCycleWaypoint = false;
+
+    {
+        if ((waypointType _x) isEqualTo "CYCLE") exitWith {
+            _hasCycleWaypoint = true;
+        };
+    } forEach (waypoints _group);
+
+    if (!_hasCycleWaypoint) then {
+        {
+            _x disableAI "PATH";
+        } forEach (units _group);
+    };
+} forEach _task002Groups;
+
+_object57 moveInGunner _object56;
+
 private _campUnits = [
     _object45,
     _object46,

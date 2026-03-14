@@ -1,6 +1,6 @@
 params ["_container", "_caller", "_actionId"];
 
-if (isNull (currentTask _caller)) then {
+if ((_caller getVariable ["LB_economyTaskId", ""]) == "") then {
     hintSilent format ["The following group has had a bounty put on their leader. Eliminate them for a reward, %1", name _caller];
 
     private _fn_inBounds = {
@@ -89,9 +89,10 @@ if (isNull (currentTask _caller)) then {
     sleep 3;
     hintSilent "";
 
-    private _rndTaskID = str (random 100);
+    private _rndTaskID = format ["LB_ECO_%1_%2_%3", getPlayerUID _caller, round (serverTime * 1000), floor (random 1000000)];
 
     [_caller,_rndTaskID,[format ["Eliminate the target. The target will be within 300 meters of the mark on your map. It does not matter if you or someone else kills him, just make sure the job gets done. The faction the target is a part of is %1",_faction],"Eliminate the Wandering Target"],_pos,"ASSIGNED",0,true,"kill",false] call BIS_fnc_taskCreate;
+    _caller setVariable ["LB_economyTaskId", _rndTaskID, true];
 
     _newAI setVariable ["LB_taskId",_rndTaskID];
     _newAI setVariable ["LB_container",_container];
@@ -112,6 +113,9 @@ if (isNull (currentTask _caller)) then {
         private _reward = 150;
         if (!isNull _caller) then {
             [_caller,_reward] remoteExec ["LB_fnc_addMoneyServer",2];
+            if ((_caller getVariable ["LB_economyTaskId", ""]) == _taskId) then {
+                _caller setVariable ["LB_economyTaskId", "", true];
+            };
             hintSilent format ["$%2 has been added to your account, %1. Good work out there.",name _caller,_reward];
         };
 
@@ -125,6 +129,12 @@ if (isNull (currentTask _caller)) then {
         private _stoneSaver = _entity getVariable ["LB_stoneSaver",objNull];
         [_taskId,"CANCELED"] call BIS_fnc_taskSetState;
         [_taskId,true] call BIS_fnc_deleteTask;
+        private _caller = _entity getVariable ["LB_caller",objNull];
+        if (!isNull _caller) then {
+            if ((_caller getVariable ["LB_economyTaskId", ""]) == _taskId) then {
+                _caller setVariable ["LB_economyTaskId", "", true];
+            };
+        };
         hintSilent "We have lost the position of the target. Thus, the contract has been canceled.";
         [] spawn { uiSleep 5; hintSilent ""; };
         if (!isNull _stoneSaver) then { deleteVehicle _stoneSaver; };
@@ -138,11 +148,14 @@ if (isNull (currentTask _caller)) then {
             private _stoneSaver = _x getVariable ["LB_stoneSaver",objNull];
             [_taskId,"CANCELED"] call BIS_fnc_taskSetState;
             [_taskId,true] call BIS_fnc_deleteTask;
+            if ((_unit getVariable ["LB_economyTaskId", ""]) == _taskId) then {
+                _unit setVariable ["LB_economyTaskId", "", true];
+            };
             if (!isNull _stoneSaver) then { deleteVehicle _stoneSaver; };
         } forEach _targets;
         hintSilent "We have lost the position of the target. Thus, the contract has been canceled.";
         [] spawn { uiSleep 5; hintSilent ""; };
     }];
 } else {
-    hintSilent "Sorry, but it seems you already have a task assigned. Finish that one before accepting another.";
+    hintSilent "Sorry, but it seems you already have an economy task assigned. Finish that one before accepting another.";
 };

@@ -2,7 +2,7 @@
 // It runs periodically to maintain server performance and prevent lag due to excessive objects in the world
 // It also allows for manual execution via a Zeus action if needed
 // The script checks for headless clients and ensures garbage collection is only performed when players are present
-// It uses batched, capped passes to avoid long scheduler stalls and crash-prone spikes
+// It uses batched checks with small yields to avoid long scheduler stalls
 
 private _fn_isNearAny = {
     params ["_object", "_objects", "_distanceSqrThreshold"];
@@ -28,14 +28,14 @@ private _fn_isProtected = {
 
 
 private _FN_garbageCollector = {
-    params ["_phase", "_flags", "_missionStones", "_gcClasses"];
+    params ["_flags", "_missionStones", "_gcClasses"];
 
     private _startedAt = diag_tickTime;
 
     private _headlessClients = entities "HeadlessClient_F";
     private _players = allPlayers - _headlessClients;
 
-    if (_players isEqualTo []) exitWith { [_phase, 0, 0, diag_tickTime - _startedAt] };
+    if (_players isEqualTo []) exitWith { [0, 0, diag_tickTime - _startedAt] };
 
     private _distStone = 500;
     private _distFlag = 150;
@@ -45,97 +45,81 @@ private _FN_garbageCollector = {
     private _distFlagSqr = _distFlag * _distFlag;
     private _distPlayerSqr = _distPlayer * _distPlayer;
 
-    private _maxDeletesPerCycle = 150;
     private _yieldEvery = 75;
 
     private _checked = 0;
     private _deleted = 0;
 
-    switch (_phase) do {
-        // Phase 0: units (limited to active radius around players)
-        case 0: {
-            private _units = allUnits select { !isNull _x && { alive _x } && { !(_x in _players) } };
-            private _airVehicles = vehicles select { _x isKindOf "Air" };
+    // Units (limited to active radius around players)
+    private _units = allUnits select { !isNull _x && { alive _x } && { !(_x in _players) } };
+    private _airVehicles = vehicles select { _x isKindOf "Air" };
 
-            {
-                if (_deleted >= _maxDeletesPerCycle) exitWith {};
-                if (isNull _x) then { continue; };
-                if (_x in _players) then { continue; };
-                if (!alive _x) then { continue; };
+    {
+        if (isNull _x) then { continue; };
+        if (_x in _players) then { continue; };
+        if (!alive _x) then { continue; };
 
-                _checked = _checked + 1;
-                if ([_x, _players, _flags, _missionStones, _distPlayerSqr, _distFlagSqr, _distStoneSqr] call _fn_isProtected) then { continue; };
-                private _unit = _x;
-                if (_airVehicles findIf { !isNull _x && { _x distanceSqr _unit <= 25 } } != -1) then { continue; };
+        _checked = _checked + 1;
+        if ([_x, _players, _flags, _missionStones, _distPlayerSqr, _distFlagSqr, _distStoneSqr] call _fn_isProtected) then { continue; };
+        private _unit = _x;
+        if (_airVehicles findIf { !isNull _x && { _x distanceSqr _unit <= 25 } } != -1) then { continue; };
 
-                deleteVehicle _x;
-                _deleted = _deleted + 1;
+        deleteVehicle _x;
+        _deleted = _deleted + 1;
 
-                if ((_checked % _yieldEvery) isEqualTo 0) then { sleep 0.001; };
-            } forEach _units;
-        };
+        if ((_checked % _yieldEvery) isEqualTo 0) then { sleep 0.001; };
+    } forEach _units;
 
-        // Phase 1: dead bodies
-        case 1: {
-            private _dead = allDead;
+    // Dead bodies
+    private _dead = allDead;
 
-            {
-                if (_deleted >= _maxDeletesPerCycle) exitWith {};
-                if (isNull _x) then { continue; };
-                if (alive _x) then { continue; };
+    {
+        if (isNull _x) then { continue; };
+        if (alive _x) then { continue; };
 
-                _checked = _checked + 1;
-                if ([_x, _players, _flags, _missionStones, _distPlayerSqr, _distFlagSqr, _distStoneSqr] call _fn_isProtected) then { continue; };
+        _checked = _checked + 1;
+        if ([_x, _players, _flags, _missionStones, _distPlayerSqr, _distFlagSqr, _distStoneSqr] call _fn_isProtected) then { continue; };
 
-                deleteVehicle _x;
-                _deleted = _deleted + 1;
+        deleteVehicle _x;
+        _deleted = _deleted + 1;
 
-                if ((_checked % _yieldEvery) isEqualTo 0) then { sleep 0.001; };
-            } forEach _dead;
-        };
+        if ((_checked % _yieldEvery) isEqualTo 0) then { sleep 0.001; };
+    } forEach _dead;
 
-        // Phase 2: class-based mission objects
-        case 2: {
-            private _gcObjects = [];
-            {
-                _gcObjects append allMissionObjects _x;
-            } forEach _gcClasses;
+    // Class-based mission objects
+    private _gcObjects = [];
+    {
+        _gcObjects append allMissionObjects _x;
+    } forEach _gcClasses;
 
-            {
-                if (_deleted >= _maxDeletesPerCycle) exitWith {};
-                if (isNull _x) then { continue; };
+    {
+        if (isNull _x) then { continue; };
 
-                _checked = _checked + 1;
-                if ([_x, _players, _flags, _missionStones, _distPlayerSqr, _distFlagSqr, _distStoneSqr] call _fn_isProtected) then { continue; };
+        _checked = _checked + 1;
+        if ([_x, _players, _flags, _missionStones, _distPlayerSqr, _distFlagSqr, _distStoneSqr] call _fn_isProtected) then { continue; };
 
-                deleteVehicle _x;
-                _deleted = _deleted + 1;
+        deleteVehicle _x;
+        _deleted = _deleted + 1;
 
-                if ((_checked % _yieldEvery) isEqualTo 0) then { sleep 0.001; };
-            } forEach _gcObjects;
-        };
+        if ((_checked % _yieldEvery) isEqualTo 0) then { sleep 0.001; };
+    } forEach _gcObjects;
 
-        // Phase 3: vehicles
-        default {
-            private _vehiclesNear = vehicles select { _x isKindOf "LandVehicle" || { _x isKindOf "Ship" } };
+    // Vehicles
+    private _vehiclesNear = vehicles select { _x isKindOf "LandVehicle" || { _x isKindOf "Ship" } };
 
-            {
-                if (_deleted >= _maxDeletesPerCycle) exitWith {};
-                if (isNull _x) then { continue; };
+    {
+        if (isNull _x) then { continue; };
 
-                _checked = _checked + 1;
-                if ([_x, _players, _flags, _missionStones, _distPlayerSqr, _distFlagSqr, _distStoneSqr] call _fn_isProtected) then { continue; };
+        _checked = _checked + 1;
+        if ([_x, _players, _flags, _missionStones, _distPlayerSqr, _distFlagSqr, _distStoneSqr] call _fn_isProtected) then { continue; };
 
-                deleteVehicle _x;
-                _deleted = _deleted + 1;
+        deleteVehicle _x;
+        _deleted = _deleted + 1;
 
-                if ((_checked % _yieldEvery) isEqualTo 0) then { sleep 0.001; };
-            } forEach _vehiclesNear;
-        };
-    };
+        if ((_checked % _yieldEvery) isEqualTo 0) then { sleep 0.001; };
+    } forEach _vehiclesNear;
 
-    private _nextPhase = (_phase + 1) mod 4;
-    [_nextPhase, _checked, _deleted, diag_tickTime - _startedAt]
+    [_checked, _deleted, diag_tickTime - _startedAt]
 };
 
 params ["_zeusAction"];
@@ -143,16 +127,10 @@ if (_zeusAction) then {
     private _gcClasses = ["_gcClasses"] call (missionNamespace getVariable "FN_arrayReturn");
     private _flags = allMissionObjects "Flag_Red_F";
     private _missionStones = allMissionObjects "Land_BluntStone_01";
-    private _phase = 0;
-
-    for "_i" from 1 to 4 do {
-        private _result = [_phase, _flags, _missionStones, _gcClasses] call _FN_garbageCollector;
-        _phase = _result select 0;
-    };
+    [_flags, _missionStones, _gcClasses] call _FN_garbageCollector;
 
     hintSilent "Garbage collection executed.";
 } else {
-    private _phase = 0;
     private _flags = [];
     private _missionStones = [];
     private _gcClasses = ["_gcClasses"] call (missionNamespace getVariable "FN_arrayReturn");
@@ -160,7 +138,7 @@ if (_zeusAction) then {
     private _cacheRefreshInterval = 600;
 
     while { true } do {
-        sleep 360;
+        sleep 300;
 
         // waiting until there are players connected and alive
         waitUntil { count (allPlayers select { alive _x }) > 0 };
@@ -172,15 +150,13 @@ if (_zeusAction) then {
             _cacheRefreshAt = _now;
         };
 
-        private _result = [_phase, _flags, _missionStones, _gcClasses] call _FN_garbageCollector;
-        _phase = _result select 0;
+        private _result = [_flags, _missionStones, _gcClasses] call _FN_garbageCollector;
 
         diag_log format [
-            "[LB][GC] phase=%1 checked=%2 deleted=%3 duration=%4s players=%5",
-            (_phase + 3) mod 4,
+            "[LB][GC] checked=%1 deleted=%2 duration=%3s players=%4",
+            _result select 0,
             _result select 1,
-            _result select 2,
-            (_result select 3),
+            (_result select 2),
             count allPlayers
         ];
 

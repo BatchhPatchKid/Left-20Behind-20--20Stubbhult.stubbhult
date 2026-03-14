@@ -23,7 +23,7 @@ private _resolveTask001RepresentativePosition = {
 
 switch (_mode) do {
     case "tryStart": {
-        private _player = _payload;
+        private _player = if (_payload isEqualType objNull) then { _payload } else { objNull };
         if (isNull _player || {!isPlayer _player}) exitWith {};
 
         if (isServer) exitWith {
@@ -35,7 +35,7 @@ switch (_mode) do {
     };
 
     case "start": {
-        private _player = _payload;
+        private _player = if (_payload isEqualType objNull) then { _payload } else { objNull };
         if (!isServer || {isNull _player} || {!isPlayer _player}) exitWith {};
 
         private _completedTasks = _player getVariable ["LBMQ_completedTasks", []];
@@ -80,7 +80,7 @@ switch (_mode) do {
     };
 
     case "registerRepresentativeAction": {
-        private _player = _payload;
+        private _player = if (_payload isEqualType objNull) then { _payload } else { objNull };
         if (!isServer || {isNull _player} || {!isPlayer _player}) exitWith {};
 
         private _representative = missionNamespace getVariable ["LBMQ_task001Representative", objNull];
@@ -107,7 +107,7 @@ switch (_mode) do {
     };
 
     case "onRepresentativeTalked": {
-        private _player = _payload;
+        private _player = if (_payload isEqualType objNull) then { _payload } else { objNull };
         if (!isServer || {isNull _player} || {!isPlayer _player}) exitWith {};
 
         private _isTaskActive = _player getVariable ["LBMQ_task001Active", false];
@@ -120,7 +120,7 @@ switch (_mode) do {
     };
 
     case "complete": {
-        private _player = _payload;
+        private _player = if (_payload isEqualType objNull) then { _payload } else { objNull };
         if (!isServer || {isNull _player} || {!isPlayer _player}) exitWith {};
 
         private _completedTasks = _player getVariable ["LBMQ_completedTasks", []];
@@ -151,7 +151,7 @@ switch (_mode) do {
     };
 
     case "onDialogueFinished": {
-        private _player = _payload;
+        private _player = if (_payload isEqualType objNull) then { _payload } else { objNull };
         if (!isServer || {isNull _player} || {!isPlayer _player}) exitWith {};
 
         private _completedTasks = _player getVariable ["LBMQ_completedTasks", []];

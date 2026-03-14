@@ -24,6 +24,8 @@ if (random 1 > _prob) then {
 		_object setVectorDirAndUp [_dir,[0,0,1]];
 	};
 
-	_object enableSimulationGlobal false;
+	if !(_object isKindOf "StaticWeapon") then {
+		_object enableSimulationGlobal false;
+	};
 };
 _object

@@ -6,7 +6,7 @@ if (!isServer) exitWith {
     _this remoteExecCall ["FN_killTaskGivenPriest", 2];
 };
 
-if (isNull (currentTask _caller)) then {
+if ((_caller getVariable ["LB_economyTaskId", ""]) isEqualTo "") then {
     [format ["A bounty has been placed on a rogue %1 priest. Eliminate them for a reward, %2", _faction, name _caller]] remoteExec ["hintSilent", _caller];
 
     private _fn_inBounds = {
@@ -59,9 +59,10 @@ if (isNull (currentTask _caller)) then {
 
     private _target = _priests select 0;
     private _flag = "Flag_Red_F" createVehicle _pos;
-    private _taskId = str (random 100);
+    private _taskId = format ["LB_ECO_%1_%2_%3", getPlayerUID _caller, round (serverTime * 1000), floor (random 1000000)];
 
     [_caller, _taskId, [format ["Eliminate the rogue %1 priest to earn $%2. The priest is within 300 meters of the marker.", _faction, _reward], "Eliminate the Rogue Priest"], _posMarker, "ASSIGNED", 0, true, "kill", false] call BIS_fnc_taskCreate;
+    _caller setVariable ["LB_economyTaskId", _taskId, true];
 
     _target setVariable ["LB_taskId", _taskId];
     _target setVariable ["LB_container", _container];
@@ -82,6 +83,9 @@ if (isNull (currentTask _caller)) then {
 
         if (!isNull _caller) then {
             [_caller, _reward] remoteExec ["LB_fnc_addMoneyServer", 2];
+            if ((_caller getVariable ["LB_economyTaskId", ""]) isEqualTo _taskId) then {
+                _caller setVariable ["LB_economyTaskId", "", true];
+            };
             [format ["$%2 has been added to your account, %1. Good work out there.", name _caller, _reward]] remoteExec ["hintSilent", _caller];
         };
 
@@ -96,6 +100,9 @@ if (isNull (currentTask _caller)) then {
 
         [_taskId, "CANCELED"] call BIS_fnc_taskSetState;
         [_taskId, true] call BIS_fnc_deleteTask;
+        if (!isNull _caller && {(_caller getVariable ["LB_economyTaskId", ""]) isEqualTo _taskId}) then {
+            _caller setVariable ["LB_economyTaskId", "", true];
+        };
         if (!isNull _caller) then {
             ["We have lost the position of the priest. Thus, the contract has been canceled."] remoteExec ["hintSilent", _caller];
         };
@@ -111,6 +118,9 @@ if (isNull (currentTask _caller)) then {
             private _flag = _x getVariable ["LB_flag", objNull];
             [_taskId, "CANCELED"] call BIS_fnc_taskSetState;
             [_taskId, true] call BIS_fnc_deleteTask;
+            if ((_unit getVariable ["LB_economyTaskId", ""]) isEqualTo _taskId) then {
+                _unit setVariable ["LB_economyTaskId", "", true];
+            };
             if (!isNull _flag) then { deleteVehicle _flag; };
         } forEach _targets;
 
@@ -126,5 +136,5 @@ if (isNull (currentTask _caller)) then {
         };
     };
 } else {
-    ["Sorry, but it seems you already have a task assigned. Finish that one before accepting another."] remoteExec ["hintSilent", _caller];
+    ["Sorry, but it seems you already have an economy task assigned. Finish that one before accepting another."] remoteExec ["hintSilent", _caller];
 };

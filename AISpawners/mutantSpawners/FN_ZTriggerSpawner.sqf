@@ -23,9 +23,8 @@ FN_spawnSpecialInfected = {
 	
 	[_pos, _lvl_loot] call (missionNamespace getVariable "FN_lootSpawner");
 	
-	private _horde = createGroup east;	
-			
 	for "_i" from 1 to _numUnits do {
+		private _horde = createGroup east;	
 		_ZedType = selectRandomWeighted _ZedArray;
 		private _hordeUnit = _horde createUnit [_ZedType, [_pos, _minDist, _maxDist, 150] call FN_findSafePosition, [], 1, "NONE"];
 		_hordeUnit setSpeaker "NoVoice";

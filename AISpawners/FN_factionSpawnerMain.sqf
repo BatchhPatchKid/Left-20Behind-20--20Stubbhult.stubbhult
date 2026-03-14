@@ -192,7 +192,7 @@ private _zombieRvg = if (daytime < 4 || daytime > 20 || random 1 > 0.85) then {
 };
 
 // -----------------------------------------------------------------------------
-// 6. AMBIENT & RENEGADES
+// 6. AMBIENT
 // -----------------------------------------------------------------------------
 
 [_pos, _triggerRadius] call (missionNamespace getVariable "FN_ambientVeh");
@@ -219,12 +219,6 @@ if (_faction == "Rnd") then {
         default                          { "survivor" };
     };
     _resolvedFaction = _faction;
-};
-
-// Renegade side depends on location type: EAST for survivor zones, INDEPENDENT for zombie/mutant
-if (random 1 > 0.375) then {
-    private _renegadeSide = if (_factionType == "survivor") then { east } else { independent };
-    [_pos, _triggerRadius, _renegadeSide] call _spawnRenegades;
 };
 
 // -----------------------------------------------------------------------------

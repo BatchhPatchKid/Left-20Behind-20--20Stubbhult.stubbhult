@@ -1,5 +1,13 @@
 params ["_faction","_numUnits","_pos","_typeOfLocationArea","_sfGroup","_side","_unit"];
 
+// Backward-compat: some callers still pass [.., _side, _unit] without _sfGroup.
+if ((_sfGroup isEqualType west) && {(_side isEqualType "")} && {isNil "_unit"}) then {
+    _unit = _side;
+    _side = _sfGroup;
+    _sfGroup = -1;
+};
+
+
 //example usage for patrols: ["SU",7,getPos player,"Squad",0,WEST,B_Soldier_F] call (missionNamespace getVariable "FN_spawnAI");
 //private _args=["SU",7,getPos player,"Squad",0,WEST,"B_Soldier_F"];
 
@@ -56,17 +64,17 @@ FN_setWaypoints = {
     _waypoint1 = _grp addWaypoint [_posWP,2];
     _waypoint1 setWaypointType "MOVE";
     _waypoint1 setWaypointSpeed "FULL";
-    _waypoint1 setWaypointBehaviour "AWARE";
+    _waypoint1 setWaypointBehaviour "SAFE";
     _posWP = [_pos,_minDis,_maxDis,3,0,20,0] call BIS_fnc_findSafePos;
     _waypoint2 = _grp addWaypoint [_posWP,2];
     _waypoint2 setWaypointType "MOVE";
     _waypoint2 setWaypointSpeed "FULL";
-    _waypoint2 setWaypointBehaviour "AWARE";
+    _waypoint2 setWaypointBehaviour "SAFE";
     _posWP = [_pos,_minDis,_maxDis,3,0,20,0] call BIS_fnc_findSafePos;
     _waypoint3 = _grp addWaypoint [_posWP,2];
     _waypoint3 setWaypointType "CYCLE";
     _waypoint3 setWaypointSpeed "FULL";
-    _waypoint3 setWaypointBehaviour "AWARE";
+    _waypoint3 setWaypointBehaviour "SAFE";
     _grp setCurrentWaypoint _waypoint1;
 };
 
@@ -74,8 +82,7 @@ FN_carPatrol = {
     params ["_vehArray","_numOfUnits"];
     if (round random [0,2,5] >= 2) then {
         private _isSpecOpsGroup = [_sfGroup] call _fn_isSF;
-        private _meleeChance = [_faction] call (missionNamespace getVariable "FN_meleeChance");
-        private _spawnMeleeGroup = (!_isSpecOpsGroup) && {(random 1) < _meleeChance};
+        private _spawnMeleeGroup = false;
 
         _veh = (_vehArray call BIS_fnc_selectRandomWeighted) createVehicle ([_pos,5,50,10,0,20,0,[],[]] call BIS_fnc_findSafePos);
         clearWeaponCargoGlobal _veh;

@@ -40,7 +40,7 @@ switch (_mutantType) do {
 
 		private _factionArray = ["Bandit", .75, "DT", .50, "NH", .50, "PF", .35, "ALF", .10, "WO", .10, "RC", .15, "TRB", .10, "US", .03, "RU", .03, "PMC", .10, "ROA", .10];
 		private _factionSelected = selectRandomWeighted _factionArray;
-		[_factionSelected, (round random 3) + 3, _pos, "Squad", independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
+		[_factionSelected, (round random 3) + 3, _pos, "Squad", -1, independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
 	};
 	case "Snatch": {
 		[_pos, _triggerRadius, _maxUnits, "DSA_Snatcher", [0], 10, (_triggerRadius / 4), 3, 0.5] call (missionNamespace getVariable "FN_spawnMutantCommon");
@@ -56,7 +56,7 @@ switch (_mutantType) do {
 	case "Hellspawn": {
 		private _factionArray = ["mutantFactionWeights"] call (missionNamespace getVariable "FN_arrayReturn");
 		private _factionSelected = selectRandomWeighted _factionArray;
-		[_factionSelected, (round random 10) + 6, _pos, "Squad", independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
+		[_factionSelected, (round random 10) + 6, _pos, "Squad", -1, independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
 
 		playSound3D [getMissionPath "sounds\blowout_siren_2.ogg", player, false, _pos, 5, 1, 0];
 		sleep 5;
@@ -66,7 +66,7 @@ switch (_mutantType) do {
 	case "Goliath": {
 		private _factionArray = ["TRB", .25, "US", .10, "RU", .10, "PMC", .20, "ROA", .20];
 		private _factionSelected = selectRandomWeighted _factionArray;
-		[_factionSelected, (round random 20) + 10, _pos, "Squad", independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
+		[_factionSelected, (round random 20) + 10, _pos, "Squad", -1, independent, "I_Survivor_F"] call (missionNamespace getVariable "FN_spawnAI");
 
 		private _safePos1 = [_pos, 100, 500, 10, 0, 20, 0, [], []] call BIS_fnc_findSafePos;
 		private _safePos2 = [_pos, 100, 500, 10, 0, 20, 0, [], []] call BIS_fnc_findSafePos;

@@ -1,6 +1,6 @@
 params ["_container","_caller","_actionId","_arguments"];
 
-if (isNull (currentTask _caller)) then {
+if ((_caller getVariable ["LB_economyTaskId", ""]) == "") then {
 
 	private _fn_inBounds = {
 		params ["_p"];
@@ -60,8 +60,7 @@ if (isNull (currentTask _caller)) then {
 	_waypoint1 setWaypointType "MOVE";
 	_waypoint1 setWaypointBehaviour "COMBAT";
 
-	_rndDouble = random 100;
-	_rndTaskID = str (_rndDouble);
+	_rndTaskID = format ["LB_ECO_%1_%2_%3", getPlayerUID _caller, round (serverTime * 1000), floor (random 1000000)];
 
 	[
 		_caller,
@@ -77,7 +76,8 @@ if (isNull (currentTask _caller)) then {
 		true,
 		"kill",
 		false
-	] call BIS_fnc_taskCreate;
+	 ] call BIS_fnc_taskCreate;
+	_caller setVariable ["LB_economyTaskId", _rndTaskID, true];
 
 	sleep 5;
 
@@ -85,7 +85,7 @@ if (isNull (currentTask _caller)) then {
 
 	while {!_allDead} do {
 
-		if ((isNull (currentTask _caller))) exitWith {
+		if ((_caller getVariable ["LB_economyTaskId", ""]) != _rndTaskID) exitWith {
 			deleteVehicle _stoneSaver;
 			deleteVehicle _totemSaver;
 		};
@@ -106,6 +106,7 @@ if (isNull (currentTask _caller)) then {
 
 				[_rndTaskID,"CANCELED"] call BIS_fnc_taskSetState;
 				[_rndTaskID,true] call BIS_fnc_deleteTask;
+				_caller setVariable ["LB_economyTaskId", "", true];
 				hintSilent "We have lost the postion of the targets. Thus, the contract has been canceled.";
 				sleep 5;
 				hintSilent "";
@@ -114,6 +115,7 @@ if (isNull (currentTask _caller)) then {
 
 				[_rndTaskID,"SUCCEEDED"] call BIS_fnc_taskSetState;
 				[_rndTaskID,true] call BIS_fnc_deleteTask;
+				_caller setVariable ["LB_economyTaskId", "", true];
 
 				// New money logic: credit player balance on the server (1 reward = 1 money unit)
 				[_caller,_reward] remoteExec ["LB_fnc_addMoneyServer",2];
@@ -130,6 +132,7 @@ if (isNull (currentTask _caller)) then {
 		if (not alive _caller) exitWith {
 			[_rndTaskID,"CANCELED"] call BIS_fnc_taskSetState;
 			[_rndTaskID,true] call BIS_fnc_deleteTask;
+			_caller setVariable ["LB_economyTaskId", "", true];
 			hintSilent "We have lost the postion of the targets. Thus, the contract has been canceled.";
 		};
 
@@ -167,5 +170,5 @@ if (isNull (currentTask _caller)) then {
 	deleteVehicle _totemSaver;
 
 } else {
-	hintSilent "Sorry, but it seems you already have a task assigned. Finish that one before accepting another.";
+	hintSilent "Sorry, but it seems you already have an economy task assigned. Finish that one before accepting another.";
 };

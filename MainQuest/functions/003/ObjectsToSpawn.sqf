@@ -179,7 +179,7 @@ _object26 setUnitPos "Middle";
 _group3 selectLeader _object26;
 ['_object26_nextFrameHandle', 'onEachFrame', {
     params ["_unit"];
-    [_unit, [[["CUP_arifle_Fort224_Grippod","","acc_flashlight","",["CUP_30Rnd_545x39_Fort224_M",30],[],""],[],[],["U_C_Uniform_Scientist_01_F",[["WBK_HeadLampItem_Double",1],["CUP_30Rnd_545x39_Fort224_M",1,30]]],["rvg_rangemaster_4",[["CUP_30Rnd_545x39_Fort224_M",1,30]]],["rvg_legstrappack_3",[["rvg_hose",1,1],["rvg_rustyCanEmpty",1,1],["rvg_plasticBottle",1,1]]],"H_Watchcap_cbr","G_AirPurifyingRespirator_02_olive_F",[],["","","","","",""]],[["ace_arsenal_voice","Male07ENG"],["ace_arsenal_face","Mavros"]]]] call CBA_fnc_setLoadout;
+    [_unit, [[["CUP_arifle_Fort224_Grippod","","acc_flashlight","",["CUP_30Rnd_545x39_Fort224_M",30],[],""],[],[],["U_FRITH_RUIN_cofftan",[["WBK_HeadLampItem_Double",1],["CUP_30Rnd_545x39_Fort224_M",1,30]]],["rvg_rangemaster_4",[["CUP_30Rnd_545x39_Fort224_M",1,30]]],["rvg_legstrappack_3",[["rvg_hose",1,1],["rvg_rustyCanEmpty",1,1],["rvg_plasticBottle",1,1]]],"H_Watchcap_cbr","G_AirPurifyingRespirator_02_olive_F",[],["","","","","",""]],[["ace_arsenal_voice","Male07ENG"],["ace_arsenal_face","Mavros"]]]] call CBA_fnc_setLoadout;
     _unit call BIN_fnc_CBRNHoseInit;
     ['_object26_nextFrameHandle', 'onEachFrame'] call BIS_fnc_removeStackedEventHandler;
 }, [_object26]] call BIS_fnc_addStackedEventHandler;
@@ -239,7 +239,7 @@ _object30 setUnitPos "Auto";
 _group7 selectLeader _object30;
 ['_object30_nextFrameHandle', 'onEachFrame', {
     params ["_unit"];
-    [_unit, [[["CUP_arifle_Fort221","","acc_flashlight","",["CUP_30Rnd_545x39_Fort224_M",30],[],""],[],[],["U_FRITH_RUIN_cofftan",[["WBK_HeadLampItem_Double",1],["CUP_30Rnd_545x39_Fort224_M",1,30]]],["rvg_rangemaster_4",[["ACE_fieldDressing",2],["CUP_30Rnd_545x39_Fort224_M",3,30]]],["rvg_legstrappack_1",[["ACE_personalAidKit",1],["rvg_bacon",1,1],["rvg_matches",1,10]]],"H_MilCap_gry","G_AirPurifyingRespirator_02_olive_F",[],["","","","","",""]],[["ace_arsenal_voice","Male10ENG"],["ace_arsenal_face","GreekHead_A3_03"]]]] call CBA_fnc_setLoadout;
+    [_unit, [[["CUP_arifle_Fort221","","acc_flashlight","",["CUP_30Rnd_545x39_Fort224_M",30],[],""],[],[],["U_C_Uniform_Scientist_01_F",[["WBK_HeadLampItem_Double",1],["CUP_30Rnd_545x39_Fort224_M",1,30]]],["rvg_rangemaster_4",[["ACE_fieldDressing",2],["CUP_30Rnd_545x39_Fort224_M",3,30]]],["rvg_legstrappack_1",[["ACE_personalAidKit",1],["rvg_bacon",1,1],["rvg_matches",1,10]]],"H_MilCap_gry","G_AirPurifyingRespirator_02_olive_F",[],["","","","","",""]],[["ace_arsenal_voice","Male10ENG"],["ace_arsenal_face","GreekHead_A3_03"]]]] call CBA_fnc_setLoadout;
     _unit call BIN_fnc_CBRNHoseInit;
     ['_object30_nextFrameHandle', 'onEachFrame'] call BIS_fnc_removeStackedEventHandler;
 }, [_object30]] call BIS_fnc_addStackedEventHandler;
@@ -533,6 +533,27 @@ _waypoint setWaypointStatements ["true",""];
 _waypoint setWaypointScript "";
 
 _group8 setCurrentWaypoint [_group8, 4];
+
+_object21 moveInGunner _object20;
+_object20 lock 2;
+
+private _task003Groups = [_group0, _group1, _group2, _group3, _group4, _group5, _group6, _group7, _group8];
+{
+    private _group = _x;
+    private _hasCycleWaypoint = false;
+
+    {
+        if ((waypointType _x) isEqualTo "CYCLE") exitWith {
+            _hasCycleWaypoint = true;
+        };
+    } forEach (waypoints _group);
+
+    if (!_hasCycleWaypoint) then {
+        {
+            _x disableAI "PATH";
+        } forEach (units _group);
+    };
+} forEach _task003Groups;
 
 _object21 moveInGunner _object20;
 _object20 lock 2;

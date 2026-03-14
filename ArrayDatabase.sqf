@@ -160,9 +160,10 @@ switch _whichArray do {
 	case "uniformRU_SF": { _arrayToReturn = ["CUP_U_O_RUS_Soldier_Gorka_EMR_1",0.05,"CUP_U_O_RUS_Soldier_Gorka_EMR_2",0.05,"CUP_U_O_RUS_Soldier_Gorka_EMR_3",0.05,"CUP_U_O_RUS_Soldier_Gorka_EMR_4",0.05]; };
 	case "vestRU_SF": { _arrayToReturn = ["rhs_6b45_rifleman", 0.05, "rhs_6b45_rifleman_2", 0.05, "rhs_6b45_off", 0.05, "rhs_6b45_mg", 0.05, "rhs_6b45_light", 0.05]; };
 	case "headgearRU_SF": { _arrayToReturn = ["rhs_altyn",0.05,"rhs_altyn_visordown",0.05]; };
-	case "rifleRU_SF": { _arrayToReturn = ["CUP_arifle_AK12_AFG_wood",0.05,"CUP_arifle_AK12_VG_wood",0.05,"CUP_arifle_AK12_wood",0.05,"CUP_arifle_AK12_GP34_wood",0.05,"CUP_arifle_RPK74M",0.05,"rhs_weap_svdp_wd_npz",0.05]; };
+	case "rifleRU_SF": { _arrayToReturn = ["CUP_arifle_AK12_VG_lush",0.35,"CUP_arifle_AK12_lush",0.35,"CUP_arifle_AK12_GP34_lush",0.15,"CUP_arifle_AK12_AFG_lush",0.55,"rhs_weap_pkm",0.05,"rhs_weap_t5000",0.05,"rhs_weap_rpk74m_npz",0.10]; };
 	case "muzzleRU_SF": { _arrayToReturn = ["CUP_muzzle_TGPA_woodland",0.05]; };
 	case "facewearRU_SF": { _arrayToReturn = ["Mask_M50", 0.05]; };
+	case "opticsRU_SF": { _arrayToReturn = ["rhs_acc_1p87",0.05,"rhs_acc_rakursPM",0.05,"rhs_acc_dh520x56",0.05,"rhs_acc_ekp8_18",0.05,"optic_KHS_blk",0.05,"rhs_acc_okp7_picatinny",0.45,"CUP_optic_ZeissZPoint_wood",0.45]; };
 	
 		//ROA
 	case "uniformROA": { _arrayToReturn = ["U_I_CombatUniform",0.05,"U_I_CombatUniform_shortsleeve",0.25,"U_BG_Guerilla1_1",0.05,"U_BG_leader",0.05]; };

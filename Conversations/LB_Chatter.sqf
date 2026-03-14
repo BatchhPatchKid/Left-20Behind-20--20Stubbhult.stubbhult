@@ -132,6 +132,29 @@ private _AllClearPool = createHashMap;
 // ---------------------------
 while {true} do {
   private _reg = missionNamespace getVariable ["LB_FactionRegistry", createHashMap]; //getting updated version of the hash map
+  private _alivePlayers = allPlayers select { isPlayer _x && { alive _x } };
+
+  // Build a per-tick spatial player index so groups query nearby candidates only.
+  // Cell size uses radio radius because it is the largest range checked in this loop.
+  private _cellSize = _radioRadius;
+  private _playerGrid = createHashMap;
+  {
+    private _p = _x;
+    private _pos = getPosWorld _p;
+    private _cx = floor ((_pos # 0) / _cellSize);
+    private _cy = floor ((_pos # 1) / _cellSize);
+    private _cellKey = format ["%1:%2", _cx, _cy];
+
+    private _bucket = _playerGrid get _cellKey;
+    if (isNil "_bucket") then {
+      _bucket = [];
+      _playerGrid set [_cellKey, _bucket];
+    };
+
+    _bucket pushBack [_p, (_p call _hasAnyRadio)];
+    _playerGrid set [_cellKey, _bucket];
+  } forEach _alivePlayers;
+
   {
       _x params ["_nid","_fac"];
       private _grp = groupFromNetId _nid;
@@ -139,7 +162,6 @@ while {true} do {
       if (isNull _grp) then {
           _reg deleteAt _nid; //deleting old groups
       } else { //main action section of the chatter script
-        private _alivePlayers = allPlayers select { isPlayer _x && { alive _x } };
         private _leader = leader _grp;
         private _leaderValid = (!isNull _leader) && { alive _leader };
 
@@ -147,15 +169,27 @@ while {true} do {
         private _playersNearLeader = [];
 
         if (_leaderValid) then {
-          {
-            if (isPlayer _x && {alive _x}) then {
-              private _d2 = _x distanceSqr _leader;
-              if ( (_d2 <= _talkR2) || (_d2 <= _radioR2) ) then {
-                _playersNearLeader pushBack [_x, (_x call _hasAnyRadio)];
+          private _leaderPos = getPosWorld _leader;
+          private _lcx = floor ((_leaderPos # 0) / _cellSize);
+          private _lcy = floor ((_leaderPos # 1) / _cellSize);
+
+          // For radius == cell size, nearby candidates are in a 3x3 cell neighborhood.
+          for "_dx" from -1 to 1 do {
+            for "_dy" from -1 to 1 do {
+              private _cellKey = format ["%1:%2", (_lcx + _dx), (_lcy + _dy)];
+              private _candidates = _playerGrid get _cellKey;
+
+              if (!isNil "_candidates") then {
+                {
+                  _x params ["_player", "_playerHasRadio"];
+                  private _d2 = _player distanceSqr _leader;
+                  if ((_d2 <= _talkR2) || (_d2 <= _radioR2)) then {
+                    _playersNearLeader pushBack [_player, _playerHasRadio];
+                  };
+                } forEach _candidates;
               };
             };
-            sleep 0.001;
-          } forEach allPlayers;
+          };
         } else {
           continue;
         };
