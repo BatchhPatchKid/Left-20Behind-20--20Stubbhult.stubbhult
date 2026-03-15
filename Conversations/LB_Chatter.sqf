@@ -60,24 +60,10 @@ private _tryPlayAllClearAudioForLine = {
     _lineNumStr = format ["0%1", _lineNumStr];
   };
 
-  // Prefer CfgSounds class if available.
-  private _soundClass = format ["%1_Radio_Chatter_%2", _facKey, _lineNumStr];
+  // RadioChatter entries in description.ext use LBRC_<FAC>_Radio_Chatter_<NN> naming.
+  private _soundClass = format ["LBRC_%1_Radio_Chatter_%2", _facKey, _lineNumStr];
   if (isClass (configFile >> "CfgSounds" >> _soundClass)) then {
-    [_player, [_soundClass, 100, 1]] remoteExecCall ["say3D", _player];
-  } else {
-    // Fallback: direct mission file path if present.
-    private _relativePath = format [
-      "Conversations\\RadioChatter\\%1\\%1_Radio_Chatter_%2.ogg",
-      _facKey,
-      _lineNumStr
-    ];
-
-    if (fileExists (getMissionPath _relativePath)) then {
-      [[getMissionPath _relativePath, _player, false, getPosASL _player, 1, 1, 0], {
-        params ["_soundArgs"];
-        playSound3D _soundArgs;
-      }] remoteExecCall ["BIS_fnc_call", _player];
-    };
+    [_player, _soundClass] remoteExecCall ["say3D", _player];
   };
 };
 
@@ -308,7 +294,6 @@ while { true } do {
 			  private _selectedLine = _lines # _lineIndex;
 			  [_selectedLine] remoteExec ["systemChat", _player, false];
 			  [_player, _facKey, _lineIndex] call _tryPlayAllClearAudioForLine;
-			  [_selectedLine] remoteExec ["systemChat", _player, false];
 			};
 		  };
 

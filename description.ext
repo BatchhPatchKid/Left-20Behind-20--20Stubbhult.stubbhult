@@ -21,7 +21,14 @@ class CfgSounds {
         LBMQ_task003_trader_01,
         LBMQ_task003_trader_02,
         LBMQ_task003_radio_01,
-        LBMQ_task003_radio_02
+        LBMQ_task003_radio_02,
+        LBMQ_task003_radio_02,
+        LBRC_WO_Radio_Chatter_01,
+        LBRC_DT_Radio_Chatter_01,
+        LBRC_RU_Radio_Chatter_01,
+        LBRC_ROA_Radio_Chatter_01,
+        LBRC_TRB_Radio_Chatter_01
+    };
     };
     class laugh_1 {
         name = "laugh_1";
@@ -117,6 +124,26 @@ class CfgSounds {
 	class LBRC_WO_Radio_Chatter_01 {
         name = "LBRC_WO_Radio_Chatter_01";
         sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_01.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBRC_DT_Radio_Chatter_01 {
+        name = "LBRC_DT_Radio_Chatter_01";
+        sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Chatter_01.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBRC_RU_Radio_Chatter_01 {
+        name = "LBRC_RU_Radio_Chatter_01";
+        sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Chatter_01.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBRC_ROA_Radio_Chatter_01 {
+        name = "LBRC_ROA_Radio_Chatter_01";
+        sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Chatter_01.ogg", 1, 1};
+        titles[] = {};
+    };
+	class LBRC_TRB_Radio_Chatter_01 {
+        name = "LBRC_TRB_Radio_Chatter_01";
+        sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Chatter_01.ogg", 1, 1};
         titles[] = {};
     };
 };
