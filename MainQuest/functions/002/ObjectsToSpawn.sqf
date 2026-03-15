@@ -7,7 +7,6 @@ _group5 = createGroup [west, true];
 _group6 = createGroup [west, true];
 _group7 = createGroup [west, true];
 _group8 = createGroup [west, true];
-_group9 = createGroup [west, true];
 
 _object0 = createVehicle ["Land_ToiletBox_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _object0 setVectorDirAndUp [[-0.99892,-0.0464678,1.10788e-06],[1.10265e-06,1.38252e-07,1]];
@@ -401,20 +400,6 @@ _group8 selectLeader _object57;
     ['_object57_nextFrameHandle', 'onEachFrame'] call BIS_fnc_removeStackedEventHandler;
 }, [_object57]] call BIS_fnc_addStackedEventHandler;
 
-_object59 = _group9 createUnit ["B_G_Survivor_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
-_object59 setPosASL [11910.8,2858.13,11.4376];
-_object59 setDir 52.8473;
-_object59 setRank "PRIVATE";
-_object59 setSkill 0.75;
-_object59 setUnitPos "Auto";
-_group9 selectLeader _object59;
-['_object59_nextFrameHandle', 'onEachFrame', {
-    params ["_unit"];
-    [_unit, [[["rhs_weap_m4a1_carryhandle_m203","","acc_flashlight","",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],["1Rnd_HE_Grenade_shell",1],""],[],[],["U_B_CBRN_Suit_01_MTP_F",[["WBK_HeadLampItem_Double",1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",2,30]]],["rhsusf_spcs_ocp_rifleman",[["rvg_money",5,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",7,30]]],["rhsusf_assault_eagleaiii_ocp",[["ACE_packingBandage",1],["rvg_flare",1,1],["1Rnd_HE_Grenade_shell",2,1],["rvg_baconEmpty",1,1],["rvg_plasticBottleEmpty",1,1],["rvg_hose",1,1]]],"rhsusf_ach_helmet_headset_ocp_alt","Mask_M40",[],["ItemMap","","TFAR_anprc152","ItemCompass","ItemWatch",""]],[["ace_arsenal_voice","Male01ENG"],["ace_arsenal_face","GreekHead_A3_08"]]]] call CBA_fnc_setLoadout;
-    _unit call BIN_fnc_CBRNHoseInit;
-    ['_object59_nextFrameHandle', 'onEachFrame'] call BIS_fnc_removeStackedEventHandler;
-}, [_object59]] call BIS_fnc_addStackedEventHandler;
-
 
 _object60 = createVehicle ["Land_HBarrier_1_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _object60 setVectorDirAndUp [[-0.131551,0.991201,0.0146899],[0.110977,-2.40013e-08,0.993823]];
@@ -439,36 +424,6 @@ _object63 setPosASL [11903.8,2800.37,11.0379];
 _object64 = createVehicle ["Land_Razorwire_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
 _object64 setVectorDirAndUp [[0.989495,0.0969957,-0.107195],[0.107703,-1.30081e-08,0.994183]];
 _object64 setPosASL [11902.6,2811.58,11.1964];
-
-
-_object65 = _group9 createUnit ["B_G_Survivor_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
-_object65 setPosASL [11903.8,2858.68,11.4365];
-_object65 setDir 52.3039;
-_object65 setRank "PRIVATE";
-_object65 setSkill 0.75;
-_object65 setUnitPos "Auto";
-['_object65_nextFrameHandle', 'onEachFrame', {
-    params ["_unit"];
-    [_unit, [[["rhs_weap_m4a1_carryhandle","","acc_flashlight","rhsusf_acc_RX01_tan",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],[],[],["U_B_CBRN_Suit_01_MTP_F",[["WBK_HeadLampItem_Double",1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",1,30]]],["rhsusf_spcs_ocp_teamleader_alt",[["ACE_fieldDressing",5],["rhs_mag_30Rnd_556x45_M855A1_Stanag",7,30]]],["rhsusf_assault_eagleaiii_ocp",[["rvg_purificationTablets",1,6],["rvg_canisterFuel_Empty",1,1],["rvg_hose",1,1]]],"rhsusf_ach_helmet_ocp_alt","Mask_M40",[],["","","TFAR_anprc148jem","ItemCompass","ItemWatch",""]],[["ace_arsenal_voice","Male10ENG"],["ace_arsenal_face","Mavros"]]]] call CBA_fnc_setLoadout;
-    _unit call BIN_fnc_CBRNHoseInit;
-    ['_object65_nextFrameHandle', 'onEachFrame'] call BIS_fnc_removeStackedEventHandler;
-}, [_object65]] call BIS_fnc_addStackedEventHandler;
-
-
-_object66 = _group9 createUnit ["B_G_Survivor_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
-_object66 setPosASL [11895.9,2854.33,11.6652];
-_object66 setDir 45.1972;
-_object66 setRank "PRIVATE";
-_object66 setSkill 0.75;
-_object66 setUnitPos "Auto";
-['_object66_nextFrameHandle', 'onEachFrame', {
-    params ["_unit"];
-    [_unit, [[["rhs_weap_m4a1_carryhandle","","acc_flashlight","",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],[],""],[],[],["U_B_CBRN_Suit_01_MTP_F",[["WBK_HeadLampItem_Double",1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",1,30]]],["rhsusf_spcs_ocp_sniper",[["ACE_fieldDressing",4],["rvg_money",5,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",3,30]]],["rhsusf_assault_eagleaiii_ocp",[["ACE_bloodIV_250",1],["rvg_flare",1,1],["rvg_spiritEmpty",1,1],["rvg_bacon",1,1],["rvg_tire",1,1]]],"rhsusf_ach_helmet_ocp_norotos","Mask_M40",[],["","","TFAR_fadak","ItemCompass","ItemWatch",""]],[["ace_arsenal_voice","Male01ENG"],["ace_arsenal_face","GreekHead_A3_09"]]]] call CBA_fnc_setLoadout;
-    _unit call BIN_fnc_CBRNHoseInit;
-    ['_object66_nextFrameHandle', 'onEachFrame'] call BIS_fnc_removeStackedEventHandler;
-}, [_object66]] call BIS_fnc_addStackedEventHandler;
-
-
 
 _group0 setFormation "WEDGE";
 _group0 setBehaviour "AWARE";
@@ -659,142 +614,9 @@ _waypoint setWaypointScript "";
 
 _group8 setCurrentWaypoint [_group8, 1];
 
-_group9 setFormation "WEDGE";
-_group9 setBehaviour "AWARE";
-_group9 setCombatMode "YELLOW";
-_group9 setSpeedMode "NORMAL";
-
-_waypoint = [_group9, 0];
-_waypoint setWaypointPosition [[11911.4,2849.47,11.0014], -1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_waypoint = _group9 addWaypoint [[0, 0, 0], -1];
-_waypoint setWaypointPosition [[11945.9,2847.49,12.322], -1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_waypoint = _group9 addWaypoint [[0, 0, 0], -1];
-_waypoint setWaypointPosition [[11959.3,2811.12,12.0014], -1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_waypoint = _group9 addWaypoint [[0, 0, 0], -1];
-_waypoint setWaypointPosition [[11950.9,2777.11,11], -1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_waypoint = _group9 addWaypoint [[0, 0, 0], -1];
-_waypoint setWaypointPosition [[11909.2,2770.22,11.6608], -1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_waypoint = _group9 addWaypoint [[0, 0, 0], -1];
-_waypoint setWaypointPosition [[11886.5,2802.43,12.9674], -1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_waypoint = _group9 addWaypoint [[0, 0, 0], -1];
-_waypoint setWaypointPosition [[11879,2835.31,13.057], -1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_waypoint = _group9 addWaypoint [[0, 0, 0], -1];
-_waypoint setWaypointPosition [[11911.7,2858.83,11.4969], -1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_waypoint = _group9 addWaypoint [[0, 0, 0], -1];
-_waypoint setWaypointPosition [[11929.2,2864.59,12.6724], -1];
-_waypoint setWaypointType "CYCLE";
-_waypoint setWaypointName "";
-_waypoint setWaypointDescription "";
-_waypoint setWaypointFormation "NO CHANGE";
-_waypoint setWaypointBehaviour "UNCHANGED";
-_waypoint setWaypointCombatMode "NO CHANGE";
-_waypoint setWaypointSpeed "UNCHANGED";
-_waypoint setWaypointTimeout [0,0,0];
-_waypoint setWaypointCompletionRadius 0;
-_waypoint setWaypointStatements ["true",""];
-_waypoint setWaypointScript "";
-
-_group9 setCurrentWaypoint [_group9, 7];
-
 _object57 moveInGunner _object56;
 
-private _task002Groups = [_group0, _group1, _group2, _group3, _group4, _group5, _group6, _group7, _group8, _group9];
+private _task002Groups = [_group0, _group1, _group2, _group3, _group4, _group5, _group6, _group7, _group8];
 {
     private _group = _x;
     private _hasCycleWaypoint = false;
@@ -808,30 +630,15 @@ private _task002Groups = [_group0, _group1, _group2, _group3, _group4, _group5, 
     if (!_hasCycleWaypoint) then {
         {
             _x disableAI "PATH";
+			_x allowDamage false;
         } forEach (units _group);
     };
 } forEach _task002Groups;
 
 _object57 moveInGunner _object56;
 
-private _campUnits = [
-    _object45,
-    _object46,
-    _object47,
-    _object48,
-    _object49,
-    _object50,
-    _object51,
-    _object52,
-    _object53,
-    _object58,
-    _object59,
-    _object60
-];
-
 private _campCenter = _object42;
 private _scientist = _object47;
 
 missionNamespace setVariable ["LBMQ_task002CampCenter", _campCenter, true];
 missionNamespace setVariable ["LBMQ_task002Scientist", _scientist, true];
-missionNamespace setVariable ["LBMQ_task002CampUnits", _campUnits, true];

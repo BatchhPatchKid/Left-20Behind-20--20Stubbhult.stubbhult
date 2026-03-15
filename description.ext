@@ -177,5 +177,6 @@ class CfgRemoteExec
         class LBMQ_fnc_task001Main { allowedTargets = 0; };
         class LBMQ_fnc_task002Main { allowedTargets = 0; };
         class LBMQ_fnc_task003Main { allowedTargets = 0; };
+		class LBMQ_fnc_task004Main { allowedTargets = 0; };
     };
 };

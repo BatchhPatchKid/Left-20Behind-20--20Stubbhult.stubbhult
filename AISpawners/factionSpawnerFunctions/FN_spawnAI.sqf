@@ -64,17 +64,17 @@ FN_setWaypoints = {
     _waypoint1 = _grp addWaypoint [_posWP,2];
     _waypoint1 setWaypointType "MOVE";
     _waypoint1 setWaypointSpeed "FULL";
-    _waypoint1 setWaypointBehaviour "SAFE";
+    _waypoint1 setWaypointBehaviour "AWARE";
     _posWP = [_pos,_minDis,_maxDis,3,0,20,0] call BIS_fnc_findSafePos;
     _waypoint2 = _grp addWaypoint [_posWP,2];
     _waypoint2 setWaypointType "MOVE";
     _waypoint2 setWaypointSpeed "FULL";
-    _waypoint2 setWaypointBehaviour "SAFE";
+    _waypoint2 setWaypointBehaviour "AWARE";
     _posWP = [_pos,_minDis,_maxDis,3,0,20,0] call BIS_fnc_findSafePos;
     _waypoint3 = _grp addWaypoint [_posWP,2];
     _waypoint3 setWaypointType "CYCLE";
     _waypoint3 setWaypointSpeed "FULL";
-    _waypoint3 setWaypointBehaviour "SAFE";
+    _waypoint3 setWaypointBehaviour "AWARE";
     _grp setCurrentWaypoint _waypoint1;
 };
 

@@ -88,7 +88,7 @@ switch (_faction) do { //Going throuigh each zombie faction to spawn the appropr
 		_ZedAmbientArray = [1] call FN_getZombieArray;
 		
 		private _horde = createGroup east;
-		[_horde, _ZedAmbientArray, _numUnits, _pos, _maxDist, 30] call (missionNamespace getVariable "FN_spawnZom");
+		[_horde, _ZedAmbientArray, _numUnits, _pos, _maxDist, 3] call (missionNamespace getVariable "FN_spawnZom");
 	};
 	case "mutants": {
 		_minUnits = 1;
@@ -117,7 +117,7 @@ switch (_faction) do { //Going throuigh each zombie faction to spawn the appropr
 		_ZedArray = [0] call FN_getZombieArray;
 		
 		private _horde = createGroup east;
-		[_horde, _ZedArray, _numUnits, _pos, _maxDist, 30] call (missionNamespace getVariable "FN_spawnZom");
+		[_horde, _ZedArray, _numUnits, _pos, _maxDist, 15] call (missionNamespace getVariable "FN_spawnZom");
 	};
 	default { // Default is zombies
 
@@ -132,7 +132,7 @@ switch (_faction) do { //Going throuigh each zombie faction to spawn the appropr
 		_ZedArray = [1] call FN_getZombieArray;
 		
 		private _horde = createGroup east;
-		[_horde, _ZedArray, (_numUnits/2), _pos, 20, 15] call (missionNamespace getVariable "FN_spawnZom");
-		[_horde, _ZedArray, (_numUnits/2), _pos, _maxDist, 15] call (missionNamespace getVariable "FN_spawnZom");
+		[_horde, _ZedArray, (_numUnits/2), _pos, 20, 3] call (missionNamespace getVariable "FN_spawnZom");
+		[_horde, _ZedArray, (_numUnits/2), _pos, _maxDist, 3] call (missionNamespace getVariable "FN_spawnZom");
 	};
 };

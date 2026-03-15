@@ -115,7 +115,7 @@ switch (_mode) do {
 
         [_player] spawn {
             params ["_taskOwner"];
-            sleep 40;
+            sleep 28;
             if (isNull _taskOwner || {!isPlayer _taskOwner}) exitWith {};
             ["tryStart", _taskOwner] call (missionNamespace getVariable "LBMQ_fnc_task003Main");
         };
@@ -127,8 +127,8 @@ switch (_mode) do {
 
     case "playDialogueLocal": {
         private _lines = [
-            ["Player", "Good afternoon soldier, I was sent here by the Survivor’s Union to pick up the medical supply crate", 0, 5],
-            ["Scientist", "Good, we were expecting you 15 minutes ago. No matter, at least you’re here now. How’s the Union doing? Any new illness breakouts in the area recently?", 1, 9],
+            ["Player", "Good afternoon soldier, I was sent here by the Survivor’s Union to pick up the medical supply crate", 0, 6],
+            ["Scientist", "Good, we were expecting you 15 minutes ago. No matter, at least you’re here now. How’s the Union doing? Any new illness breakouts in the area recently?", 1, 10],
             ["Player", "I don’t know. I just got here, so I’m not sure of the state of Survivor’s Union at the moment.", 0, 5],
             ["Scientist", "I see, if that’s the case, when you get back to the Survivor’s Union Contractor’s Office, make sure you take a vial of this drug. It’ll keep you healthy from the outbreak.", 2, 0]
         ];

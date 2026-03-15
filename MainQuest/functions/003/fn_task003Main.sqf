@@ -130,7 +130,7 @@ switch (_mode) do {
         private _banditUnits = [];
         private _equipFn = missionNamespace getVariable ["FN_equipAI", {}];
 
-        private _fixedSpawnPos = [11013.6,4232.51,0];
+        private _fixedSpawnPos = [10996.3,4200.95,0];
 
 		{
 			private _group = createGroup independent;
@@ -166,7 +166,7 @@ switch (_mode) do {
     case "playDialogueLocal": {
         private _lines = [
             ["Player", "Here's the medicine I was tasked to bring you.", 0, 4],
-            ["Scientist", "Very good, very good. I was informed about you by leadership. They want you to investigate a missing Survivor's Union Patrol west of here. I have all the details on this piece of paper.", 1, 9]
+            ["Scientist", "Very good, very good. I was informed about you by leadership. They want you to investigate a missing Survivor's Union Patrol west of here. I have all the details on this piece of paper.", 1, 11]
         ];
 
         private _headDoctor = missionNamespace getVariable ["LBMQ_task003HeadDoctor", objNull];
@@ -203,6 +203,7 @@ switch (_mode) do {
             params ["_taskOwner"];
             sleep 2;
             ["spawnBanditAttack", objNull] call (missionNamespace getVariable "LBMQ_fnc_task003Main");
+			["tryStart", _taskOwner] call (missionNamespace getVariable "LBMQ_fnc_task004Main");
         };
     };
 
