@@ -422,15 +422,7 @@ private _allClear = createHashMapFromArray [
         "Kiryka Timokrati, edo o frouros Xenon, ola kala pros to paron",
         "Kiryka Chrysi, edo o frouros Ny, ola kathara apo ti meria mas"
     ]],
-    ["WO", ["Leutnant, hier ist Zug Apples, Bereich ist frei",
-        "Unteroffizier, hier ist Trupp 107, Patrouille ist derzeit ohne Feindkontakt",
-        "Unteroffizier, hier ist Trupp 207, Sektor ist frei",
-        "Leutnant, Zug Charlie steht bereit. Keine Feindkontakte",
-        "Feldwebel, Gruppe 2 steht bereit",
-        "Feldwebel, Gruppe 3, kein Feindkontakt",
-        "Leutnant, hier ist Zug Baker, keine Feindkontakte",
-        "Unteroffizier, hier ist Trupp 312, Route ist frei",
-        "Feldwebel, Gruppe 4 steht bereit, kein Feindkontakt"
+    ["WO", ["Leutnant, hier ist Zug Apples, Bereich ist frei"
     ]],
     ["NH", ["Squad Commander, this is team Lat-Pulldown, all clear so far",
         "Squad Commander, this is Nikos from team Tricep-Extension, area is chill right now",

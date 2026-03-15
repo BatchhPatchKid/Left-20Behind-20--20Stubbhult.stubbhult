@@ -17,40 +17,32 @@ if (!isServer) exitWith {};
 // ---------------------------
 // Variable declarations
 // ---------------------------
-private _sleepTime = 1;
+private _sleepTime = 15;
 private _probSpeekAmbient = 0.005;
 private _probSpeekCombat = 0.35;
 private _probAllClear = 1;
 private _talkRadius = 25;
 private _radioRadius = 500;
-private _debug = true;
+private _debug = false;
 
-private _radios = [
-  "tfar_anprc148jem",
-  "rhsusf_radio_anprc152",
-  "tfar_anprc152",
-  "tfar_anprc154",
-  "tfar_fadak",
-  "tfar_pnr1000a",
-  "rhs_radio_r169p1",
-  "rhs_radio_r187p1",
-  "tfar_rf7800str",
-  "itemradio"
-];
-
-// Precompute squared radii + normalize radio classnames to lowercase
+// Precompute squared radii
 private _talkR2 = _talkRadius * _talkRadius;
 private _radioR2 = _radioRadius * _radioRadius;
-_radios = _radios apply { toLower _x };
 
-// Helper: per-player radio check (exact match in assignedItems)
+// Helper: per-player radio check (accept any item that occupies the radio slot)
 private _hasAnyRadio = {
   params ["_unit"];
-  private _invLower = (assignedItems _unit) apply { toLower _x };
-  {
-    if (_x in _invLower) exitWith { true };
-  } forEach _radios;
-  false
+  private _assigned = assignedItems _unit;
+
+  (_assigned findIf {
+    private _item = _x;
+
+    isClass (configFile >> "CfgWeapons" >> _item)
+    && {
+      (_item isEqualTo "ItemRadio")
+      || { _item isKindOf ["ItemRadio", configFile >> "CfgWeapons"] }
+    }
+  }) > -1
 };
 
 // Helper: play optional faction all-clear chatter audio for a specific line index.

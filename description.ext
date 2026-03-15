@@ -114,6 +114,11 @@ class CfgSounds {
         sound[] = {"MainQuest\dialogueAudios\Task003\LBMQ_task003_radio_02.ogg", 1, 1};
         titles[] = {};
     };
+	class LBRC_WO_Radio_Chatter_01 {
+        name = "LBRC_WO_Radio_Chatter_01";
+        sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_01.ogg", 1, 1};
+        titles[] = {};
+    };
 };
 
 class CfgFunctions
