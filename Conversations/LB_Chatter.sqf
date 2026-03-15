@@ -23,6 +23,7 @@ private _probSpeekCombat = 0.35;
 private _probAllClear = 1;
 private _talkRadius = 25;
 private _radioRadius = 500;
+private _radioAudioHearingRadius = 35;
 private _debug = false;
 
 // Precompute squared radii
@@ -60,10 +61,15 @@ private _tryPlayAllClearAudioForLine = {
     _lineNumStr = format ["0%1", _lineNumStr];
   };
 
-  // RadioChatter entries in description.ext use LBRC_<FAC>_Radio_Chatter_<NN> naming.
   private _soundClass = format ["LBRC_%1_Radio_Chatter_%2", _facKey, _lineNumStr];
   if (isClass (configFile >> "CfgSounds" >> _soundClass)) then {
-    [_player, _soundClass] remoteExecCall ["say3D", _player];
+    private _targets = (allPlayers select {
+      alive _x && { (_x distanceSqr _player) <= (_radioAudioHearingRadius * _radioAudioHearingRadius) }
+    }) apply { owner _x };
+
+    if (count _targets > 0) then {
+      [_player, [_soundClass, _radioAudioHearingRadius, 1]] remoteExecCall ["say3D", _targets, false];
+    };
   };
 };
 
