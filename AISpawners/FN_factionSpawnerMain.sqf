@@ -86,7 +86,7 @@ private _spawnRenegades = {
 
 // Spawn a standard wandering zombie group and then call selector
 private _spawnZombieGroup = {
-    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_sfGroup", -1]];
+    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_sfGroup", -1], ["_spawnScale", 1]];
     private _zombiePos = [_pos, 20, 45, 3] call (missionNamespace getVariable "FN_findSafePosition");
 
     [_pos, 10, "zombie", "Zombie", _area] call (missionNamespace getVariable "FN_mapMarkerLocationMain");
@@ -99,12 +99,12 @@ private _spawnZombieGroup = {
         };
     };
 
-    ["Zombie", _num, _rad, _zombiePos, _rvg, _area, _sfGroup] call (missionNamespace getVariable "FN_factionSelector");
+    ["Zombie", _num, _rad, _zombiePos, _rvg, _area, _sfGroup, _spawnScale] call (missionNamespace getVariable "FN_factionSelector");
 };
 
 // Spawn a survivor group; uses _fac if provided, otherwise picks randomly
 private _spawnSurvivorGroup = {
-    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_fac", ""], ["_sfGroup", -1]];
+    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_fac", ""], ["_sfGroup", -1], ["_spawnScale", 1]];
 
     private _survivorFactions = ["_survivorFactions"] call (missionNamespace getVariable "FN_arrayReturn");
 
@@ -122,14 +122,14 @@ private _spawnSurvivorGroup = {
         };
     };
 
-    [_factionSelected, _num, _rad, _pos, _rvg, _area, _sfGroup] call (missionNamespace getVariable "FN_factionSelector");
+    [_factionSelected, _num, _rad, _pos, _rvg, _area, _sfGroup, _spawnScale] call (missionNamespace getVariable "FN_factionSelector");
 };
 
 // Spawn a mutant group; uses _fac if provided, otherwise picks randomly.
 // Applies mutant effects to all players already in range on first spawn,
 // and stores the faction on the rock for future re-entry detections.
 private _spawnMutantGroup = {
-    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_fac", ""], ["_sfGroup", -1], ["_rock", objNull]];
+    params ["_num", "_rad", "_pos", "_rvg", "_area", ["_fac", ""], ["_sfGroup", -1], ["_rock", objNull], ["_spawnScale", 1]];
 
     private _mutantWeights = ["_mutantWeights"] call (missionNamespace getVariable "FN_arrayReturn");
 
@@ -151,7 +151,7 @@ private _spawnMutantGroup = {
     };
     { [_factionSelected] remoteExec ["FN_mutantEffects", owner _x]; } forEach _inRange;
 
-    [_factionSelected, _num, _rad, _mutantPos, _rvg, _area, _sfGroup] call (missionNamespace getVariable "FN_factionSelector");
+    [_factionSelected, _num, _rad, _mutantPos, _rvg, _area, _sfGroup, _spawnScale] call (missionNamespace getVariable "FN_factionSelector");
 };
 
 // -----------------------------------------------------------------------------
@@ -203,6 +203,7 @@ private _zombieRvg = if (daytime < 4 || daytime > 20 || random 1 > 0.85) then {
 
 private _factionType = "";
 private _resolvedFaction = "";
+private _spawnScale = 1;
 
 if (_faction == "Rnd") then {
     private _dice = random 1;
@@ -221,18 +222,28 @@ if (_faction == "Rnd") then {
     _resolvedFaction = _faction;
 };
 
+// Random locations that force "spec-ops" behavior should increase hostile
+// non-human density as compensation when the random faction is not human.
+if (_faction == "Rnd" && {_sfGroup == 100}) then {
+    _spawnScale = switch (_factionType) do {
+        case "zombie": { 1.35 };
+        case "mutant": { 1.20 };
+        default { 1 };
+    };
+};
+
 // -----------------------------------------------------------------------------
 // 8. MAIN FACTION SPAWN ROUTINE
 // -----------------------------------------------------------------------------
 
 switch (_factionType) do {
     case "zombie": {
-        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _sfGroup] call _spawnZombieGroup;
+        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _sfGroup, _spawnScale] call _spawnZombieGroup;
     };
     case "survivor": {
-        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _resolvedFaction, _sfGroup] call _spawnSurvivorGroup;
+        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _resolvedFaction, _sfGroup, _spawnScale] call _spawnSurvivorGroup;
     };
     case "mutant": {
-        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _resolvedFaction, _sfGroup, _rock] call _spawnMutantGroup;
+        [_numUnits, _triggerRadius, _pos, _zombieRvg, _typeOfLocationArea, _resolvedFaction, _sfGroup, _rock, _spawnScale] call _spawnMutantGroup;
     };
 };

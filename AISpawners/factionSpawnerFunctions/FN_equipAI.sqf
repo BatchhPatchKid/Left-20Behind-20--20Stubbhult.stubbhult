@@ -827,6 +827,7 @@ switch _faction do {
 			_muzzleArraySelection = ["muzzlePMC_SF"] call _arrayReturn;
 			_opticsArraySelection = ["opticsPMC_SF"] call _arrayReturn;
 			_vestArraySelection = ["vestPMC_SF"] call _arrayReturn;
+			_railArraySelection = ["railPMC_SF"] call _arrayReturn;
 		};
 	};
 

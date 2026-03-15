@@ -1,4 +1,4 @@
-params ["_pos", "_numUnits", "_minDist", "_maxDist", "_faction", "_zombieDefault", "_triggerRadius"];
+params ["_pos", "_numUnits", "_minDist", "_maxDist", "_faction", "_zombieDefault", "_triggerRadius", ["_spawnScale", 1]];
 
 _ZedArray = [];
 
@@ -14,12 +14,19 @@ FN_setNumUnits = { // sets the random number of units
 	_numUnits;
 };
 
+FN_applySpawnScale = {
+	params ["_units", "_scale"];
+	if (!(_scale isEqualType 0) || _scale <= 1) exitWith { _units };
+	ceil ((_units max 1) * _scale)
+};
+
 FN_spawnSpecialInfected = {
 	params ["_ZedArray", "_minDist", "_maxDist", "_pos", "_lvl_loot", "_minUnits", "_midUnits", "_maxUnits", "_numUnits"];
 	
 	if (_numUnits == 0) then {
 		_numUnits = [_minUnits, _midUnits, _maxUnits] call FN_setNumUnits;
 	};
+	_numUnits = [_numUnits, _spawnScale] call FN_applySpawnScale;
 	
 	[_pos, _lvl_loot] call (missionNamespace getVariable "FN_lootSpawner");
 	
@@ -112,6 +119,7 @@ switch (_faction) do { //Going throuigh each zombie faction to spawn the appropr
 		if (_numUnits == 0) then {
 			_numUnits = if (_zombieDefault) then { [3, 4, 5] } else { [1, 2, 4] } call FN_setNumUnits;
 		};
+		_numUnits = [_numUnits, _spawnScale] call FN_applySpawnScale;
 
 		// 0 = slower zombies | 1 = faster Webknight zombies
 		_ZedArray = [0] call FN_getZombieArray;
@@ -124,6 +132,7 @@ switch (_faction) do { //Going throuigh each zombie faction to spawn the appropr
 		if (_numUnits == 0) then {
 			_numUnits = if (_zombieDefault) then { [6, 8, 10] } else { [5, 6, 8] } call FN_setNumUnits;
 		};
+		_numUnits = [_numUnits, _spawnScale] call FN_applySpawnScale;
 
 		if (_numUnits > 21) then {
 			[_pos, 1] call (missionNamespace getVariable "FN_lootSpawner");

@@ -1,4 +1,4 @@
-params ["_mutantType", "_pos", "_triggerRadius", "_maxUnits"];
+params ["_mutantType", "_pos", "_triggerRadius", "_maxUnits", ["_spawnScale", 1]];
 
 if (_maxUnits == 0) then {
 	switch (_mutantType) do {
@@ -17,6 +17,10 @@ if (_maxUnits == 0) then {
 		case "Statue": { _maxUnits = 1; };
 		default { _maxUnits = 1; };
 	};
+};
+
+if (_spawnScale > 1) then {
+	_maxUnits = ceil ((_maxUnits max 1) * _spawnScale);
 };
 
 switch (_mutantType) do {
