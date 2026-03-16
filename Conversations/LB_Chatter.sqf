@@ -50,26 +50,27 @@ private _hasAnyRadio = {
 // Audio is resolved by line position in the all-clear array:
 //   Conversations\RadioChatter\<FAC>\<FAC>_Radio_Chatter_<NN>.ogg
 private _tryPlayAllClearAudioForLine = {
-  params ["_player", "_facKey", "_lineIndex"];
+  params ["_listener", "_facKey", "_lineIndex"];
 
-  if (isNull _player) exitWith {};
+  if (isNull _listener) exitWith {};
   if (_facKey isEqualTo "*") exitWith {};
 
-  private _lineNum = _lineIndex + 1;
-  private _lineNumStr = str _lineNum;
-  if (_lineNum < 10) then {
-    _lineNumStr = format ["0%1", _lineNumStr];
+  private _factionAudioClasses = _allClearAudioClassesByFaction getOrDefault [_facKey, []];
+  if (count _factionAudioClasses <= 0) exitWith {};
+
+  private _soundClass = _factionAudioClasses param [_lineIndex, ""];
+  if (_soundClass isEqualTo "") then {
+    _soundClass = _factionAudioClasses # 0;
   };
 
-  private _soundClass = format ["LBRC_%1_Radio_Chatter_%2", _facKey, _lineNumStr];
-  if (isClass (configFile >> "CfgSounds" >> _soundClass)) then {
-    private _targets = (allPlayers select {
-      alive _x && { (_x distanceSqr _player) <= (_radioAudioHearingRadius * _radioAudioHearingRadius) }
-    }) apply { owner _x };
+  if (_soundClass isEqualTo "") exitWith {};
 
-    if (count _targets > 0) then {
-      [_player, [_soundClass, _radioAudioHearingRadius, 1]] remoteExecCall ["say3D", _targets, false];
-    };
+  private _targets = (allPlayers select {
+    alive _x && { (_x distanceSqr _listener) <= (_radioAudioHearingRadius * _radioAudioHearingRadius) }
+  }) apply { owner _x };
+
+  if (count _targets > 0) then {
+    [_listener, _soundClass] remoteExecCall ["say3D", _targets, false];
   };
 };
 
@@ -131,6 +132,22 @@ private _ConDB = [] call _ConGetter;
 private _CombatSrc = _ConDB get "combat";
 private _AmbientSrc = _ConDB get "ambient";
 private _AllClearSrc = _ConDB get "allClear";
+
+private _allClearAudioClassesByFaction = createHashMap;
+{
+  private _fac = _x;
+  if !(_fac isEqualTo "*") then {
+    private _facClasses = [];
+    for "_i" from 1 to 99 do {
+      private _idx = if (_i < 10) then { format ["0%1", _i] } else { str _i };
+      private _cls = format ["LBRC_%1_Radio_Chatter_%2", _fac, _idx];
+      if (isClass (configFile >> "CfgSounds" >> _cls)) then {
+        _facClasses pushBack _cls;
+      };
+    };
+    _allClearAudioClassesByFaction set [_fac, _facClasses];
+  };
+} forEach (keys _AllClearSrc);
 
 // Precomputed pools
 private _CombatPools = createHashMap;
@@ -299,7 +316,7 @@ while { true } do {
 			  private _lineIndex = floor (random (count _lines));
 			  private _selectedLine = _lines # _lineIndex;
 			  [_selectedLine] remoteExec ["systemChat", _player, false];
-			  [_player, _facKey, _lineIndex] call _tryPlayAllClearAudioForLine;
+			  [_player, _leader, _facKey, _lineIndex] call _tryPlayAllClearAudioForLine;
 			};
 		  };
 
