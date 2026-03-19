@@ -29,7 +29,6 @@ class CfgSounds {
         LBRC_ROA_Radio_Chatter_01,
         LBRC_TRB_Radio_Chatter_01
     };
-    };
     class laugh_1 {
         name = "laugh_1";
         sound[] = {"sounds\laugh_1.ogg", 1, 1};

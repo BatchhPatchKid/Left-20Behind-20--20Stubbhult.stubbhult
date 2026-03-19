@@ -20,10 +20,9 @@ if (!isServer) exitWith {};
 private _sleepTime = 15;
 private _probSpeekAmbient = 0.005;
 private _probSpeekCombat = 0.35;
-private _probAllClear = 1;
+private _probAllClear = .15;
 private _talkRadius = 25;
 private _radioRadius = 500;
-private _radioAudioHearingRadius = 35;
 private _debug = false;
 
 // Precompute squared radii
@@ -50,28 +49,21 @@ private _hasAnyRadio = {
 // Audio is resolved by line position in the all-clear array:
 //   Conversations\RadioChatter\<FAC>\<FAC>_Radio_Chatter_<NN>.ogg
 private _tryPlayAllClearAudioForLine = {
-  params ["_listener", "_facKey", "_lineIndex"];
+  params ["_player", "_facKey", "_lineIndex"];
 
-  if (isNull _listener) exitWith {};
-  if (_facKey isEqualTo "*") exitWith {};
+  private _idx = _lineIndex + 1;
+  private _idxText = if (_idx < 10) then { format ["0%1", _idx] } else { str _idx };
+  private _soundClass = format ["LBRC_%1_Radio_Chatter_%2", _facKey, _idxText];
 
-  private _factionAudioClasses = _allClearAudioClassesByFaction getOrDefault [_facKey, []];
-  if (count _factionAudioClasses <= 0) exitWith {};
-
-  private _soundClass = _factionAudioClasses param [_lineIndex, ""];
-  if (_soundClass isEqualTo "") then {
-    _soundClass = _factionAudioClasses # 0;
+  if !(isClass (configFile >> "CfgSounds" >> _soundClass)) then {
+    _soundClass = format ["LBRC_%1_Radio_Chatter_01", _facKey];
   };
 
-  if (_soundClass isEqualTo "") exitWith {};
-
-  private _targets = (allPlayers select {
-    alive _x && { (_x distanceSqr _listener) <= (_radioAudioHearingRadius * _radioAudioHearingRadius) }
-  }) apply { owner _x };
-
-  if (count _targets > 0) then {
-    [_listener, _soundClass] remoteExecCall ["say3D", _targets, false];
+  if (_debug) then {
+    [format ["LB_Chatter all-clear audio class: %1", _soundClass]] remoteExecCall ["systemChat", owner _player, false];
   };
+
+  [_player, [_soundClass, 100, 1]] remoteExecCall ["say3D", owner _player, false];
 };
 
 // ---------------------------
@@ -133,22 +125,6 @@ private _CombatSrc = _ConDB get "combat";
 private _AmbientSrc = _ConDB get "ambient";
 private _AllClearSrc = _ConDB get "allClear";
 
-private _allClearAudioClassesByFaction = createHashMap;
-{
-  private _fac = _x;
-  if !(_fac isEqualTo "*") then {
-    private _facClasses = [];
-    for "_i" from 1 to 99 do {
-      private _idx = if (_i < 10) then { format ["0%1", _i] } else { str _i };
-      private _cls = format ["LBRC_%1_Radio_Chatter_%2", _fac, _idx];
-      if (isClass (configFile >> "CfgSounds" >> _cls)) then {
-        _facClasses pushBack _cls;
-      };
-    };
-    _allClearAudioClassesByFaction set [_fac, _facClasses];
-  };
-} forEach (keys _AllClearSrc);
-
 // Precomputed pools
 private _CombatPools = createHashMap;
 {
@@ -180,6 +156,7 @@ private _AllClearPool = createHashMap;
   private _arr = _AllClearSrc get _fac; // array of strings
   if (!isNil "_arr" && { _arr isEqualType [] }) then {
     _AllClearPool set [_fac, _arr]; // store reference (no + copy)
+	_AllClearPool set [toUpper _fac, _arr];
   };
 } forEach (keys _AllClearSrc);
 
@@ -302,12 +279,16 @@ while { true } do {
 		  if (
 			_playerHasRadio
 			&& { random 1 < _probAllClear }
-			&& { behaviour _leader != "COMBAT" }
-			&& { behaviour _leader != "CARELESS" }
+			&& { (behaviour _leader != "COMBAT") || { behaviour _leader == "CARELESS" } }
 			&& { (_leader distanceSqr _player) >= _talkR2 }
 			&& { (_leader distanceSqr _player) < _radioR2 }
 		  ) then {
-			private _facKey = [_grp, "*"] call LB_FacReg_Get;
+			private _facKeyRaw = [_grp, "*"] call LB_FacReg_Get;
+			private _facKey = _facKeyRaw;
+			if !(_facKey isEqualType "") then {
+			  _facKey = str _facKey;
+			};
+			_facKey = toUpper _facKey;
 			private _lines = _AllClearPool get _facKey;
 			if (isNil "_lines") then {
 			  _lines = _AllClearPool get "*";
@@ -316,7 +297,7 @@ while { true } do {
 			  private _lineIndex = floor (random (count _lines));
 			  private _selectedLine = _lines # _lineIndex;
 			  [_selectedLine] remoteExec ["systemChat", _player, false];
-			  [_player, _leader, _facKey, _lineIndex] call _tryPlayAllClearAudioForLine;
+			  [_player, _facKey, _lineIndex] call _tryPlayAllClearAudioForLine;
 			};
 		  };
 
