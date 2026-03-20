@@ -20,7 +20,7 @@ if (!isServer) exitWith {};
 private _sleepTime = 15;
 private _probSpeekAmbient = 0.005;
 private _probSpeekCombat = 0.35;
-private _probAllClear = .15;
+private _probAllClear = 0.15;
 private _talkRadius = 25;
 private _radioRadius = 500;
 private _debug = false;
@@ -43,6 +43,42 @@ private _hasAnyRadio = {
       || { _item isKindOf ["ItemRadio", configFile >> "CfgWeapons"] }
     }
   }) > -1
+};
+
+private _getFactionKey = {
+  params ["_grp", ["_uppercase", false]];
+
+  private _facKey = [_grp, "*"] call LB_FacReg_Get;
+  if !(_facKey isEqualType "") then {
+    _facKey = str _facKey;
+  };
+
+  if (_uppercase) then {
+    _facKey = toUpper _facKey;
+  };
+
+  _facKey
+};
+
+private _getPoolForFaction = {
+  params ["_poolMap", "_facKey"];
+
+  private _pool = _poolMap get _facKey;
+  if (isNil "_pool") then {
+    _pool = _poolMap get "*";
+  };
+
+  _pool
+};
+
+private _sendAmbientConversation = {
+  params ["_conversation", "_player"];
+
+  {
+    _x params ["_role", "_text", "_min", "_max"];
+    [_text] remoteExec ["systemChat", _player, false];
+    sleep (_min + random ((_max - _min) max 0));
+  } forEach _conversation;
 };
 
 // Helper: play optional faction all-clear chatter audio for a specific line index.
@@ -129,18 +165,17 @@ private _AllClearSrc = _ConDB get "allClear";
 private _CombatPools = createHashMap;
 {
   private _fac = _x;
-  private _arr = _CombatSrc get _fac; // array of strings
+  private _arr = _CombatSrc get _fac;
   if (!isNil "_arr" && { _arr isEqualType [] }) then {
-    _CombatPools set [_fac, _arr]; // store reference (no + copy)
+    _CombatPools set [_fac, _arr];
   };
 } forEach (keys _CombatSrc);
 
 private _AmbientPools = createHashMap;
 {
   private _fac = _x;
-  private _arr = _AmbientSrc get _fac; // array of conversations
+  private _arr = _AmbientSrc get _fac;
   if (!isNil "_arr" && { _arr isEqualType [] }) then {
-    // keep only non-empty conversations (each conversation is an array of entries)
     private _clean = _arr select { _x isEqualType [] && { count _x > 0 } };
     _AmbientPools set [_fac, _clean];
   };
@@ -153,10 +188,10 @@ if (isNil { _AmbientPools get "*" }) then {
 private _AllClearPool = createHashMap;
 {
   private _fac = _x;
-  private _arr = _AllClearSrc get _fac; // array of strings
+  private _arr = _AllClearSrc get _fac;
   if (!isNil "_arr" && { _arr isEqualType [] }) then {
-    _AllClearPool set [_fac, _arr]; // store reference (no + copy)
-	_AllClearPool set [toUpper _fac, _arr];
+    _AllClearPool set [_fac, _arr];
+    _AllClearPool set [toUpper _fac, _arr];
   };
 } forEach (keys _AllClearSrc);
 
@@ -164,7 +199,7 @@ private _AllClearPool = createHashMap;
 // Main Loop
 // ---------------------------
 while { true } do {
-  private _reg = missionNamespace getVariable ["LB_FactionRegistry", createHashMap]; // getting updated version of the hash map
+  private _reg = missionNamespace getVariable ["LB_FactionRegistry", createHashMap];
   private _alivePlayers = allPlayers select { isPlayer _x && { alive _x } };
 
   // Build a per-tick spatial player index so groups query nearby candidates only.
@@ -173,8 +208,8 @@ while { true } do {
   private _playerGrid = createHashMap;
 
   {
-    private _p = _x;
-    private _pos = getPosWorld _p;
+    private _player = _x;
+    private _pos = getPosWorld _player;
     private _cx = floor ((_pos # 0) / _cellSize);
     private _cy = floor ((_pos # 1) / _cellSize);
     private _cellKey = format ["%1:%2", _cx, _cy];
@@ -185,7 +220,7 @@ while { true } do {
       _playerGrid set [_cellKey, _bucket];
     };
 
-    _bucket pushBack [_p, (_p call _hasAnyRadio)];
+    _bucket pushBack [_player, (_player call _hasAnyRadio)];
     _playerGrid set [_cellKey, _bucket];
   } forEach _alivePlayers;
 
@@ -194,21 +229,18 @@ while { true } do {
     private _grp = groupFromNetId _nid;
 
     if (isNull _grp) then {
-      _reg deleteAt _nid; // deleting old groups
+      _reg deleteAt _nid;
     } else {
-      // main action section of the chatter script
       private _leader = leader _grp;
       private _leaderValid = (!isNull _leader) && { alive _leader };
-
-      // Build [player, hasRadio] pairs for those within talk OR radio radius
       private _playersNearLeader = [];
+      private _isCombat = false;
 
       if (_leaderValid) then {
         private _leaderPos = getPosWorld _leader;
         private _lcx = floor ((_leaderPos # 0) / _cellSize);
         private _lcy = floor ((_leaderPos # 1) / _cellSize);
 
-        // For radius == cell size, nearby candidates are in a 3x3 cell neighborhood.
         for "_dx" from -1 to 1 do {
           for "_dy" from -1 to 1 do {
             private _cellKey = format ["%1:%2", (_lcx + _dx), (_lcy + _dy)];
@@ -217,8 +249,8 @@ while { true } do {
             if (!isNil "_candidates") then {
               {
                 _x params ["_player", "_playerHasRadio"];
-                private _d2 = _player distanceSqr _leader;
-                if ((_d2 <= _talkR2) || (_d2 <= _radioR2)) then {
+                private _distanceSqr = _player distanceSqr _leader;
+                if (_distanceSqr <= _radioR2) then {
                   _playersNearLeader pushBack [_player, _playerHasRadio];
                 };
               } forEach _candidates;
@@ -230,83 +262,63 @@ while { true } do {
       };
 
       if (count _playersNearLeader > 0) then {
+        private _leaderBehaviour = behaviour _leader;
+        _isCombat = _leaderBehaviour == "COMBAT";
+        private _isCareless = _leaderBehaviour == "CARELESS";
+        private _canPlayAmbient = !_isCombat && !_isCareless;
+        private _canPlayAllClear = !_isCombat;
+        private _canCarelessCombatBark = _isCareless && { side _leader in [opfor, independent] };
+
+        private _facKey = [_grp, false] call _getFactionKey;
+        private _combatLines = [_CombatPools, _facKey] call _getPoolForFaction;
+        private _ambientConversations = [_AmbientPools, _facKey] call _getPoolForFaction;
+        private _allClearFacKey = [_grp, true] call _getFactionKey;
+        private _allClearLines = [_AllClearPool, _allClearFacKey] call _getPoolForFaction;
+
         {
           _x params ["_player", "_playerHasRadio"];
 
-          // ==== COMBAT LINES ====
+          private _distanceSqr = _player distanceSqr _leader;
+          private _inTalkRange = _distanceSqr < _talkR2;
+          private _sentCombatLine = false;
+
           if (
-            (random 1 < _probSpeekCombat && { behaviour _leader == "COMBAT" })
-            || (
-              ((_leader distanceSqr _player) < _talkR2)
-              && { behaviour _leader == "CARELESS" }
-              && { side _leader in [opfor, independent] }
-            )
+            (_isCombat && { random 1 < _probSpeekCombat })
+            || { _canCarelessCombatBark && { _inTalkRange } }
           ) then {
-            private _facKey = [_grp, "*"] call LB_FacReg_Get;
-            private _lines = _CombatPools get _facKey;
-            if (isNil "_lines") then {
-              _lines = _CombatPools get "*";
-            };
-            if (!isNil "_lines" && { count _lines > 0 }) then {
-              private _selectedLine = selectRandom _lines;
-              [_selectedLine] remoteExec ["systemChat", _player, false];
-            };
-          } else {
-            // ==== AMBIENT CONVERSATIONS ====
-            if (
-              (random 1 < _probSpeekAmbient)
-              && { behaviour _leader != "COMBAT" }
-              && { behaviour _leader != "CARELESS" }
-              && { (_leader distanceSqr _player) < _talkR2 }
-            ) then {
-              private _facKey = [_grp, "*"] call LB_FacReg_Get;
-              private _convs = _AmbientPools get _facKey;
-              if (isNil "_convs") then {
-                _convs = _AmbientPools get "*";
-              };
-              if (!isNil "_convs" && { count _convs > 0 }) then {
-                private _conv = selectRandom _convs; // [ROLE, TEXT, MIN, MAX] entries
-                {
-                  _x params ["_role", "_text", "_min", "_max"];
-                  [_text] remoteExec ["systemChat", _player, false];
-                  sleep (_min + random ((_max - _min) max 0));
-                } forEach _conv;
-              };
+            if (!isNil "_combatLines" && { count _combatLines > 0 }) then {
+              [selectRandom _combatLines] remoteExec ["systemChat", _player, false];
+              _sentCombatLine = true;
             };
           };
-		  
-		  // ==== ALL-CLEAR RADIO MESSAGES ====
-		  if (
-			_playerHasRadio
-			&& { random 1 < _probAllClear }
-			&& { (behaviour _leader != "COMBAT") || { behaviour _leader == "CARELESS" } }
-			&& { (_leader distanceSqr _player) >= _talkR2 }
-			&& { (_leader distanceSqr _player) < _radioR2 }
-		  ) then {
-			private _facKeyRaw = [_grp, "*"] call LB_FacReg_Get;
-			private _facKey = _facKeyRaw;
-			if !(_facKey isEqualType "") then {
-			  _facKey = str _facKey;
-			};
-			_facKey = toUpper _facKey;
-			private _lines = _AllClearPool get _facKey;
-			if (isNil "_lines") then {
-			  _lines = _AllClearPool get "*";
-			};
-			if (!isNil "_lines" && { count _lines > 0 }) then {
-			  private _lineIndex = floor (random (count _lines));
-			  private _selectedLine = _lines # _lineIndex;
-			  [_selectedLine] remoteExec ["systemChat", _player, false];
-			  [_player, _facKey, _lineIndex] call _tryPlayAllClearAudioForLine;
-			};
-		  };
+
+          if (!_sentCombatLine && { _canPlayAmbient } && { _inTalkRange } && { random 1 < _probSpeekAmbient }) then {
+            if (!isNil "_ambientConversations" && { count _ambientConversations > 0 }) then {
+              [selectRandom _ambientConversations, _player] call _sendAmbientConversation;
+            };
+          };
+
+          if (
+            _playerHasRadio
+            && { _canPlayAllClear }
+            && { !_inTalkRange }
+            && { _distanceSqr < _radioR2 }
+            && { random 1 < _probAllClear }
+          ) then {
+            if (!isNil "_allClearLines" && { count _allClearLines > 0 }) then {
+              private _lineIndex = floor (random (count _allClearLines));
+              private _selectedLine = _allClearLines # _lineIndex;
+              [_selectedLine] remoteExec ["systemChat", _player, false];
+              [_player, _allClearFacKey, _lineIndex] call _tryPlayAllClearAudioForLine;
+            };
+          };
 
           sleep 0.001;
         } forEach _playersNearLeader;
       };
 
       if (_debug) then {
-        [_alivePlayers, _leader, _leaderValid, (_playersNearLeader apply { _x # 0 }), (behaviour _leader == "COMBAT")] call _FN_debug;
+        [_alivePlayers, _leader, _leaderValid, (_playersNearLeader apply { _x # 0 }), _isCombat] call _FN_debug;
       };
     };
 
