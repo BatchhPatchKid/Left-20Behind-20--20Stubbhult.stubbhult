@@ -20,7 +20,7 @@ if (!isServer) exitWith {};
 private _sleepTime = 15;
 private _probSpeekAmbient = 0.005;
 private _probSpeekCombat = 0.35;
-private _probAllClear = 0.15;
+private _probAllClear = 0.95;
 private _talkRadius = 25;
 private _radioRadius = 500;
 private _debug = false;
@@ -91,7 +91,7 @@ private _tryPlayAllClearAudioForLine = {
   private _idxText = if (_idx < 10) then { format ["0%1", _idx] } else { str _idx };
   private _soundClass = format ["LBRC_%1_Radio_Chatter_%2", _facKey, _idxText];
 
-  if !(isClass (configFile >> "CfgSounds" >> _soundClass)) then {
+  if !(isClass (missionConfigFile >> "CfgSounds" >> _soundClass)) then {
     _soundClass = format ["LBRC_%1_Radio_Chatter_01", _facKey];
   };
 
