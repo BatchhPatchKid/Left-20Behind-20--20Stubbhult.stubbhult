@@ -85,7 +85,7 @@ private _sendAmbientConversation = {
 // Audio is resolved by line position in the all-clear array:
 //   Conversations\RadioChatter\<FAC>\<FAC>_Radio_Chatter_<NN>.ogg
 private _tryPlayAllClearAudioForLine = {
-  params ["_player", "_facKey", "_lineIndex"];
+  params ["_player", "_leader", "_facKey", "_lineIndex"];
 
   private _idx = _lineIndex + 1;
   private _idxText = if (_idx < 10) then { format ["0%1", _idx] } else { str _idx };
@@ -100,6 +100,7 @@ private _tryPlayAllClearAudioForLine = {
   };
 
   [_player, [_soundClass, 100, 1]] remoteExecCall ["say3D", owner _player, false];
+  [_leader, [_soundClass, 100, 1]] remoteExecCall ["say3D", owner _player, false];
 };
 
 // ---------------------------
@@ -309,7 +310,7 @@ while { true } do {
               private _lineIndex = floor (random (count _allClearLines));
               private _selectedLine = _allClearLines # _lineIndex;
               [_selectedLine] remoteExec ["systemChat", _player, false];
-              [_player, _allClearFacKey, _lineIndex] call _tryPlayAllClearAudioForLine;
+              [_player, _leader, _allClearFacKey, _lineIndex] call _tryPlayAllClearAudioForLine;
             };
           };
 
