@@ -486,6 +486,12 @@ if (!isDedicated) then {
 	private _actionEnableRadioAudio = ["LB_Enable_Radio_Audio","Turn On Radio Audio","",{	player setVariable ["LB_radioAudioDisabled", false, true];	hintSilent "Radio audio enabled. You can receive LB chatter transceiver comms again.";},{ player getVariable ["LB_radioAudioDisabled", false] }] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionEnableRadioAudio] call ace_interact_menu_fnc_addActionToClass;
 	
+	private _actionDisableRadioTranscript = ["LB_Disable_Radio_Transcript","Turn Off Radio Transcript","",{	player setVariable ["LB_radioTranscriptDisabled", true, true];	hintSilent "Radio transcript disabled. You will no longer receive LB chatter system chat comms.";},{ !(player getVariable ["LB_radioTranscriptDisabled", false]) }] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionDisableRadioTranscript] call ace_interact_menu_fnc_addActionToClass;
+
+	private _actionEnableRadioTranscript = ["LB_Enable_Radio_Transcript","Turn On Radio Transcript","",{	player setVariable ["LB_radioTranscriptDisabled", false, true];	hintSilent "Radio transcript enabled. You can receive LB chatter system chat comms again.";},{ player getVariable ["LB_radioTranscriptDisabled", false] }] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionEnableRadioTranscript] call ace_interact_menu_fnc_addActionToClass;
+	
 	private _actionPray = ["pray","Pray","",{[player spawn FN_pray]},{true}] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionPray] call ace_interact_menu_fnc_addActionToClass;
 	

@@ -225,7 +225,8 @@ while { true } do {
     _bucket pushBack [
       _player,
       (_player call _hasAnyRadio),
-      (_player getVariable ["LB_radioAudioDisabled", false])
+      (_player getVariable ["LB_radioAudioDisabled", false]),
+      (_player getVariable ["LB_radioTranscriptDisabled", false])
     ];
     _playerGrid set [_cellKey, _bucket];
   } forEach _alivePlayers;
@@ -254,10 +255,10 @@ while { true } do {
 
             if (!isNil "_candidates") then {
               {
-                _x params ["_player", "_playerHasRadio", "_playerRadioAudioDisabled"];
+                _x params ["_player", "_playerHasRadio", "_playerRadioAudioDisabled", "_playerRadioTranscriptDisabled"];
                 private _distanceSqr = _player distanceSqr _leader;
                 if (_distanceSqr <= _radioR2) then {
-                  _playersNearLeader pushBack [_player, _playerHasRadio, _playerRadioAudioDisabled];
+                  _playersNearLeader pushBack [_player, _playerHasRadio, _playerRadioAudioDisabled, _playerRadioTranscriptDisabled];
                 };
               } forEach _candidates;
             };
@@ -282,7 +283,7 @@ while { true } do {
         private _allClearLines = [_AllClearPool, _allClearFacKey] call _getPoolForFaction;
 
         {
-          _x params ["_player", "_playerHasRadio", "_playerRadioAudioDisabled"];
+          _x params ["_player", "_playerHasRadio", "_playerRadioAudioDisabled", "_playerRadioTranscriptDisabled"];
 
           if (!_playerRadioAudioDisabled) then {
             private _distanceSqr = _player distanceSqr _leader;
@@ -294,7 +295,9 @@ while { true } do {
               || { _canCarelessCombatBark && { _inTalkRange } }
             ) then {
               if (!isNil "_combatLines" && { count _combatLines > 0 }) then {
-                [selectRandom _combatLines] remoteExec ["systemChat", _player, false];
+                if (!_playerRadioTranscriptDisabled) then {
+                  [selectRandom _combatLines] remoteExec ["systemChat", _player, false];
+                };
                 _sentCombatLine = true;
               };
             };
@@ -315,7 +318,9 @@ while { true } do {
               if (!isNil "_allClearLines" && { count _allClearLines > 0 }) then {
                 private _lineIndex = floor (random (count _allClearLines));
                 private _selectedLine = _allClearLines # _lineIndex;
-				[_selectedLine] remoteExec ["systemChat", _player, false];
+				if (!_playerRadioTranscriptDisabled) then {
+				  [_selectedLine] remoteExec ["systemChat", _player, false];
+				};
                 [_player, _leader, _allClearFacKey, _lineIndex] call _tryPlayAllClearAudioForLine;
               };
             };
