@@ -19,8 +19,8 @@ if (!isServer) exitWith {};
 // ---------------------------
 private _sleepTime = 15;
 private _probSpeekAmbient = 0.005;
-private _probSpeekCombat = 0.35;
-private _probAllClear = 0.95;
+private _probSpeekCombat = 0.15;
+private _probAllClear = 0.10;
 private _talkRadius = 25;
 private _radioRadius = 500;
 private _debug = false;

@@ -42,7 +42,22 @@ class CfgSounds {
 		LBRC_DT_Radio_Chatter_01,
 		LBRC_RU_Radio_Chatter_01,
 		LBRC_ROA_Radio_Chatter_01,
-		LBRC_TRB_Radio_Chatter_01
+		LBRC_TRB_Radio_Chatter_01,
+		LBRC_TRB_Radio_Chatter_01,
+		LBRC_DT_Radio_Chatter_02,
+		LBRC_DT_Radio_Chatter_03,
+		LBRC_DT_Radio_Chatter_05,
+		LBRC_DT_Radio_Chatter_06,
+		LBRC_DT_Radio_Chatter_07,
+		LBRC_DT_Radio_Chatter_08,
+		LBRC_WO_Radio_Chatter_02,
+		LBRC_WO_Radio_Chatter_03,
+		LBRC_WO_Radio_Chatter_04,
+		LBRC_WO_Radio_Chatter_05,
+		LBRC_WO_Radio_Chatter_06,
+		LBRC_WO_Radio_Chatter_07,
+		LBRC_WO_Radio_Chatter_08,
+		LBRC_WO_Radio_Chatter_09
 	};
     class laugh_1 {
         name = "laugh_1";
@@ -247,6 +262,90 @@ class CfgSounds {
 	class LBRC_US_Radio_Chatter_15 {
 		name = "LBRC_US_Radio_Chatter_15";
 		sound[] = {"Conversations\RadioChatter\US\US_Radio_Chatter_15.ogg", 1, 1};
+		titles[] = {};
+	};
+	
+	class LBRC_DT_Radio_Chatter_02 {
+		name = "LBRC_DT_Radio_Chatter_02";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Chatter_02.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Chatter_03 {
+		name = "LBRC_DT_Radio_Chatter_03";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Chatter_03.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Chatter_05 {
+		name = "LBRC_DT_Radio_Chatter_05";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Chatter_05.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Chatter_06 {
+		name = "LBRC_DT_Radio_Chatter_06";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Chatter_06.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Chatter_07 {
+		name = "LBRC_DT_Radio_Chatter_07";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Chatter_07.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Chatter_08 {
+		name = "LBRC_DT_Radio_Chatter_08";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Chatter_08.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Chatter_02 {
+		name = "LBRC_WO_Radio_Chatter_02";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_02.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Chatter_03 {
+		name = "LBRC_WO_Radio_Chatter_03";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_03.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Chatter_04 {
+		name = "LBRC_WO_Radio_Chatter_04";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_04.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Chatter_05 {
+		name = "LBRC_WO_Radio_Chatter_05";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_05.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Chatter_06 {
+		name = "LBRC_WO_Radio_Chatter_06";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_06.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Chatter_07 {
+		name = "LBRC_WO_Radio_Chatter_07";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_07.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Chatter_08 {
+		name = "LBRC_WO_Radio_Chatter_08";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_08.ogg", 1, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Chatter_09 {
+		name = "LBRC_WO_Radio_Chatter_09";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Chatter_09.ogg", 1, 1};
 		titles[] = {};
 	};
 };
