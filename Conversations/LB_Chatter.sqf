@@ -20,7 +20,7 @@ if (!isServer) exitWith {};
 private _sleepTime = 15;
 private _probSpeekAmbient = 0.005;
 private _probSpeekCombat = 0.15;
-private _probAllClear = 0.10;
+private _probAllClear = 0.30;
 private _talkRadius = 25;
 private _radioRadius = 500;
 private _debug = false;
@@ -63,12 +63,13 @@ private _getFactionKey = {
 private _getPoolForFaction = {
   params ["_poolMap", "_facKey"];
 
-  private _pool = _poolMap get _facKey;
-  if (isNil "_pool") then {
-    _pool = _poolMap get "*";
-  };
+  private _directPool = _poolMap get _facKey;
+  if (!isNil "_directPool") exitWith { _directPool };
 
-  _pool
+  private _fallbackPool = _poolMap get "*";
+  if (!isNil "_fallbackPool") exitWith { _fallbackPool };
+
+  []
 };
 
 private _sendAmbientConversation = {
@@ -221,7 +222,11 @@ while { true } do {
       _playerGrid set [_cellKey, _bucket];
     };
 
-    _bucket pushBack [_player, (_player call _hasAnyRadio)];
+    _bucket pushBack [
+      _player,
+      (_player call _hasAnyRadio),
+      (_player getVariable ["LB_radioAudioDisabled", false])
+    ];
     _playerGrid set [_cellKey, _bucket];
   } forEach _alivePlayers;
 
@@ -249,10 +254,10 @@ while { true } do {
 
             if (!isNil "_candidates") then {
               {
-                _x params ["_player", "_playerHasRadio"];
+                _x params ["_player", "_playerHasRadio", "_playerRadioAudioDisabled"];
                 private _distanceSqr = _player distanceSqr _leader;
                 if (_distanceSqr <= _radioR2) then {
-                  _playersNearLeader pushBack [_player, _playerHasRadio];
+                  _playersNearLeader pushBack [_player, _playerHasRadio, _playerRadioAudioDisabled];
                 };
               } forEach _candidates;
             };
@@ -277,40 +282,42 @@ while { true } do {
         private _allClearLines = [_AllClearPool, _allClearFacKey] call _getPoolForFaction;
 
         {
-          _x params ["_player", "_playerHasRadio"];
+          _x params ["_player", "_playerHasRadio", "_playerRadioAudioDisabled"];
 
-          private _distanceSqr = _player distanceSqr _leader;
-          private _inTalkRange = _distanceSqr < _talkR2;
-          private _sentCombatLine = false;
+          if (!_playerRadioAudioDisabled) then {
+            private _distanceSqr = _player distanceSqr _leader;
+            private _inTalkRange = _distanceSqr < _talkR2;
+            private _sentCombatLine = false;
 
-          if (
-            (_isCombat && { random 1 < _probSpeekCombat })
-            || { _canCarelessCombatBark && { _inTalkRange } }
-          ) then {
-            if (!isNil "_combatLines" && { count _combatLines > 0 }) then {
-              [selectRandom _combatLines] remoteExec ["systemChat", _player, false];
-              _sentCombatLine = true;
+            if (
+              (_isCombat && { random 1 < _probSpeekCombat })
+              || { _canCarelessCombatBark && { _inTalkRange } }
+            ) then {
+              if (!isNil "_combatLines" && { count _combatLines > 0 }) then {
+                [selectRandom _combatLines] remoteExec ["systemChat", _player, false];
+                _sentCombatLine = true;
+              };
             };
-          };
 
-          if (!_sentCombatLine && { _canPlayAmbient } && { _inTalkRange } && { random 1 < _probSpeekAmbient }) then {
-            if (!isNil "_ambientConversations" && { count _ambientConversations > 0 }) then {
-              [selectRandom _ambientConversations, _player] call _sendAmbientConversation;
+            if (!_sentCombatLine && { _canPlayAmbient } && { _inTalkRange } && { random 1 < _probSpeekAmbient }) then {
+              if (!isNil "_ambientConversations" && { count _ambientConversations > 0 }) then {
+                [selectRandom _ambientConversations, _player] call _sendAmbientConversation;
+              };
             };
-          };
 
-          if (
-            _playerHasRadio
-            && { _canPlayAllClear }
-            && { !_inTalkRange }
-            && { _distanceSqr < _radioR2 }
-            && { random 1 < _probAllClear }
-          ) then {
-            if (!isNil "_allClearLines" && { count _allClearLines > 0 }) then {
-              private _lineIndex = floor (random (count _allClearLines));
-              private _selectedLine = _allClearLines # _lineIndex;
-              [_selectedLine] remoteExec ["systemChat", _player, false];
-              [_player, _leader, _allClearFacKey, _lineIndex] call _tryPlayAllClearAudioForLine;
+            if (
+              _playerHasRadio
+              && { _canPlayAllClear }
+              && { !_inTalkRange }
+              && { _distanceSqr < _radioR2 }
+              && { random 1 < _probAllClear }
+            ) then {
+              if (!isNil "_allClearLines" && { count _allClearLines > 0 }) then {
+                private _lineIndex = floor (random (count _allClearLines));
+                private _selectedLine = _allClearLines # _lineIndex;
+				[_selectedLine] remoteExec ["systemChat", _player, false];
+                [_player, _leader, _allClearFacKey, _lineIndex] call _tryPlayAllClearAudioForLine;
+              };
             };
           };
 

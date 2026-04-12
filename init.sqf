@@ -232,7 +232,7 @@ missionNamespace setVariable ["FN_moneyInit", compileFinal preprocessFileLineNum
 if (!isDedicated) then {
 	waitUntil {!isNull player};
 	sleep 0.1;
-
+	
 	// Define the function to add multiple diary entries
 	addDiaryEntries = {
 		params ["_entries"];
@@ -322,25 +322,6 @@ if (!isDedicated) then {
 	};
 
 	[_diaryEntries, _diaryFactions] call addDiaryEntries;
-
-	player groupChat "Remember to check the briefing tab for a scenario information in your map";
-
-	player enableStamina false;
-	
-	[] spawn {
-		waitUntil {hasInterface && !isNull player};
-
-		if (side player != civilian) then {
-			[player] spawn (missionNamespace getVariable "temperature");
-			[player] spawn (missionNamespace getVariable "radSystem");
-			[player] spawn (missionNamespace getVariable "randomEncounters");
-			[player] spawn (missionNamespace getVariable "hydrationNutritionSystem");
-			[player] spawn (missionNamespace getVariable "FN_sanitySystem");
-			[player] spawn (missionNamespace getVariable "FN_poopSystem");
-			[player] spawn (missionNamespace getVariable "FN_factionClothingCheck");
-			[player] spawn (missionNamespace getVariable "FN_attachAceLoot");
-		};
-	};
 
 
 	// adding any food or drinks to the player's ace interact menu as they spawn;
@@ -499,6 +480,12 @@ if (!isDedicated) then {
 	private _actionTemp = ["temperature", "Check Clothing Capabilities", "", {call FN_temperature;}, {true}] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions", "Scenario_Actions"], _actionTemp] call ace_interact_menu_fnc_addActionToClass;
 
+	private _actionDisableRadioAudio = ["LB_Disable_Radio_Audio","Turn Off Radio Audio","",{	player setVariable ["LB_radioAudioDisabled", true, true];	hintSilent "Radio audio disabled. You will no longer receive LB chatter transceiver comms.";},{ !(player getVariable ["LB_radioAudioDisabled", false]) }] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionDisableRadioAudio] call ace_interact_menu_fnc_addActionToClass;
+
+	private _actionEnableRadioAudio = ["LB_Enable_Radio_Audio","Turn On Radio Audio","",{	player setVariable ["LB_radioAudioDisabled", false, true];	hintSilent "Radio audio enabled. You can receive LB chatter transceiver comms again.";},{ player getVariable ["LB_radioAudioDisabled", false] }] call ace_interact_menu_fnc_createAction;
+	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionEnableRadioAudio] call ace_interact_menu_fnc_addActionToClass;
+	
 	private _actionPray = ["pray","Pray","",{[player spawn FN_pray]},{true}] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions","Scenario_Actions"], _actionPray] call ace_interact_menu_fnc_addActionToClass;
 	
@@ -594,4 +581,24 @@ if (!isDedicated) then {
 	[player] call FN_updateDrinkActions;
 	[player] call FN_updateEatActions;
 	[player] call FN_factionClothingCheck;
+	
+	[] spawn {
+		waitUntil {hasInterface && !isNull player};
+		
+		player groupChat "Remember to check the briefing tab for a scenario information in your map";
+
+		player enableStamina false;
+
+		if (side player != civilian) then {
+			[player] spawn (missionNamespace getVariable "temperature");
+			[player] spawn (missionNamespace getVariable "radSystem");
+			[player] spawn (missionNamespace getVariable "randomEncounters");
+			[player] spawn (missionNamespace getVariable "hydrationNutritionSystem");
+			[player] spawn (missionNamespace getVariable "FN_sanitySystem");
+			[player] spawn (missionNamespace getVariable "FN_poopSystem");
+			[player] spawn (missionNamespace getVariable "FN_factionClothingCheck");
+			[player] spawn (missionNamespace getVariable "FN_attachAceLoot");
+			player setVariable ["LB_radioAudioDisabled", false, true];
+		};
+	};
 };
