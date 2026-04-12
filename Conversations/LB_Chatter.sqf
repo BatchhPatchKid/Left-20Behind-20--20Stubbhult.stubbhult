@@ -19,7 +19,7 @@ if (!isServer) exitWith {};
 // ---------------------------
 private _sleepTime = 15;
 private _probSpeekAmbient = 0.005;
-private _probSpeekCombat = 0.15;
+private _probSpeekCombat = 1.15;
 private _probAllClear = 0.30;
 private _talkRadius = 25;
 private _radioRadius = 500;
@@ -102,6 +102,30 @@ private _tryPlayAllClearAudioForLine = {
 
   [_player, [_soundClass, 100, 1]] remoteExecCall ["say3D", owner _player, false];
   [_leader, [_soundClass, 100, 1]] remoteExecCall ["say3D", owner _player, false];
+};
+
+// Helper: play optional faction combat chatter audio for a specific line index.
+// Audio is resolved by line position in the combat array:
+//   Conversations\RadioChatter\<FAC>\<FAC>_Radio_Combat_<NN>.ogg
+// Combat audio should only be played from the originating AI, never from the player.
+private _tryPlayCombatAudioForLine = {
+  params ["_player", "_speaker", "_facKey", "_lineIndex"];
+
+  private _idx = _lineIndex + 1;
+  private _idxText = if (_idx < 10) then { format ["0%1", _idx] } else { str _idx };
+  private _soundClass = format ["LBRC_%1_Radio_Combat_%2", _facKey, _idxText];
+
+  if !(isClass (missionConfigFile >> "CfgSounds" >> _soundClass)) exitWith {
+    if (_debug) then {
+      [format ["LB_Chatter combat audio missing for class: %1", _soundClass]] remoteExecCall ["systemChat", owner _player, false];
+    };
+  };
+
+  if (_debug) then {
+    [format ["LB_Chatter combat audio class: %1", _soundClass]] remoteExecCall ["systemChat", owner _player, false];
+  };
+
+  [_speaker, [_soundClass, 200, 1]] remoteExecCall ["say3D", owner _player, false];
 };
 
 // ---------------------------
@@ -285,42 +309,58 @@ while { true } do {
         {
           _x params ["_player", "_playerHasRadio", "_playerRadioAudioDisabled", "_playerRadioTranscriptDisabled"];
 
-          if (!_playerRadioAudioDisabled) then {
-            private _distanceSqr = _player distanceSqr _leader;
-            private _inTalkRange = _distanceSqr < _talkR2;
-            private _sentCombatLine = false;
+          private _distanceSqr = _player distanceSqr _leader;
+          private _inTalkRange = _distanceSqr < _talkR2;
+          private _sentCombatLine = false;
 
-            if (
-              (_isCombat && { random 1 < _probSpeekCombat })
-              || { _canCarelessCombatBark && { _inTalkRange } }
-            ) then {
-              if (!isNil "_combatLines" && { count _combatLines > 0 }) then {
-                if (!_playerRadioTranscriptDisabled) then {
-                  [selectRandom _combatLines] remoteExec ["systemChat", _player, false];
-                };
-                _sentCombatLine = true;
+          if (
+            (_isCombat && { random 1 < _probSpeekCombat })
+            || { _canCarelessCombatBark && { _inTalkRange } }
+          ) then {
+            if (!isNil "_combatLines" && { count _combatLines > 0 }) then {
+              private _combatLineIndex = floor (random (count _combatLines));
+              private _selectedCombatLine = _combatLines # _combatLineIndex;
+
+              if (!_playerRadioTranscriptDisabled) then {
+                [_selectedCombatLine] remoteExec ["systemChat", _player, false];
               };
-            };
 
-            if (!_sentCombatLine && { _canPlayAmbient } && { _inTalkRange } && { random 1 < _probSpeekAmbient }) then {
-              if (!isNil "_ambientConversations" && { count _ambientConversations > 0 }) then {
-                [selectRandom _ambientConversations, _player] call _sendAmbientConversation;
+              if (!_playerRadioAudioDisabled) then {
+                [_player, _leader, _facKey, _combatLineIndex] call _tryPlayCombatAudioForLine;
               };
-            };
 
-            if (
-              _playerHasRadio
-              && { _canPlayAllClear }
-              && { !_inTalkRange }
-              && { _distanceSqr < _radioR2 }
-              && { random 1 < _probAllClear }
-            ) then {
-              if (!isNil "_allClearLines" && { count _allClearLines > 0 }) then {
-                private _lineIndex = floor (random (count _allClearLines));
-                private _selectedLine = _allClearLines # _lineIndex;
-				if (!_playerRadioTranscriptDisabled) then {
-				  [_selectedLine] remoteExec ["systemChat", _player, false];
-				};
+              _sentCombatLine = true;
+            };
+          };
+
+          if (
+            !_sentCombatLine
+            && { _canPlayAmbient }
+            && { _inTalkRange }
+            && { random 1 < _probSpeekAmbient }
+          ) then {
+            if (!isNil "_ambientConversations" && { count _ambientConversations > 0 }) then {
+              [selectRandom _ambientConversations, _player] call _sendAmbientConversation;
+            };
+          };
+
+          if (
+            _playerHasRadio
+            && { !_playerRadioAudioDisabled || !_playerRadioTranscriptDisabled }
+            && { _canPlayAllClear }
+            && { !_inTalkRange }
+            && { _distanceSqr < _radioR2 }
+            && { random 1 < _probAllClear }
+          ) then {
+            if (!isNil "_allClearLines" && { count _allClearLines > 0 }) then {
+              private _lineIndex = floor (random (count _allClearLines));
+              private _selectedLine = _allClearLines # _lineIndex;
+
+              if (!_playerRadioTranscriptDisabled) then {
+                [_selectedLine] remoteExec ["systemChat", _player, false];
+              };
+
+              if (!_playerRadioAudioDisabled) then {
                 [_player, _leader, _allClearFacKey, _lineIndex] call _tryPlayAllClearAudioForLine;
               };
             };
