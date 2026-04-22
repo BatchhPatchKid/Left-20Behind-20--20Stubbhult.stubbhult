@@ -19,8 +19,8 @@ if (!isServer) exitWith {};
 // ---------------------------
 private _sleepTime = 15;
 private _probSpeekAmbient = 0.005;
-private _probSpeekCombat = 1.15;
-private _probAllClear = 0.30;
+private _probSpeekCombat = 0.45;
+private _probAllClear = 0.20;
 private _talkRadius = 25;
 private _radioRadius = 500;
 private _debug = false;
@@ -299,6 +299,7 @@ while { true } do {
         private _canPlayAmbient = !_isCombat && !_isCareless;
         private _canPlayAllClear = !_isCombat;
         private _canCarelessCombatBark = _isCareless && { side _leader in [opfor, independent] };
+        private _combatSpeakChance = if ((typeOf _leader) isEqualTo "O_soldier_Melee_RUSH") then {0.75} else {_probSpeekCombat};
 
         private _facKey = [_grp, false] call _getFactionKey;
         private _combatLines = [_CombatPools, _facKey] call _getPoolForFaction;
@@ -314,7 +315,7 @@ while { true } do {
           private _sentCombatLine = false;
 
           if (
-            (_isCombat && { random 1 < _probSpeekCombat })
+            (_isCombat && { random 1 < _combatSpeakChance })
             || { _canCarelessCombatBark && { _inTalkRange } }
           ) then {
             if (!isNil "_combatLines" && { count _combatLines > 0 }) then {

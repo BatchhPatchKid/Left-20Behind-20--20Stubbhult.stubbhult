@@ -22,7 +22,13 @@ class CfgSounds {
 		LBMQ_task003_trader_02,
 		LBMQ_task003_radio_01,
 		LBMQ_task003_radio_02,
-		LBMQ_task003_radio_02,
+
+		LBRC_WO_Radio_Chatter_01,
+		LBRC_DT_Radio_Chatter_01,
+		LBRC_RU_Radio_Chatter_01,
+		LBRC_ROA_Radio_Chatter_01,
+		LBRC_TRB_Radio_Chatter_01,
+
 		LBRC_US_Radio_Chatter_01,
 		LBRC_US_Radio_Chatter_02,
 		LBRC_US_Radio_Chatter_03,
@@ -38,6 +44,7 @@ class CfgSounds {
 		LBRC_US_Radio_Chatter_13,
 		LBRC_US_Radio_Chatter_14,
 		LBRC_US_Radio_Chatter_15,
+
 		LBRC_US_Radio_Combat_01,
 		LBRC_US_Radio_Combat_02,
 		LBRC_US_Radio_Combat_03,
@@ -53,18 +60,14 @@ class CfgSounds {
 		LBRC_US_Radio_Combat_13,
 		LBRC_US_Radio_Combat_14,
 		LBRC_US_Radio_Combat_15,
-		LBRC_WO_Radio_Chatter_01,
-		LBRC_DT_Radio_Chatter_01,
-		LBRC_RU_Radio_Chatter_01,
-		LBRC_ROA_Radio_Chatter_01,
-		LBRC_TRB_Radio_Chatter_01,
-		LBRC_TRB_Radio_Chatter_01,
+
 		LBRC_DT_Radio_Chatter_02,
 		LBRC_DT_Radio_Chatter_03,
 		LBRC_DT_Radio_Chatter_05,
 		LBRC_DT_Radio_Chatter_06,
 		LBRC_DT_Radio_Chatter_07,
 		LBRC_DT_Radio_Chatter_08,
+
 		LBRC_WO_Radio_Chatter_02,
 		LBRC_WO_Radio_Chatter_03,
 		LBRC_WO_Radio_Chatter_04,
@@ -73,6 +76,7 @@ class CfgSounds {
 		LBRC_WO_Radio_Chatter_07,
 		LBRC_WO_Radio_Chatter_08,
 		LBRC_WO_Radio_Chatter_09,
+
 		LBRC_ALF_Radio_Chatter_01,
 		LBRC_ALF_Radio_Chatter_02,
 		LBRC_ALF_Radio_Chatter_03,
@@ -90,6 +94,7 @@ class CfgSounds {
 		LBRC_ALF_Radio_Chatter_15,
 		LBRC_ALF_Radio_Chatter_16,
 		LBRC_ALF_Radio_Chatter_17,
+
 		LBRC_BB_Radio_Chatter_01,
 		LBRC_BB_Radio_Chatter_02,
 		LBRC_BB_Radio_Chatter_03,
@@ -105,6 +110,7 @@ class CfgSounds {
 		LBRC_BB_Radio_Chatter_13,
 		LBRC_BB_Radio_Chatter_14,
 		LBRC_BB_Radio_Chatter_15,
+
 		LBRC_BANDIT_Radio_Chatter_01,
 		LBRC_BANDIT_Radio_Chatter_02,
 		LBRC_BANDIT_Radio_Chatter_03,
@@ -120,6 +126,7 @@ class CfgSounds {
 		LBRC_BANDIT_Radio_Chatter_13,
 		LBRC_BANDIT_Radio_Chatter_14,
 		LBRC_BANDIT_Radio_Chatter_15,
+
 		LBRC_NH_Radio_Chatter_01,
 		LBRC_NH_Radio_Chatter_02,
 		LBRC_NH_Radio_Chatter_03,
@@ -135,6 +142,7 @@ class CfgSounds {
 		LBRC_NH_Radio_Chatter_13,
 		LBRC_NH_Radio_Chatter_14,
 		LBRC_NH_Radio_Chatter_15,
+
 		LBRC_PF_Radio_Chatter_01,
 		LBRC_PF_Radio_Chatter_02,
 		LBRC_PF_Radio_Chatter_03,
@@ -150,6 +158,7 @@ class CfgSounds {
 		LBRC_PF_Radio_Chatter_13,
 		LBRC_PF_Radio_Chatter_14,
 		LBRC_PF_Radio_Chatter_15,
+
 		LBRC_PMC_Radio_Chatter_01,
 		LBRC_PMC_Radio_Chatter_02,
 		LBRC_PMC_Radio_Chatter_03,
@@ -168,6 +177,7 @@ class CfgSounds {
 		LBRC_PMC_Radio_Chatter_16,
 		LBRC_PMC_Radio_Chatter_17,
 		LBRC_PMC_Radio_Chatter_18,
+
 		LBRC_RC_Radio_Chatter_01,
 		LBRC_RC_Radio_Chatter_02,
 		LBRC_RC_Radio_Chatter_03,
@@ -180,6 +190,7 @@ class CfgSounds {
 		LBRC_RC_Radio_Chatter_10,
 		LBRC_RC_Radio_Chatter_11,
 		LBRC_RC_Radio_Chatter_12,
+
 		LBRC_ROA_Radio_Chatter_02,
 		LBRC_ROA_Radio_Chatter_03,
 		LBRC_ROA_Radio_Chatter_04,
@@ -196,6 +207,7 @@ class CfgSounds {
 		LBRC_ROA_Radio_Chatter_15,
 		LBRC_ROA_Radio_Chatter_16,
 		LBRC_ROA_Radio_Chatter_17,
+
 		LBRC_RU_Radio_Chatter_02,
 		LBRC_RU_Radio_Chatter_03,
 		LBRC_RU_Radio_Chatter_04,
@@ -205,6 +217,7 @@ class CfgSounds {
 		LBRC_RU_Radio_Chatter_08,
 		LBRC_RU_Radio_Chatter_09,
 		LBRC_RU_Radio_Chatter_10,
+
 		LBRC_SU_Radio_Chatter_01,
 		LBRC_SU_Radio_Chatter_02,
 		LBRC_SU_Radio_Chatter_03,
@@ -227,6 +240,7 @@ class CfgSounds {
 		LBRC_SU_Radio_Chatter_20,
 		LBRC_SU_Radio_Chatter_21,
 		LBRC_SU_Radio_Chatter_22,
+
 		LBRC_TRB_Radio_Chatter_02,
 		LBRC_TRB_Radio_Chatter_03,
 		LBRC_TRB_Radio_Chatter_04,
@@ -240,7 +254,188 @@ class CfgSounds {
 		LBRC_TRB_Radio_Chatter_12,
 		LBRC_TRB_Radio_Chatter_13,
 		LBRC_TRB_Radio_Chatter_14,
-		LBRC_TRB_Radio_Chatter_15
+		LBRC_TRB_Radio_Chatter_15,
+
+		LBRC_ALF_Radio_Combat_01,
+		LBRC_ALF_Radio_Combat_02,
+		LBRC_ALF_Radio_Combat_03,
+		LBRC_ALF_Radio_Combat_04,
+		LBRC_ALF_Radio_Combat_05,
+		LBRC_ALF_Radio_Combat_06,
+		LBRC_ALF_Radio_Combat_07,
+		LBRC_ALF_Radio_Combat_08,
+		LBRC_ALF_Radio_Combat_09,
+		LBRC_ALF_Radio_Combat_10,
+		LBRC_ALF_Radio_Combat_11,
+		LBRC_ALF_Radio_Combat_12,
+
+		LBRC_BANDIT_Radio_Combat_01,
+		LBRC_BANDIT_Radio_Combat_02,
+		LBRC_BANDIT_Radio_Combat_03,
+		LBRC_BANDIT_Radio_Combat_04,
+		LBRC_BANDIT_Radio_Combat_05,
+		LBRC_BANDIT_Radio_Combat_06,
+		LBRC_BANDIT_Radio_Combat_07,
+		LBRC_BANDIT_Radio_Combat_08,
+		LBRC_BANDIT_Radio_Combat_09,
+		LBRC_BANDIT_Radio_Combat_10,
+		LBRC_BANDIT_Radio_Combat_11,
+
+		LBRC_BB_Radio_Combat_01,
+		LBRC_BB_Radio_Combat_02,
+		LBRC_BB_Radio_Combat_03,
+		LBRC_BB_Radio_Combat_04,
+		LBRC_BB_Radio_Combat_05,
+		LBRC_BB_Radio_Combat_06,
+		LBRC_BB_Radio_Combat_07,
+		LBRC_BB_Radio_Combat_08,
+		LBRC_BB_Radio_Combat_09,
+		LBRC_BB_Radio_Combat_10,
+		LBRC_BB_Radio_Combat_11,
+		LBRC_BB_Radio_Combat_12,
+
+		LBRC_DT_Radio_Combat_01,
+		LBRC_DT_Radio_Combat_02,
+		LBRC_DT_Radio_Combat_03,
+		LBRC_DT_Radio_Combat_04,
+		LBRC_DT_Radio_Combat_05,
+		LBRC_DT_Radio_Combat_06,
+		LBRC_DT_Radio_Combat_07,
+		LBRC_DT_Radio_Combat_08,
+		LBRC_DT_Radio_Combat_09,
+
+		LBRC_NH_Radio_Combat_01,
+		LBRC_NH_Radio_Combat_02,
+		LBRC_NH_Radio_Combat_03,
+		LBRC_NH_Radio_Combat_04,
+		LBRC_NH_Radio_Combat_05,
+		LBRC_NH_Radio_Combat_06,
+		LBRC_NH_Radio_Combat_07,
+		LBRC_NH_Radio_Combat_08,
+		LBRC_NH_Radio_Combat_09,
+		LBRC_NH_Radio_Combat_10,
+		LBRC_NH_Radio_Combat_11,
+		LBRC_NH_Radio_Combat_12,
+		LBRC_NH_Radio_Combat_13,
+		LBRC_NH_Radio_Combat_14,
+
+		LBRC_PF_Radio_Combat_01,
+		LBRC_PF_Radio_Combat_02,
+		LBRC_PF_Radio_Combat_03,
+		LBRC_PF_Radio_Combat_04,
+		LBRC_PF_Radio_Combat_05,
+		LBRC_PF_Radio_Combat_06,
+		LBRC_PF_Radio_Combat_07,
+		LBRC_PF_Radio_Combat_08,
+		LBRC_PF_Radio_Combat_09,
+		LBRC_PF_Radio_Combat_10,
+		LBRC_PF_Radio_Combat_11,
+		LBRC_PF_Radio_Combat_12,
+		LBRC_PF_Radio_Combat_13,
+		LBRC_PF_Radio_Combat_14,
+		LBRC_PF_Radio_Combat_15,
+
+		LBRC_PMC_Radio_Combat_01,
+		LBRC_PMC_Radio_Combat_02,
+		LBRC_PMC_Radio_Combat_03,
+		LBRC_PMC_Radio_Combat_04,
+		LBRC_PMC_Radio_Combat_05,
+		LBRC_PMC_Radio_Combat_06,
+		LBRC_PMC_Radio_Combat_07,
+		LBRC_PMC_Radio_Combat_08,
+		LBRC_PMC_Radio_Combat_09,
+		LBRC_PMC_Radio_Combat_10,
+		LBRC_PMC_Radio_Combat_11,
+		LBRC_PMC_Radio_Combat_12,
+		LBRC_PMC_Radio_Combat_13,
+		LBRC_PMC_Radio_Combat_14,
+		LBRC_PMC_Radio_Combat_15,
+
+		LBRC_RC_Radio_Combat_01,
+		LBRC_RC_Radio_Combat_02,
+		LBRC_RC_Radio_Combat_03,
+		LBRC_RC_Radio_Combat_04,
+		LBRC_RC_Radio_Combat_05,
+		LBRC_RC_Radio_Combat_06,
+		LBRC_RC_Radio_Combat_07,
+		LBRC_RC_Radio_Combat_08,
+		LBRC_RC_Radio_Combat_09,
+		LBRC_RC_Radio_Combat_10,
+		LBRC_RC_Radio_Combat_11,
+		LBRC_RC_Radio_Combat_12,
+		LBRC_RC_Radio_Combat_13,
+		LBRC_RC_Radio_Combat_14,
+
+		LBRC_ROA_Radio_Combat_01,
+		LBRC_ROA_Radio_Combat_02,
+		LBRC_ROA_Radio_Combat_03,
+		LBRC_ROA_Radio_Combat_04,
+		LBRC_ROA_Radio_Combat_05,
+		LBRC_ROA_Radio_Combat_06,
+		LBRC_ROA_Radio_Combat_07,
+		LBRC_ROA_Radio_Combat_08,
+		LBRC_ROA_Radio_Combat_09,
+		LBRC_ROA_Radio_Combat_10,
+		LBRC_ROA_Radio_Combat_11,
+		LBRC_ROA_Radio_Combat_12,
+		LBRC_ROA_Radio_Combat_13,
+		LBRC_ROA_Radio_Combat_14,
+		LBRC_ROA_Radio_Combat_15,
+
+		LBRC_RU_Radio_Combat_01,
+		LBRC_RU_Radio_Combat_02,
+		LBRC_RU_Radio_Combat_03,
+		LBRC_RU_Radio_Combat_04,
+		LBRC_RU_Radio_Combat_05,
+		LBRC_RU_Radio_Combat_06,
+		LBRC_RU_Radio_Combat_07,
+		LBRC_RU_Radio_Combat_08,
+		LBRC_RU_Radio_Combat_09,
+		LBRC_RU_Radio_Combat_10,
+		LBRC_RU_Radio_Combat_11,
+		LBRC_RU_Radio_Combat_12,
+		LBRC_RU_Radio_Combat_13,
+		LBRC_RU_Radio_Combat_14,
+		LBRC_RU_Radio_Combat_15,
+
+		LBRC_SU_Radio_Combat_01,
+		LBRC_SU_Radio_Combat_02,
+		LBRC_SU_Radio_Combat_03,
+		LBRC_SU_Radio_Combat_04,
+		LBRC_SU_Radio_Combat_05,
+		LBRC_SU_Radio_Combat_06,
+		LBRC_SU_Radio_Combat_07,
+		LBRC_SU_Radio_Combat_08,
+		LBRC_SU_Radio_Combat_09,
+		LBRC_SU_Radio_Combat_10,
+		LBRC_SU_Radio_Combat_11,
+		LBRC_SU_Radio_Combat_12,
+		LBRC_SU_Radio_Combat_13,
+		LBRC_SU_Radio_Combat_14,
+		LBRC_SU_Radio_Combat_15,
+
+		LBRC_TRB_Radio_Combat_01,
+		LBRC_TRB_Radio_Combat_02,
+		LBRC_TRB_Radio_Combat_03,
+		LBRC_TRB_Radio_Combat_04,
+		LBRC_TRB_Radio_Combat_05,
+		LBRC_TRB_Radio_Combat_06,
+		LBRC_TRB_Radio_Combat_07,
+		LBRC_TRB_Radio_Combat_08,
+		LBRC_TRB_Radio_Combat_09,
+		LBRC_TRB_Radio_Combat_10,
+		LBRC_TRB_Radio_Combat_11,
+
+		LBRC_WO_Radio_Combat_01,
+		LBRC_WO_Radio_Combat_02,
+		LBRC_WO_Radio_Combat_03,
+		LBRC_WO_Radio_Combat_04,
+		LBRC_WO_Radio_Combat_05,
+		LBRC_WO_Radio_Combat_06,
+		LBRC_WO_Radio_Combat_07,
+		LBRC_WO_Radio_Combat_08,
+		LBRC_WO_Radio_Combat_09,
+		LBRC_WO_Radio_Combat_10
 	};
     class laugh_1 {
         name = "laugh_1";
@@ -450,91 +645,91 @@ class CfgSounds {
 	
 	class LBRC_US_Radio_Combat_01 {
 		name = "LBRC_US_Radio_Combat_01";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_01.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_01.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_02 {
 		name = "LBRC_US_Radio_Combat_02";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_02.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_02.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_03 {
 		name = "LBRC_US_Radio_Combat_03";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_03.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_03.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_04 {
 		name = "LBRC_US_Radio_Combat_04";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_04.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_04.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_05 {
 		name = "LBRC_US_Radio_Combat_05";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_05.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_05.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_06 {
 		name = "LBRC_US_Radio_Combat_06";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_06.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_06.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_07 {
 		name = "LBRC_US_Radio_Combat_07";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_07.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_07.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_08 {
 		name = "LBRC_US_Radio_Combat_08";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_08.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_08.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_09 {
 		name = "LBRC_US_Radio_Combat_09";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_09.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_09.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_10 {
 		name = "LBRC_US_Radio_Combat_10";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_10.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_10.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_11 {
 		name = "LBRC_US_Radio_Combat_11";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_11.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_11.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_12 {
 		name = "LBRC_US_Radio_Combat_12";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_12.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_12.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_13 {
 		name = "LBRC_US_Radio_Combat_13";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_13.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_13.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_14 {
 		name = "LBRC_US_Radio_Combat_14";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_14.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_14.ogg", 3, 1};
 		titles[] = {};
 	};
 
 	class LBRC_US_Radio_Combat_15 {
 		name = "LBRC_US_Radio_Combat_15";
-		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_15.ogg", 1, 1};
+		sound[] = {"Conversations\RadioChatter\US\US_Radio_Combat_15.ogg", 3, 1};
 		titles[] = {};
 	};
 	
@@ -1627,6 +1822,1014 @@ class CfgSounds {
 	class LBRC_TRB_Radio_Chatter_15 {
 		name = "LBRC_TRB_Radio_Chatter_15";
 		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Chatter_15.ogg", 1, 1};
+		titles[] = {};
+	};
+	
+	class LBRC_ALF_Radio_Combat_01 {
+		name = "LBRC_ALF_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_02 {
+		name = "LBRC_ALF_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_03 {
+		name = "LBRC_ALF_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_04 {
+		name = "LBRC_ALF_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_05 {
+		name = "LBRC_ALF_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_06 {
+		name = "LBRC_ALF_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_07 {
+		name = "LBRC_ALF_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_08 {
+		name = "LBRC_ALF_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_09 {
+		name = "LBRC_ALF_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_10 {
+		name = "LBRC_ALF_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_11 {
+		name = "LBRC_ALF_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ALF_Radio_Combat_12 {
+		name = "LBRC_ALF_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\ALF\ALF_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_01 {
+		name = "LBRC_BANDIT_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_02 {
+		name = "LBRC_BANDIT_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_03 {
+		name = "LBRC_BANDIT_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_04 {
+		name = "LBRC_BANDIT_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_05 {
+		name = "LBRC_BANDIT_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_06 {
+		name = "LBRC_BANDIT_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_07 {
+		name = "LBRC_BANDIT_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_08 {
+		name = "LBRC_BANDIT_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_09 {
+		name = "LBRC_BANDIT_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_10 {
+		name = "LBRC_BANDIT_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BANDIT_Radio_Combat_11 {
+		name = "LBRC_BANDIT_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\Bandit\Bandit_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_01 {
+		name = "LBRC_BB_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_02 {
+		name = "LBRC_BB_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_03 {
+		name = "LBRC_BB_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_04 {
+		name = "LBRC_BB_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_05 {
+		name = "LBRC_BB_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_06 {
+		name = "LBRC_BB_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_07 {
+		name = "LBRC_BB_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_08 {
+		name = "LBRC_BB_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_09 {
+		name = "LBRC_BB_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_10 {
+		name = "LBRC_BB_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_11 {
+		name = "LBRC_BB_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_BB_Radio_Combat_12 {
+		name = "LBRC_BB_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\BB\BB_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_01 {
+		name = "LBRC_DT_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_02 {
+		name = "LBRC_DT_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_03 {
+		name = "LBRC_DT_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_04 {
+		name = "LBRC_DT_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_05 {
+		name = "LBRC_DT_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_06 {
+		name = "LBRC_DT_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_07 {
+		name = "LBRC_DT_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_08 {
+		name = "LBRC_DT_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_DT_Radio_Combat_09 {
+		name = "LBRC_DT_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\DT\DT_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_01 {
+		name = "LBRC_NH_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_02 {
+		name = "LBRC_NH_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_03 {
+		name = "LBRC_NH_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_04 {
+		name = "LBRC_NH_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_05 {
+		name = "LBRC_NH_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_06 {
+		name = "LBRC_NH_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_07 {
+		name = "LBRC_NH_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_08 {
+		name = "LBRC_NH_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_09 {
+		name = "LBRC_NH_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_10 {
+		name = "LBRC_NH_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_11 {
+		name = "LBRC_NH_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_12 {
+		name = "LBRC_NH_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_13 {
+		name = "LBRC_NH_Radio_Combat_13";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_13.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_NH_Radio_Combat_14 {
+		name = "LBRC_NH_Radio_Combat_14";
+		sound[] = {"Conversations\RadioChatter\NH\NH_Radio_Combat_14.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_01 {
+		name = "LBRC_PF_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_02 {
+		name = "LBRC_PF_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_03 {
+		name = "LBRC_PF_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_04 {
+		name = "LBRC_PF_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_05 {
+		name = "LBRC_PF_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_06 {
+		name = "LBRC_PF_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_07 {
+		name = "LBRC_PF_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_08 {
+		name = "LBRC_PF_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_09 {
+		name = "LBRC_PF_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_10 {
+		name = "LBRC_PF_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_11 {
+		name = "LBRC_PF_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_12 {
+		name = "LBRC_PF_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_13 {
+		name = "LBRC_PF_Radio_Combat_13";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_13.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_14 {
+		name = "LBRC_PF_Radio_Combat_14";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_14.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PF_Radio_Combat_15 {
+		name = "LBRC_PF_Radio_Combat_15";
+		sound[] = {"Conversations\RadioChatter\PF\PF_Radio_Combat_15.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_01 {
+		name = "LBRC_PMC_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_02 {
+		name = "LBRC_PMC_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_03 {
+		name = "LBRC_PMC_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_04 {
+		name = "LBRC_PMC_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_05 {
+		name = "LBRC_PMC_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_06 {
+		name = "LBRC_PMC_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_07 {
+		name = "LBRC_PMC_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_08 {
+		name = "LBRC_PMC_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_09 {
+		name = "LBRC_PMC_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_10 {
+		name = "LBRC_PMC_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_11 {
+		name = "LBRC_PMC_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_12 {
+		name = "LBRC_PMC_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_13 {
+		name = "LBRC_PMC_Radio_Combat_13";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_13.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_14 {
+		name = "LBRC_PMC_Radio_Combat_14";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_14.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_PMC_Radio_Combat_15 {
+		name = "LBRC_PMC_Radio_Combat_15";
+		sound[] = {"Conversations\RadioChatter\PMC\PMC_Radio_Combat_15.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_01 {
+		name = "LBRC_RC_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_02 {
+		name = "LBRC_RC_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_03 {
+		name = "LBRC_RC_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_04 {
+		name = "LBRC_RC_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_05 {
+		name = "LBRC_RC_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_06 {
+		name = "LBRC_RC_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_07 {
+		name = "LBRC_RC_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_08 {
+		name = "LBRC_RC_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_09 {
+		name = "LBRC_RC_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_10 {
+		name = "LBRC_RC_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_11 {
+		name = "LBRC_RC_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_12 {
+		name = "LBRC_RC_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_13 {
+		name = "LBRC_RC_Radio_Combat_13";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_13.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RC_Radio_Combat_14 {
+		name = "LBRC_RC_Radio_Combat_14";
+		sound[] = {"Conversations\RadioChatter\RC\RC_Radio_Combat_14.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_01 {
+		name = "LBRC_ROA_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_02 {
+		name = "LBRC_ROA_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_03 {
+		name = "LBRC_ROA_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_04 {
+		name = "LBRC_ROA_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_05 {
+		name = "LBRC_ROA_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_06 {
+		name = "LBRC_ROA_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_07 {
+		name = "LBRC_ROA_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_08 {
+		name = "LBRC_ROA_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_09 {
+		name = "LBRC_ROA_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_10 {
+		name = "LBRC_ROA_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_11 {
+		name = "LBRC_ROA_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_12 {
+		name = "LBRC_ROA_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_13 {
+		name = "LBRC_ROA_Radio_Combat_13";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_13.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_14 {
+		name = "LBRC_ROA_Radio_Combat_14";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_14.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_ROA_Radio_Combat_15 {
+		name = "LBRC_ROA_Radio_Combat_15";
+		sound[] = {"Conversations\RadioChatter\ROA\ROA_Radio_Combat_15.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_01 {
+		name = "LBRC_RU_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_02 {
+		name = "LBRC_RU_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_03 {
+		name = "LBRC_RU_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_04 {
+		name = "LBRC_RU_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_05 {
+		name = "LBRC_RU_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_06 {
+		name = "LBRC_RU_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_07 {
+		name = "LBRC_RU_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_08 {
+		name = "LBRC_RU_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_09 {
+		name = "LBRC_RU_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_10 {
+		name = "LBRC_RU_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_11 {
+		name = "LBRC_RU_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_12 {
+		name = "LBRC_RU_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_13 {
+		name = "LBRC_RU_Radio_Combat_13";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_13.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_14 {
+		name = "LBRC_RU_Radio_Combat_14";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_14.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_RU_Radio_Combat_15 {
+		name = "LBRC_RU_Radio_Combat_15";
+		sound[] = {"Conversations\RadioChatter\RU\RU_Radio_Combat_15.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_01 {
+		name = "LBRC_SU_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_02 {
+		name = "LBRC_SU_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_03 {
+		name = "LBRC_SU_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_04 {
+		name = "LBRC_SU_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_05 {
+		name = "LBRC_SU_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_06 {
+		name = "LBRC_SU_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_07 {
+		name = "LBRC_SU_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_08 {
+		name = "LBRC_SU_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_09 {
+		name = "LBRC_SU_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_10 {
+		name = "LBRC_SU_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_11 {
+		name = "LBRC_SU_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_12 {
+		name = "LBRC_SU_Radio_Combat_12";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_12.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_13 {
+		name = "LBRC_SU_Radio_Combat_13";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_13.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_14 {
+		name = "LBRC_SU_Radio_Combat_14";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_14.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_SU_Radio_Combat_15 {
+		name = "LBRC_SU_Radio_Combat_15";
+		sound[] = {"Conversations\RadioChatter\SU\SU_Radio_Combat_15.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_01 {
+		name = "LBRC_TRB_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_02 {
+		name = "LBRC_TRB_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_03 {
+		name = "LBRC_TRB_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_04 {
+		name = "LBRC_TRB_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_05 {
+		name = "LBRC_TRB_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_06 {
+		name = "LBRC_TRB_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_07 {
+		name = "LBRC_TRB_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_08 {
+		name = "LBRC_TRB_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_09 {
+		name = "LBRC_TRB_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_10 {
+		name = "LBRC_TRB_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_10.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_TRB_Radio_Combat_11 {
+		name = "LBRC_TRB_Radio_Combat_11";
+		sound[] = {"Conversations\RadioChatter\TRB\TRB_Radio_Combat_11.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_01 {
+		name = "LBRC_WO_Radio_Combat_01";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_01.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_02 {
+		name = "LBRC_WO_Radio_Combat_02";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_02.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_03 {
+		name = "LBRC_WO_Radio_Combat_03";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_03.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_04 {
+		name = "LBRC_WO_Radio_Combat_04";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_04.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_05 {
+		name = "LBRC_WO_Radio_Combat_05";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_05.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_06 {
+		name = "LBRC_WO_Radio_Combat_06";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_06.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_07 {
+		name = "LBRC_WO_Radio_Combat_07";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_07.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_08 {
+		name = "LBRC_WO_Radio_Combat_08";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_08.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_09 {
+		name = "LBRC_WO_Radio_Combat_09";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_09.ogg", 3, 1};
+		titles[] = {};
+	};
+
+	class LBRC_WO_Radio_Combat_10 {
+		name = "LBRC_WO_Radio_Combat_10";
+		sound[] = {"Conversations\RadioChatter\WO\WO_Radio_Combat_10.ogg", 3, 1};
 		titles[] = {};
 	};
 };
